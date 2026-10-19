@@ -595,7 +595,9 @@ pub const Model = struct {
                 ahead.?.join();
                 ahead = null;
             }
-            if (ahead == null) {
+            // a read-ahead of this chunk already joined (a round ran between two chunks): its rows stand ready
+            const joined = ahead == null and eh.ahead_start == start and eh.ahead_n == n and eh.ahead_ready[0];
+            if (ahead == null and !joined) {
                 eh.ahead_start = start;
                 eh.ahead_n = n;
                 eh.ahead_ready = .{ false, false };
@@ -685,6 +687,7 @@ pub const Model = struct {
     /// eager absorb: rows past the ones the round keeps sit where the drafter never reads, and the next window
     /// overwrites them). absorb[i]: window i's stream drafts.
     pub fn verify(m: *Model, rows: round.Rows, absorb: []const bool) !void {
+        m.joinAhead(); // a prompt chunk's Engram read-ahead shares the host buffers a round's Engram reads use
         const e = &m.eng;
         if (m.prof) try m.stream.synchronize(); // (the GPU idle, so the issue time shows whether the host keeps it fed)
         const t0 = m.now();

@@ -572,6 +572,13 @@ pub const Lanes = struct {
             head = try m.fillChunk(seq.items[0 .. start + n], start, n, replay);
             start += n;
             if (s.images.len == 0) if (s.reuse.hook) |k| if (start < len and start <= replay and (start == last_end or markEnds(s.reuse.marks, start))) k.at(k.ptr, s, @intCast(start));
+            // prefill interleave: the other streams' rounds between this pass's chunks (verify frames go to rank 1 in
+            // order; every state a pass carries from chunk to chunk is the slot's, except the Engram read-ahead, which
+            // a round's own Engram reads would race: joined first, its rows kept for the next chunk)
+            if (start < len and s.images.len == 0) if (s.between) |b| if (b.wanted(b.ptr)) {
+                m.joinAhead();
+                try b.run(b.ptr);
+            };
         }
         if (!head) return error.NoPromptLogits;
         const logits = try m.promptLogitsHost();
@@ -947,6 +954,7 @@ pub fn follow(gpa: std.mem.Allocator, m: *Model) !void {
                 const n: usize = try r.int(u32);
                 const replay: usize = @intCast(try r.int(u64));
                 if (start + n > seqs[slot].items.len) return error.BadChunk;
+                m.fill_seq = seqs[slot].items; // (a round between two chunks cleared it: the next chunk's read-ahead again)
                 _ = m.fillChunk(seqs[slot].items[0 .. start + n], start, n, replay) catch |err| refused(err);
             },
             .verify => {

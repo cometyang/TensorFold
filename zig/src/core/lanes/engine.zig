@@ -75,6 +75,13 @@ pub const Engine = struct {
         return n;
     }
 
+    /// Live streams a round would advance (not finished, not paused): the prefill interleave's test.
+    pub fn runnableCount(e: *const Engine) usize {
+        var n: usize = 0;
+        for (e.live.items) |s| n += @intFromBool(!s.finished and !s.paused);
+        return n;
+    }
+
     /// Prefill a stream, draw its first token and ask for its first drafts; it takes part from the next round.
     pub fn addStream(e: *Engine, s: *Stream) !void {
         _ = e.arena.reset(.retain_capacity);
