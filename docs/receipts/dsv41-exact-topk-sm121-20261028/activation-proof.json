@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-28T17:25:50.570342+00:00",
+  "devices": [
+    {
+      "rank": "rank0",
+      "image": "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+      "image_id": "sha256:26f78d79ee4861d2e5cc599ed213af0c3cc086709b8da4a9c2e26b352c827e4f",
+      "running": true,
+      "environment": {
+        "TF_DS_TOPK_EXACT": "1",
+        "TF_DS_INDEX_FP4_AOT": "/opt/tensorfold/share/dsv41-index-fp4"
+      }
+    },
+    {
+      "rank": "rank1",
+      "image": "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+      "image_id": "sha256:2998a963459c15e8dc7639bfbd4685ecec67046e532e3082a4bc751c424b3d44",
+      "running": true,
+      "environment": {
+        "TF_DS_TOPK_EXACT": "1",
+        "TF_DS_INDEX_FP4_AOT": "/opt/tensorfold/share/dsv41-index-fp4"
+      }
+    }
+  ],
+  "passed": true
+}

@@ -6,6 +6,7 @@
 //! gate checks them.
 const std = @import("std");
 const cuda = @import("cuda");
+const exact_topk = @import("topk_exact.zig");
 
 /// launch_shape.h's tf_launch_blocks: a block a `threads` elements, at most 65535.
 fn blocks(count: usize, threads: usize) u32 {
@@ -37,6 +38,7 @@ pub const Ops = struct {
     copy16: cuda.Function,
     argmax_rows: cuda.Function,
     gpu_clock: cuda.Function,
+    topk_exact: ?exact_topk.Exact = null,
 
     /// The three images (cuda.kernels.torch_pointwise, torch_movement and dsv41_ops, or the fatbins' bytes).
     pub fn load(d: *const cuda.Driver, pointwise: []const u8, movement: []const u8, family: []const u8) !Ops {
@@ -68,10 +70,12 @@ pub const Ops = struct {
             .copy16 = try fm.function("tf_ds_copy_rows16_kernel"),
             .argmax_rows = try fm.function("tf_ds_argmax_rows_kernel"),
             .gpu_clock = try fm.function("tf_ds_clock_kernel"),
+            .topk_exact = try exact_topk.Exact.load(d, fm),
         };
     }
 
     pub fn unload(o: *Ops) void {
+        if (o.topk_exact) |*t| t.scratch.free();
         o.pointwise.unload();
         o.movement.unload();
         o.family.unload();
@@ -118,6 +122,7 @@ pub const Ops = struct {
     pub fn topkI64(o: *const Ops, s: cuda.Stream, keys: u64, ks: usize, rows: usize, n: usize, k: usize, top: u64) !void {
         if (rows == 0) return;
         if (k > n) return error.BadTopK;
+        if (o.topk_exact) |*t| if (try t.run(s, keys, ks, rows, n, k, null, top)) return;
         var a: cuda.Args = .{};
         a.add(keys);
         a.add(@as(c_longlong, @intCast(ks)));
@@ -133,6 +138,7 @@ pub const Ops = struct {
     pub fn topkIndices(o: *const Ops, s: cuda.Stream, score: u64, ss: usize, rows: usize, n: usize, k: usize, vis: u64, out: u64) !void {
         if (rows == 0) return;
         if (k > n or k > 2048) return error.BadTopK;
+        if (o.topk_exact) |*t| if (try t.run(s, score, ss, rows, n, k, vis, out)) return;
         var a: cuda.Args = .{};
         a.add(score);
         a.add(@as(c_longlong, @intCast(ss)));

@@ -1,0 +1,3 @@
+========= COMPUTE-SANITIZER
+{"passed":true,"cases":48,"reference":"CPU signed 64-bit total order"}
+========= ERROR SUMMARY: 0 errors

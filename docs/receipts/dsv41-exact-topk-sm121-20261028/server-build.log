@@ -1,0 +1,10 @@
+Build Summary: 8/8 steps succeeded
+dsv41-serve success
++- install tf-dsv41-lanes success
+|  +- compile exe tf-dsv41-lanes fast native success 1m MaxRSS:1G
+|     +- options success
++- install tensorfold-native success
+   +- compile exe tensorfold-native safe native success 1m MaxRSS:2G
+      +- options success
+      +- options (reused)
+      +- WriteFile draft_ids.txt cached
