@@ -107,6 +107,7 @@ pub const Model = struct {
     epool: ?*engram_io.Pool = null,
     aio: ?*engram_aio.Aio = null,
     paio: ?*engram_aio.Aio = null, // the prompt chunks' Engram reads, on a ring of their own
+    paio2: ?*engram_aio.Aio = null, // TF_DS_ENGRAM_LANES=2: half of each prompt chunk's reads, on a second ring
     eh: ?prompt.EngramHost = null,
     host_pos: []i64,
     ids64: []i64,
@@ -179,6 +180,7 @@ pub const Model = struct {
         m.epool = null;
         m.aio = null;
         m.paio = null;
+        m.paio2 = null;
         m.eh = null;
         m.rdma_mod = null;
         m.ring = null;
@@ -326,6 +328,18 @@ pub const Model = struct {
                 // a prompt chunk's reads (2 x 12 x 2,048 at most): a ring of 4,096 slots (32 MiB), 1,024 rows a batch
                 m.paio = try engram_aio.Aio.init(gpa, io, 4096);
                 m.eh.?.paio = m.paio;
+                // TF_DS_ENGRAM_LANES=2 (every rank alike, though the bits do not depend on it): a second ring of 4,096
+                // slots (32 MiB), so a chunk's reads go out from two threads (two cores' submissions and reaps); a
+                // kernel that refuses the second context leaves the one ring
+                const lanes2 = if (std.c.getenv("TF_DS_ENGRAM_LANES")) |v| std.mem.eql(u8, std.mem.span(v), "2") else false;
+                if (lanes2) {
+                    m.paio2 = engram_aio.Aio.init(gpa, io, 4096) catch |err| blk: {
+                        std.debug.print("{{\"engram_lanes\": 1, \"refused\": \"{s}\"}}\n", .{@errorName(err)});
+                        break :blk null;
+                    };
+                    m.eh.?.paio2 = m.paio2;
+                    if (m.paio2 != null) std.debug.print("{{\"engram_lanes\": 2}}\n", .{});
+                }
             }
         } else if (c.engram_layers.slice().len > 0) return error.NoEngramTables;
 
@@ -361,6 +375,7 @@ pub const Model = struct {
         m.rd.dropPrefetch();
         if (m.aio) |x| x.deinit();
         if (m.paio) |x| x.deinit();
+        if (m.paio2) |x| x.deinit();
         if (m.epool) |p| p.deinit(m.gpa);
         if (m.tables) |*t| t.close();
         if (m.rdma_rings) |*r| r.close(m.gpa);

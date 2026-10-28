@@ -1117,6 +1117,7 @@ pub const EngramHost = struct {
     rows: []u16, // bf16 [cap, (hi - lo) * head_dim]
     aio: ?*engram_aio.Aio = null, // a round's reads by Linux AIO on the tables' O_DIRECT descriptors (else the pool)
     paio: ?*engram_aio.Aio = null, // a prompt chunk's reads the same way, on a ring of its own (else the pool)
+    paio2: ?*engram_aio.Aio = null, // with paio, a second ring: half of a chunk's rows read from a thread of their own
     // the rounds' Engram host time (ns, summed; a profile reads it): hashing, the table reads, the decode, the upload
     io: ?std.Io = null,
     t_hash: u64 = 0,
@@ -1209,7 +1210,7 @@ fn engramAhead1(eh: *EngramHost, c: *const Config, seq: []const i32, start: usiz
     }
     const m = n * k;
     // by AIO on the prompt's ring when it is open (the main thread reads by it only after joining this one)
-    if (eh.paio) |aio| try aioGather(aio, t, eh.ahead_flat[j][0..m], eh.ahead_w[j][0 .. m * t.row_w], eh.ahead_s[j][0 .. m * t.row_s]) else try eh.pool.gather(t, eh.ahead_flat[j][0..m], eh.ahead_w[j][0 .. m * t.row_w], eh.ahead_s[j][0 .. m * t.row_s]);
+    if (eh.paio) |aio| try promptGather(aio, eh.paio2, t, eh.ahead_flat[j][0..m], eh.ahead_w[j][0 .. m * t.row_w], eh.ahead_s[j][0 .. m * t.row_s]) else try eh.pool.gather(t, eh.ahead_flat[j][0..m], eh.ahead_w[j][0 .. m * t.row_w], eh.ahead_s[j][0 .. m * t.row_s]);
     engram.decodeRows(eh.ahead_w[j][0 .. m * t.row_w], eh.ahead_s[j][0 .. m * t.row_s], eh.ahead_rows[j][0 .. m * t.row_w], m, t.row_w, t.row_s, 8);
     eh.ahead_ready[j] = true;
 }
@@ -1245,7 +1246,7 @@ pub fn engramApply(e: *const Engine, ch: *Chunk, eh: *EngramHost, li: usize, seq
         for (0..n) |r| {
             for (0..k) |j| eh.flat[r * k + j] = eh.hashes[(r * eh.hasher.layers + l) * cols + eh.lo + j];
         }
-        if (eh.paio) |aio| try aioGather(aio, t, eh.flat[0..m], eh.w[0 .. m * t.row_w], eh.s[0 .. m * t.row_s]) else try eh.pool.gather(t, eh.flat[0..m], eh.w[0 .. m * t.row_w], eh.s[0 .. m * t.row_s]);
+        if (eh.paio) |aio| try promptGather(aio, eh.paio2, t, eh.flat[0..m], eh.w[0 .. m * t.row_w], eh.s[0 .. m * t.row_s]) else try eh.pool.gather(t, eh.flat[0..m], eh.w[0 .. m * t.row_w], eh.s[0 .. m * t.row_s]);
         engram.decodeRows(eh.w[0 .. m * t.row_w], eh.s[0 .. m * t.row_s], eh.rows[0 .. m * t.row_w], m, t.row_w, t.row_s, 8); // the rows on 8 threads
     }
     if (m * t.row_w != n * ew.k) return error.EngramShape;
@@ -1316,6 +1317,30 @@ fn aioGather(aio: *engram_aio.Aio, t: engram_io.Table, ids: []const i64, out_w: 
         };
     }
     nb = 0;
+}
+
+/// A prompt chunk's rows `ids` of table `t` by AIO: with a second ring (`two`) the first half of them read over it by a
+/// thread of its own while this one reads the second half over `aio`, so two cores submit and reap (a request's first
+/// chunk waits for its first Engram layer's reads with only the embedding and layer 0 on the GPU). Each row lands in
+/// the same place as aioGather's, so the bytes are the same; both halves are waited for before this returns.
+fn promptGather(aio: *engram_aio.Aio, two: ?*engram_aio.Aio, t: engram_io.Table, ids: []const i64, out_w: []u8, out_s: []u8) !void {
+    const second = two orelse return aioGather(aio, t, ids, out_w, out_s);
+    if (ids.len < 2 * 1024) return aioGather(aio, t, ids, out_w, out_s); // a short prompt's: one ring
+    const Half = struct {
+        fn run(a: *engram_aio.Aio, tt: engram_io.Table, hi: []const i64, hw: []u8, hs: []u8, err: *?anyerror) void {
+            aioGather(a, tt, hi, hw, hs) catch |x| {
+                err.* = x;
+            };
+        }
+    };
+    const h = ids.len / 2;
+    var first_err: ?anyerror = null;
+    const th = std.Thread.spawn(.{}, Half.run, .{ second, t, ids[0..h], out_w[0 .. h * t.row_w], out_s[0 .. h * t.row_s], &first_err }) catch
+        return aioGather(aio, t, ids, out_w, out_s);
+    const rest = aioGather(aio, t, ids[h..], out_w[h * t.row_w ..], out_s[h * t.row_s ..]);
+    th.join(); // (the first half's rows land before the caller may reuse its buffers, whatever this half did)
+    try rest;
+    if (first_err) |err| return err;
 }
 
 /// The decoder's bounded replay at its first layer (_forward_k's `replay`, CED's prefill): the layer's attention mixes
