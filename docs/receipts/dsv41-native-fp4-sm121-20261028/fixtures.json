@@ -1,0 +1,114 @@
+[
+  {
+    "path": "fixtures/context-1048320-rep-0.json.gz",
+    "prompt_tokens": 1048320,
+    "uncompressed_json_sha256": "a5a11dafb3730a1d9c68845cab8b2c3a2e3f6c872b971d6faa04e5216f3ccb91",
+    "compressed_sha256": "a6434ffd2092fae599d743f1697f99f91d518638710a0794f24684dc48c4f4d2",
+    "expected": {
+      "amber": "85177982",
+      "cobalt": "10288276",
+      "tulip": "70393364"
+    },
+    "needle_token_positions": [
+      104829,
+      524140,
+      943451
+    ]
+  },
+  {
+    "path": "fixtures/context-2048-rep-0.json.gz",
+    "prompt_tokens": 2048,
+    "uncompressed_json_sha256": "4b6046d98ba083dc77546994dd0602de09fb5d0af84b064cb01b8a5e4b7ac189",
+    "compressed_sha256": "b81bfdcadb6627126d47fa20b82c7895954bf9b1f78940425f06b3150e95671b",
+    "expected": {
+      "amber": "78258689",
+      "cobalt": "75665365",
+      "tulip": "70214317"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  {
+    "path": "fixtures/context-2048-rep-1.json.gz",
+    "prompt_tokens": 2048,
+    "uncompressed_json_sha256": "84ad62abbca830e4933a00d6e6d78cfc83c04afa017429c880737ce14a7ee447",
+    "compressed_sha256": "5682015724f2ce5aa8f7713700122e6151cd9e5f3f5c5062f2e7e2cfc49e6892",
+    "expected": {
+      "amber": "96273667",
+      "cobalt": "57044435",
+      "tulip": "89518794"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  {
+    "path": "fixtures/context-2048-rep-2.json.gz",
+    "prompt_tokens": 2048,
+    "uncompressed_json_sha256": "518fcc0a68c408d06246eec3b6cc26b9652a7d606b7ca86bd630166a0b587321",
+    "compressed_sha256": "4e6db3f1b4533aef992a42a95ec12bdee9e6de388314699d1e81e2954176cff6",
+    "expected": {
+      "amber": "12506768",
+      "cobalt": "92501199",
+      "tulip": "84919721"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  {
+    "path": "fixtures/context-65536-rep-0.json.gz",
+    "prompt_tokens": 65536,
+    "uncompressed_json_sha256": "b3e9b66d6e5ac8e3c79c7dbfcf3b2556a4ecb19c9e4aec274c4415d58ee46eff",
+    "compressed_sha256": "847a4d1038881f943a9269c3d5e40e45a34b0236e3ad6ce49a9119c072516ad7",
+    "expected": {
+      "amber": "98303435",
+      "cobalt": "35740976",
+      "tulip": "21170391"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  },
+  {
+    "path": "fixtures/context-65536-rep-1.json.gz",
+    "prompt_tokens": 65536,
+    "uncompressed_json_sha256": "215d3abeb06e968a2daf1ae1b0a4eebd2f867786f5d679b6ced979872db79d4f",
+    "compressed_sha256": "a440799a67fdfb84112a6a51a3fe649ecd7cce1cb295142954b3a405ec22370c",
+    "expected": {
+      "amber": "14582664",
+      "cobalt": "67223291",
+      "tulip": "16978789"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  },
+  {
+    "path": "fixtures/context-65536-rep-2.json.gz",
+    "prompt_tokens": 65536,
+    "uncompressed_json_sha256": "bca890f27fc39b49a52e7ee021d8ee7495276150984e1d067125cbc47c59a9a4",
+    "compressed_sha256": "979eb742f14509de3b2c4b36983b88faf9e84955ea1edcb680a9e3d14e06d03b",
+    "expected": {
+      "amber": "85443983",
+      "cobalt": "51642057",
+      "tulip": "65268128"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  }
+]
