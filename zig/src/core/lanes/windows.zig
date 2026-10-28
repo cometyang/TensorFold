@@ -160,8 +160,12 @@ pub fn allocate(e: *Engine, plans: []Plan) !void {
     const a = e.arena.allocator();
     const fixed = try a.alloc(u32, plans.len);
     const probs = try a.alloc([]const f64, plans.len);
+    var context_start: u64 = 0;
+    var context_end: u64 = 0;
     for (plans, fixed, probs) |p, *fx, *pr| {
         const n = p.count();
+        context_start = @max(context_start, p.position +| 1);
+        context_end = @max(context_end, p.position +| 1 +| @as(u64, @intCast(n)));
         if (p.kind == .forced or n == 0) {
             fx.* = 1 + @as(u32, @intCast(if (p.kind == .forced) n else 0));
             pr.* = &.{};
@@ -173,7 +177,18 @@ pub fn allocate(e: *Engine, plans: []Plan) !void {
             pr.* = try nodeChances(e, p.stream, n);
         }
     }
-    const counts = try alloc.allocate(a, fixed, probs, &e.cfg.shared_costs, e.rule.overheadMs(plans.len), @max(plans.len, e.cfg.batch_rows));
+    const max_rows = @max(plans.len, e.cfg.batch_rows);
+    var possible_rows: u64 = 0;
+    for (fixed, probs) |n, p| possible_rows += n + @as(u64, @intCast(p.len));
+    const choice = e.cfg.context_costs.resolveSpan(
+        context_start,
+        context_end,
+        plans.len,
+        @min(possible_rows, max_rows),
+        &e.cfg.shared_costs,
+        e.rule.overheadMs(plans.len),
+    );
+    const counts = try alloc.allocate(a, fixed, probs, choice.forward, choice.overhead_ms, max_rows);
     for (plans, probs, counts) |*p, chances, c| {
         if (p.kind == .head) p.stream.granted = c;
         if (chances.len == 0 or c == chances.len) continue;
@@ -235,4 +250,118 @@ pub fn tokens(e: *Engine, w: be.Window, o: be.Verified) ![]u32 {
     @memcpy(out[1 .. 1 + w.held], o.drafts[0..w.held]);
     @memcpy(out[1 + w.held ..], w.tokens);
     return out;
+}
+
+test "allocation selects the longest proposed end and the actual stream count" {
+    const Config = @import("config.zig").Config;
+    const fake = @import("fake.zig");
+    const gpa = std.testing.allocator;
+    var cfg = try Config.init(gpa, .{
+        .exact_width = 6,
+        .drafts = 5,
+        .draft_prior = &.{ 0.9, 0.8 },
+        .hidden_rows = true,
+        .max_streams = 2,
+        .batch_rows = 16,
+        .window_costs = &.{ .{ .width = 1, .ms = 10 }, .{ .width = 6, .ms = 60 } },
+        .context_costs = &.{
+            .{ .min_context = 2048, .max_context = 4096, .streams = 1, .forward_ms = &.{ 10, 11, 12, 13, 14, 15 }, .overhead_ms = 0 },
+            .{ .min_context = 2048, .max_context = 4096, .streams = 2, .forward_ms = &.{ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 }, .overhead_ms = 0 },
+            .{ .min_context = 65536, .max_context = 131072, .streams = 2, .forward_ms = &.{ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120 }, .overhead_ms = 0 },
+        },
+    }, 6, 5);
+    defer cfg.deinit(gpa);
+    var target: fake.Fake = .{ .gpa = gpa };
+    defer target.deinit();
+    var clock: fake.FixedClock = .{};
+    var e = Engine.init(gpa, &cfg, target.backend(), clock.clock());
+    defer e.deinit();
+    try e.rule.overhead.append(gpa, .{ .streams = 1, .ms = 0 });
+    try e.rule.overhead.append(gpa, .{ .streams = 2, .ms = 0 });
+    var first = try Stream.init(gpa, .{ .id = "first", .prompt = &.{1}, .max_new = 32, .eos = &.{} });
+    defer first.deinit(gpa);
+    var second = try Stream.init(gpa, .{ .id = "second", .prompt = &.{1}, .max_new = 32, .eos = &.{} });
+    defer second.deinit(gpa);
+    for ([_]struct { positions: []const u64, expected: usize }{
+        .{ .positions = &.{2045}, .expected = 0 },
+        .{ .positions = &.{2047}, .expected = 2 },
+        .{ .positions = &.{4094}, .expected = 0 },
+        .{ .positions = &.{8192}, .expected = 0 },
+        .{ .positions = &.{ 2047, 2047 }, .expected = 2 },
+        .{ .positions = &.{ 2045, 65533 }, .expected = 0 },
+        .{ .positions = &.{ 65533, 2045 }, .expected = 0 },
+    }) |case| {
+        _ = e.arena.reset(.retain_capacity);
+        var plans = [_]Plan{
+            .{ .stream = &first, .position = case.positions[0], .kind = .head, .held = 2 },
+            .{ .stream = &second, .position = case.positions[case.positions.len - 1], .kind = .head, .held = 2 },
+        };
+        try allocate(&e, plans[0..case.positions.len]);
+        for (plans[0..case.positions.len]) |p| try std.testing.expectEqual(case.expected, p.count());
+    }
+}
+
+test "context-calibrated shared rounds preserve greedy and sampled token IDs" {
+    const cfg_mod = @import("config.zig");
+    const fake = @import("fake.zig");
+    const Sampling = @import("sampling.zig").Sampling;
+    const Run = struct {
+        fn decode(profiles: []const cfg_mod.ContextCostProfile, drafts: bool, sampling: ?Sampling) ![2][]u32 {
+            const gpa = std.testing.allocator;
+            var cfg = try cfg_mod.Config.init(gpa, .{
+                .exact_width = 6,
+                .mtp = true,
+                .speculate = true,
+                .speculate_early = false,
+                .drafts = 5,
+                .draft_probabilities = true,
+                .draft_streams = true,
+                .hidden_rows = true,
+                .max_streams = 2,
+                .batch_rows = 16,
+                .window_costs = &.{ .{ .width = 1, .ms = 10 }, .{ .width = 6, .ms = 15 } },
+                .context_costs = profiles,
+            }, 6, 5);
+            defer cfg.deinit(gpa);
+            var target: fake.Fake = .{ .gpa = gpa };
+            defer target.deinit();
+            var clock: fake.FixedClock = .{};
+            var e = Engine.init(gpa, &cfg, target.backend(), clock.clock());
+            defer e.deinit();
+            var first = try Stream.init(gpa, .{ .id = "first", .prompt = &.{ 3, 1, 4, 1, 5 }, .max_new = 48, .eos = &.{}, .drafts = drafts, .sampling = sampling });
+            defer first.deinit(gpa);
+            var second = try Stream.init(gpa, .{ .id = "second", .prompt = &.{ 2, 7, 1, 8, 2, 8 }, .max_new = 48, .eos = &.{}, .drafts = drafts, .sampling = sampling });
+            defer second.deinit(gpa);
+            try e.addStream(&first);
+            try e.addStream(&second);
+            while (e.activeCount() > 0) try e.step();
+            const first_tokens = try gpa.dupe(u32, first.emitted());
+            errdefer gpa.free(first_tokens);
+            return .{ first_tokens, try gpa.dupe(u32, second.emitted()) };
+        }
+
+        fn free(out: [2][]u32) void {
+            for (out) |tokens_| std.testing.allocator.free(tokens_);
+        }
+    };
+    const fast = &[_]f64{ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 };
+    const slow = &[_]f64{ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120 };
+    const profiles = [_]cfg_mod.ContextCostProfile{
+        .{ .max_context = 31, .streams = 1, .forward_ms = fast[0..6], .overhead_ms = 0 },
+        .{ .max_context = 31, .streams = 2, .forward_ms = fast, .overhead_ms = 0 },
+        .{ .min_context = 32, .max_context = 512, .streams = 1, .forward_ms = slow[0..6], .overhead_ms = 0 },
+        .{ .min_context = 32, .max_context = 512, .streams = 2, .forward_ms = slow, .overhead_ms = 0 },
+    };
+    for ([_]?Sampling{ null, .{ .seed = 5, .temperature = 0.7, .top_p = 0.95 } }) |sampling| {
+        const plain = try Run.decode(&.{}, false, sampling);
+        defer Run.free(plain);
+        const defaults = try Run.decode(&.{}, true, sampling);
+        defer Run.free(defaults);
+        const calibrated = try Run.decode(&profiles, true, sampling);
+        defer Run.free(calibrated);
+        for (plain, defaults, calibrated) |expected, unchanged, actual| {
+            try std.testing.expectEqualSlices(u32, expected, unchanged);
+            try std.testing.expectEqualSlices(u32, expected, actual);
+        }
+    }
 }

@@ -34,6 +34,7 @@ const round = @import("round.zig");
 const link = @import("link.zig");
 const rank_cache = @import("rank_cache.zig");
 const vision_mod = @import("vision.zig");
+const spec_costs = @import("spec_costs.zig");
 
 pub const model_type = "deepseek_v41";
 pub const formats: []const []const u8 = &.{"exl3-mul1"};
@@ -80,6 +81,7 @@ const State = struct {
     m: *model.Model,
     lanes: lanes_mod.Lanes,
     vision: ?*vision_mod.Vision = null,
+    spec_costs: ?spec_costs.Loaded = null,
 };
 
 fn getenv(name: [:0]const u8) ?[]const u8 {
@@ -143,6 +145,20 @@ pub fn open(gpa: std.mem.Allocator, io: std.Io, ctx: *const cuda.Context, dir: [
     });
     errdefer st.m.close();
     st.lanes = lanes_mod.Lanes.init(gpa, st.m);
+    errdefer st.lanes.deinit();
+    st.spec_costs = null;
+    if (nonEmpty(getenv("TF_DS_SPEC_COSTS"))) |path| {
+        st.spec_costs = try spec_costs.Loaded.read(gpa, io, path, @intCast(st.m.eng.round_rows), @intCast(st.m.streams));
+        st.lanes.setContextCosts(st.spec_costs.?.parsed.value.profiles);
+    }
+    errdefer if (st.spec_costs) |*costs| costs.deinit();
+    if (nonEmpty(getenv("TF_DS_SPEC_TRACE"))) |path| try st.lanes.enableSpecTrace(path);
+    if (getenv("TF_DS_SPEC_SWEEP")) |value| {
+        if (!std.mem.eql(u8, value, "0")) {
+            if (nonEmpty(getenv("TF_DS_SPEC_TRACE")) == null) return error.SpecSweepNeedsTrace;
+            st.lanes.spec_sweep = true;
+        }
+    }
     if (getenv("TF_DS_FIX_K")) |t| st.lanes.fix_k = std.fmt.parseInt(usize, t, 10) catch return error.BadFixK;
     // a vision checkpoint's tower on this rank, from the kit's vision/ (torch's attention cubin, the routing bias)
     st.vision = null;
@@ -158,6 +174,7 @@ pub fn open(gpa: std.mem.Allocator, io: std.Io, ctx: *const cuda.Context, dir: [
 fn deinitFn(ptr: *anyopaque) void {
     const st: *State = @ptrCast(@alignCast(ptr));
     st.lanes.deinit(); // rank 1 hears done
+    if (st.spec_costs) |*costs| costs.deinit();
     if (st.vision) |v| v.close();
     st.m.close();
     st.gpa.destroy(st);
@@ -174,6 +191,8 @@ pub fn explain(_: ?*anyopaque, err: anyerror) ?[]const u8 {
         error.NoFreeSlot => "this engine serves TF_DS_STREAMS streams at once (default 4): --parallel at most that",
         error.BadRoundRows => "TF_DS_ROUND_ROWS: a round's rows at most, 16 .. 48",
         error.BadStreams => "TF_DS_STREAMS: the pool's streams, 1 .. 16",
+        error.BadSpecCostSchema, error.EmptySpecCosts, error.BadContextCosts, error.OverlappingContextCosts => "TF_DS_SPEC_COSTS: use a schema_version 1 dsv41 catalog with finite positive measured row costs and nonoverlapping context ranges",
+        error.SpecSweepNeedsTrace => "TF_DS_SPEC_SWEEP is calibration only and requires TF_DS_SPEC_TRACE",
         error.ContextFull => "the streams' prompts and budgets fill the context's pool: lower max_tokens, or retry when a stream ends",
         error.PromptTooLong => "the prompt and its max_tokens do not fit the context window",
         error.NoVisionKit => "this checkpoint reads images: its kit (TF_DS_KIT) needs vision/torch_fmha_sm120.cubin and vision/gate_bias_vl.safetensors",

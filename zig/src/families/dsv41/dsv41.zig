@@ -51,12 +51,16 @@ pub const lanes = @import("lanes.zig");
 pub const pool = @import("pool.zig");
 pub const fp4_index = @import("fp4_index.zig");
 pub const topk_exact = @import("topk_exact.zig");
+pub const spec_costs = @import("spec_costs.zig");
+pub const spec_trace = @import("spec_trace.zig");
 
 test {
     // every declaration of every file, so functions no test calls are still compiled
     const refAll = @import("std").testing.refAllDecls;
     refAll(@import("config.zig"));
     refAll(native);
+    refAll(spec_costs);
+    refAll(spec_trace);
     refAll(rank_cache);
     refAll(plan);
     refAll(engram);
