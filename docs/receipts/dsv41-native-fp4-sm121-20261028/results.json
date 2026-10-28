@@ -6987,5 +6987,6 @@
     "native_variants": 41
   },
   "benchmark_helpers_commit": "db3fd5abae34e85a3df7b38467ef118022b24908",
-  "orchestrator_sha256": "d3bcb4ace32db7799d4e881f936b2f89bca2d5cf8aa8c456c2da7fe745e791b7"
+  "orchestrator_sha256": "d3bcb4ace32db7799d4e881f936b2f89bca2d5cf8aa8c456c2da7fe745e791b7",
+  "native_activation_confirmed_on_both": true
 }

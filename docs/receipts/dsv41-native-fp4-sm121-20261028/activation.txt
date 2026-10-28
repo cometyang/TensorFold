@@ -1,0 +1,2 @@
+rank0: info: native FP4 indexer: enabled, existing cache layout, FP32 scores
+rank1: info: native FP4 indexer: enabled, existing cache layout, FP32 scores
