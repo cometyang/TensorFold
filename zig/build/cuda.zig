@@ -150,8 +150,12 @@ pub fn targets(b: *std.Build, target: std.Build.ResolvedTarget, optimize: std.bu
     ds_lanes.addImport("dsv41", ds_check.import_table.get("dsv41").?);
     ds_lanes.addImport("cuda", cuda);
     ds_lanes.addImport("lanes", mods.lanes);
-    b.installArtifact(b.addExecutable(.{ .name = "tf-dsv41-lanes", .root_module = ds_lanes }));
-    _ = nativeServer(b, target, optimize, cuda, mods.lanes, mods.nemotron, mods.core, mods.tokenizer, build_options, true);
+    const ds_worker = b.addExecutable(.{ .name = "tf-dsv41-lanes", .root_module = ds_lanes });
+    b.installArtifact(ds_worker);
+    const ds_server = nativeServer(b, target, optimize, cuda, mods.lanes, mods.nemotron, mods.core, mods.tokenizer, build_options, true);
+    const ds_serve = b.step("dsv41-serve", "Build the DeepSeek server and worker without unrelated developer tools");
+    ds_serve.dependOn(&b.addInstallArtifact(ds_worker, .{}).step);
+    ds_serve.dependOn(&b.addInstallArtifact(ds_server, .{ .dest_dir = .{ .override = .{ .custom = "native/bin" } } }).step);
 }
 
 /// The CUDA engines a native server opens (native/cuda.zig), over the given runtime and families.

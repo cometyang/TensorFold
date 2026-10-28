@@ -50,3 +50,5 @@ Modified upstream files:
   THIRD_PARTY_NOTICES.md           the DeepSeek-V4.1 section
 
 The "git log" of this branch and tools/dsv41-zig/ATTRIBUTION.md describe the changes and their sources.
+
+The optional native FP4 indexer adapts DeepGEMM instruction wrappers, Copyright (c) 2025 DeepSeek, MIT.

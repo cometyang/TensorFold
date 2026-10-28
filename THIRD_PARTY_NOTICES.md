@@ -142,3 +142,10 @@ The multimodal rotary and image-feature integration is adapted from MiaAI-Lab's
 [Flash Next vision patch 0008](https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark-TensorFold/blob/a3aa89835022c55ca8e55008c37785954834e04f/patches/0008-flash-next-vision.patch),
 MIT License, Copyright (c) 2026 MiaAI-Lab. The license is included in `LICENSES/MiaAI-Lab-MIT.txt`.
 The port preserves the v0.5 CUDA execution APIs and adds an offline EXL3 vision adapter.
+
+## Native FP4 indexer
+
+The optional SM121 indexer in `zig/kernels/cuda/dsv41/index_fp4.cuh` adapts FP4 MMA and shared-memory
+fragment-loading instruction patterns from DeepGEMM, revision `b64107f2b9599ca76445b7f62eedf66bae1d095b`.
+DeepGEMM is Copyright (c) 2025 DeepSeek, MIT License; the complete notice is in `LICENSES/DeepGEMM-MIT.txt`.
+The packed-query ABI, key-cache adapter, FP32 reductions and TensorFold launch integration are implemented here.

@@ -227,7 +227,11 @@ pub const Model = struct {
         errdefer if (m.rdma_mod) |*x| x.unload();
 
         // kernels: the recorded Triton set, the served extension cubins, the torch-op images
-        m.set = try cuda.aot.Set.load(gpa, io, d, ctx.device, o.aot_dir orelse try std.fs.path.join(a, &.{ o.kit_dir, "aot" }));
+        const base_aot = o.aot_dir orelse try std.fs.path.join(a, &.{ o.kit_dir, "aot" });
+        const fp4_aot = if (std.c.getenv("TF_DS_INDEX_FP4_AOT")) |v| std.mem.span(v) else null;
+        const selected_aot = try @import("fp4_index.zig").directory(a, io, base_aot, fp4_aot);
+        m.set = try cuda.aot.Set.load(gpa, io, d, ctx.device, selected_aot);
+        if (fp4_aot != null) std.log.info("native FP4 indexer: enabled, existing cache layout, FP32 scores", .{});
         errdefer m.set.deinit();
         m.pf = try exl3_prefill.Kernels.load(d, try readKit(a, io, o.kit_dir, "linear.cubin"));
         errdefer m.pf.unload();

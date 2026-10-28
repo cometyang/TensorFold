@@ -20,6 +20,7 @@ const KernelJson = struct {
     global_align: u32 = 1,
     profile_scratch: u32 = 0,
     pdl: bool = false,
+    grid_x_divisor: u32 = 1,
     params: []ParamJson,
     consts: std.json.ArrayHashMap(ConstJson),
 };
@@ -55,6 +56,11 @@ pub fn cf(name: []const u8, v: f32) Const {
     return .{ .name = name, .f32 = v };
 }
 
+fn gridX(logical: u32, divisor: u32) !u32 {
+    if (divisor == 0 or divisor > 16 or !std.math.isPowerOfTwo(divisor)) return error.Invalid;
+    return logical / divisor + @intFromBool(logical % divisor != 0);
+}
+
 const Variant = struct {
     spec: KernelJson,
     kernel: triton.Kernel,
@@ -84,6 +90,7 @@ pub const Set = struct {
             gpa.free(variants);
         }
         for (parsed.value.kernels) |k| {
+            _ = try gridX(1, k.grid_x_divisor);
             if (k.global_scratch != 0 or k.profile_scratch != 0) return error.ScratchUnsupported;
             const file = try std.fmt.allocPrint(gpa, "{s}/cubins/{s}.cubin", .{ dir, k.hash });
             defer gpa.free(file);
@@ -163,9 +170,20 @@ pub const Set = struct {
                 .u64 => |x| packed_args.add(x),
             }
         }
-        try v.kernel.launchOn(.{ .x = grid[0], .y = grid[1], .z = grid[2] }, stream, &packed_args, .{}, &.{});
+        if (v.spec.grid_x_divisor > 1) packed_args.add(grid[0]);
+        const x = try gridX(grid[0], v.spec.grid_x_divisor);
+        try v.kernel.launchOn(.{ .x = x, .y = grid[1], .z = grid[2] }, stream, &packed_args, .{}, &.{});
     }
 };
+
+test "grouped launch preserves partial query groups and the default geometry" {
+    try std.testing.expectEqual(@as(u32, 17), try gridX(17, 1));
+    try std.testing.expectEqual(@as(u32, 5), try gridX(17, 4));
+    try std.testing.expectEqual(@as(u32, 2), try gridX(5, 4));
+    try std.testing.expectEqual(@as(u32, 0x40000000), try gridX(0xffffffff, 4));
+    try std.testing.expectError(error.Invalid, gridX(1, 0));
+    try std.testing.expectError(error.Invalid, gridX(1, 3));
+}
 
 fn lookup(args: []const Arg, name: []const u8) ?Arg {
     for (args) |a| if (std.mem.eql(u8, a.name, name)) return a;

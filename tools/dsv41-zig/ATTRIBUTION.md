@@ -42,3 +42,15 @@ kernel launches and replies) for those comparisons.
 - "DeepSeek" and "DeepSeek-V4.1-Flash" belong to DeepSeek. "DGX Spark" and "GB10" belong to NVIDIA. We use the names
   only to say what this family runs and on what hardware.
 - This fork is not affiliated with or endorsed by DeepSeek, NVIDIA, the TensorFold authors, Mia-AiLab or MiaAI-Lab.
+
+## Optional native FP4 indexer
+
+The separately added native indexer adapts DeepGEMM's SM12x MMA and fragment-loading instruction patterns
+(MIT, Copyright (c) 2025 DeepSeek; `LICENSES/DeepGEMM-MIT.txt`). The pinned source revision is
+`b64107f2b9599ca76445b7f62eedf66bae1d095b`. It keeps this family's packed key cache and FP32 score arithmetic.
+
+Build its separate catalog with `python3 tools/dsv41-zig/fp4_index/build.py --base BASE_AOT
+--base-runtime RUNTIME_BASE_AOT --out OUTPUT`. Set `TF_DS_INDEX_FP4_AOT=OUTPUT` on both ranks to opt in.
+An unset variable keeps the existing kernels. Catalog validation refuses mixed query/scoring replacements
+and a mismatched base manifest. The build requires the deployed Triton toolchain and CUDA 13 on SM121.
+`check.py` compares the compiled output with the original cubins and an independent FP64 reference.
