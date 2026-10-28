@@ -50,6 +50,7 @@ pub const model = @import("model.zig");
 pub const lanes = @import("lanes.zig");
 pub const pool = @import("pool.zig");
 pub const fp4_index = @import("fp4_index.zig");
+pub const topk_exact = @import("topk_exact.zig");
 
 test {
     // every declaration of every file, so functions no test calls are still compiled
@@ -98,4 +99,5 @@ test {
     refAll(lanes);
     refAll(pool);
     refAll(fp4_index);
+    refAll(topk_exact);
 }
