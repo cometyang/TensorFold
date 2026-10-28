@@ -46,9 +46,10 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--quick', action='store_true')
     parser.add_argument('--all-variants', action='store_true')
+    parser.add_argument('--prefill-only', action='store_true')
     parser.add_argument('--same-base', action='store_true')
     parser.add_argument('--rows', type=int, choices=(1, 5, 6, 16), default=16)
-    parser.add_argument('--prefill-rows', type=int, choices=(16, 256, 2048), default=16)
+    parser.add_argument('--prefill-rows', type=int, choices=(16, 17, 33, 128, 256, 2048), default=16)
     args = parser.parse_args()
     torch.cuda.set_per_process_memory_fraction(0.012)
     torch.manual_seed(641)
@@ -81,7 +82,7 @@ def main():
             report['quantization'].append({'rows': rows, 'represented_bf16_bytes_equal': equal})
             if not equal:
                 raise AssertionError('query representation differs')
-        names = ('_index_score_rows', '_index_score', '_index_score_cand')
+        names = ('_index_score_rows',) if args.prefill_only else ('_index_score_rows', '_index_score', '_index_score_cand')
         contexts = (2048,) if args.quick or args.all_variants else (2048, 65536, 1048320)
         for name in names:
             entries = [entry for entry in original if entry['fn'] == name]
