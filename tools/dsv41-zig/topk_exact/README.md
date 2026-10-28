@@ -42,3 +42,6 @@ and times graph replay. Its shapes cover small rows, 16K candidate pools, 32K pr
 larger source rows, decode batches, and prefill batches. The standalone CUDA gate also covers
 duplicate integer extrema, signed zero, infinities, NaN bit patterns, noncontiguous row strides,
 and per-row visibility. Device timing is not an end-to-end model speedup claim.
+
+See the [two-Spark model benchmark](../../../docs/receipts/dsv41-exact-topk-sm121-20261028/README.md)
+for capped-clock A/B/A results, exact output checks, baseline drift, and the limits of the measured gains.

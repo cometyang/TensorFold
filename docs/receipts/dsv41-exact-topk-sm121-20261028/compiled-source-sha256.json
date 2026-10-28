@@ -1,0 +1,8 @@
+{
+  "zig/kernels/cuda/dsv41_ops.cu": "60eb2aecd37d6cdf9da23acb9ce556adc43929cc2059fd6fb10e512f3a038376",
+  "zig/kernels/cuda/dsv41/topk_exact.cuh": "13fc50469cb544f0024da5626762e324a71becc07e38c2c69dfb7c957d8f4dd0",
+  "zig/kernels/cuda/dsv41/topk_radix.cuh": "f0ddc110585e597def73cbb778e8f9d737f8123a36994f205bcd7436d7dcbdf0",
+  "zig/src/families/dsv41/dsv41.zig": "e55d6dfb69f384c0bcf5825b8c7675f1aabe89bb5c6dfb39bae939062adc962b",
+  "zig/src/families/dsv41/ops.zig": "0f965069305027f8b077d1bfe0816f5f92c913f459cb1709550fdbab0f5f9255",
+  "zig/src/families/dsv41/topk_exact.zig": "d6024c225f99a7e308d1b6180f245a414ac9a507bb95e997ff9989794521e039"
+}

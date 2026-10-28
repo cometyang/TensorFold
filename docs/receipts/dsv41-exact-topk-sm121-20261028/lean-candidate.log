@@ -1,0 +1,1491 @@
+zig\build\cuda.zig:1: comment past 120 columns
+zig\build\cuda.zig:203: multi-line comment
+zig\build\cuda.zig:203: comment past 120 columns
+zig\kernels\cuda\dsv41\rdma_gather.cu:1: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:2: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:3: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:4: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:5: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:6: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:50: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:51: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:52: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:78: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:108: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:144: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:175: multi-line comment
+zig\kernels\cuda\dsv41\rdma_gather.cu:183: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:1: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:15: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:23: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:38: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:39: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:40: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:41: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:94: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:111: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:122: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:123: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:124: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:125: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:126: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:197: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:198: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:205: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:206: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:207: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:208: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:264: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:265: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:265: comment past 120 columns
+zig\kernels\cuda\dsv41_ops.cu:275: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:276: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:277: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:296: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:297: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:298: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:321: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:322: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:323: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:323: comment past 120 columns
+zig\kernels\cuda\dsv41_ops.cu:341: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:352: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:353: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:362: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:363: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:410: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:413: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:414: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:428: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:429: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:429: comment past 120 columns
+zig\kernels\cuda\dsv41_ops.cu:466: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:479: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:480: multi-line comment
+zig\kernels\cuda\dsv41_ops.cu:503: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:1: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:2: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:3: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:4: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:12: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:13: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:14: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:15: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:67: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:68: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:69: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:94: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:95: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:96: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:97: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:115: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:122: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:123: multi-line comment
+zig\kernels\cuda\dsv41_torch.cu:124: multi-line comment
+zig\kernels\cuda\experts.cu:1: comment past 120 columns
+zig\kernels\cuda\experts_pack.cu:1: comment past 120 columns
+zig\kernels\cuda\experts_prefill.cu:1: comment past 120 columns
+zig\kernels\cuda\gdn.cu:1: comment past 120 columns
+zig\kernels\cuda\prefill_attention.cu:1: comment past 120 columns
+zig\kernels\cuda\qmm_frag.cuh:1: comment past 120 columns
+zig\kernels\cuda\qmm_group.cu:1: comment past 120 columns
+zig\kernels\cuda\qmm_prefill.cu:1: comment past 120 columns
+zig\kernels\cuda\scan_rows.cu:1: comment past 120 columns
+zig\kernels\metal\core\affine_mm.metal:1: comment past 120 columns
+zig\kernels\metal\core\affine_mm.metal:25: comment past 120 columns
+zig\kernels\metal\core\affine_mm.metal:62: comment past 120 columns
+zig\kernels\metal\core\hc_boundary.metal:5: comment past 120 columns
+zig\kernels\metal\core\hc_boundary.metal:13: comment past 120 columns
+zig\kernels\metal\core\hc_boundary.metal:82: comment past 120 columns
+zig\kernels\metal\core\moe_route.metal:1: comment past 120 columns
+zig\kernels\metal\core\moe_route.metal:11: comment past 120 columns
+zig\kernels\metal\core\moe_route.metal:68: comment past 120 columns
+zig\kernels\metal\core\row_projection.metal:1: comment past 120 columns
+zig\kernels\metal\core\row_projection.metal:5: comment past 120 columns
+zig\kernels\metal\core\row_projection.metal:21: comment past 120 columns
+zig\kernels\metal\core\row_projection.metal:55: comment past 120 columns
+zig\kernels\metal\core\row_projection.metal:133: comment past 120 columns
+zig\kernels\metal\decode\fn_gdn.metal:1: multi-line comment
+zig\kernels\metal\decode\fn_gdn.metal:2: multi-line comment
+zig\kernels\metal\decode\fn_gdn.metal:3: multi-line comment
+zig\kernels\metal\decode\fn_gdn.metal:4: multi-line comment
+zig\kernels\metal\decode\fn_gdn.metal:5: multi-line comment
+zig\kernels\metal\decode\fn_lane.metal:6: multi-line comment
+zig\kernels\metal\decode\fn_lane.metal:7: multi-line comment
+zig\kernels\metal\decode\fn_lane.metal:8: multi-line comment
+zig\kernels\metal\decode\fn_lane.metal:9: multi-line comment
+zig\kernels\metal\decode\fn_lane.metal:10: multi-line comment
+zig\kernels\metal\decode\fn_lane.metal:55: block comment
+zig\kernels\metal\glm_absorb_nax.metal:1: comment past 120 columns
+zig\kernels\metal\glm_absorb_nax.metal:13: comment past 120 columns
+zig\kernels\metal\glm_attn.metal:1: comment past 120 columns
+zig\kernels\metal\glm_attn.metal:12: comment past 120 columns
+zig\kernels\metal\glm_attn.metal:54: comment past 120 columns
+zig\kernels\metal\glm_glue.metal:341: comment past 120 columns
+zig\kernels\metal\glm_kda_prompt.metal:2: comment past 120 columns
+zig\kernels\metal\glm_sparse_nax.metal:1: comment past 120 columns
+zig\kernels\metal\glm_sparse_nax.metal:35: comment past 120 columns
+zig\kernels\metal\kimi\dense.metal:10: comment past 120 columns
+zig\kernels\metal\kimi\experts.metal:86: comment past 120 columns
+zig\kernels\metal\nemotron_experts.metal:1: comment past 120 columns
+zig\kernels\metal\nemotron_experts.metal:97: comment past 120 columns
+zig\kernels\metal\nemotron_glue.metal:152: comment past 120 columns
+zig\kernels\metal\nemotron_head.metal:20: comment past 120 columns
+zig\kernels\metal\nemotron_round.metal:1: comment past 120 columns
+zig\kernels\metal\nemotron_round.metal:7: comment past 120 columns
+zig\kernels\metal\nemotron_round.metal:189: comment past 120 columns
+zig\kernels\metal\nemotron_round.metal:298: comment past 120 columns
+zig\kernels\metal\nemotron_sample.metal:1: comment past 120 columns
+zig\kernels\metal\nemotron_sample.metal:145: comment past 120 columns
+zig\kernels\metal\nemotron_tree.metal:1: comment past 120 columns
+zig\kernels\metal\nemotron_tree.metal:8: comment past 120 columns
+zig\kernels\metal\nemotron_tree.metal:134: comment past 120 columns
+zig\kernels\metal\nemotron_tree.metal:149: comment past 120 columns
+zig\kernels\metal\nemotron_tree.metal:313: comment past 120 columns
+zig\kernels\metal\prefill\fn_attn.metal:1: comment past 120 columns
+zig\kernels\metal\prefill\fn_attn.metal:28: comment past 120 columns
+zig\kernels\metal\prefill\fn_attn.metal:64: comment past 120 columns
+zig\kernels\metal\prefill\fn_attn.metal:198: comment past 120 columns
+zig\kernels\metal\prefill\fn_prompt.metal:1: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:2: comment past 120 columns
+zig\kernels\metal\prefill\fn_prompt.metal:128: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:137: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:200: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:201: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:253: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:254: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:255: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:318: multi-line comment
+zig\kernels\metal\prefill\fn_prompt.metal:319: multi-line comment
+zig\kernels\metal\prefill\fn_select.metal:1: comment past 120 columns
+zig\kernels\metal\prefill\fn_select.metal:5: comment past 120 columns
+zig\kernels\metal\prefill\fn_select.metal:30: comment past 120 columns
+zig\kernels\metal\prefill\glue.metal:1: comment past 120 columns
+zig\kernels\metal\prefill\glue.metal:44: comment past 120 columns
+zig\kernels\metal\prefill\glue.metal:117: comment past 120 columns
+zig\kernels\metal\prefill\glue.metal:159: comment past 120 columns
+zig\kernels\metal\prefill\qmm6_nax.metal:1: comment past 120 columns
+zig\kernels\metal\prefill\qmm6_nax.metal:47: comment past 120 columns
+zig\kernels\metal\prefill\qmm6_nax.metal:111: comment past 120 columns
+zig\kernels\metal\prefill\qmm6_nax.metal:271: comment past 120 columns
+zig\kernels\metal\prefill\qmm6_nax.metal:311: comment past 120 columns
+zig\kernels\metal\prefill\qmm6_nax.metal:334: comment past 120 columns
+zig\kernels\metal\prefill\qmm6_nax_b.metal:102: comment past 120 columns
+zig\kernels\metal\prefill\sort.metal:52: comment past 120 columns
+zig\src\cli\cuda_segments.zig:1: comment past 120 columns
+zig\src\cli\cuda_segments.zig:22: comment past 120 columns
+zig\src\cli\info.zig:8: multi-line comment
+zig\src\cli\info.zig:12: multi-line comment
+zig\src\cluster\admission.zig:1: comment past 120 columns
+zig\src\cluster\admission_test.zig:1: comment past 120 columns
+zig\src\cluster\backend.zig:1: comment past 120 columns
+zig\src\cluster\backend.zig:11: comment past 120 columns
+zig\src\cluster\backend.zig:101: comment past 120 columns
+zig\src\cluster\backend_test.zig:1: comment past 120 columns
+zig\src\cluster\budget.zig:1: comment past 120 columns
+zig\src\cluster\canon.zig:1: comment past 120 columns
+zig\src\cluster\canon.zig:14: comment past 120 columns
+zig\src\cluster\canon.zig:75: comment past 120 columns
+zig\src\cluster\cli_model.zig:98: comment past 120 columns
+zig\src\cluster\cluster.zig:1: comment past 120 columns
+zig\src\cluster\config.zig:1: comment past 120 columns
+zig\src\cluster\cost.zig:1: comment past 120 columns
+zig\src\cluster\estimate.zig:1: comment past 120 columns
+zig\src\cluster\exchange.zig:1: comment past 120 columns
+zig\src\cluster\exchange.zig:179: comment past 120 columns
+zig\src\cluster\fabric_link.zig:1: comment past 120 columns
+zig\src\cluster\fabric_link_test.zig:1: comment past 120 columns
+zig\src\cluster\launch.zig:1: comment past 120 columns
+zig\src\cluster\loader.zig:1: comment past 120 columns
+zig\src\cluster\loader.zig:55: comment past 120 columns
+zig\src\cluster\loader_test.zig:1: comment past 120 columns
+zig\src\cluster\membership.zig:1: comment past 120 columns
+zig\src\cluster\membership_test.zig:1: comment past 120 columns
+zig\src\cluster\node.zig:83: comment past 120 columns
+zig\src\cluster\plan.zig:1: comment past 120 columns
+zig\src\cluster\plan.zig:12: comment past 120 columns
+zig\src\cluster\plan.zig:15: comment past 120 columns
+zig\src\cluster\plan.zig:116: comment past 120 columns
+zig\src\cluster\plan.zig:176: comment past 120 columns
+zig\src\cluster\probe_fixtures.zig:1: comment past 120 columns
+zig\src\cluster\pull.zig:1: comment past 120 columns
+zig\src\cluster\pull_test.zig:1: comment past 120 columns
+zig\src\cluster\round.zig:1: comment past 120 columns
+zig\src\cluster\status.zig:1: comment past 120 columns
+zig\src\cluster\toy.zig:1: comment past 120 columns
+zig\src\cluster\toy.zig:93: comment past 120 columns
+zig\src\cluster\toy.zig:193: comment past 120 columns
+zig\src\cluster\traffic.zig:1: comment past 120 columns
+zig\src\cluster\traffic.zig:18: comment past 120 columns
+zig\src\cluster\traffic.zig:38: comment past 120 columns
+zig\src\cluster\traffic.zig:49: comment past 120 columns
+zig\src\cluster\wire.zig:1: comment past 120 columns
+zig\src\core\affine_mm.zig:1: comment past 120 columns
+zig\src\core\affine_mm.zig:18: comment past 120 columns
+zig\src\core\affine_mm.zig:26: comment past 120 columns
+zig\src\core\affine_mm.zig:42: comment past 120 columns
+zig\src\core\affine_mm.zig:48: comment past 120 columns
+zig\src\core\affine_mm.zig:63: comment past 120 columns
+zig\src\core\checkpoint.zig:1: comment past 120 columns
+zig\src\core\checkpoint.zig:10: comment past 120 columns
+zig\src\core\copy_index.zig:1: comment past 120 columns
+zig\src\core\engine_api.zig:24: multi-line comment
+zig\src\core\engine_api.zig:64: multi-line comment
+zig\src\core\engine_api.zig:64: comment past 120 columns
+zig\src\core\engine_api.zig:79: comment past 120 columns
+zig\src\core\engine_api.zig:147: multi-line comment
+zig\src\core\hc.zig:1: comment past 120 columns
+zig\src\core\hc.zig:25: comment past 120 columns
+zig\src\core\lane_host.zig: 830 lines (split past 600)
+zig\src\core\lane_host.zig:44: multi-line comment
+zig\src\core\lane_host.zig:45: multi-line comment
+zig\src\core\lane_host.zig:49: multi-line comment
+zig\src\core\lane_host.zig:50: multi-line comment
+zig\src\core\lane_host.zig:51: multi-line comment
+zig\src\core\lane_host.zig:54: multi-line comment
+zig\src\core\lane_host.zig:55: multi-line comment
+zig\src\core\lane_host.zig:56: multi-line comment
+zig\src\core\lane_host.zig:104: multi-line comment
+zig\src\core\lane_host.zig:104: comment past 120 columns
+zig\src\core\lane_host.zig:105: multi-line comment
+zig\src\core\lane_host.zig:106: multi-line comment
+zig\src\core\lane_host.zig:420: multi-line comment
+zig\src\core\lane_host.zig:532: multi-line comment
+zig\src\core\lane_host.zig:533: multi-line comment
+zig\src\core\lane_host.zig:534: multi-line comment
+zig\src\core\lane_host_test.zig:144: multi-line comment
+zig\src\core\lanes\backend.zig:1: comment past 120 columns
+zig\src\core\lanes\backend.zig:101: comment past 120 columns
+zig\src\core\lanes\engine.zig: 625 lines (split past 600)
+zig\src\core\lanes\engine.zig:135: comment past 120 columns
+zig\src\core\lanes\fill.zig:24: comment past 120 columns
+zig\src\core\lanes\fill.zig:52: comment past 120 columns
+zig\src\core\lanes\gpu_full.zig:40: comment past 120 columns
+zig\src\core\lanes\gpu_full.zig:113: comment past 120 columns
+zig\src\core\lanes\gpu_full_test.zig:1: comment past 120 columns
+zig\src\core\lanes\plan_lanes.zig:1: comment past 120 columns
+zig\src\core\lanes\shape.zig:35: comment past 120 columns
+zig\src\core\lanes\shape.zig:79: comment past 120 columns
+zig\src\core\lanes\stream.zig:78: comment past 120 columns
+zig\src\core\lanes\stream.zig:99: multi-line comment
+zig\src\core\lanes\stream.zig:100: multi-line comment
+zig\src\core\lanes\stream.zig:109: multi-line comment
+zig\src\core\lanes\stream.zig:110: multi-line comment
+zig\src\core\lanes\stream.zig:179: multi-line comment
+zig\src\core\lanes\windows.zig:117: comment past 120 columns
+zig\src\core\moe_route.zig:1: comment past 120 columns
+zig\src\core\moe_route.zig:33: comment past 120 columns
+zig\src\core\prompt_cache.zig:17: comment past 120 columns
+zig\src\core\prompt_cache.zig:136: comment past 120 columns
+zig\src\core\prompt_cache.zig:163: comment past 120 columns
+zig\src\core\prompt_cache.zig:193: comment past 120 columns
+zig\src\core\prompt_cache.zig:375: comment past 120 columns
+zig\src\core\prompt_cache_test.zig:1: comment past 120 columns
+zig\src\core\prompt_cache_test.zig:12: comment past 120 columns
+zig\src\core\row_projection.zig:1: comment past 120 columns
+zig\src\core\row_projection.zig:16: comment past 120 columns
+zig\src\core\row_projection.zig:19: comment past 120 columns
+zig\src\core\row_projection.zig:88: comment past 120 columns
+zig\src\core\safetensors.zig:54: comment past 120 columns
+zig\src\core\segments.zig:1: comment past 120 columns
+zig\src\core\segments.zig:26: comment past 120 columns
+zig\src\core\segments.zig:49: comment past 120 columns
+zig\src\core\stagger.zig:7: comment past 120 columns
+zig\src\core\stagger.zig:22: comment past 120 columns
+zig\src\core\stagger.zig:144: comment past 120 columns
+zig\src\core\template\template.zig:101: comment past 120 columns
+zig\src\core\tokenizer\regex.zig:1: comment past 120 columns
+zig\src\core\tokenizer\regex.zig:272: comment past 120 columns
+zig\src\core\tokenizer\tokenizer.zig:1: comment past 120 columns
+zig\src\core\tokenizer\unicode.zig:224: comment past 120 columns
+zig\src\cuda\aot.zig:116: multi-line comment
+zig\src\cuda\aot.zig:117: multi-line comment
+zig\src\cuda\aot.zig:160: comment past 120 columns
+zig\src\cuda\aot.zig:193: multi-line comment
+zig\src\cuda\aot.zig:194: multi-line comment
+zig\src\cuda\cublaslt.zig:1: comment past 120 columns
+zig\src\cuda\driver.zig:16: multi-line comment
+zig\src\cuda\driver.zig:17: multi-line comment
+zig\src\cuda\driver.zig:18: multi-line comment
+zig\src\cuda\launch.zig:76: multi-line comment
+zig\src\cuda\segments.zig:142: comment past 120 columns
+zig\src\cuda\triton.zig:72: comment past 120 columns
+zig\src\fabric\collective.zig:1: comment past 120 columns
+zig\src\fabric\collective.zig:132: comment past 120 columns
+zig\src\fabric\collective.zig:185: comment past 120 columns
+zig\src\fabric\cost.zig:34: comment past 120 columns
+zig\src\fabric\cost.zig:43: comment past 120 columns
+zig\src\fabric\link_fake.zig:8: comment past 120 columns
+zig\src\fabric\mailbox.zig:58: comment past 120 columns
+zig\src\fabric\manifest.zig:1: comment past 120 columns
+zig\src\fabric\mcdma.zig:155: comment past 120 columns
+zig\src\fabric\packet.zig:1: comment past 120 columns
+zig\src\fabric\prefill_source.zig:18: comment past 120 columns
+zig\src\fabric\verbs_abi.zig:1: comment past 120 columns
+zig\src\fabric\verbs_link.zig:1: comment past 120 columns
+zig\src\fabric\words.zig:132: comment past 120 columns
+zig\src\families\dsv41\check_main.zig:1: multi-line comment
+zig\src\families\dsv41\check_main.zig:2: multi-line comment
+zig\src\families\dsv41\checkpoint.zig:1: multi-line comment
+zig\src\families\dsv41\comm.zig:1: multi-line comment
+zig\src\families\dsv41\comm.zig:2: multi-line comment
+zig\src\families\dsv41\comm_main.zig:1: multi-line comment
+zig\src\families\dsv41\cublas.zig:1: multi-line comment
+zig\src\families\dsv41\cublas.zig:2: multi-line comment
+zig\src\families\dsv41\cublas.zig:3: multi-line comment
+zig\src\families\dsv41\cublas.zig:66: multi-line comment
+zig\src\families\dsv41\cublas.zig:67: multi-line comment
+zig\src\families\dsv41\cublas.zig:76: multi-line comment
+zig\src\families\dsv41\cublas.zig:84: multi-line comment
+zig\src\families\dsv41\cublas.zig:84: comment past 120 columns
+zig\src\families\dsv41\cublas.zig:85: multi-line comment
+zig\src\families\dsv41\cublas.zig:86: multi-line comment
+zig\src\families\dsv41\cublas.zig:86: comment past 120 columns
+zig\src\families\dsv41\cublaslt.zig:1: multi-line comment
+zig\src\families\dsv41\cublaslt.zig:2: multi-line comment
+zig\src\families\dsv41\cublaslt.zig:3: multi-line comment
+zig\src\families\dsv41\cublaslt.zig:4: multi-line comment
+zig\src\families\dsv41\cublaslt.zig:5: multi-line comment
+zig\src\families\dsv41\cublaslt.zig:89: multi-line comment
+zig\src\families\dsv41\cublaslt.zig:90: multi-line comment
+zig\src\families\dsv41\draft.zig: 703 lines (split past 600)
+zig\src\families\dsv41\draft.zig:1: multi-line comment
+zig\src\families\dsv41\draft.zig:2: multi-line comment
+zig\src\families\dsv41\draft.zig:3: multi-line comment
+zig\src\families\dsv41\draft.zig:4: multi-line comment
+zig\src\families\dsv41\draft.zig:5: multi-line comment
+zig\src\families\dsv41\draft.zig:6: multi-line comment
+zig\src\families\dsv41\draft.zig:7: multi-line comment
+zig\src\families\dsv41\draft.zig:8: multi-line comment
+zig\src\families\dsv41\draft.zig:9: multi-line comment
+zig\src\families\dsv41\draft.zig:10: multi-line comment
+zig\src\families\dsv41\draft.zig:35: multi-line comment
+zig\src\families\dsv41\draft.zig:35: comment past 120 columns
+zig\src\families\dsv41\draft.zig:38: multi-line comment
+zig\src\families\dsv41\draft.zig:49: multi-line comment
+zig\src\families\dsv41\draft.zig:49: comment past 120 columns
+zig\src\families\dsv41\draft.zig:81: multi-line comment
+zig\src\families\dsv41\draft.zig:82: multi-line comment
+zig\src\families\dsv41\draft.zig:97: multi-line comment
+zig\src\families\dsv41\draft.zig:113: multi-line comment
+zig\src\families\dsv41\draft.zig:163: multi-line comment
+zig\src\families\dsv41\draft.zig:164: multi-line comment
+zig\src\families\dsv41\draft.zig:220: multi-line comment
+zig\src\families\dsv41\draft.zig:237: multi-line comment
+zig\src\families\dsv41\draft.zig:365: multi-line comment
+zig\src\families\dsv41\draft.zig:366: multi-line comment
+zig\src\families\dsv41\draft.zig:388: multi-line comment
+zig\src\families\dsv41\draft.zig:436: multi-line comment
+zig\src\families\dsv41\draft.zig:482: multi-line comment
+zig\src\families\dsv41\draft.zig:530: comment past 120 columns
+zig\src\families\dsv41\draft.zig:544: multi-line comment
+zig\src\families\dsv41\draft.zig:618: multi-line comment
+zig\src\families\dsv41\draft.zig:618: comment past 120 columns
+zig\src\families\dsv41\draft.zig:619: multi-line comment
+zig\src\families\dsv41\draft.zig:640: multi-line comment
+zig\src\families\dsv41\draft.zig:648: multi-line comment
+zig\src\families\dsv41\draft.zig:663: multi-line comment
+zig\src\families\dsv41\draft.zig:664: multi-line comment
+zig\src\families\dsv41\draft2d.zig:1: multi-line comment
+zig\src\families\dsv41\draft2d.zig:2: multi-line comment
+zig\src\families\dsv41\draft2d.zig:3: multi-line comment
+zig\src\families\dsv41\draft2d.zig:4: multi-line comment
+zig\src\families\dsv41\draft2d.zig:4: comment past 120 columns
+zig\src\families\dsv41\draft2d.zig:5: multi-line comment
+zig\src\families\dsv41\draft2d.zig:15: multi-line comment
+zig\src\families\dsv41\draft2d.zig:25: multi-line comment
+zig\src\families\dsv41\draft2d.zig:26: multi-line comment
+zig\src\families\dsv41\draft2d.zig:27: multi-line comment
+zig\src\families\dsv41\draft2d.zig:28: multi-line comment
+zig\src\families\dsv41\draft2d.zig:29: multi-line comment
+zig\src\families\dsv41\elf.zig:1: multi-line comment
+zig\src\families\dsv41\engram.zig:1: multi-line comment
+zig\src\families\dsv41\engram.zig:46: multi-line comment
+zig\src\families\dsv41\engram.zig:95: multi-line comment
+zig\src\families\dsv41\engram.zig:127: multi-line comment
+zig\src\families\dsv41\engram.zig:147: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:1: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:2: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:3: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:4: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:5: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:6: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:135: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:221: multi-line comment
+zig\src\families\dsv41\engram_aio.zig:230: multi-line comment
+zig\src\families\dsv41\engram_check_main.zig:1: multi-line comment
+zig\src\families\dsv41\engram_check_main.zig:2: multi-line comment
+zig\src\families\dsv41\engram_check_main.zig:3: multi-line comment
+zig\src\families\dsv41\engram_io.zig:1: multi-line comment
+zig\src\families\dsv41\engram_io.zig:2: multi-line comment
+zig\src\families\dsv41\engram_io.zig:3: multi-line comment
+zig\src\families\dsv41\engram_io.zig:4: multi-line comment
+zig\src\families\dsv41\engram_io.zig:9: multi-line comment
+zig\src\families\dsv41\engram_io.zig:9: comment past 120 columns
+zig\src\families\dsv41\engram_io.zig:247: comment past 120 columns
+zig\src\families\dsv41\exact.zig:1: multi-line comment
+zig\src\families\dsv41\exact.zig:1: comment past 120 columns
+zig\src\families\dsv41\exact.zig:2: multi-line comment
+zig\src\families\dsv41\exact.zig:3: multi-line comment
+zig\src\families\dsv41\exact.zig:17: multi-line comment
+zig\src\families\dsv41\exact.zig:55: multi-line comment
+zig\src\families\dsv41\exact.zig:90: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:1: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:2: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:3: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:4: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:5: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:6: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:7: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:8: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:9: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:66: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:111: comment past 120 columns
+zig\src\families\dsv41\exl3_experts.zig:131: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:152: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:189: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:190: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:272: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:273: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:305: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:306: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:307: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:308: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:309: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:310: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:339: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:348: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:349: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:350: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:351: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:352: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:353: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:366: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:374: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:374: comment past 120 columns
+zig\src\families\dsv41\exl3_experts.zig:384: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:399: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:400: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:401: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:408: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:409: multi-line comment
+zig\src\families\dsv41\exl3_experts.zig:410: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:1: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:2: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:3: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:4: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:5: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:6: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:21: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:50: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:51: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:112: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:113: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:139: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:168: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:169: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:170: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:184: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:185: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:186: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:187: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:188: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:215: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:216: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:217: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:218: multi-line comment
+zig\src\families\dsv41\exl3_experts2d.zig:279: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:1: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:2: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:3: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:4: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:5: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:6: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:7: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:18: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:81: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:91: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:109: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:136: multi-line comment
+zig\src\families\dsv41\exl3_experts2d_rec.zig:191: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:1: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:2: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:3: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:4: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:14: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:76: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:101: multi-line comment
+zig\src\families\dsv41\exl3_experts_rec.zig:128: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:1: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:2: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:16: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:17: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:138: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:142: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:146: multi-line comment
+zig\src\families\dsv41\exl3_linear.zig:175: multi-line comment
+zig\src\families\dsv41\exl3_prefill.zig:1: multi-line comment
+zig\src\families\dsv41\exl3_prefill.zig:2: multi-line comment
+zig\src\families\dsv41\exl3_prefill.zig:3: multi-line comment
+zig\src\families\dsv41\exl3_prefill.zig:20: multi-line comment
+zig\src\families\dsv41\exl3_prefill.zig:63: multi-line comment
+zig\src\families\dsv41\exl3_prefill.zig:97: multi-line comment
+zig\src\families\dsv41\exl3_prefill.zig:101: multi-line comment
+zig\src\families\dsv41\fmha.zig:1: multi-line comment
+zig\src\families\dsv41\fmha.zig:1: comment past 120 columns
+zig\src\families\dsv41\fmha.zig:2: multi-line comment
+zig\src\families\dsv41\fmha.zig:3: multi-line comment
+zig\src\families\dsv41\fmha.zig:3: comment past 120 columns
+zig\src\families\dsv41\fmha.zig:4: multi-line comment
+zig\src\families\dsv41\fmha.zig:90: multi-line comment
+zig\src\families\dsv41\lanes.zig: 1160 lines (split past 600)
+zig\src\families\dsv41\lanes.zig:1: multi-line comment
+zig\src\families\dsv41\lanes.zig:2: multi-line comment
+zig\src\families\dsv41\lanes.zig:3: multi-line comment
+zig\src\families\dsv41\lanes.zig:4: multi-line comment
+zig\src\families\dsv41\lanes.zig:5: multi-line comment
+zig\src\families\dsv41\lanes.zig:6: multi-line comment
+zig\src\families\dsv41\lanes.zig:7: multi-line comment
+zig\src\families\dsv41\lanes.zig:8: multi-line comment
+zig\src\families\dsv41\lanes.zig:9: multi-line comment
+zig\src\families\dsv41\lanes.zig:10: multi-line comment
+zig\src\families\dsv41\lanes.zig:11: multi-line comment
+zig\src\families\dsv41\lanes.zig:12: multi-line comment
+zig\src\families\dsv41\lanes.zig:13: multi-line comment
+zig\src\families\dsv41\lanes.zig:14: multi-line comment
+zig\src\families\dsv41\lanes.zig:97: multi-line comment
+zig\src\families\dsv41\lanes.zig:113: multi-line comment
+zig\src\families\dsv41\lanes.zig:142: multi-line comment
+zig\src\families\dsv41\lanes.zig:158: comment past 120 columns
+zig\src\families\dsv41\lanes.zig:228: multi-line comment
+zig\src\families\dsv41\lanes.zig:237: multi-line comment
+zig\src\families\dsv41\lanes.zig:277: multi-line comment
+zig\src\families\dsv41\lanes.zig:278: multi-line comment
+zig\src\families\dsv41\lanes.zig:279: multi-line comment
+zig\src\families\dsv41\lanes.zig:298: multi-line comment
+zig\src\families\dsv41\lanes.zig:361: multi-line comment
+zig\src\families\dsv41\lanes.zig:421: multi-line comment
+zig\src\families\dsv41\lanes.zig:446: multi-line comment
+zig\src\families\dsv41\lanes.zig:453: multi-line comment
+zig\src\families\dsv41\lanes.zig:453: comment past 120 columns
+zig\src\families\dsv41\lanes.zig:457: multi-line comment
+zig\src\families\dsv41\lanes.zig:458: multi-line comment
+zig\src\families\dsv41\lanes.zig:484: multi-line comment
+zig\src\families\dsv41\lanes.zig:494: multi-line comment
+zig\src\families\dsv41\lanes.zig:494: comment past 120 columns
+zig\src\families\dsv41\lanes.zig:524: multi-line comment
+zig\src\families\dsv41\lanes.zig:559: multi-line comment
+zig\src\families\dsv41\lanes.zig:580: multi-line comment
+zig\src\families\dsv41\lanes.zig:581: multi-line comment
+zig\src\families\dsv41\lanes.zig:617: multi-line comment
+zig\src\families\dsv41\lanes.zig:754: multi-line comment
+zig\src\families\dsv41\lanes.zig:755: multi-line comment
+zig\src\families\dsv41\lanes.zig:769: multi-line comment
+zig\src\families\dsv41\lanes.zig:776: multi-line comment
+zig\src\families\dsv41\lanes.zig:777: multi-line comment
+zig\src\families\dsv41\lanes.zig:778: multi-line comment
+zig\src\families\dsv41\lanes.zig:779: multi-line comment
+zig\src\families\dsv41\lanes.zig:780: multi-line comment
+zig\src\families\dsv41\lanes.zig:781: multi-line comment
+zig\src\families\dsv41\lanes.zig:782: multi-line comment
+zig\src\families\dsv41\lanes.zig:783: multi-line comment
+zig\src\families\dsv41\lanes.zig:814: comment past 120 columns
+zig\src\families\dsv41\lanes.zig:895: multi-line comment
+zig\src\families\dsv41\lanes.zig:925: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:1: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:2: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:3: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:4: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:5: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:6: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:7: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:7: comment past 120 columns
+zig\src\families\dsv41\lanes_main.zig:8: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:9: multi-line comment
+zig\src\families\dsv41\lanes_main.zig:64: multi-line comment
+zig\src\families\dsv41\layer_main.zig: 1378 lines (split past 600)
+zig\src\families\dsv41\layer_main.zig:1: multi-line comment
+zig\src\families\dsv41\layer_main.zig:2: multi-line comment
+zig\src\families\dsv41\layer_main.zig:3: multi-line comment
+zig\src\families\dsv41\layer_main.zig:4: multi-line comment
+zig\src\families\dsv41\layer_main.zig:5: multi-line comment
+zig\src\families\dsv41\layer_main.zig:6: multi-line comment
+zig\src\families\dsv41\layer_main.zig:7: multi-line comment
+zig\src\families\dsv41\layer_main.zig:8: multi-line comment
+zig\src\families\dsv41\layer_main.zig:9: multi-line comment
+zig\src\families\dsv41\layer_main.zig:10: multi-line comment
+zig\src\families\dsv41\layer_main.zig:11: multi-line comment
+zig\src\families\dsv41\layer_main.zig:12: multi-line comment
+zig\src\families\dsv41\layer_main.zig:13: multi-line comment
+zig\src\families\dsv41\layer_main.zig:14: multi-line comment
+zig\src\families\dsv41\layer_main.zig:15: multi-line comment
+zig\src\families\dsv41\layer_main.zig:16: multi-line comment
+zig\src\families\dsv41\layer_main.zig:16: comment past 120 columns
+zig\src\families\dsv41\layer_main.zig:17: multi-line comment
+zig\src\families\dsv41\layer_main.zig:18: multi-line comment
+zig\src\families\dsv41\layer_main.zig:18: comment past 120 columns
+zig\src\families\dsv41\layer_main.zig:19: multi-line comment
+zig\src\families\dsv41\layer_main.zig:20: multi-line comment
+zig\src\families\dsv41\layer_main.zig:21: multi-line comment
+zig\src\families\dsv41\layer_main.zig:22: multi-line comment
+zig\src\families\dsv41\layer_main.zig:23: multi-line comment
+zig\src\families\dsv41\layer_main.zig:24: multi-line comment
+zig\src\families\dsv41\layer_main.zig:25: multi-line comment
+zig\src\families\dsv41\layer_main.zig:26: multi-line comment
+zig\src\families\dsv41\layer_main.zig:27: multi-line comment
+zig\src\families\dsv41\layer_main.zig:27: comment past 120 columns
+zig\src\families\dsv41\layer_main.zig:164: multi-line comment
+zig\src\families\dsv41\layer_main.zig:320: multi-line comment
+zig\src\families\dsv41\layer_main.zig:367: multi-line comment
+zig\src\families\dsv41\layer_main.zig:610: multi-line comment
+zig\src\families\dsv41\layer_main.zig:660: multi-line comment
+zig\src\families\dsv41\layer_main.zig:660: comment past 120 columns
+zig\src\families\dsv41\layer_main.zig:661: multi-line comment
+zig\src\families\dsv41\layer_main.zig:662: multi-line comment
+zig\src\families\dsv41\layer_main.zig:663: multi-line comment
+zig\src\families\dsv41\layer_main.zig:664: multi-line comment
+zig\src\families\dsv41\layer_main.zig:665: multi-line comment
+zig\src\families\dsv41\layer_main.zig:666: multi-line comment
+zig\src\families\dsv41\layer_main.zig:691: multi-line comment
+zig\src\families\dsv41\layer_main.zig:725: multi-line comment
+zig\src\families\dsv41\layer_main.zig:820: multi-line comment
+zig\src\families\dsv41\layer_main.zig:821: multi-line comment
+zig\src\families\dsv41\layer_main.zig:822: multi-line comment
+zig\src\families\dsv41\layer_main.zig:854: comment past 120 columns
+zig\src\families\dsv41\layer_main.zig:933: multi-line comment
+zig\src\families\dsv41\layer_main.zig:934: multi-line comment
+zig\src\families\dsv41\layer_main.zig:935: multi-line comment
+zig\src\families\dsv41\layer_main.zig:936: multi-line comment
+zig\src\families\dsv41\layer_main.zig:937: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1043: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1043: comment past 120 columns
+zig\src\families\dsv41\layer_main.zig:1072: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1073: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1074: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1075: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1076: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1077: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1078: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1079: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1080: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1081: multi-line comment
+zig\src\families\dsv41\layer_main.zig:1082: comment past 120 columns
+zig\src\families\dsv41\link.zig:1: multi-line comment
+zig\src\families\dsv41\link.zig:16: multi-line comment
+zig\src\families\dsv41\link.zig:17: multi-line comment
+zig\src\families\dsv41\link.zig:96: multi-line comment
+zig\src\families\dsv41\link.zig:97: multi-line comment
+zig\src\families\dsv41\load_main.zig:1: multi-line comment
+zig\src\families\dsv41\markov_tokens.zig:1: multi-line comment
+zig\src\families\dsv41\markov_tokens.zig:2: multi-line comment
+zig\src\families\dsv41\markov_tokens.zig:3: multi-line comment
+zig\src\families\dsv41\model.zig: 796 lines (split past 600)
+zig\src\families\dsv41\model.zig:1: multi-line comment
+zig\src\families\dsv41\model.zig:2: multi-line comment
+zig\src\families\dsv41\model.zig:3: multi-line comment
+zig\src\families\dsv41\model.zig:4: multi-line comment
+zig\src\families\dsv41\model.zig:5: multi-line comment
+zig\src\families\dsv41\model.zig:6: multi-line comment
+zig\src\families\dsv41\model.zig:121: multi-line comment
+zig\src\families\dsv41\model.zig:134: multi-line comment
+zig\src\families\dsv41\model.zig:145: multi-line comment
+zig\src\families\dsv41\model.zig:248: comment past 120 columns
+zig\src\families\dsv41\model.zig:270: multi-line comment
+zig\src\families\dsv41\model.zig:337: multi-line comment
+zig\src\families\dsv41\model.zig:338: multi-line comment
+zig\src\families\dsv41\model.zig:413: multi-line comment
+zig\src\families\dsv41\model.zig:456: multi-line comment
+zig\src\families\dsv41\model.zig:463: multi-line comment
+zig\src\families\dsv41\model.zig:475: multi-line comment
+zig\src\families\dsv41\model.zig:493: multi-line comment
+zig\src\families\dsv41\model.zig:494: multi-line comment
+zig\src\families\dsv41\model.zig:525: multi-line comment
+zig\src\families\dsv41\model.zig:543: multi-line comment
+zig\src\families\dsv41\model.zig:571: multi-line comment
+zig\src\families\dsv41\model.zig:572: multi-line comment
+zig\src\families\dsv41\model.zig:573: multi-line comment
+zig\src\families\dsv41\model.zig:580: multi-line comment
+zig\src\families\dsv41\model.zig:593: multi-line comment
+zig\src\families\dsv41\model.zig:594: multi-line comment
+zig\src\families\dsv41\model.zig:617: multi-line comment
+zig\src\families\dsv41\model.zig:676: multi-line comment
+zig\src\families\dsv41\model.zig:676: comment past 120 columns
+zig\src\families\dsv41\model.zig:677: multi-line comment
+zig\src\families\dsv41\model.zig:691: multi-line comment
+zig\src\families\dsv41\model.zig:692: multi-line comment
+zig\src\families\dsv41\model.zig:693: multi-line comment
+zig\src\families\dsv41\model.zig:762: multi-line comment
+zig\src\families\dsv41\model.zig:787: multi-line comment
+zig\src\families\dsv41\native.zig:1: multi-line comment
+zig\src\families\dsv41\native.zig:2: multi-line comment
+zig\src\families\dsv41\native.zig:3: multi-line comment
+zig\src\families\dsv41\native.zig:4: multi-line comment
+zig\src\families\dsv41\native.zig:5: multi-line comment
+zig\src\families\dsv41\native.zig:6: multi-line comment
+zig\src\families\dsv41\native.zig:7: multi-line comment
+zig\src\families\dsv41\native.zig:8: multi-line comment
+zig\src\families\dsv41\native.zig:9: multi-line comment
+zig\src\families\dsv41\native.zig:10: multi-line comment
+zig\src\families\dsv41\native.zig:11: multi-line comment
+zig\src\families\dsv41\native.zig:12: multi-line comment
+zig\src\families\dsv41\native.zig:13: multi-line comment
+zig\src\families\dsv41\native.zig:14: multi-line comment
+zig\src\families\dsv41\native.zig:15: multi-line comment
+zig\src\families\dsv41\native.zig:16: multi-line comment
+zig\src\families\dsv41\native.zig:17: multi-line comment
+zig\src\families\dsv41\native.zig:18: multi-line comment
+zig\src\families\dsv41\native.zig:19: multi-line comment
+zig\src\families\dsv41\native.zig:20: multi-line comment
+zig\src\families\dsv41\native.zig:21: multi-line comment
+zig\src\families\dsv41\native.zig:22: multi-line comment
+zig\src\families\dsv41\native.zig:23: multi-line comment
+zig\src\families\dsv41\native.zig:24: multi-line comment
+zig\src\families\dsv41\native.zig:25: multi-line comment
+zig\src\families\dsv41\native.zig:45: comment past 120 columns
+zig\src\families\dsv41\native.zig:95: multi-line comment
+zig\src\families\dsv41\native.zig:109: multi-line comment
+zig\src\families\dsv41\ops.zig:1: multi-line comment
+zig\src\families\dsv41\ops.zig:2: multi-line comment
+zig\src\families\dsv41\ops.zig:3: multi-line comment
+zig\src\families\dsv41\ops.zig:4: multi-line comment
+zig\src\families\dsv41\ops.zig:5: multi-line comment
+zig\src\families\dsv41\ops.zig:120: multi-line comment
+zig\src\families\dsv41\ops.zig:120: comment past 120 columns
+zig\src\families\dsv41\ops.zig:135: multi-line comment
+zig\src\families\dsv41\ops.zig:136: multi-line comment
+zig\src\families\dsv41\ops.zig:152: multi-line comment
+zig\src\families\dsv41\ops.zig:167: multi-line comment
+zig\src\families\dsv41\ops.zig:185: multi-line comment
+zig\src\families\dsv41\ops.zig:196: multi-line comment
+zig\src\families\dsv41\ops.zig:207: multi-line comment
+zig\src\families\dsv41\ops.zig:208: multi-line comment
+zig\src\families\dsv41\ops.zig:225: multi-line comment
+zig\src\families\dsv41\ops.zig:226: multi-line comment
+zig\src\families\dsv41\ops.zig:242: multi-line comment
+zig\src\families\dsv41\ops.zig:283: multi-line comment
+zig\src\families\dsv41\ops.zig:289: multi-line comment
+zig\src\families\dsv41\ops.zig:311: multi-line comment
+zig\src\families\dsv41\picture.zig: 635 lines (split past 600)
+zig\src\families\dsv41\picture.zig:1: multi-line comment
+zig\src\families\dsv41\picture.zig:2: multi-line comment
+zig\src\families\dsv41\picture.zig:3: multi-line comment
+zig\src\families\dsv41\picture.zig:4: multi-line comment
+zig\src\families\dsv41\picture.zig:5: multi-line comment
+zig\src\families\dsv41\picture.zig:6: multi-line comment
+zig\src\families\dsv41\picture.zig:31: multi-line comment
+zig\src\families\dsv41\picture.zig:51: multi-line comment
+zig\src\families\dsv41\picture.zig:148: multi-line comment
+zig\src\families\dsv41\picture.zig:158: multi-line comment
+zig\src\families\dsv41\picture.zig:159: multi-line comment
+zig\src\families\dsv41\picture.zig:340: multi-line comment
+zig\src\families\dsv41\picture.zig:364: multi-line comment
+zig\src\families\dsv41\picture.zig:459: multi-line comment
+zig\src\families\dsv41\picture.zig:460: multi-line comment
+zig\src\families\dsv41\picture.zig:491: multi-line comment
+zig\src\families\dsv41\picture.zig:505: multi-line comment
+zig\src\families\dsv41\picture.zig:545: multi-line comment
+zig\src\families\dsv41\picture_main.zig:1: multi-line comment
+zig\src\families\dsv41\picture_main.zig:2: multi-line comment
+zig\src\families\dsv41\pil.zig:1: multi-line comment
+zig\src\families\dsv41\pil.zig:2: multi-line comment
+zig\src\families\dsv41\pil.zig:3: multi-line comment
+zig\src\families\dsv41\pil.zig:4: multi-line comment
+zig\src\families\dsv41\pil.zig:5: multi-line comment
+zig\src\families\dsv41\pil.zig:11: multi-line comment
+zig\src\families\dsv41\pil.zig:12: multi-line comment
+zig\src\families\dsv41\pil.zig:86: multi-line comment
+zig\src\families\dsv41\plan.zig:1: multi-line comment
+zig\src\families\dsv41\plan.zig:2: multi-line comment
+zig\src\families\dsv41\plan.zig:3: multi-line comment
+zig\src\families\dsv41\plan.zig:4: multi-line comment
+zig\src\families\dsv41\plan.zig:5: multi-line comment
+zig\src\families\dsv41\plan.zig:6: multi-line comment
+zig\src\families\dsv41\plan.zig:71: multi-line comment
+zig\src\families\dsv41\plan.zig:95: multi-line comment
+zig\src\families\dsv41\pool.zig:1: multi-line comment
+zig\src\families\dsv41\pool.zig:1: comment past 120 columns
+zig\src\families\dsv41\pool.zig:2: multi-line comment
+zig\src\families\dsv41\pool.zig:2: comment past 120 columns
+zig\src\families\dsv41\pool.zig:3: multi-line comment
+zig\src\families\dsv41\pool.zig:3: comment past 120 columns
+zig\src\families\dsv41\pool.zig:4: comment past 120 columns
+zig\src\families\dsv41\prompt.zig: 1424 lines (split past 600)
+zig\src\families\dsv41\prompt.zig:1: multi-line comment
+zig\src\families\dsv41\prompt.zig:2: multi-line comment
+zig\src\families\dsv41\prompt.zig:2: comment past 120 columns
+zig\src\families\dsv41\prompt.zig:3: multi-line comment
+zig\src\families\dsv41\prompt.zig:4: multi-line comment
+zig\src\families\dsv41\prompt.zig:5: multi-line comment
+zig\src\families\dsv41\prompt.zig:6: multi-line comment
+zig\src\families\dsv41\prompt.zig:7: multi-line comment
+zig\src\families\dsv41\prompt.zig:8: multi-line comment
+zig\src\families\dsv41\prompt.zig:9: multi-line comment
+zig\src\families\dsv41\prompt.zig:10: multi-line comment
+zig\src\families\dsv41\prompt.zig:11: multi-line comment
+zig\src\families\dsv41\prompt.zig:40: multi-line comment
+zig\src\families\dsv41\prompt.zig:49: multi-line comment
+zig\src\families\dsv41\prompt.zig:50: multi-line comment
+zig\src\families\dsv41\prompt.zig:51: multi-line comment
+zig\src\families\dsv41\prompt.zig:129: multi-line comment
+zig\src\families\dsv41\prompt.zig:151: multi-line comment
+zig\src\families\dsv41\prompt.zig:220: multi-line comment
+zig\src\families\dsv41\prompt.zig:221: multi-line comment
+zig\src\families\dsv41\prompt.zig:222: multi-line comment
+zig\src\families\dsv41\prompt.zig:239: multi-line comment
+zig\src\families\dsv41\prompt.zig:264: multi-line comment
+zig\src\families\dsv41\prompt.zig:414: multi-line comment
+zig\src\families\dsv41\prompt.zig:430: multi-line comment
+zig\src\families\dsv41\prompt.zig:458: multi-line comment
+zig\src\families\dsv41\prompt.zig:485: multi-line comment
+zig\src\families\dsv41\prompt.zig:485: comment past 120 columns
+zig\src\families\dsv41\prompt.zig:498: multi-line comment
+zig\src\families\dsv41\prompt.zig:514: multi-line comment
+zig\src\families\dsv41\prompt.zig:538: multi-line comment
+zig\src\families\dsv41\prompt.zig:539: multi-line comment
+zig\src\families\dsv41\prompt.zig:540: multi-line comment
+zig\src\families\dsv41\prompt.zig:554: multi-line comment
+zig\src\families\dsv41\prompt.zig:562: multi-line comment
+zig\src\families\dsv41\prompt.zig:563: multi-line comment
+zig\src\families\dsv41\prompt.zig:564: multi-line comment
+zig\src\families\dsv41\prompt.zig:565: multi-line comment
+zig\src\families\dsv41\prompt.zig:619: multi-line comment
+zig\src\families\dsv41\prompt.zig:647: multi-line comment
+zig\src\families\dsv41\prompt.zig:651: multi-line comment
+zig\src\families\dsv41\prompt.zig:666: multi-line comment
+zig\src\families\dsv41\prompt.zig:685: multi-line comment
+zig\src\families\dsv41\prompt.zig:714: multi-line comment
+zig\src\families\dsv41\prompt.zig:718: multi-line comment
+zig\src\families\dsv41\prompt.zig:723: multi-line comment
+zig\src\families\dsv41\prompt.zig:724: multi-line comment
+zig\src\families\dsv41\prompt.zig:737: multi-line comment
+zig\src\families\dsv41\prompt.zig:737: comment past 120 columns
+zig\src\families\dsv41\prompt.zig:738: multi-line comment
+zig\src\families\dsv41\prompt.zig:738: comment past 120 columns
+zig\src\families\dsv41\prompt.zig:858: multi-line comment
+zig\src\families\dsv41\prompt.zig:859: multi-line comment
+zig\src\families\dsv41\prompt.zig:860: multi-line comment
+zig\src\families\dsv41\prompt.zig:927: multi-line comment
+zig\src\families\dsv41\prompt.zig:928: multi-line comment
+zig\src\families\dsv41\prompt.zig:929: multi-line comment
+zig\src\families\dsv41\prompt.zig:962: multi-line comment
+zig\src\families\dsv41\prompt.zig:963: multi-line comment
+zig\src\families\dsv41\prompt.zig:964: multi-line comment
+zig\src\families\dsv41\prompt.zig:965: multi-line comment
+zig\src\families\dsv41\prompt.zig:966: multi-line comment
+zig\src\families\dsv41\prompt.zig:973: multi-line comment
+zig\src\families\dsv41\prompt.zig:974: multi-line comment
+zig\src\families\dsv41\prompt.zig:975: multi-line comment
+zig\src\families\dsv41\prompt.zig:988: multi-line comment
+zig\src\families\dsv41\prompt.zig:1013: multi-line comment
+zig\src\families\dsv41\prompt.zig:1014: multi-line comment
+zig\src\families\dsv41\prompt.zig:1015: multi-line comment
+zig\src\families\dsv41\prompt.zig:1048: multi-line comment
+zig\src\families\dsv41\prompt.zig:1057: multi-line comment
+zig\src\families\dsv41\prompt.zig:1084: multi-line comment
+zig\src\families\dsv41\prompt.zig:1085: multi-line comment
+zig\src\families\dsv41\prompt.zig:1086: multi-line comment
+zig\src\families\dsv41\prompt.zig:1086: comment past 120 columns
+zig\src\families\dsv41\prompt.zig:1105: multi-line comment
+zig\src\families\dsv41\prompt.zig:1128: multi-line comment
+zig\src\families\dsv41\prompt.zig:1138: multi-line comment
+zig\src\families\dsv41\prompt.zig:1183: multi-line comment
+zig\src\families\dsv41\prompt.zig:1184: multi-line comment
+zig\src\families\dsv41\prompt.zig:1218: multi-line comment
+zig\src\families\dsv41\prompt.zig:1219: multi-line comment
+zig\src\families\dsv41\prompt.zig:1220: multi-line comment
+zig\src\families\dsv41\prompt.zig:1297: multi-line comment
+zig\src\families\dsv41\prompt.zig:1298: multi-line comment
+zig\src\families\dsv41\prompt.zig:1298: comment past 120 columns
+zig\src\families\dsv41\prompt.zig:1322: multi-line comment
+zig\src\families\dsv41\prompt.zig:1323: multi-line comment
+zig\src\families\dsv41\prompt.zig:1324: multi-line comment
+zig\src\families\dsv41\prompt.zig:1346: multi-line comment
+zig\src\families\dsv41\prompt.zig:1347: multi-line comment
+zig\src\families\dsv41\prompt.zig:1348: multi-line comment
+zig\src\families\dsv41\prompt.zig:1349: multi-line comment
+zig\src\families\dsv41\prompt.zig:1374: multi-line comment
+zig\src\families\dsv41\prompt.zig:1390: multi-line comment
+zig\src\families\dsv41\prompt.zig:1390: comment past 120 columns
+zig\src\families\dsv41\prompt.zig:1391: multi-line comment
+zig\src\families\dsv41\prompt.zig:1409: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:1: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:2: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:3: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:4: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:5: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:6: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:7: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:8: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:9: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:10: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:11: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:12: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:39: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:40: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:92: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:171: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:184: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:196: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:196: comment past 120 columns
+zig\src\families\dsv41\prompt2d.zig:197: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:205: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:212: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:213: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:224: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:225: multi-line comment
+zig\src\families\dsv41\prompt2d.zig:226: multi-line comment
+zig\src\families\dsv41\rank_cache.zig:1: multi-line comment
+zig\src\families\dsv41\rank_cache.zig:1: comment past 120 columns
+zig\src\families\dsv41\rank_cache.zig:2: multi-line comment
+zig\src\families\dsv41\rank_cache.zig:2: comment past 120 columns
+zig\src\families\dsv41\rank_cache.zig:56: multi-line comment
+zig\src\families\dsv41\rank_cache.zig:129: multi-line comment
+zig\src\families\dsv41\rdma.zig: 694 lines (split past 600)
+zig\src\families\dsv41\rdma.zig:1: multi-line comment
+zig\src\families\dsv41\rdma.zig:2: multi-line comment
+zig\src\families\dsv41\rdma.zig:3: multi-line comment
+zig\src\families\dsv41\rdma.zig:4: multi-line comment
+zig\src\families\dsv41\rdma.zig:5: multi-line comment
+zig\src\families\dsv41\rdma.zig:6: multi-line comment
+zig\src\families\dsv41\rdma.zig:152: multi-line comment
+zig\src\families\dsv41\rdma.zig:176: multi-line comment
+zig\src\families\dsv41\rdma.zig:242: comment past 120 columns
+zig\src\families\dsv41\rdma.zig:409: multi-line comment
+zig\src\families\dsv41\rdma.zig:526: multi-line comment
+zig\src\families\dsv41\rdma_bench_main.zig:1: multi-line comment
+zig\src\families\dsv41\rdma_bench_main.zig:2: multi-line comment
+zig\src\families\dsv41\rdma_bench_main.zig:3: multi-line comment
+zig\src\families\dsv41\rdma_bench_main.zig:4: multi-line comment
+zig\src\families\dsv41\rdma_bench_main.zig:4: comment past 120 columns
+zig\src\families\dsv41\rdma_bench_main.zig:5: multi-line comment
+zig\src\families\dsv41\rdma_bench_main.zig:190: multi-line comment
+zig\src\families\dsv41\rdma_seq.zig:1: multi-line comment
+zig\src\families\dsv41\rdma_seq.zig:21: multi-line comment
+zig\src\families\dsv41\rdma_seq.zig:21: comment past 120 columns
+zig\src\families\dsv41\rdma_seq.zig:35: multi-line comment
+zig\src\families\dsv41\rdma_seq.zig:35: comment past 120 columns
+zig\src\families\dsv41\rdma_seq.zig:54: comment past 120 columns
+zig\src\families\dsv41\ring2d.zig:1: multi-line comment
+zig\src\families\dsv41\ring2d.zig:2: multi-line comment
+zig\src\families\dsv41\ring2d.zig:3: multi-line comment
+zig\src\families\dsv41\ring2d.zig:4: multi-line comment
+zig\src\families\dsv41\ring2d.zig:5: multi-line comment
+zig\src\families\dsv41\ring2d.zig:6: multi-line comment
+zig\src\families\dsv41\ring2d.zig:21: multi-line comment
+zig\src\families\dsv41\ring2d.zig:33: comment past 120 columns
+zig\src\families\dsv41\ring2d.zig:77: multi-line comment
+zig\src\families\dsv41\ring2d.zig:86: multi-line comment
+zig\src\families\dsv41\ring2d.zig:95: comment past 120 columns
+zig\src\families\dsv41\ring2d.zig:109: comment past 120 columns
+zig\src\families\dsv41\ring2d_check_main.zig:1: multi-line comment
+zig\src\families\dsv41\ring2d_check_main.zig:2: multi-line comment
+zig\src\families\dsv41\ring2d_check_main.zig:3: multi-line comment
+zig\src\families\dsv41\ring2d_check_main.zig:4: multi-line comment
+zig\src\families\dsv41\round.zig: 1135 lines (split past 600)
+zig\src\families\dsv41\round.zig:1: multi-line comment
+zig\src\families\dsv41\round.zig:1: comment past 120 columns
+zig\src\families\dsv41\round.zig:2: multi-line comment
+zig\src\families\dsv41\round.zig:3: multi-line comment
+zig\src\families\dsv41\round.zig:4: multi-line comment
+zig\src\families\dsv41\round.zig:5: multi-line comment
+zig\src\families\dsv41\round.zig:6: multi-line comment
+zig\src\families\dsv41\round.zig:7: multi-line comment
+zig\src\families\dsv41\round.zig:8: multi-line comment
+zig\src\families\dsv41\round.zig:9: multi-line comment
+zig\src\families\dsv41\round.zig:10: multi-line comment
+zig\src\families\dsv41\round.zig:11: multi-line comment
+zig\src\families\dsv41\round.zig:67: multi-line comment
+zig\src\families\dsv41\round.zig:67: comment past 120 columns
+zig\src\families\dsv41\round.zig:68: multi-line comment
+zig\src\families\dsv41\round.zig:103: multi-line comment
+zig\src\families\dsv41\round.zig:135: multi-line comment
+zig\src\families\dsv41\round.zig:191: multi-line comment
+zig\src\families\dsv41\round.zig:323: multi-line comment
+zig\src\families\dsv41\round.zig:337: multi-line comment
+zig\src\families\dsv41\round.zig:338: multi-line comment
+zig\src\families\dsv41\round.zig:357: multi-line comment
+zig\src\families\dsv41\round.zig:358: multi-line comment
+zig\src\families\dsv41\round.zig:378: multi-line comment
+zig\src\families\dsv41\round.zig:379: multi-line comment
+zig\src\families\dsv41\round.zig:379: comment past 120 columns
+zig\src\families\dsv41\round.zig:498: multi-line comment
+zig\src\families\dsv41\round.zig:556: multi-line comment
+zig\src\families\dsv41\round.zig:593: multi-line comment
+zig\src\families\dsv41\round.zig:620: multi-line comment
+zig\src\families\dsv41\round.zig:637: multi-line comment
+zig\src\families\dsv41\round.zig:647: multi-line comment
+zig\src\families\dsv41\round.zig:660: multi-line comment
+zig\src\families\dsv41\round.zig:731: multi-line comment
+zig\src\families\dsv41\round.zig:749: multi-line comment
+zig\src\families\dsv41\round.zig:766: multi-line comment
+zig\src\families\dsv41\round.zig:775: multi-line comment
+zig\src\families\dsv41\round.zig:824: multi-line comment
+zig\src\families\dsv41\round.zig:825: multi-line comment
+zig\src\families\dsv41\round.zig:839: multi-line comment
+zig\src\families\dsv41\round.zig:840: multi-line comment
+zig\src\families\dsv41\round.zig:841: multi-line comment
+zig\src\families\dsv41\round.zig:894: multi-line comment
+zig\src\families\dsv41\round.zig:895: multi-line comment
+zig\src\families\dsv41\round.zig:895: comment past 120 columns
+zig\src\families\dsv41\round.zig:896: multi-line comment
+zig\src\families\dsv41\round.zig:915: multi-line comment
+zig\src\families\dsv41\round.zig:947: multi-line comment
+zig\src\families\dsv41\round.zig:1035: multi-line comment
+zig\src\families\dsv41\round.zig:1052: multi-line comment
+zig\src\families\dsv41\round.zig:1053: multi-line comment
+zig\src\families\dsv41\round.zig:1089: multi-line comment
+zig\src\families\dsv41\round.zig:1090: multi-line comment
+zig\src\families\dsv41\round2d.zig:1: multi-line comment
+zig\src\families\dsv41\round2d.zig:2: multi-line comment
+zig\src\families\dsv41\round2d.zig:3: multi-line comment
+zig\src\families\dsv41\round2d.zig:4: multi-line comment
+zig\src\families\dsv41\round2d.zig:5: multi-line comment
+zig\src\families\dsv41\round2d.zig:6: multi-line comment
+zig\src\families\dsv41\round2d.zig:7: multi-line comment
+zig\src\families\dsv41\round2d.zig:7: comment past 120 columns
+zig\src\families\dsv41\round2d.zig:8: multi-line comment
+zig\src\families\dsv41\round2d.zig:9: multi-line comment
+zig\src\families\dsv41\round2d.zig:10: multi-line comment
+zig\src\families\dsv41\round2d.zig:11: multi-line comment
+zig\src\families\dsv41\round2d.zig:11: comment past 120 columns
+zig\src\families\dsv41\round2d.zig:24: multi-line comment
+zig\src\families\dsv41\round2d.zig:25: multi-line comment
+zig\src\families\dsv41\round2d.zig:32: multi-line comment
+zig\src\families\dsv41\round2d.zig:38: multi-line comment
+zig\src\families\dsv41\round2d.zig:39: multi-line comment
+zig\src\families\dsv41\sampling.zig:1: multi-line comment
+zig\src\families\dsv41\sampling.zig:2: multi-line comment
+zig\src\families\dsv41\sampling.zig:3: multi-line comment
+zig\src\families\dsv41\sampling.zig:3: comment past 120 columns
+zig\src\families\dsv41\sampling.zig:4: multi-line comment
+zig\src\families\dsv41\sampling.zig:4: comment past 120 columns
+zig\src\families\dsv41\sampling.zig:5: multi-line comment
+zig\src\families\dsv41\sampling.zig:6: multi-line comment
+zig\src\families\dsv41\sampling.zig:7: multi-line comment
+zig\src\families\dsv41\sampling.zig:8: multi-line comment
+zig\src\families\dsv41\sampling.zig:70: multi-line comment
+zig\src\families\dsv41\sampling.zig:157: comment past 120 columns
+zig\src\families\dsv41\text.zig:1: multi-line comment
+zig\src\families\dsv41\text.zig:2: multi-line comment
+zig\src\families\dsv41\text.zig:3: multi-line comment
+zig\src\families\dsv41\text.zig:4: multi-line comment
+zig\src\families\dsv41\text.zig:5: multi-line comment
+zig\src\families\dsv41\text.zig:6: multi-line comment
+zig\src\families\dsv41\tri.zig:1: multi-line comment
+zig\src\families\dsv41\tri.zig:7: multi-line comment
+zig\src\families\dsv41\tri.zig:8: multi-line comment
+zig\src\families\dsv41\tri.zig:134: multi-line comment
+zig\src\families\dsv41\tri_attn.zig:1: multi-line comment
+zig\src\families\dsv41\tri_attn.zig:2: comment past 120 columns
+zig\src\families\dsv41\tri_attn.zig:29: comment past 120 columns
+zig\src\families\dsv41\tri_attn.zig:35: comment past 120 columns
+zig\src\families\dsv41\tri_attn.zig:48: comment past 120 columns
+zig\src\families\dsv41\tri_attn.zig:54: comment past 120 columns
+zig\src\families\dsv41\tri_attn.zig:134: comment past 120 columns
+zig\src\families\dsv41\tri_attn.zig:164: comment past 120 columns
+zig\src\families\dsv41\tri_basic.zig:1: multi-line comment
+zig\src\families\dsv41\tri_hc.zig:1: multi-line comment
+zig\src\families\dsv41\tri_index.zig:1: multi-line comment
+zig\src\families\dsv41\tri_index.zig:39: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:66: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:73: multi-line comment
+zig\src\families\dsv41\tri_index.zig:74: multi-line comment
+zig\src\families\dsv41\tri_index.zig:96: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:100: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:115: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:126: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:133: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:135: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:152: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:164: comment past 120 columns
+zig\src\families\dsv41\tri_index.zig:184: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:1: multi-line comment
+zig\src\families\dsv41\tri_markov.zig:36: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:42: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:91: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:100: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:108: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:129: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:134: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:151: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:153: comment past 120 columns
+zig\src\families\dsv41\tri_markov.zig:228: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:1: multi-line comment
+zig\src\families\dsv41\tri_norm.zig:17: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:28: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:43: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:67: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:81: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:97: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:118: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:122: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:133: comment past 120 columns
+zig\src\families\dsv41\tri_norm.zig:153: comment past 120 columns
+zig\src\families\dsv41\vision.zig:1: multi-line comment
+zig\src\families\dsv41\vision.zig:2: multi-line comment
+zig\src\families\dsv41\vision.zig:3: multi-line comment
+zig\src\families\dsv41\vision.zig:14: multi-line comment
+zig\src\families\dsv41\vision.zig:30: multi-line comment
+zig\src\families\dsv41\vision.zig:90: multi-line comment
+zig\src\families\dsv41\vision.zig:120: multi-line comment
+zig\src\families\dsv41\vit.zig:1: multi-line comment
+zig\src\families\dsv41\vit.zig:2: multi-line comment
+zig\src\families\dsv41\vit.zig:3: multi-line comment
+zig\src\families\dsv41\vit.zig:3: comment past 120 columns
+zig\src\families\dsv41\vit.zig:4: multi-line comment
+zig\src\families\dsv41\vit.zig:5: multi-line comment
+zig\src\families\dsv41\vit.zig:141: multi-line comment
+zig\src\families\dsv41\vit.zig:250: multi-line comment
+zig\src\families\dsv41\vit.zig:357: multi-line comment
+zig\src\families\dsv41\vit_main.zig:1: multi-line comment
+zig\src\families\dsv41\vit_main.zig:2: multi-line comment
+zig\src\families\dsv41\vit_main.zig:3: multi-line comment
+zig\src\families\dsv41\weights.zig:1: multi-line comment
+zig\src\families\dsv41\weights.zig:2: multi-line comment
+zig\src\families\dsv41\weights.zig:17: multi-line comment
+zig\src\families\dsv41\weights.zig:18: multi-line comment
+zig\src\families\dsv41\weights.zig:22: multi-line comment
+zig\src\families\dsv41\weights.zig:23: multi-line comment
+zig\src\families\dsv41\weights.zig:136: multi-line comment
+zig\src\families\dsv41\weights.zig:302: multi-line comment
+zig\src\families\dsv41\weights.zig:303: multi-line comment
+zig\src\families\dsv41\weights.zig:321: multi-line comment
+zig\src\families\dsv41\weights.zig:386: multi-line comment
+zig\src\families\flashnext\call_log.zig:1: comment past 120 columns
+zig\src\families\flashnext\dense.zig:1: multi-line comment
+zig\src\families\flashnext\dense.zig:2: comment past 120 columns
+zig\src\families\flashnext\dense.zig:11: multi-line comment
+zig\src\families\flashnext\engine.zig: 914 lines (split past 600)
+zig\src\families\flashnext\engine.zig:1: multi-line comment
+zig\src\families\flashnext\engine.zig:53: comment past 120 columns
+zig\src\families\flashnext\engine.zig:56: comment past 120 columns
+zig\src\families\flashnext\engine.zig:60: multi-line comment
+zig\src\families\flashnext\engine.zig:137: comment past 120 columns
+zig\src\families\flashnext\engine.zig:419: comment past 120 columns
+zig\src\families\flashnext\engine.zig:425: multi-line comment
+zig\src\families\flashnext\engine.zig:595: comment past 120 columns
+zig\src\families\flashnext\engine.zig:840: comment past 120 columns
+zig\src\families\flashnext\engine.zig:855: multi-line comment
+zig\src\families\flashnext\follow.zig:26: multi-line comment
+zig\src\families\flashnext\follow.zig:26: comment past 120 columns
+zig\src\families\flashnext\follow.zig:109: comment past 120 columns
+zig\src\families\flashnext\follow.zig:120: comment past 120 columns
+zig\src\families\flashnext\follow.zig:123: comment past 120 columns
+zig\src\families\flashnext\gdn.zig:1: multi-line comment
+zig\src\families\flashnext\gdn.zig:13: multi-line comment
+zig\src\families\flashnext\gdn.zig:32: multi-line comment
+zig\src\families\flashnext\marks.zig:1: comment past 120 columns
+zig\src\families\flashnext\marks.zig:13: comment past 120 columns
+zig\src\families\flashnext\marks.zig:40: comment past 120 columns
+zig\src\families\flashnext\marks.zig:62: comment past 120 columns
+zig\src\families\flashnext\marks.zig:72: comment past 120 columns
+zig\src\families\flashnext\marks.zig:103: comment past 120 columns
+zig\src\families\flashnext\marks.zig:121: comment past 120 columns
+zig\src\families\flashnext\replay.zig: 3388 lines (split past 600)
+zig\src\families\flashnext\replay.zig:1: multi-line comment
+zig\src\families\flashnext\replay.zig:252: multi-line comment
+zig\src\families\flashnext\replay.zig:802: multi-line comment
+zig\src\families\flashnext\replay.zig:803: multi-line comment
+zig\src\families\flashnext\replay.zig:804: multi-line comment
+zig\src\families\flashnext\replay.zig:805: multi-line comment
+zig\src\families\flashnext\replay.zig:806: multi-line comment
+zig\src\families\flashnext\replay.zig:1156: multi-line comment
+zig\src\families\flashnext\replay.zig:1185: multi-line comment
+zig\src\families\flashnext\replay.zig:1263: multi-line comment
+zig\src\families\flashnext\replay.zig:1299: multi-line comment
+zig\src\families\flashnext\replay.zig:1299: comment past 120 columns
+zig\src\families\flashnext\replay.zig:1366: multi-line comment
+zig\src\families\flashnext\replay.zig:1375: multi-line comment
+zig\src\families\flashnext\replay.zig:1375: comment past 120 columns
+zig\src\families\flashnext\replay.zig:1455: multi-line comment
+zig\src\families\flashnext\replay.zig:1456: multi-line comment
+zig\src\families\flashnext\replay.zig:1621: multi-line comment
+zig\src\families\flashnext\replay.zig:1622: multi-line comment
+zig\src\families\flashnext\replay.zig:1622: comment past 120 columns
+zig\src\families\flashnext\replay.zig:1786: comment past 120 columns
+zig\src\families\flashnext\replay.zig:1843: comment past 120 columns
+zig\src\families\flashnext\replay.zig:2045: comment past 120 columns
+zig\src\families\flashnext\replay.zig:2151: multi-line comment
+zig\src\families\flashnext\replay.zig:2170: multi-line comment
+zig\src\families\flashnext\replay.zig:2344: multi-line comment
+zig\src\families\flashnext\replay.zig:2345: multi-line comment
+zig\src\families\flashnext\replay.zig:2358: multi-line comment
+zig\src\families\flashnext\replay.zig:2387: multi-line comment
+zig\src\families\flashnext\replay.zig:2407: multi-line comment
+zig\src\families\flashnext\replay.zig:2597: comment past 120 columns
+zig\src\families\flashnext\replay.zig:2740: multi-line comment
+zig\src\families\flashnext\replay.zig:2861: multi-line comment
+zig\src\families\flashnext\replay.zig:2867: multi-line comment
+zig\src\families\flashnext\replay.zig:2881: comment past 120 columns
+zig\src\families\flashnext\replay.zig:2928: multi-line comment
+zig\src\families\flashnext\replay.zig:3068: comment past 120 columns
+zig\src\families\flashnext\replay.zig:3094: comment past 120 columns
+zig\src\families\flashnext\replay.zig:3114: multi-line comment
+zig\src\families\flashnext\replay.zig:3181: multi-line comment
+zig\src\families\flashnext\replay.zig:3182: multi-line comment
+zig\src\families\flashnext\replay.zig:3183: multi-line comment
+zig\src\families\flashnext\replay.zig:3230: comment past 120 columns
+zig\src\families\flashnext\replay.zig:3317: comment past 120 columns
+zig\src\families\flashnext\replay.zig:3346: multi-line comment
+zig\src\families\flashnext\replay.zig:3347: multi-line comment
+zig\src\families\flashnext\snapshot.zig:18: comment past 120 columns
+zig\src\families\flashnext\snapshot.zig:21: comment past 120 columns
+zig\src\families\flashnext\snapshot.zig:26: comment past 120 columns
+zig\src\families\flashnext\snapshot.zig:33: comment past 120 columns
+zig\src\families\flashnext\snapshot.zig:92: comment past 120 columns
+zig\src\families\flashnext\snapshot.zig:136: comment past 120 columns
+zig\src\families\flashnext\snapshot.zig:186: comment past 120 columns
+zig\src\families\flashnext\split.zig:1: comment past 120 columns
+zig\src\families\flashnext\split.zig:8: comment past 120 columns
+zig\src\families\flashnext\split.zig:62: comment past 120 columns
+zig\src\families\flashnext\tp.zig: 738 lines (split past 600)
+zig\src\families\flashnext\tp.zig:1: comment past 120 columns
+zig\src\families\flashnext\tp.zig:19: comment past 120 columns
+zig\src\families\flashnext\tp.zig:359: multi-line comment
+zig\src\families\flashnext\tp.zig:359: comment past 120 columns
+zig\src\families\flashnext\tp.zig:396: multi-line comment
+zig\src\families\flashnext\tp.zig:414: multi-line comment
+zig\src\families\flashnext\tp.zig:435: comment past 120 columns
+zig\src\families\flashnext\tp.zig:471: multi-line comment
+zig\src\families\flashnext\tp.zig:472: multi-line comment
+zig\src\families\flashnext\tp.zig:493: comment past 120 columns
+zig\src\families\flashnext\tp.zig:523: comment past 120 columns
+zig\src\families\flashnext\tp.zig:544: comment past 120 columns
+zig\src\families\flashnext\tp.zig:559: comment past 120 columns
+zig\src\families\flashnext\tp.zig:598: multi-line comment
+zig\src\families\flashnext\tp.zig:599: multi-line comment
+zig\src\families\flashnext\tp_settings.zig:8: comment past 120 columns
+zig\src\families\flashnext\tp_settings.zig:39: comment past 120 columns
+zig\src\families\glm\attn_check.zig:1: comment past 120 columns
+zig\src\families\glm\attn_check.zig:124: comment past 120 columns
+zig\src\families\glm\checks.zig:36: comment past 120 columns
+zig\src\families\glm\checks.zig:71: comment past 120 columns
+zig\src\families\glm\checks.zig:104: comment past 120 columns
+zig\src\families\glm\checks.zig:151: comment past 120 columns
+zig\src\families\glm\checks.zig:187: comment past 120 columns
+zig\src\families\glm\config.zig:194: comment past 120 columns
+zig\src\families\glm\engine.zig:1: comment past 120 columns
+zig\src\families\glm\engine.zig:32: comment past 120 columns
+zig\src\families\glm\engine.zig:88: comment past 120 columns
+zig\src\families\glm\engine.zig:188: comment past 120 columns
+zig\src\families\glm\engine.zig:200: comment past 120 columns
+zig\src\families\glm\engine.zig:223: comment past 120 columns
+zig\src\families\glm\engine.zig:455: comment past 120 columns
+zig\src\families\glm\ep.zig:1: comment past 120 columns
+zig\src\families\glm\ep.zig:24: comment past 120 columns
+zig\src\families\glm\ep.zig:49: comment past 120 columns
+zig\src\families\glm\ep.zig:203: comment past 120 columns
+zig\src\families\glm\ep.zig:217: comment past 120 columns
+zig\src\families\glm\ep.zig:308: comment past 120 columns
+zig\src\families\glm\ep_control.zig:1: comment past 120 columns
+zig\src\families\glm\ep_control.zig:116: comment past 120 columns
+zig\src\families\glm\forward.zig:1: comment past 120 columns
+zig\src\families\glm\forward.zig:159: comment past 120 columns
+zig\src\families\glm\forward.zig:178: comment past 120 columns
+zig\src\families\glm\forward.zig:231: comment past 120 columns
+zig\src\families\glm\forward.zig:275: comment past 120 columns
+zig\src\families\glm\forward.zig:336: comment past 120 columns
+zig\src\families\glm\forward.zig:456: comment past 120 columns
+zig\src\families\glm\kernels.zig:1: comment past 120 columns
+zig\src\families\glm\moe.zig:17: comment past 120 columns
+zig\src\families\glm\mtp.zig:1: comment past 120 columns
+zig\src\families\glm\mtp.zig:17: comment past 120 columns
+zig\src\families\glm\prompt.zig:1: comment past 120 columns
+zig\src\families\glm\prompt.zig:209: comment past 120 columns
+zig\src\families\glm\prompt.zig:250: comment past 120 columns
+zig\src\families\glm\prompt.zig:288: comment past 120 columns
+zig\src\families\glm\prompt.zig:326: comment past 120 columns
+zig\src\families\glm\prompt.zig:350: comment past 120 columns
+zig\src\families\glm\weights.zig:1: comment past 120 columns
+zig\src\families\glm\weights.zig:218: comment past 120 columns
+zig\src\families\glm\weights.zig:500: comment past 120 columns
+zig\src\families\kimi_k3\kernels.zig:283: comment past 120 columns
+zig\src\families\kimi_k3\prepare.zig:1: comment past 120 columns
+zig\src\families\nemotron\backend.zig:288: comment past 120 columns
+zig\src\families\nemotron\backend.zig:381: comment past 120 columns
+zig\src\families\nemotron\config.zig:8: comment past 120 columns
+zig\src\families\nemotron\config.zig:182: comment past 120 columns
+zig\src\families\nemotron\config.zig:263: comment past 120 columns
+zig\src\families\nemotron\copy_lanes.zig:1: comment past 120 columns
+zig\src\families\nemotron\copy_lanes.zig:66: comment past 120 columns
+zig\src\families\nemotron\cuda_engine.zig:263: comment past 120 columns
+zig\src\families\nemotron\cuda_engine.zig:326: comment past 120 columns
+zig\src\families\nemotron\cuda_mtp.zig:174: comment past 120 columns
+zig\src\families\nemotron\cuda_mtp.zig:240: comment past 120 columns
+zig\src\families\nemotron\cuda_segments.zig:1: comment past 120 columns
+zig\src\families\nemotron\cuda_segments.zig:64: comment past 120 columns
+zig\src\families\nemotron\cuda_triton.zig:106: comment past 120 columns
+zig\src\families\nemotron\cuda_triton.zig:113: comment past 120 columns
+zig\src\families\nemotron\encoder.zig:19: comment past 120 columns
+zig\src\families\nemotron\encoder.zig:55: comment past 120 columns
+zig\src\families\nemotron\forward.zig:31: comment past 120 columns
+zig\src\families\nemotron\forward.zig:91: comment past 120 columns
+zig\src\families\nemotron\head_block.zig:21: comment past 120 columns
+zig\src\families\nemotron\layers.zig:59: comment past 120 columns
+zig\src\families\nemotron\mtp.zig:193: comment past 120 columns
+zig\src\families\nemotron\prefill_launch.zig:59: comment past 120 columns
+zig\src\families\nemotron\prefill_launch.zig:130: comment past 120 columns
+zig\src\families\nemotron\prefill_mixers.zig:1: comment past 120 columns
+zig\src\families\nemotron\round_depth.zig:1: comment past 120 columns
+zig\src\families\nemotron\simd_attention.zig:1: comment past 120 columns
+zig\src\families\nemotron\simd_attention.zig:5: comment past 120 columns
+zig\src\families\nemotron\simd_attention.zig:88: comment past 120 columns
+zig\src\families\nemotron\timing.zig:72: comment past 120 columns
+zig\src\families\nemotron\weights.zig:238: comment past 120 columns
+zig\src\families\qwen3_5\qualify.zig:1: comment past 120 columns
+zig\src\main.zig:226: comment past 120 columns
+zig\src\native\cache_fit.zig:1: comment past 120 columns
+zig\src\native\cache_fit.zig:14: multi-line comment
+zig\src\native\cache_fit.zig:14: comment past 120 columns
+zig\src\native\flashnext_host.zig:1: multi-line comment
+zig\src\native\flashnext_host.zig:403: multi-line comment
+zig\src\native\flashnext_host.zig:403: comment past 120 columns
+zig\src\native\flashnext_host.zig:424: comment past 120 columns
+zig\src\native\metal.zig:1: comment past 120 columns
+zig\src\server\chat.zig: 611 lines (split past 600)
+zig\src\server\chat.zig:336: comment past 120 columns
+zig\src\server\chat.zig:416: comment past 120 columns
+zig\src\server\chunk_plan.zig:1: comment past 120 columns
+zig\src\server\effort_values_test.zig:1: multi-line comment
+zig\src\server\hf_text.zig:23: comment past 120 columns
+zig\src\server\log.zig:99: comment past 120 columns
+zig\src\server\messages.zig:24: multi-line comment
+zig\src\server\messages.zig:42: multi-line comment
+zig\src\server\messages.zig:76: multi-line comment
+zig\src\server\messages.zig:101: multi-line comment
+zig\src\server\messages.zig:102: multi-line comment
+zig\src\server\messages.zig:169: comment past 120 columns
+zig\src\server\messages.zig:174: multi-line comment
+zig\src\server\messages.zig:175: multi-line comment
+zig\src\server\messages.zig:189: multi-line comment
+zig\src\server\messages.zig:257: comment past 120 columns
+zig\src\server\metrics.zig:288: multi-line comment
+zig\src\server\model_text.zig:26: comment past 120 columns
+zig\src\server\prompt.zig:60: comment past 120 columns
+zig\src\server\prompt.zig:63: comment past 120 columns
+zig\src\server\prompt.zig:73: multi-line comment
+zig\src\server\prompt.zig:79: multi-line comment
+zig\src\server\prompt.zig:79: comment past 120 columns
+zig\src\server\prompt.zig:80: multi-line comment
+zig\src\server\prompt.zig:80: comment past 120 columns
+zig\src\server\prompt.zig:81: multi-line comment
+zig\src\server\prompt.zig:81: comment past 120 columns
+zig\src\server\prompt.zig:82: multi-line comment
+zig\src\server\reply_parity.zig:1: multi-line comment
+zig\src\server\reply_parity.zig:2: multi-line comment
+zig\src\server\reply_parity.zig:3: multi-line comment
+zig\src\server\reply_parity.zig:4: multi-line comment
+zig\src\server\reply_parity.zig:4: comment past 120 columns
+zig\src\server\serve.zig:1: comment past 120 columns
+zig\src\server\serve.zig:38: comment past 120 columns
+zig\src\server\serve.zig:49: comment past 120 columns
+zig\src\server\server.zig:233: multi-line comment
+zig\src\server\server.zig:356: comment past 120 columns
+zig\src\server\sse.zig:1: comment past 120 columns
+zig\src\server\tool_params.zig:105: comment past 120 columns
+zig\src\server\tool_parse.zig:1: comment past 120 columns
+zig\src\server\tool_parse.zig:29: multi-line comment
+zig\src\server\tool_parse.zig:473: multi-line comment
+zig\src\server\tool_parse.zig:474: multi-line comment
+zig\src\server\tool_parse.zig:474: comment past 120 columns
+zig\src\server\tool_parse.zig:475: multi-line comment
+zig\src\server\tool_parse.zig:476: multi-line comment
+zig\src\server\tool_parse.zig:519: comment past 120 columns
+zig\src\server\tool_stream.zig:303: comment past 120 columns
+zig\src\server\tool_streaming.zig:1: comment past 120 columns
+zig\tests\cuda\bench.zig:17: comment past 120 columns
+zig\tests\cuda\box\run.sh:2: comment past 120 columns
+zig\tests\cuda\main.zig:1: comment past 120 columns
+zig\tests\cuda\nemotron\box\build.sh:2: comment past 120 columns
+zig\tests\cuda\nemotron\box\capture.sh:2: comment past 120 columns
+zig\tests\cuda\nemotron\box\zrun.sh:2: comment past 120 columns
+zig\tests\cuda\nemotron\capture.py:2: docstring past 120 columns
+zig\tests\cuda\nemotron\test_aot_manifest.py:2: multi-line docstring
+zig\tests\cuda\oracle\oracle.py:1: docstring past 120 columns
+zig\tests\cuda\oracle\oracle.py:82: docstring past 120 columns
+zig\tests\cuda\oracle\sass_compare.py:1: docstring past 120 columns
+zig\tests\cuda\runtime_tests.zig:263: comment past 120 columns
+zig\tests\dispatch_bench.zig:1: comment past 120 columns
+zig\tests\fabric_handoff.zig:1: comment past 120 columns
+zig\tests\fabric_library.zig:1: comment past 120 columns
+zig\tests\fabric_vectors.zig:1: comment past 120 columns
+zig\tests\flashnext_bench.zig:1: multi-line comment
+zig\tests\flashnext_bench.zig:2: multi-line comment
+zig\tests\flashnext_bench.zig:65: comment past 120 columns
+zig\tests\flashnext_bench.zig:115: multi-line comment
+zig\tests\flashnext_bench.zig:165: multi-line comment
+zig\tests\flashnext_reuse.zig:92: comment past 120 columns
+zig\tests\flashnext_reuse.zig:182: comment past 120 columns
+zig\tests\flashnext_run.zig: 1689 lines (split past 600)
+zig\tests\flashnext_run.zig:1: multi-line comment
+zig\tests\flashnext_run.zig:2: multi-line comment
+zig\tests\flashnext_run.zig:220: comment past 120 columns
+zig\tests\flashnext_run.zig:761: multi-line comment
+zig\tests\flashnext_run.zig:827: multi-line comment
+zig\tests\flashnext_run.zig:1307: multi-line comment
+zig\tests\flashnext_run.zig:1392: multi-line comment
+zig\tests\flashnext_run.zig:1440: multi-line comment
+zig\tests\flashnext_run.zig:1441: multi-line comment
+zig\tests\glm_run.zig:1: comment past 120 columns
+zig\tests\grid_sync_bench.zig:1: comment past 120 columns
+zig\tests\linktest_suite.zig:1: comment past 120 columns
+zig\tests\nemotron_dense.zig:1: comment past 120 columns
+zig\tests\nemotron_dense.zig:11: comment past 120 columns
+zig\tests\nemotron_dense.zig:100: comment past 120 columns
+zig\tests\nemotron_dense.zig:292: comment past 120 columns
+zig\tests\nemotron_experts.zig:1: comment past 120 columns
+zig\tests\nemotron_experts.zig:126: comment past 120 columns
+zig\tests\nemotron_prefill_check.zig:1: comment past 120 columns
+zig\tests\nemotron_sample_check.zig:1: comment past 120 columns
+zig\tests\nemotron_wide.zig:1: comment past 120 columns
+zig\tests\nemotron_wide.zig:244: comment past 120 columns
+zig\tests\ordering.zig:1: comment past 120 columns
+zig\tests\ordering.zig:29: comment past 120 columns
+zig\tests\row_projection_check.zig:1: comment past 120 columns
+zig\tests\row_projection_check.zig:19: comment past 120 columns
+zig\tests\row_projection_check.zig:163: comment past 120 columns
+zig\tests\server\build.sh:2: comment past 120 columns
+zig\tests\server\freeze_cases.py:1: docstring past 120 columns
+zig\tests\server\freeze_cases.py:151: comment past 120 columns
+zig\tests\server\golden_check.zig:39: comment past 120 columns
+zig\tests\server\golden_check.zig:133: comment past 120 columns
+zig\tests\server\wire.py:52: docstring past 120 columns
+zig\tests\server\zig_test.sh:2: comment past 120 columns
+zig\tests\tp2_bench.zig:1: comment past 120 columns
+zig\tests\wide_heads.zig:46: comment past 120 columns
+zig\tests\wide_probe.zig:1: comment past 120 columns
+zig\tests\wide_probe.zig:264: comment past 120 columns
+zig\tests\wide_trees.zig:1: comment past 120 columns
+zig\tests\wide_trees.zig:126: comment past 120 columns
+zig\tests\wide_trees.zig:156: comment past 120 columns
+tools\zig\check_prefill_layers.py:1: docstring past 120 columns
+tools\zig\check_prefill_model.py:1: docstring past 120 columns
+tools\zig\check_prefill_ops.py:1: docstring past 120 columns
+tools\zig\flashnext_dump.py:1: multi-line docstring
+tools\zig\flashnext_hc_coalesce.py:1: multi-line docstring
+tools\zig\gen_glm_kernels.py:43: comment past 120 columns
+tools\zig\glm_compare.py:1: docstring past 120 columns
+tools\zig\glm_ref.py:1: docstring past 120 columns
+tools\zig\glm_ref.py:96: docstring past 120 columns
+tools\zig\glm_ref.py:122: docstring past 120 columns
+tools\zig\oracle_nemotron_rows.py:38: docstring past 120 columns
+tools\zig\prefill_dump.py:1: docstring past 120 columns
+tools\zig\prefill_glue.py:1: docstring past 120 columns
+tools\zig\prefill_kernels.py:34: docstring past 120 columns
+tools\zig\prefill_launch.py:1: docstring past 120 columns
+tools\zig\prefill_launch.py:173: docstring past 120 columns
+tools\zig\prefill_swap.py:1: docstring past 120 columns
+tools\zig\reuse_served.py:131: docstring past 120 columns
+tools\zig\reuse_served.py:230: comment past 120 columns
+tools\zig\reuse_served.py:252: docstring past 120 columns
+tools\zig\reuse_served.py:288: docstring past 120 columns
+tools\zig\reuse_served.py:370: multi-line docstring
+tools\zig\reuse_served.py:396: docstring past 120 columns
+tools\zig\reuse_served.py:418: docstring past 120 columns
+tools\zig\reuse_served.py:435: docstring past 120 columns
+tools\zig\test_fabric.sh:2: comment past 120 columns
+tools\zig\test_lanes.sh:2: comment past 120 columns
+tools\zig\tokenizer_parity.py:1: docstring past 120 columns
+tools\zig\triton_aot_manifest.py:2: docstring past 120 columns
+tools\zig\unicode_tables.py:1: docstring past 120 columns
+853 files, 1490 problems

@@ -1,0 +1,107 @@
+[
+  {
+    "path": "fixtures/context-1048320-rep-0.json.gz",
+    "tokens": 1048320,
+    "json_sha256": "3612c555baf9a9d496bb35e5c76e2152e3b44294366ef0051090d3d59f9a840e",
+    "expected": {
+      "amber": "36124181",
+      "cobalt": "42250465",
+      "tulip": "24851640"
+    },
+    "needle_token_positions": [
+      104829,
+      524140,
+      943451
+    ]
+  },
+  {
+    "path": "fixtures/context-2048-rep-0.json.gz",
+    "tokens": 2048,
+    "json_sha256": "f3a69adfef05ab2972fb7bb1a20263452963f2bb0446536746e2596194154bfc",
+    "expected": {
+      "amber": "17264495",
+      "cobalt": "89634039",
+      "tulip": "20637038"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  {
+    "path": "fixtures/context-2048-rep-1.json.gz",
+    "tokens": 2048,
+    "json_sha256": "ab400b7c519e7d11ade4d03d09785635bb8523a31984e518247129e14c56b793",
+    "expected": {
+      "amber": "30540564",
+      "cobalt": "56215554",
+      "tulip": "56334130"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  {
+    "path": "fixtures/context-2048-rep-2.json.gz",
+    "tokens": 2048,
+    "json_sha256": "f6ba7a265113018954f999831da70a012a6bd732aba7a1a3f9c035565aa0f8ef",
+    "expected": {
+      "amber": "31841436",
+      "cobalt": "37333386",
+      "tulip": "92791676"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  {
+    "path": "fixtures/context-65536-rep-0.json.gz",
+    "tokens": 65536,
+    "json_sha256": "12e1845adcfa6d76fa4a82c5e08899a18e046aa18a65445c374ed148d72549a7",
+    "expected": {
+      "amber": "86916451",
+      "cobalt": "71008599",
+      "tulip": "57479154"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  },
+  {
+    "path": "fixtures/context-65536-rep-1.json.gz",
+    "tokens": 65536,
+    "json_sha256": "c80da2745375c17ee6730adafdebc9676367a582c3fcb0b463a989afffe5a59a",
+    "expected": {
+      "amber": "21352616",
+      "cobalt": "73675739",
+      "tulip": "72270067"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  },
+  {
+    "path": "fixtures/context-65536-rep-2.json.gz",
+    "tokens": 65536,
+    "json_sha256": "cc12c19f5a0d8e5a81806bf8a106bdb18c77699431a3ad2dedccfb90e6b02207",
+    "expected": {
+      "amber": "66063117",
+      "cobalt": "90410516",
+      "tulip": "72599225"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  }
+]
