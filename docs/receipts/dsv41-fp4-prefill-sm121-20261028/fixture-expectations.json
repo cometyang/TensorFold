@@ -1,0 +1,86 @@
+{
+  "context-2048-rep-0": {
+    "expected": {
+      "amber": "75993151",
+      "cobalt": "29580431",
+      "tulip": "59757462"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  "context-2048-rep-1": {
+    "expected": {
+      "amber": "30294399",
+      "cobalt": "30389253",
+      "tulip": "60272661"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  "context-2048-rep-2": {
+    "expected": {
+      "amber": "25692891",
+      "cobalt": "39396373",
+      "tulip": "55225339"
+    },
+    "needle_token_positions": [
+      202,
+      1004,
+      1806
+    ]
+  },
+  "context-65536-rep-0": {
+    "expected": {
+      "amber": "57979581",
+      "cobalt": "60691031",
+      "tulip": "48235714"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  },
+  "context-65536-rep-1": {
+    "expected": {
+      "amber": "13605807",
+      "cobalt": "53745414",
+      "tulip": "39871149"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  },
+  "context-65536-rep-2": {
+    "expected": {
+      "amber": "19214993",
+      "cobalt": "72374516",
+      "tulip": "82307134"
+    },
+    "needle_token_positions": [
+      6551,
+      32748,
+      58945
+    ]
+  },
+  "context-1048320-rep-0": {
+    "expected": {
+      "amber": "92477660",
+      "cobalt": "26845612",
+      "tulip": "84381561"
+    },
+    "needle_token_positions": [
+      104829,
+      524140,
+      943451
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "tools/dsv41-zig/fp4_index/cuda_build.py": "80c60520330ac9e2bfed63719b75d474169e97ecba5dcefa99eca29134e1706f",
+  "tools/dsv41-zig/fp4_index/build.py": "2fd29792a0526ec644c1391fe95366cdbe738174631a07c32e01f3209ffe95ce",
+  "tools/dsv41-zig/fp4_index/check.py": "62d21b88ed9a60a631a0da0e915632edc0a75fd56e39e991bcabdacaca90689b",
+  "zig/kernels/cuda/dsv41/index_fp4_prefill.cuh": "daa36ed1f68e0501d8f178cd4edc227e81b68928e1f982b8ed48ff35688500c0"
+}

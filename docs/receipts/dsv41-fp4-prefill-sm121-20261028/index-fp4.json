@@ -1,0 +1,342 @@
+{
+  "schema_version": 2,
+  "index_heads": 32,
+  "index_head_dim": 128,
+  "query_stride_bytes": 8192,
+  "base_manifest_sha256": "29dccbcfdfc327a2ca83f40eb88c2bad83f9f61128e0cd27c29a1243d6fcd603",
+  "kernel_source_sha256": "ecde90786f474b444f9b6bf912954165ee84b04578785684e119085797e9ff99",
+  "cuda_source_sha256": "7fa68243fa1065ddc16d9fbbccf94e3429ea361c19fea674378f49e66e597994",
+  "triton_version": "3.7.1",
+  "arch": 121,
+  "variants": [
+    {
+      "function": "_fp4qd_p2",
+      "original_hash": "4cbef72dc5f63daf7ed37c432616f819a2982508023f6b234c812587deb831eb",
+      "native_hash": "ef24ae9979f21e59be348147d9d003727bacf9049dadd514fb21dde8a1b7ac2e",
+      "warps": 4,
+      "shared": 32,
+      "native_fp4_mma": false
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "10273a67ea4d26c6937ddd2829feaf94aff72a7b9e33fd656137f41d308cf0d2",
+      "native_hash": "478aa62a068a79ecadbf278aaaba5ebe5406c1a03d86fde6acc8d3fe9e304d29",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "10540f660126d0fab185239bb027755ad78d53913e5371160bfc4da2d7e53c27",
+      "native_hash": "b3e5960a0099a497893706b0c244e426329c1dd2307f935838bec3a2d4b20df4",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "34247d211cd2b125e4645326dbdeda08fb447f3fb63b7ae12ef5197dc4b171ea",
+      "native_hash": "4a027e380d65576a218a72568ae3653c81e46130541f8e06ee127fb7d98c15c6",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "3532848d6a9bbd149676d618bd5c9fae673a7613c152fb95b8443dcffcc6358e",
+      "native_hash": "692f03b2ac88e00683995dd4b6919303e5c59f2ee202cf131df8709e990e35ac",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "45c81d58936386feb20ba7ac132fee630390fed21912ec12cbd45ce58b54b4d0",
+      "native_hash": "b607d836bcad6d8412e2ebbb35144fe4383b13a0ec4bd45507caf553783cc415",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "47f0e84a1aa7ce44279c447d3b183149f8221737414717a37ab62e85acf6177a",
+      "native_hash": "d7bd0ad5203810e37366c1e72dc60ddd34a92bc1a9e8a85d2bd90c8bc06fe29b",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "4f7102c6995738ffbf34065563869f2fc531a33b1b2860cf02fbcf8b5189f9a8",
+      "native_hash": "11a875dbbf6172a7a75fe8c27900e7b5444c0e961870ca44196be40a3ac0d189",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "5f4fceb20cc90928edc5817ae84be1911603eccb848a2be2a7261d07ef9c6fc8",
+      "native_hash": "275676e7332987b2615cbad79b4b25eb0096499d21837ecb42c2d88a701c931e",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "670fc9ffa053cf8fc1307bbca7728d8b0345e657bb3fcdddadd501c2cc7158bb",
+      "native_hash": "12235564a06680fb9e0db2b04395e33ee51ef2898adbe5761614640ab099883a",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "783ccfff9e0c16d8a2b7e1129fb1af037e25940b341811ce26f0f31cb005cde0",
+      "native_hash": "da53650b3f3b09f38fa513b6f2e2d0183ef0cf3a30ff915da3886f6d35fd01ee",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "9f83460754f19b002aa31c5c2a4c76a940651e4896b24a5bfd764f84144f8557",
+      "native_hash": "0300512ef476bfd213092a11ce2e8b2678bfc3d6f794cef8d365cb043a194fae",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "a0120ddd246a39f7992e280c1fa1626b820098e70b70e0d7051409e2df6570e0",
+      "native_hash": "5ff07fb703333071beafd89a86427f7dbad7c728d8538ac7b0809d731e19e7c5",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "a2b4fcc6e9c883e01cbe7cdd0a585cd45c5100dd83a493bdf8c7c0f946d21cce",
+      "native_hash": "ac3ffdb01f17529866e381380557aae4a3cf958bb4fb1b9a97b1cddb1560fade",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "aea8711239ef4810fd7a26e4244d338321a38dd317b23b404b09165b776ee6ad",
+      "native_hash": "61b1f49fca741e5c26c8bb8a2213df3a6c5596b70afa2c9b84c5827dcdb65084",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "b000387af8a9f4e5c934b4e9d9c3a2df5127c2c9330c5db3b9955e92998ba1e5",
+      "native_hash": "8ec204521bd7bbc5243557e149130229bc816aa39a933f9fab9ec566ab15a74e",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score",
+      "original_hash": "fa1370b0f6cbf040aafb8743411cb956e3b4cb7ef7033ee18c595241e722d10b",
+      "native_hash": "d343420cc62b58fe0c10205623bacde258b14844a573df4954a63defaef8d785",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_cand",
+      "original_hash": "d4803fb4e31639c64bec9bd93314ca5fa7035fbdd501a4808260c307c4f5ac1e",
+      "native_hash": "d3ba18c734b3bf8435be4e786b4fd59350c0f36a6e08a0692f2ba627cdf2b853",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "080891456c1acefc77bc26169a80afa34d766060a19e4f5381ba5627e619e1f9",
+      "native_hash": "b6f5f3256ab8ceb2ff7f311d2f4617bd47052f4af6617bba3fdde8b9fc569a89",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "12bb6916de54d9bcc4ddd93bc7daac840ef4ef3a223c9e5dae8f3d4b7d508ae8",
+      "native_hash": "b822bf4b079f3c93f0a426cec9a3312d31b2fac58e528697ec4b5679be34ca5c",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "142a77750b8762f2c9ce8bb8d2acc166da95e72ba2c1c70dce4b4824ad8e1f88",
+      "native_hash": "4e4c2113a484e1be66c6f96627b1c5fb0740f433bb88d79f64705f688b345bba",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "61e324b24318037a7ae60dccf28bfbd5872af596fcfc98c8763ba2422450dcc5",
+      "native_hash": "aa08060b8881fdf808051e1819c9d654bf678026c2bbc0c675adf7c65141179a",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "6ab60cc3ab3241af4c17c5e1fddfca94b8a68664ac643924b4868a28436a2c11",
+      "native_hash": "474480c48236274d82ddb6360af43ea902a328e42cab8d4ac56bea952b5e7b95",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "6adef2aec3bf0a8c0604f47785bbf06faab23b003caf768c72fd9607384f1427",
+      "native_hash": "c2835ae28bf8078e2f91e0af684779ead58e3b796cf92907a937f44138566c46",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "6cf7cf3b37d32ae80b36f4b8bbf1e60e4744f52c729b9028c094f7bdb8f62aac",
+      "native_hash": "a9bfdb4f41879b30ba70d46ea6837605f449736dd3079eb14f3d18d4bddb49cf",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "72cbccd5978943b797af8aea4195b0b1b4f8b7f525945ff81a3b294d1aaae786",
+      "native_hash": "9b197fac420c5a9aa6e2273f97a98051c4bd41e0594816e77913ce02df51fbf2",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "739ce7419dfdf57e96443ca0e889b65ebc2a08204a7253b6ab9ace6194015094",
+      "native_hash": "7270ea4813fa678483d396cd452aa013030fd92f61dfc23ec1aa0f2ffafe72e6",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "837472e24d9e463a572c72ce548a5a2701025a6b96d5a216d538402024eb7a77",
+      "native_hash": "81f664fb34b49b518b9c1411135f4ac47270386b976e76d5fb50e6dacdbb925a",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "8d0b03599dbc8f8c720a1bcb89aefb469af071a9d923b616af8db961d40457a6",
+      "native_hash": "be1223a36267cc3a94cbf260441a934f35d6bf8ac445f50bc9a7277c6c7a68bc",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "90a832261fa662a8bef4d554323bf6ab12d594a78683f3b06334db92d918dcfc",
+      "native_hash": "8b244086c8dbbcf9492f4c74f6f7057c36f0e4e5121ca4958019e8b2e4cf54f6",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "9144a366893521c32e04cee435dc439bb5318daf5738d8d13d71ca26ca2c9953",
+      "native_hash": "88611b6c5e847f780a788b5f4005d6fa6785759585b3bfbf0b34c3d5dde0da2c",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "9a847a94c0176ab44101f5dd471e4b381b86c67be9817942c17da75286cf4c58",
+      "native_hash": "447a62e04218990048acbda638fbcc3678d5bb3507010635b4a01bf1887de3b5",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "ae856a972019fcbd16f6a4014cb56a1fea39c8cd4d5eb86f4efd9d8557b424db",
+      "native_hash": "7070199aa44ed7d5e14addca269a1ae73e705b1e462548db5332455c4d933ba7",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "afc56d51b8788c973545decace052888147a99c12c4a0b1b4bdea9d9a3a83f94",
+      "native_hash": "b36e1ca2eb3003267e5fe38991c80d482567cc6551f1a8afd0ae1f30af58603f",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "be2d90637413ed2c7e911a64dcc99d66ec32036f7bb762b22933078e0474c180",
+      "native_hash": "845c7524b35cc4fa7f3871a1931264344e81457b83031850f716f74aac72959f",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "bf7aab320d4abc306683f6558faf5d409aee10e0f3c8497caba80adc2c030305",
+      "native_hash": "b26853691c30d8fe715ad5f80bcee92fea802cd6b54fe56c267f1942e96c42a2",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "c309dba57b66c076868ed3589683972de181d8c8e827668decf065e629c5222a",
+      "native_hash": "b02f3260737fe660c3db6fd9efa9da7a703b2cf1aa154de36abec2667b7da33f",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "e27a84b6d5f997aa68ac7266c9305ec4de376a7342a28f5e5973adea92abaeac",
+      "native_hash": "e7576201400811673318fb7a3b90db76bf60be19482e88d7eaa6493b420418a4",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "e3ead943889149d17f4f764cd5089d67af3c50f1e50d3a4d39bbd6963577f186",
+      "native_hash": "7e5fda7715309224a75dd49de0a7175021a2dda9de4d98be273cd79c7d4417da",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "e578105bd3e6dd24266d4ba62bcf7087b50ab63be473107dd213f352f1c906fd",
+      "native_hash": "04e3569f8648eb7e1ae34bc9a271b3ac42754dad65ca6b6079dafaba1b2c4930",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    },
+    {
+      "function": "_index_score_rows",
+      "original_hash": "ee2ee030c8bafa9049c1d1bbf20b1bec33a4d3a766f03b4d366ebc6193e92d38",
+      "native_hash": "42e397cd4649e6dd5c3dbe80b1e2fe6812f6a74012cd7e7ad967419fc1b5be9d",
+      "warps": 4,
+      "shared": 0,
+      "native_fp4_mma": true
+    }
+  ],
+  "cuda_prefill_source_sha256": "daa36ed1f68e0501d8f178cd4edc227e81b68928e1f982b8ed48ff35688500c0"
+}

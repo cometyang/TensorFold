@@ -1,0 +1,10 @@
+{
+  "samples": 12,
+  "sample_errors": 0,
+  "observed_max_mhz": {
+    "rank0": 2177.0,
+    "rank1": 2177.0
+  },
+  "violations": [],
+  "requested_ceiling_mhz": 2200
+}

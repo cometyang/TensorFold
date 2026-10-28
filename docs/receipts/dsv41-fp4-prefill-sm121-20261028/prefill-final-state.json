@@ -1,0 +1,17 @@
+{
+  "restored_on_both": true,
+  "ranks": [
+    {
+      "rank": "rank0",
+      "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+      "running": true,
+      "clocks_mhz": "2190, 2190"
+    },
+    {
+      "rank": "rank1",
+      "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+      "running": true,
+      "clocks_mhz": "2177, 2177"
+    }
+  ]
+}

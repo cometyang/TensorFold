@@ -1,0 +1,26 @@
+{
+  "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+  "health": {
+    "status": "ok",
+    "model": "DeepSeek-V4.1-Flash-1017",
+    "model_ids": [
+      "DeepSeek-V4.1-Flash-1017",
+      "DeepSeek-V4.1-Flash-1017-EXL3",
+      "DeepSeek-v4.1-Flash-EXL3",
+      "deepseek-v4-flash-0731"
+    ],
+    "max_batch_size": 2,
+    "warming": false,
+    "memory": {
+      "active": 112698042660,
+      "cache": 0,
+      "peak": 112698042660
+    },
+    "live": {
+      "connections": 0,
+      "waiting": 0,
+      "decode_tokens_per_second": 0.0,
+      "prefill_tokens_per_second": 0.0
+    }
+  }
+}

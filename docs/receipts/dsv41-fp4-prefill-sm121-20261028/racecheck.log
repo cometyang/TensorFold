@@ -1,0 +1,26 @@
+========= COMPUTE-SANITIZER
+{"variant": 1, "function": "_index_score_rows", "passed": true}
+{"variant": 2, "function": "_index_score_rows", "passed": true}
+{"variant": 3, "function": "_index_score_rows", "passed": true}
+{"variant": 4, "function": "_index_score_rows", "passed": true}
+{"variant": 5, "function": "_index_score_rows", "passed": true}
+{"variant": 6, "function": "_index_score_rows", "passed": true}
+{"variant": 7, "function": "_index_score_rows", "passed": true}
+{"variant": 8, "function": "_index_score_rows", "passed": true}
+{"variant": 9, "function": "_index_score_rows", "passed": true}
+{"variant": 10, "function": "_index_score_rows", "passed": true}
+{"variant": 11, "function": "_index_score_rows", "passed": true}
+{"variant": 12, "function": "_index_score_rows", "passed": true}
+{"variant": 13, "function": "_index_score_rows", "passed": true}
+{"variant": 14, "function": "_index_score_rows", "passed": true}
+{"variant": 15, "function": "_index_score_rows", "passed": true}
+{"variant": 16, "function": "_index_score_rows", "passed": true}
+{"variant": 17, "function": "_index_score_rows", "passed": true}
+{"variant": 18, "function": "_index_score_rows", "passed": true}
+{"variant": 19, "function": "_index_score_rows", "passed": true}
+{"variant": 20, "function": "_index_score_rows", "passed": true}
+{"variant": 21, "function": "_index_score_rows", "passed": true}
+{"variant": 22, "function": "_index_score_rows", "passed": true}
+{"variant": 23, "function": "_index_score_rows", "passed": true}
+{"passed": true, "score_variants": 23, "base_patterns": 2}
+========= RACECHECK SUMMARY: 0 hazards displayed (0 errors, 0 warnings)

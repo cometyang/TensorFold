@@ -92,6 +92,8 @@ def main():
                 'kernel_source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
                 'cuda_source_sha256': hashlib.sha256((Path(__file__).resolve().parents[3] /
                     'zig/kernels/cuda/dsv41/index_fp4.cuh').read_bytes()).hexdigest(),
+                'cuda_prefill_source_sha256': hashlib.sha256((Path(__file__).resolve().parents[3] /
+                    'zig/kernels/cuda/dsv41/index_fp4_prefill.cuh').read_bytes()).hexdigest(),
                 'triton_version': triton.__version__, 'arch': 121, 'variants': changed}
     (out / 'index-fp4.json').write_text(json.dumps(metadata, indent=2) + '\n')
     (out / 'aot.json').write_text(json.dumps({'generator': 'fp4_index/build.py', 'kernels': native}, indent=1) + '\n')

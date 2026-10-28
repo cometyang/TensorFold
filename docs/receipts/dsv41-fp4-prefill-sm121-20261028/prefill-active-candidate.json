@@ -1,0 +1,18 @@
+[
+  {
+    "rank": "rank0",
+    "image": "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+    "index_env": {
+      "TF_DS_INDEX_FP4_AOT": "/opt/tensorfold/share/dsv41-index-fp4"
+    },
+    "catalog_sha256": "9469ec3965f96c573bda72307d44e4a6d9825285048aac39f5d26aaadc7ca083"
+  },
+  {
+    "rank": "rank1",
+    "image": "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+    "index_env": {
+      "TF_DS_INDEX_FP4_AOT": "/opt/tensorfold/share/dsv41-index-fp4"
+    },
+    "catalog_sha256": "9469ec3965f96c573bda72307d44e4a6d9825285048aac39f5d26aaadc7ca083"
+  }
+]

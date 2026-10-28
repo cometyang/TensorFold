@@ -54,8 +54,20 @@ def compile_score(entry, out):
         call = f'const int r=blockIdx.x; const bool reload=true; const int64_t key_vis={value("VIS")}[r]; ' + call
     pdl = ('asm volatile("griddepcontrol.wait;"); asm volatile("griddepcontrol.launch_dependents;");'
            if constants.get('PDL', 0) else '')
-    source = '#include "index_fp4.cuh"\nextern "C" __global__ __launch_bounds__(128) void '
-    source += name + '(' + parameters + ') { ' + pdl + ' __shared__ tf_index_fp4::Shared sm; ' + call + ' }\n'
+    prefill = rows and bool(constants.get('TREE', 0))
+    if prefill:
+        if constants.get('HAS_BASE', 0) or constants.get('HAS_CAND', 0):
+            raise ValueError('prefill specialization does not support pool bases or candidate masks')
+        call = f'const int first={start}, end={end}; '
+        call += 'tf_index_fp4::prefill<' + str(constants.get('KEYS', 0)) + ','
+        call += str(constants.get('HAS_TMAX', 0)) + '>('
+        call += ','.join(['sm', value('Q'), value('K'), value('KS'), value('Wt'), value('VIS'), value('OUT'),
+                         value('n'), 'reinterpret_cast<int64_t*>(' + value('TMAX') + ')', value('nt'),
+                         'first', 'end']) + ');'
+    header = 'index_fp4_prefill.cuh' if prefill else 'index_fp4.cuh'
+    storage = 'PrefillShared' if prefill else 'Shared'
+    source = '#include "' + header + '"\nextern "C" __global__ __launch_bounds__(128) void '
+    source += name + '(' + parameters + ') { ' + pdl + ' __shared__ tf_index_fp4::' + storage + ' sm; ' + call + ' }\n'
     path = directory / (name + '.cu')
     path.write_text(source)
     cubin = directory / (name + '.cubin')
