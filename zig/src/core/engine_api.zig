@@ -61,6 +61,9 @@ pub const Request = struct {
     prompt: []const u32,
     /// The prompt's images in order, each span inside the prompt (its positions hold the image token).
     images: []const Image = &.{},
+    /// The prompt as the prompt cache keys it, one id for each of its tokens: an image position's id made from the picture's
+    /// content (two pictures never share a kept state, one picture always does); empty: the prompt itself.
+    cache_key: []const u32 = &.{},
     max_tokens: u32,
     sampling: ?Sampling = null,
     /// Tokens that end the reply as ``stop`` (the token is delivered); empty when the request ignores EOS.

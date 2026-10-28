@@ -86,8 +86,8 @@ pub const LaneHost = struct {
         fn kept(ptr: *anyopaque, s: *lanes.Stream, at: u32) void {
             const job: *Job = @ptrCast(@alignCast(ptr));
             job.reported(); // before a keep can evict the entry the pass restored
-            if (job.request.images.len > 0) return; // a kept state is keyed by tokens: an image's are its placeholder's
-            if (job.host.cache) |store| _ = store.keep(job.request.prompt, at, s, job.request.chunks);
+            if (!cacheable(job.request)) return;
+            if (job.host.cache) |store| _ = store.keep(keyOf(job.request), at, s, job.request.chunks);
         }
 
         /// Report a restored prefix or its failed copy; an untouched prefix remains kept.
@@ -97,9 +97,21 @@ pub const LaneHost = struct {
             const store = job.host.cache orelse return;
             if (!job.started) return;
             job.stream.reuse.saved = null; // the backend restores before its first chunk; a later keep may free it
-            if (job.stream.reuse_failed) store.resumed(e, job.request.prompt, false) else if (job.stream.cached == e.at) store.resumed(e, job.request.prompt, true);
+            if (job.stream.reuse_failed) store.resumed(e, keyOf(job.request), false) else if (job.stream.cached == e.at) store.resumed(e, keyOf(job.request), true);
         }
     };
+
+    /// The ids the prompt cache keys a request by: its prompt, or with images the prompt with each picture's positions made
+    /// from the picture's content (Request.cache_key).
+    /// Whether the cache may serve or keep a request: without images always; with them only when the server keyed their
+    /// positions by content (a kept state is found by tokens, and every picture's positions hold the same placeholder).
+    fn cacheable(r: *const Request) bool {
+        return r.images.len == 0 or r.cache_key.len == r.prompt.len;
+    }
+
+    fn keyOf(r: *const Request) []const u32 {
+        return if (r.cache_key.len == r.prompt.len) r.cache_key else r.prompt;
+    }
 
     pub fn init(gpa: Allocator, io: std.Io, core: *lanes.Engine, info_: Info) LaneHost {
         var enforced = info_;
@@ -340,7 +352,7 @@ pub const LaneHost = struct {
         const r = job.request;
         var reuse: lanes.stream.Reuse = .{};
         // the entry stays alive until the backend restores it: nothing keeps between here and this stream's own pass
-        if (r.images.len == 0) if (h.cache) |store| if (store.lookup(h.gpa, r.prompt, r.history_len, r.shared_prefixes, r.chunks)) |l| {
+        if (cacheable(r)) if (h.cache) |store| if (store.lookup(h.gpa, keyOf(r), r.history_len, r.shared_prefixes, r.chunks)) |l| {
             job.entry = l.entry;
             job.kept0 = store.counts.kept;
             job.marks = l.marks;

@@ -197,3 +197,94 @@ test "a turn's mark evicting the state it resumed from: the hit is reported firs
         try history.append(gpa, t);
     }
 }
+
+test "a turn with a picture resumes its conversation's kept state, and a different picture does not" {
+    const gpa = std.testing.allocator;
+    var cfg = try lanes.Config.init(gpa, .{ .exact_width = 8, .gpu_tokens = true, .hidden_rows = true }, 8, 7);
+    defer cfg.deinit(gpa);
+    var target: lanes.fake.Fake = .{ .gpa = gpa };
+    defer target.deinit();
+    var clock: lanes.fake.FixedClock = .{};
+    var core = lanes.Engine.init(gpa, &cfg, target.backend(), clock.clock());
+    defer core.deinit();
+    const Snaps = struct {
+        fn bytes(_: *anyopaque, at: u32) u64 {
+            return 64 + 4 * @as(u64, at);
+        }
+        fn save(ptr: *anyopaque, owner: ?*anyopaque, at: u32) anyerror!pc.Saved {
+            const f: *lanes.fake.Fake = @ptrCast(@alignCast(ptr));
+            return f.save(@ptrCast(@alignCast(owner.?)), at);
+        }
+        fn restore(_: *anyopaque, _: ?*anyopaque, _: pc.Saved) anyerror!void {
+            return error.BackendRestores;
+        }
+        fn drop(ptr: *anyopaque, saved: pc.Saved) void {
+            const f: *lanes.fake.Fake = @ptrCast(@alignCast(ptr));
+            f.drop(saved);
+        }
+    };
+    var store = pc.Store.init(gpa, .{ .ptr = &target, .vtable = &.{ .bytes = Snaps.bytes, .save = Snaps.save, .restore = Snaps.restore, .drop = Snaps.drop } }, .{ .min_gap = 4, .min_prompt = 0 }, 1 << 20);
+    defer store.deinit();
+    var host = LaneHost.init(gpa, std.testing.io, &core, .{ .lanes = 2 });
+    host.cache = &store;
+    try host.start();
+    defer host.stop();
+    const Box = struct {
+        mutex: std.Io.Mutex = .init,
+        cached: ?u32 = null,
+        done: ?Reason = null,
+        fn event(ctx: *anyopaque, _: Id, e: *const Event) void {
+            const b: *@This() = @ptrCast(@alignCast(ctx));
+            b.mutex.lockUncancelable(std.testing.io);
+            defer b.mutex.unlock(std.testing.io);
+            switch (e.*) {
+                .prefilled => |c| b.cached = c,
+                .tokens => {},
+                .finished => |f| b.done = f.reason,
+            }
+        }
+        fn wait(b: *@This()) Reason {
+            while (true) {
+                b.mutex.lockUncancelable(std.testing.io);
+                const d = b.done;
+                b.mutex.unlock(std.testing.io);
+                if (d) |r| return r;
+                std.Io.sleep(std.testing.io, .fromMilliseconds(1), .awake) catch {};
+            }
+        }
+    };
+    const e = host.engine();
+    // the picture's three positions hold the placeholder (99) in the prompt; the cache keys them by the picture
+    const turn1 = [_]u32{ 3, 1, 99, 99, 99, 5, 9, 2, 6, 5 };
+    const key_a1 = [_]u32{ 3, 1, 0x8000_0001, 0x8000_0002, 0x8000_0003, 5, 9, 2, 6, 5 };
+    const img = [_]api.Image{.{ .at = 2, .tokens = 3, .bytes = "" }};
+    var b1: Box = .{};
+    const r1: Request = .{ .prompt = &turn1, .images = &img, .cache_key = &key_a1, .max_tokens = 4, .history_len = 8 };
+    try e.submit(1, &r1, .{ .ctx = &b1, .event = Box.event });
+    try std.testing.expectEqual(Reason.length, b1.wait());
+    try std.testing.expectEqual(@as(?u32, 0), b1.cached);
+    try std.testing.expectEqual(@as(usize, 1), store.entries.items.len); // the picture prompt kept its state
+    // next turn: the same picture carried in the history, more text
+    const turn2 = [_]u32{ 3, 1, 99, 99, 99, 5, 9, 2, 6, 5, 7, 7, 4, 4 };
+    const key_a2 = [_]u32{ 3, 1, 0x8000_0001, 0x8000_0002, 0x8000_0003, 5, 9, 2, 6, 5, 7, 7, 4, 4 };
+    var b2: Box = .{};
+    const r2: Request = .{ .prompt = &turn2, .images = &img, .cache_key = &key_a2, .max_tokens = 4, .history_len = 12 };
+    try e.submit(2, &r2, .{ .ctx = &b2, .event = Box.event });
+    try std.testing.expectEqual(Reason.length, b2.wait());
+    try std.testing.expectEqual(@as(?u32, 8), b2.cached);
+    // the same tokens with another picture in those positions: same prompt ids, other key: no hit
+    const key_b: [14]u32 = .{ 3, 1, 0x8000_0101, 0x8000_0102, 0x8000_0103, 5, 9, 2, 6, 5, 7, 7, 4, 4 };
+    var b3: Box = .{};
+    const r3: Request = .{ .prompt = &turn2, .images = &img, .cache_key = &key_b, .max_tokens = 4, .history_len = 12 };
+    try e.submit(3, &r3, .{ .ctx = &b3, .event = Box.event });
+    try std.testing.expectEqual(Reason.length, b3.wait());
+    try std.testing.expectEqual(@as(?u32, 0), b3.cached);
+    // pictures without a content key (the server's TF_DS_IMAGE_CACHE=0) neither resume nor keep: the cache refuses them
+    const kept_before = store.entries.items.len;
+    var b4: Box = .{};
+    const r4: Request = .{ .prompt = &turn2, .images = &img, .max_tokens = 4, .history_len = 12 };
+    try e.submit(4, &r4, .{ .ctx = &b4, .event = Box.event });
+    try std.testing.expectEqual(Reason.length, b4.wait());
+    try std.testing.expectEqual(@as(?u32, 0), b4.cached);
+    try std.testing.expectEqual(kept_before, store.entries.items.len);
+}
