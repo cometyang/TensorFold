@@ -1,0 +1,9 @@
+{
+  "restored": true,
+  "checks": [
+    "variants-17",
+    "variants-2048",
+    "long-parity",
+    "paired microbenchmark"
+  ]
+}

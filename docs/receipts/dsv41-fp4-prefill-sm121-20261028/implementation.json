@@ -1,0 +1,28 @@
+{
+  "commit": "0a1827db3f900fa93cc5edf30fcdc68c5990689e",
+  "files": {
+    "tools/dsv41-zig/fp4_index/README.md": "e08b942f9121b257f6f4368220e2e4b5da78d119dd87ec35882fe2c9fddcb81d",
+    "tools/dsv41-zig/fp4_index/build.py": "2fd29792a0526ec644c1391fe95366cdbe738174631a07c32e01f3209ffe95ce",
+    "tools/dsv41-zig/fp4_index/check.py": "62d21b88ed9a60a631a0da0e915632edc0a75fd56e39e991bcabdacaca90689b",
+    "tools/dsv41-zig/fp4_index/cuda_build.py": "80c60520330ac9e2bfed63719b75d474169e97ecba5dcefa99eca29134e1706f",
+    "tools/dsv41-zig/fp4_index/prefill_bench.py": "2991f9a32636b710508acdb787b191aa43547aa2b3c48d576d00d9eb27f6fe4e",
+    "zig/kernels/cuda/dsv41/index_fp4_prefill.cuh": "daa36ed1f68e0501d8f178cd4edc227e81b68928e1f982b8ed48ff35688500c0"
+  },
+  "git_blob_sha256": {
+    "tools/dsv41-zig/fp4_index/README.md": "0ad1d8170d71731c91b9f407900a8961fc413180aeb8a4c817a129e455f9722f",
+    "tools/dsv41-zig/fp4_index/build.py": "7d8f995ba31530c0d136d19de99b362e117c308d4fc9382fe97cd9932986810a",
+    "tools/dsv41-zig/fp4_index/check.py": "3fae46218cab5501e1303af600d7c81baec7c49c0fabe7f6eca391128bb2e5d7",
+    "tools/dsv41-zig/fp4_index/cuda_build.py": "b05c3fc1b9a4bf25b21876ea2796f52fc056e85eb2b2030a503a75ab5977a6f9",
+    "tools/dsv41-zig/fp4_index/prefill_bench.py": "2991f9a32636b710508acdb787b191aa43547aa2b3c48d576d00d9eb27f6fe4e",
+    "zig/kernels/cuda/dsv41/index_fp4_prefill.cuh": "daa36ed1f68e0501d8f178cd4edc227e81b68928e1f982b8ed48ff35688500c0"
+  },
+  "working_tree_matches_git_after_newline_normalization": {
+    "tools/dsv41-zig/fp4_index/README.md": true,
+    "tools/dsv41-zig/fp4_index/build.py": true,
+    "tools/dsv41-zig/fp4_index/check.py": true,
+    "tools/dsv41-zig/fp4_index/cuda_build.py": true,
+    "tools/dsv41-zig/fp4_index/prefill_bench.py": true,
+    "zig/kernels/cuda/dsv41/index_fp4_prefill.cuh": true
+  },
+  "files_description": "SHA256 of compiled/tested working-tree files; existing Windows files use CRLF. Git blob hashes identify LF-normalized committed files."
+}

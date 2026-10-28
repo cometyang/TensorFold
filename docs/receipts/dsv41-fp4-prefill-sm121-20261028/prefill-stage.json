@@ -1,0 +1,7 @@
+{
+  "candidate_image": "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+  "baseline_image": "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+  "aot_sha256": "9469ec3965f96c573bda72307d44e4a6d9825285048aac39f5d26aaadc7ca083",
+  "staged_on_both": true,
+  "clock_ceiling_mhz": 2200
+}
