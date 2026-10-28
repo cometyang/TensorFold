@@ -1,0 +1,64 @@
+{
+  "quantization": [
+    {
+      "rows": 1,
+      "represented_bf16_bytes_equal": true
+    },
+    {
+      "rows": 5,
+      "represented_bf16_bytes_equal": true
+    },
+    {
+      "rows": 16,
+      "represented_bf16_bytes_equal": true
+    },
+    {
+      "rows": 33,
+      "represented_bf16_bytes_equal": true
+    }
+  ],
+  "scores": [
+    {
+      "function": "_index_score_rows",
+      "context": 2048,
+      "rows": 16,
+      "exact_output_equal": true,
+      "tile_maxima_equal": true,
+      "maximum_score_difference": 0.0,
+      "native_error_no_worse_than_baseline": true,
+      "baseline_fp64_max_error": 6.437301635742188e-05,
+      "native_fp64_max_error": 6.437301635742188e-05,
+      "baseline_ms": 0.053173333406448364,
+      "native_ms": 0.05418666700522105
+    },
+    {
+      "function": "_index_score_rows",
+      "context": 65536,
+      "rows": 16,
+      "exact_output_equal": true,
+      "tile_maxima_equal": true,
+      "maximum_score_difference": 0.0,
+      "native_error_no_worse_than_baseline": true,
+      "baseline_fp64_max_error": 9.1552734375e-05,
+      "native_fp64_max_error": 9.1552734375e-05,
+      "baseline_ms": 0.24979199965794882,
+      "native_ms": 0.3816106716791789
+    },
+    {
+      "function": "_index_score_rows",
+      "context": 1048320,
+      "rows": 16,
+      "exact_output_equal": false,
+      "tile_maxima_equal": true,
+      "maximum_score_difference": 6.103515625e-05,
+      "native_error_no_worse_than_baseline": true,
+      "baseline_fp64_max_error": 4.7087669372558594e-05,
+      "native_fp64_max_error": 4.7087669372558594e-05,
+      "baseline_ms": 4.063914616902669,
+      "native_ms": 8.71014404296875
+    }
+  ],
+  "passed": false,
+  "gpu": "NVIDIA GB10",
+  "precision_reference": "Independent FP64 QK, ReLU and head-weight sum on sampled columns"
+}
