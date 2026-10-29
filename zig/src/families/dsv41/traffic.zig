@@ -9,6 +9,7 @@ pub const Collector = struct {
     lib: ?std.DynLib = null,
     begin_fn: ?Begin = null,
     end_fn: ?End = null,
+    abort_fn: ?Finish = null,
     finish_fn: ?Finish = null,
 
     pub fn open() Collector {
@@ -19,13 +20,14 @@ pub const Collector = struct {
         };
         const begin_fn = lib.lookup(Begin, "tf_traffic_begin");
         const end_fn = lib.lookup(End, "tf_traffic_end");
+        const abort_fn = lib.lookup(Finish, "tf_traffic_abort");
         const finish_fn = lib.lookup(Finish, "tf_traffic_finish");
-        if (begin_fn == null or end_fn == null or finish_fn == null) {
+        if (begin_fn == null or end_fn == null or abort_fn == null or finish_fn == null) {
             std.log.err("traffic collector ABI unavailable", .{});
             lib.close();
             return .{};
         }
-        return .{ .lib = lib, .begin_fn = begin_fn, .end_fn = end_fn, .finish_fn = finish_fn };
+        return .{ .lib = lib, .begin_fn = begin_fn, .end_fn = end_fn, .abort_fn = abort_fn, .finish_fn = finish_fn };
     }
 
     pub fn begin(c: *Collector, positions: []const i64, rows: usize, rank: u32) bool {
@@ -37,6 +39,10 @@ pub const Collector = struct {
 
     pub fn end(c: *Collector) void {
         if (c.end_fn) |f| _ = f();
+    }
+
+    pub fn abort(c: *Collector) void {
+        if (c.abort_fn) |f| f();
     }
 
     pub fn finish(c: *Collector) void {

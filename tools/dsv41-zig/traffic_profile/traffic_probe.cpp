@@ -13,11 +13,20 @@ static void check(CUresult r) {
     std::fprintf(stderr,"CUDA: %s\n",s?s:"error");std::exit(2);
 }
 int main(int argc,char **argv) {
+    if(argc==2 && !std::strcmp(argv[1],"--abort-host")) {
+        if(setenv("TF_TRAFFIC_ENABLE","1",1)!=0)return 2;
+        tf_traffic_abort();
+        int begin=tf_traffic_begin(2048,2,0),end=tf_traffic_end();
+        tf_traffic_finish();
+        bool disabled=begin==-1 && end==-1;
+        std::printf("{\"type\":\"abort_host\",\"disabled\":%s,\"gpu_work_submitted\":false}\n",disabled?"true":"false");
+        return disabled?0:4;
+    }
     if(argc>=3 && !std::strcmp(argv[1],"--chip"))
         return tf_traffic_query_chip(argv[2],argc>3?argv[3]:"dram,sysmem,c2c,lts__d_sectors");
     bool large=argc>1 && !std::strcmp(argv[1],"--smoke64MiB");
     if(argc<2 || (std::strcmp(argv[1],"--query") && std::strcmp(argv[1],"--smoke") && !large)) {
-        std::fprintf(stderr,"usage: traffic_probe --query [filters] | --chip NAME [filters] | --smoke | --smoke64MiB\n"); return 2;
+        std::fprintf(stderr,"usage: traffic_probe --query [filters] | --chip NAME [filters] | --smoke | --smoke64MiB | --abort-host\n"); return 2;
     }
     check(cuInit(0)); CUdevice device;check(cuDeviceGet(&device,0));
     CUcontext context;check(cuDevicePrimaryCtxRetain(&context,device));check(cuCtxSetCurrent(context));

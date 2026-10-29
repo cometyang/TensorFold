@@ -297,6 +297,48 @@ def join_trace(record, index, label, issues):
     return result
 
 
+def validated_rounds(records, phase, label, rank, issues):
+    env = next((node.get('activation_env', {}) for node in phase.get('activation', [])
+                if node.get('rank') == rank), {})
+    try:
+        limit = int(env.get('TF_TRAFFIC_RANGES', 8))
+        skip = int(env.get('TF_TRAFFIC_SKIP', 2))
+        if not 1 <= limit <= 1024 or skip < 0:
+            raise ValueError
+    except (ValueError, TypeError):
+        issues.append(f'{label}/rank{rank}: invalid collector range/skip limits')
+        return []
+    accepted, pending, counts = [], [], Counter()
+    for record in records:
+        if record['type'] == 'traffic_round':
+            pending.append(record)
+            continue
+        b = record.get('bucket')
+        size = record.get('ranges')
+        valid = (type(b) is int and b in (0, 1, 2) and type(size) is int
+                 and 0 < size == len(pending) and counts[b] + size <= limit)
+        ordinals = []
+        for sample in pending:
+            match = re.fullmatch(r'rank(\d+)_b([012])_round(\d+)', sample.get('range', ''))
+            context = sample.get('context_tokens')
+            if (match is None or type(context) is not int or context < 0 or sample.get('rank') != rank
+                    or int(match[1]) != rank or int(match[2]) != b or bucket(context) != b):
+                valid = False
+            elif match is not None:
+                ordinals.append(int(match[3]))
+        if valid and sorted(ordinals) != list(range(skip + counts[b], skip + counts[b] + size)):
+            valid = False
+        if valid:
+            accepted.extend(pending)
+            counts[b] += size
+        else:
+            issues.append(f'{label}/rank{rank}/bucket{b}: incomplete or inconsistent counter window')
+        pending = []
+    if pending:
+        issues.append(f'{label}/rank{rank}: unterminated counter window')
+    return accepted
+
+
 def traffic(receipt, directory, issues, join_spec_trace=False):
     groups = defaultdict(list)
     configurations = []
@@ -359,12 +401,8 @@ def traffic(receipt, directory, issues, join_spec_trace=False):
                 elif kind in ('traffic_round', 'window_complete'):
                     phase_records[item.get('rank', record.get('rank'))].append(record)
         for rank, records in phase_records.items():
-            rounds = [r for r in records if r['type'] == 'traffic_round']
+            rounds = validated_rounds(records, phase, label, rank, issues)
             for b in {bucket(r['context_tokens']) for r in rounds}:
-                selected = [r for r in rounds if bucket(r['context_tokens']) == b]
-                complete = [r for r in records if r['type'] == 'window_complete' and r.get('bucket') == b]
-                if len(complete) != 1 or complete[0].get('ranges') != len(selected):
-                    issues.append(f'{label}/rank{rank}/bucket{b}: incomplete or inconsistent counter window')
                 if len(context_map[b]) > 1:
                     issues.append(f'{label}/bucket{b}: multiple requested contexts cannot be attributed uniquely')
             for record in rounds:

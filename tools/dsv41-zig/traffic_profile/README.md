@@ -150,6 +150,13 @@ per-bucket counters. Request release itself does not flush the collector; a fina
 partial window is flushed by the next fill or model teardown while the CUDA
 context remains alive.
 
+Only a successfully synchronized verification round is completed. A forward,
+tap-absorption or synchronization error calls `tf_traffic_abort`, discards the
+current un-emitted window, and disables collection. Build the collector and
+backend together: the loader requires this abort symbol and safely disables an
+older incompatible library. `traffic_probe --abort-host` checks the disabled
+error state without initializing CUDA or submitting GPU work.
+
 On the tested deployment, querying hardware availability without `SYS_ADMIN`
 returned `CUPTI_ERROR_INSUFFICIENT_PRIVILEGES`. Add `--cap-add SYS_ADMIN` only to
 the temporary profiling containers. The collector requires no privileged
@@ -238,6 +245,11 @@ Optional `--join-spec-trace` uses the primary rank's `spec-trace.jsonl`. Each
 index in the same context bucket, with identical row count and maximum input
 position. Eligibility follows the recorded context and row filters. Failed
 joins remain unmatched and are listed in `issues`.
+
+Successive partial windows in one context bucket are allowed. Each completion
+must match its preceding ranges; their ordinals and cumulative counts must obey
+the recorded skip and collection limits. Invalid or unterminated windows are
+excluded from traffic aggregates and reported in `issues`.
 
 Joined potential yield is one new target token plus the accepted draft prefix
 per window, before stop tokens and output-budget truncation. The pending input

@@ -96,6 +96,8 @@ class CounterTests(unittest.TestCase):
             self.write_records(name, records)
             files.append({'name': name, 'file': name, 'rank': rank})
         self.receipt = {'phases': {'P': {'mode': 'profile', 'counter_files': files,
+                        'activation': [{'rank': rank, 'activation_env': {
+                            'TF_TRAFFIC_SKIP': '1', 'TF_TRAFFIC_RANGES': '2'}} for rank in (0, 1)],
                         'requests': [{'runs': [{'context': 2048}]}, {'runs': [{'context': 65536}]}]}}}
 
     def tearDown(self):
@@ -134,6 +136,42 @@ class CounterTests(unittest.TestCase):
         self.assertEqual(len(issues), 2)
         self.assertTrue(all('exact trace rows/context join failed' in x for x in issues))
         self.assertEqual(sum(g['trace_join']['matched_count'] for g in result['groups']), 4)
+
+    def test_successive_partial_windows_preserve_counts_and_trace_join(self):
+        issues = []
+        original = analyze.traffic(self.receipt, self.root, issues, True)
+        self.assertEqual(issues, [])
+        for rank in (0, 1):
+            self.write_records(f'traffic-{rank}.jsonl', [
+                {'type': 'configuration', 'rank': rank, 'passes': 1},
+                counter(rank, 0, 1, 2049, 2), {'type': 'window_complete', 'bucket': 0, 'ranges': 1},
+                counter(rank, 1, 1, 65538, 2), {'type': 'window_complete', 'bucket': 1, 'ranges': 1},
+                counter(rank, 0, 2, 2052, 3), {'type': 'window_complete', 'bucket': 0, 'ranges': 1}])
+        partial = analyze.traffic(self.receipt, self.root, issues, True)
+        self.assertEqual(issues, [])
+        self.assertEqual(partial['groups'], original['groups'])
+
+    def test_invalid_partial_windows_are_excluded(self):
+        phase = self.receipt['phases']['P']
+        first = counter(0, 0, 1, 2049, 2)
+        complete = {'type': 'window_complete', 'bucket': 0, 'ranges': 1}
+        valid = [first, complete]
+        cases = {
+            'missing completion': [counter(0, 0, 2, 2052, 3)],
+            'wrong completion count': [counter(0, 0, 2, 2052, 3), dict(complete, ranges=2)],
+            'wrong bucket': [counter(0, 0, 2, 2052, 3), dict(complete, bucket=1)],
+            'duplicate completion': [complete],
+            'duplicate ordinal': [first, complete],
+            'skipped ordinal': [counter(0, 0, 3, 2052, 3), complete],
+            'range budget exceeded': [counter(0, 0, 2, 2052, 3), counter(0, 0, 3, 2055, 3),
+                                      dict(complete, ranges=2)],
+        }
+        for name, tail in cases.items():
+            with self.subTest(case=name):
+                issues = []
+                rounds = analyze.validated_rounds(valid + tail, phase, 'P', 0, issues)
+                self.assertEqual(rounds, [first])
+                self.assertEqual(len(issues), 1)
 
     def test_digest_and_path_mismatches_are_rejected(self):
         bad = copy.deepcopy(self.receipt)

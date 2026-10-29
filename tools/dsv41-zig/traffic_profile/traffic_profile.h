@@ -10,8 +10,8 @@
 // TF_TRAFFIC_RANGES=8 and TF_TRAFFIC_SKIP=2 apply independently to context buckets
 // <=4096, <=131072, and larger. TF_TRAFFIC_MIN_CONTEXT/MAX_CONTEXT filter tokens;
 // TF_TRAFFIC_MAX_ROWS=16 excludes accidental prefill calls. TF_TRAFFIC_BUCKET and
-// TF_TRAFFIC_RUN are optional metadata. Call finish at each request's end while
-// the CUDA context is still current, especially when fewer than RANGES ran.
+// TF_TRAFFIC_RUN are optional metadata. Call finish before prefill or teardown
+// while the CUDA context is still current, especially when fewer than RANGES ran.
 // begin/end: 0 skipped, 1 collected, -1 failed (inference may continue).
 // No replay is performed; configurations needing more than one pass are rejected.
 #ifdef __cplusplus
@@ -19,6 +19,8 @@ extern "C" {
 #endif
 int tf_traffic_begin(uint64_t context_tokens, uint32_t rows, int rank);
 int tf_traffic_end(void);
+// Invalidate the current window after failed verification; disables further collection without replay.
+void tf_traffic_abort(void);
 void tf_traffic_finish(void);
 // Requires a current CUDA context. Enumerates metadata, without enabling counters
 // or launching kernels. Comma-separated substrings filter base metrics.

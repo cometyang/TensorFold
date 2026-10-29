@@ -257,6 +257,12 @@ extern "C" int tf_traffic_end() {
         return 1;
     } catch (const std::exception &e) { s.fail(e.what()); return -1; }
 }
+extern "C" void tf_traffic_abort() {
+    if (env("TF_TRAFFIC_ENABLE") != "1") return;
+    auto &s=state(); std::lock_guard<std::mutex> lock(s.mutex);
+    if (s.failed) return;
+    s.fail("Verification failed before completion; current window discarded");
+}
 extern "C" void tf_traffic_finish() {
     if (env("TF_TRAFFIC_ENABLE") != "1") return;
     auto &s=state(); std::lock_guard<std::mutex> lock(s.mutex);

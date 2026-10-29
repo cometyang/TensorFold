@@ -702,7 +702,7 @@ pub const Model = struct {
     pub fn verify(m: *Model, rows: round.Rows, absorb: []const bool) !void {
         m.joinAhead(); // a prompt chunk's Engram read-ahead shares the host buffers a round's Engram reads use
         const measuring = m.traffic_collector.begin(rows.pos, rows.ids.len, m.rank);
-        defer if (measuring) m.traffic_collector.end();
+        errdefer if (measuring) m.traffic_collector.abort();
         const e = &m.eng;
         if (m.prof) try m.stream.synchronize(); // (the GPU idle, so the issue time shows whether the host keeps it fed)
         const t0 = m.now();
@@ -739,6 +739,7 @@ pub const Model = struct {
         }
         try m.stream.synchronize();
         if (m.prof) m.t_absorb = m.now() - t1;
+        if (measuring) m.traffic_collector.end();
     }
 
     /// The rounds' GPU clocks (a profile): the forward's start and each stretch's ends, for its gaps.
