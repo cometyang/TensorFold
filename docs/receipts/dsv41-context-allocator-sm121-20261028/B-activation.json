@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-29T00:18:28.781086+00:00",
+  "phase_B_started": true,
+  "rank0_image": "tensorfold-dsv41:codex-context-costs-9ffaf78d07fb",
+  "rank0_env": {
+    "TF_DS_SPEC_COSTS": "/opt/tensorfold/share/spec-costs.json",
+    "TF_DS_SPEC_TRACE": null,
+    "TF_DS_SPEC_SWEEP": null,
+    "TF_DS_INDEX_FP4_AOT": "/opt/tensorfold/share/dsv41-index-fp4",
+    "TF_DS_TOPK_EXACT": "1",
+    "TF_DS_GRAPHS": "1",
+    "TF_DS_HC_SIDE": "1",
+    "TF_DS_L2_PREFETCH": "1",
+    "TF_DS_ENGRAM_AIO": "1"
+  },
+  "expected_candidate_image": "tensorfold-dsv41:codex-context-costs-9ffaf78d07fb",
+  "declared_binary_image": "tensorfold-dsv41:codex-allocator-binary-e7c4e3687335",
+  "expected_costs_sha256": "9ffaf78d07fb4d043715e05f51e8efad42fd5ad4eba7d8f43a60a9f82bdc270f",
+  "observed_costs_sha256": "9ffaf78d07fb4d043715e05f51e8efad42fd5ad4eba7d8f43a60a9f82bdc270f",
+  "rank1_image": "tensorfold-dsv41:codex-context-costs-9ffaf78d07fb",
+  "activation_valid": true
+}

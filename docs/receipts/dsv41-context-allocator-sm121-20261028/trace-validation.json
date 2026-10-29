@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "context": 2048,
+      "trace_id": 2,
+      "trace_rounds": 571,
+      "reported_rounds": 571.0,
+      "release_rounds": 571,
+      "passed": true
+    },
+    {
+      "context": 65536,
+      "trace_id": 3,
+      "trace_rounds": 547,
+      "reported_rounds": 547.0,
+      "release_rounds": 547,
+      "passed": true
+    },
+    {
+      "context": 1047040,
+      "trace_id": 4,
+      "trace_rounds": 540,
+      "reported_rounds": 540.0,
+      "release_rounds": 540,
+      "passed": true
+    }
+  ],
+  "startup_warmup": {
+    "trace_id": 1,
+    "context": 8,
+    "rounds": 1,
+    "excluded_from_fit": true
+  },
+  "live_capture_after_releases": true,
+  "shutdown_summary_expected": false
+}

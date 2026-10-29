@@ -1,0 +1,1989 @@
+{
+  "schema_version": 1,
+  "target_fraction": 0.2,
+  "groups": [
+    {
+      "min_context": 2048,
+      "max_context": 4096,
+      "streams": 1,
+      "greedy": true,
+      "bucket": 4096,
+      "observed_pending_context_min": 2054,
+      "observed_proposed_context_max": 3072,
+      "verify_events": 556,
+      "sweep_events": 556,
+      "component_ms": {
+        "preceding_draft_pass": {
+          "samples": 556,
+          "median": 3.539084,
+          "p10": 3.2940135,
+          "p90": 3.877649,
+          "sum": 1991.686701
+        },
+        "preceding_draft_total": {
+          "samples": 556,
+          "median": 3.54286,
+          "p10": 3.29831,
+          "p90": 3.881425,
+          "sum": 1994.113672
+        },
+        "readback": {
+          "samples": 556,
+          "median": 0.0612235,
+          "p10": 0.0460155,
+          "p90": 0.079399,
+          "sum": 34.893027
+        },
+        "sample": {
+          "samples": 556,
+          "median": 0.000224,
+          "p10": 0.000208,
+          "p90": 0.00024,
+          "sum": 0.125164
+        },
+        "send": {
+          "samples": 556,
+          "median": 0.003944,
+          "p10": 0.003184,
+          "p90": 0.004992,
+          "sum": 2.260464
+        },
+        "total": {
+          "samples": 556,
+          "median": 33.6318365,
+          "p10": 22.555660500000002,
+          "p90": 42.2969035,
+          "sum": 18529.183553
+        },
+        "verify": {
+          "samples": 556,
+          "median": 33.572007,
+          "p10": 22.5058845,
+          "p90": 42.2207045,
+          "sum": 18491.904898
+        }
+      },
+      "verified_rows_histogram": {
+        "1": 90,
+        "2": 95,
+        "3": 94,
+        "4": 94,
+        "5": 94,
+        "6": 89
+      },
+      "selected_k_histogram": {
+        "0": 90,
+        "1": 95,
+        "2": 94,
+        "3": 94,
+        "4": 94,
+        "5": 89
+      },
+      "potential_acceptance_by_verified_k": [
+        {
+          "verified_k": 0,
+          "windows": 90,
+          "potential_accepted_histogram": {
+            "0": 90
+          },
+          "mean_potential_accepted_drafts": 0,
+          "mean_potential_tokens_including_pending": 1,
+          "confidence_windows": 90,
+          "mean_predicted_accepted_drafts": 0
+        },
+        {
+          "verified_k": 1,
+          "windows": 95,
+          "potential_accepted_histogram": {
+            "1": 61,
+            "0": 34
+          },
+          "mean_potential_accepted_drafts": 0.6421052631578947,
+          "mean_potential_tokens_including_pending": 1.6421052631578947,
+          "confidence_windows": 95,
+          "mean_predicted_accepted_drafts": 0.6337034419302363
+        },
+        {
+          "verified_k": 2,
+          "windows": 94,
+          "potential_accepted_histogram": {
+            "1": 27,
+            "0": 32,
+            "2": 35
+          },
+          "mean_potential_accepted_drafts": 1.0319148936170213,
+          "mean_potential_tokens_including_pending": 2.0319148936170213,
+          "confidence_windows": 94,
+          "mean_predicted_accepted_drafts": 0.9533037773727663
+        },
+        {
+          "verified_k": 3,
+          "windows": 94,
+          "potential_accepted_histogram": {
+            "0": 37,
+            "1": 33,
+            "3": 9,
+            "2": 15
+          },
+          "mean_potential_accepted_drafts": 0.9574468085106383,
+          "mean_potential_tokens_including_pending": 1.9574468085106385,
+          "confidence_windows": 94,
+          "mean_predicted_accepted_drafts": 0.9556962941553718
+        },
+        {
+          "verified_k": 4,
+          "windows": 94,
+          "potential_accepted_histogram": {
+            "0": 40,
+            "4": 2,
+            "1": 36,
+            "2": 13,
+            "3": 3
+          },
+          "mean_potential_accepted_drafts": 0.8404255319148937,
+          "mean_potential_tokens_including_pending": 1.8404255319148937,
+          "confidence_windows": 94,
+          "mean_predicted_accepted_drafts": 0.9636561515205172
+        },
+        {
+          "verified_k": 5,
+          "windows": 89,
+          "potential_accepted_histogram": {
+            "0": 33,
+            "2": 16,
+            "1": 24,
+            "4": 2,
+            "3": 10,
+            "5": 4
+          },
+          "mean_potential_accepted_drafts": 1.2808988764044944,
+          "mean_potential_tokens_including_pending": 2.2808988764044944,
+          "confidence_windows": 89,
+          "mean_predicted_accepted_drafts": 1.0476064002536034
+        }
+      ],
+      "prefix_calibration": [
+        {
+          "depth": 1,
+          "samples": 466,
+          "predicted_prefix_survival": 0.6115837620433545,
+          "observed_prefix_survival": 0.6223175965665236,
+          "observed_minus_predicted": 0.010733834523169117,
+          "brier_score": 0.16670596320039363
+        },
+        {
+          "depth": 2,
+          "samples": 371,
+          "predicted_prefix_survival": 0.2823900947660092,
+          "observed_prefix_survival": 0.29380053908355797,
+          "observed_minus_predicted": 0.011410444317548785,
+          "brier_score": 0.16278595511503688
+        },
+        {
+          "depth": 3,
+          "samples": 277,
+          "predicted_prefix_survival": 0.09612983674091864,
+          "observed_prefix_survival": 0.10830324909747292,
+          "observed_minus_predicted": 0.01217341235655428,
+          "brier_score": 0.07537675092728828
+        },
+        {
+          "depth": 4,
+          "samples": 183,
+          "predicted_prefix_survival": 0.030548145888874598,
+          "observed_prefix_survival": 0.04371584699453552,
+          "observed_minus_predicted": 0.013167701105660921,
+          "brier_score": 0.03579760827000663
+        },
+        {
+          "depth": 5,
+          "samples": 89,
+          "predicted_prefix_survival": 0.01669042502500688,
+          "observed_prefix_survival": 0.0449438202247191,
+          "observed_minus_predicted": 0.02825339519971222,
+          "brier_score": 0.035255307081491175
+        }
+      ],
+      "prefix_calibration_bins": [
+        {
+          "depth": 1,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 1,
+          "predicted_prefix_survival": 0.09212763909814851,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.09212763909814851,
+          "brier_score": 0.008487501885798703
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 18,
+          "predicted_prefix_survival": 0.16716265048807674,
+          "observed_prefix_survival": 0.2222222222222222,
+          "observed_minus_predicted": 0.05505957173414547,
+          "brier_score": 0.1686557724601882
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 52,
+          "predicted_prefix_survival": 0.2518321942262163,
+          "observed_prefix_survival": 0.28846153846153844,
+          "observed_minus_predicted": 0.03662934423532216,
+          "brier_score": 0.2010685968291647
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 50,
+          "predicted_prefix_survival": 0.3515834088973452,
+          "observed_prefix_survival": 0.34,
+          "observed_minus_predicted": -0.01158340889734516,
+          "brier_score": 0.22913069986715853
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 68,
+          "predicted_prefix_survival": 0.4517438092576064,
+          "observed_prefix_survival": 0.4852941176470588,
+          "observed_minus_predicted": 0.03355030838945244,
+          "brier_score": 0.24995142471861923
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 59,
+          "predicted_prefix_survival": 0.5493008342718463,
+          "observed_prefix_survival": 0.5423728813559322,
+          "observed_minus_predicted": -0.006927952915914082,
+          "brier_score": 0.24448166743173957
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 33,
+          "predicted_prefix_survival": 0.6415693087775894,
+          "observed_prefix_survival": 0.6666666666666666,
+          "observed_minus_predicted": 0.025097357889077188,
+          "brier_score": 0.22408181910348562
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 37,
+          "predicted_prefix_survival": 0.7454205282912697,
+          "observed_prefix_survival": 0.6756756756756757,
+          "observed_minus_predicted": -0.06974485261559404,
+          "brier_score": 0.22473940766377118
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 41,
+          "predicted_prefix_survival": 0.8477408982435463,
+          "observed_prefix_survival": 0.8780487804878049,
+          "observed_minus_predicted": 0.03030788224425862,
+          "brier_score": 0.11224503723434291
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 107,
+          "predicted_prefix_survival": 0.9774344056421512,
+          "observed_prefix_survival": 0.9906542056074766,
+          "observed_minus_predicted": 0.013219799965325407,
+          "brier_score": 0.009302481465592446
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 74,
+          "predicted_prefix_survival": 0.0607672667123888,
+          "observed_prefix_survival": 0.0945945945945946,
+          "observed_minus_predicted": 0.0338273278822058,
+          "brier_score": 0.08430942205495472
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 94,
+          "predicted_prefix_survival": 0.1542976035089856,
+          "observed_prefix_survival": 0.20212765957446807,
+          "observed_minus_predicted": 0.04783005606548246,
+          "brier_score": 0.16536406488564206
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 80,
+          "predicted_prefix_survival": 0.2420626618002833,
+          "observed_prefix_survival": 0.2125,
+          "observed_minus_predicted": -0.029562661800283302,
+          "brier_score": 0.16896677064875673
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 46,
+          "predicted_prefix_survival": 0.35146660838254806,
+          "observed_prefix_survival": 0.45652173913043476,
+          "observed_minus_predicted": 0.1050551307478867,
+          "brier_score": 0.25558822180592516
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 25,
+          "predicted_prefix_survival": 0.44939375269594506,
+          "observed_prefix_survival": 0.28,
+          "observed_minus_predicted": -0.16939375269594503,
+          "brier_score": 0.23714370955194827
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 15,
+          "predicted_prefix_survival": 0.55235765269488,
+          "observed_prefix_survival": 0.4666666666666667,
+          "observed_minus_predicted": -0.08569098602821335,
+          "brier_score": 0.25370497133096526
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 9,
+          "predicted_prefix_survival": 0.6603425413876407,
+          "observed_prefix_survival": 0.3333333333333333,
+          "observed_minus_predicted": -0.3270092080543074,
+          "brier_score": 0.32604858185903185
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 9,
+          "predicted_prefix_survival": 0.7581898023033459,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.24181019769665413,
+          "brier_score": 0.059329707590294614
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 5,
+          "predicted_prefix_survival": 0.850745955043848,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.14925404495615202,
+          "brier_score": 0.022543651032084267
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 14,
+          "predicted_prefix_survival": 0.9780547346962982,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.021945265303701778,
+          "brier_score": 0.0014842851729313206
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 183,
+          "predicted_prefix_survival": 0.04193264776732141,
+          "observed_prefix_survival": 0.0273224043715847,
+          "observed_minus_predicted": -0.014610243395736713,
+          "brier_score": 0.02631625173423411
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 64,
+          "predicted_prefix_survival": 0.14090498677822463,
+          "observed_prefix_survival": 0.21875,
+          "observed_minus_predicted": 0.07784501322177537,
+          "brier_score": 0.16860976327645266
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 20,
+          "predicted_prefix_survival": 0.23814153426713242,
+          "observed_prefix_survival": 0.2,
+          "observed_minus_predicted": -0.038141534267132404,
+          "brier_score": 0.1642333904211678
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 5,
+          "predicted_prefix_survival": 0.34344329950784264,
+          "observed_prefix_survival": 0.6,
+          "observed_minus_predicted": 0.25655670049215734,
+          "brier_score": 0.2982186929310624
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 1,
+          "predicted_prefix_survival": 0.465142249535992,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.465142249535992,
+          "brier_score": 0.21635731230340302
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 1,
+          "predicted_prefix_survival": 0.6349149914912303,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.3650850085087697,
+          "brier_score": 0.13328706343784844
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 1,
+          "predicted_prefix_survival": 0.7096344660841363,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.2903655339158637,
+          "brier_score": 0.0843121432862446
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 2,
+          "predicted_prefix_survival": 0.8233160960075239,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.17668390399247613,
+          "brier_score": 0.03137164884743921
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 173,
+          "predicted_prefix_survival": 0.020810178283199882,
+          "observed_prefix_survival": 0.03468208092485549,
+          "observed_minus_predicted": 0.013871902641655606,
+          "brier_score": 0.031889433940005436
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 7,
+          "predicted_prefix_survival": 0.12774654565693158,
+          "observed_prefix_survival": 0.14285714285714285,
+          "observed_minus_predicted": 0.015110597200211268,
+          "brier_score": 0.11375772428165265
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 2,
+          "predicted_prefix_survival": 0.229225709195897,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.229225709195897,
+          "brier_score": 0.05318003408098579
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 1,
+          "predicted_prefix_survival": 0.637472616680157,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.362527383319843,
+          "brier_score": 0.1314261036567324
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 87,
+          "predicted_prefix_survival": 0.009075045414142136,
+          "observed_prefix_survival": 0.034482758620689655,
+          "observed_minus_predicted": 0.02540771320654752,
+          "brier_score": 0.033121118375812664
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 1,
+          "predicted_prefix_survival": 0.17195972099088863,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.17195972099088863,
+          "brier_score": 0.029570145643264264
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 1,
+          "predicted_prefix_survival": 0.5239591552043579,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.4760408447956421,
+          "brier_score": 0.22661488591374865
+        }
+      ],
+      "policy": {
+        "label": "predicted_counterfactual_not_actual_tps",
+        "eligible_rounds": 556,
+        "changed_choices": 95,
+        "round_gain_fraction": {
+          "samples": 556,
+          "median": 0.0,
+          "p10": 0.0,
+          "p90": 0.008231569845242204,
+          "sum": 1.1481188814921781
+        },
+        "rounds_modeling_target": 0,
+        "legacy_selected_rows": {
+          "4": 48,
+          "3": 271,
+          "2": 195,
+          "5": 28,
+          "1": 7,
+          "6": 7
+        },
+        "measured_selected_rows": {
+          "3": 226,
+          "2": 240,
+          "4": 59,
+          "5": 10,
+          "1": 18,
+          "6": 3
+        },
+        "changed_fraction": 0.17086330935251798,
+        "modeled_gain_on_replayed_states": 0.0025215612014903854,
+        "legacy_scenario_matches_observed_fraction": null
+      },
+      "excluded": {}
+    },
+    {
+      "min_context": 65536,
+      "max_context": 67584,
+      "streams": 1,
+      "greedy": true,
+      "bucket": 131072,
+      "observed_pending_context_min": 65547,
+      "observed_proposed_context_max": 66560,
+      "verify_events": 532,
+      "sweep_events": 532,
+      "component_ms": {
+        "preceding_draft_pass": {
+          "samples": 532,
+          "median": 3.5445655,
+          "p10": 3.3199014,
+          "p90": 3.8790109000000004,
+          "sum": 1908.912878
+        },
+        "preceding_draft_total": {
+          "samples": 532,
+          "median": 3.549805,
+          "p10": 3.3237654,
+          "p90": 3.8821533,
+          "sum": 1911.222643
+        },
+        "readback": {
+          "samples": 532,
+          "median": 0.057759,
+          "p10": 0.046513599999999995,
+          "p90": 0.08036549999999999,
+          "sum": 33.543146
+        },
+        "sample": {
+          "samples": 532,
+          "median": 0.00024,
+          "p10": 0.000224,
+          "p90": 0.00024,
+          "sum": 0.125135
+        },
+        "send": {
+          "samples": 532,
+          "median": 0.003168,
+          "p10": 0.002816,
+          "p90": 0.004128,
+          "sum": 1.814267
+        },
+        "total": {
+          "samples": 532,
+          "median": 33.031457,
+          "p10": 22.6397996,
+          "p90": 42.6921976,
+          "sum": 17602.842747
+        },
+        "verify": {
+          "samples": 532,
+          "median": 32.9702415,
+          "p10": 22.5905084,
+          "p90": 42.6103249,
+          "sum": 17567.360199
+        }
+      },
+      "verified_rows_histogram": {
+        "1": 94,
+        "2": 95,
+        "3": 94,
+        "4": 92,
+        "5": 78,
+        "6": 79
+      },
+      "selected_k_histogram": {
+        "0": 94,
+        "1": 95,
+        "2": 94,
+        "3": 92,
+        "4": 78,
+        "5": 79
+      },
+      "potential_acceptance_by_verified_k": [
+        {
+          "verified_k": 0,
+          "windows": 94,
+          "potential_accepted_histogram": {
+            "0": 94
+          },
+          "mean_potential_accepted_drafts": 0,
+          "mean_potential_tokens_including_pending": 1,
+          "confidence_windows": 94,
+          "mean_predicted_accepted_drafts": 0
+        },
+        {
+          "verified_k": 1,
+          "windows": 95,
+          "potential_accepted_histogram": {
+            "1": 59,
+            "0": 36
+          },
+          "mean_potential_accepted_drafts": 0.6210526315789474,
+          "mean_potential_tokens_including_pending": 1.6210526315789475,
+          "confidence_windows": 95,
+          "mean_predicted_accepted_drafts": 0.5842439483281335
+        },
+        {
+          "verified_k": 2,
+          "windows": 94,
+          "potential_accepted_histogram": {
+            "0": 39,
+            "1": 25,
+            "2": 30
+          },
+          "mean_potential_accepted_drafts": 0.9042553191489362,
+          "mean_potential_tokens_including_pending": 1.9042553191489362,
+          "confidence_windows": 94,
+          "mean_predicted_accepted_drafts": 0.9630184384523931
+        },
+        {
+          "verified_k": 3,
+          "windows": 92,
+          "potential_accepted_histogram": {
+            "1": 30,
+            "0": 34,
+            "3": 14,
+            "2": 14
+          },
+          "mean_potential_accepted_drafts": 1.0869565217391304,
+          "mean_potential_tokens_including_pending": 2.0869565217391304,
+          "confidence_windows": 92,
+          "mean_predicted_accepted_drafts": 1.0339126757201067
+        },
+        {
+          "verified_k": 4,
+          "windows": 78,
+          "potential_accepted_histogram": {
+            "3": 8,
+            "2": 15,
+            "0": 26,
+            "4": 7,
+            "1": 22
+          },
+          "mean_potential_accepted_drafts": 1.3333333333333333,
+          "mean_potential_tokens_including_pending": 2.333333333333333,
+          "confidence_windows": 78,
+          "mean_predicted_accepted_drafts": 1.2075442651638872
+        },
+        {
+          "verified_k": 5,
+          "windows": 79,
+          "potential_accepted_histogram": {
+            "2": 14,
+            "0": 24,
+            "1": 26,
+            "3": 6,
+            "4": 3,
+            "5": 6
+          },
+          "mean_potential_accepted_drafts": 1.4430379746835442,
+          "mean_potential_tokens_including_pending": 2.443037974683544,
+          "confidence_windows": 79,
+          "mean_predicted_accepted_drafts": 1.1742045780484494
+        }
+      ],
+      "prefix_calibration": [
+        {
+          "depth": 1,
+          "samples": 438,
+          "predicted_prefix_survival": 0.6142216011612907,
+          "observed_prefix_survival": 0.636986301369863,
+          "observed_minus_predicted": 0.022764700208572353,
+          "brier_score": 0.16344764055478753
+        },
+        {
+          "depth": 2,
+          "samples": 343,
+          "predicted_prefix_survival": 0.3085665964302989,
+          "observed_prefix_survival": 0.34110787172011664,
+          "observed_minus_predicted": 0.03254127528981776,
+          "brier_score": 0.18698901206009466
+        },
+        {
+          "depth": 3,
+          "samples": 249,
+          "predicted_prefix_survival": 0.14370002846455282,
+          "observed_prefix_survival": 0.17670682730923695,
+          "observed_minus_predicted": 0.03300679884468413,
+          "brier_score": 0.11237089835377001
+        },
+        {
+          "depth": 4,
+          "samples": 157,
+          "predicted_prefix_survival": 0.0852510730949983,
+          "observed_prefix_survival": 0.10191082802547771,
+          "observed_minus_predicted": 0.016659754930479415,
+          "brier_score": 0.04973929082335085
+        },
+        {
+          "depth": 5,
+          "samples": 79,
+          "predicted_prefix_survival": 0.05144758699660691,
+          "observed_prefix_survival": 0.0759493670886076,
+          "observed_minus_predicted": 0.024501780092000686,
+          "brier_score": 0.030171269351923234
+        }
+      ],
+      "prefix_calibration_bins": [
+        {
+          "depth": 1,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 2,
+          "predicted_prefix_survival": 0.08135732926577245,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.08135732926577245,
+          "brier_score": 0.0066197808816408875
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 25,
+          "predicted_prefix_survival": 0.16294530783838626,
+          "observed_prefix_survival": 0.24,
+          "observed_minus_predicted": 0.07705469216161373,
+          "brier_score": 0.19250744417845006
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 54,
+          "predicted_prefix_survival": 0.258457354311423,
+          "observed_prefix_survival": 0.3333333333333333,
+          "observed_minus_predicted": 0.07487597902191029,
+          "brier_score": 0.22998875284472312
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 46,
+          "predicted_prefix_survival": 0.3438310932560242,
+          "observed_prefix_survival": 0.391304347826087,
+          "observed_minus_predicted": 0.047473254570062795,
+          "brier_score": 0.23723541281370084
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 60,
+          "predicted_prefix_survival": 0.4569675379909478,
+          "observed_prefix_survival": 0.45,
+          "observed_minus_predicted": -0.006967537990947792,
+          "brier_score": 0.2513943581311188
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 35,
+          "predicted_prefix_survival": 0.5490671596681074,
+          "observed_prefix_survival": 0.5142857142857142,
+          "observed_minus_predicted": -0.03478144538239314,
+          "brier_score": 0.2459445343268228
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 31,
+          "predicted_prefix_survival": 0.6497331278056208,
+          "observed_prefix_survival": 0.8064516129032258,
+          "observed_minus_predicted": 0.156718485097605,
+          "brier_score": 0.1795958309418672
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 34,
+          "predicted_prefix_survival": 0.7544828912264775,
+          "observed_prefix_survival": 0.7941176470588235,
+          "observed_minus_predicted": 0.03963475583234599,
+          "brier_score": 0.15815264259115352
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 37,
+          "predicted_prefix_survival": 0.8566188864135867,
+          "observed_prefix_survival": 0.7297297297297297,
+          "observed_minus_predicted": -0.12688915668385703,
+          "brier_score": 0.2098603979808466
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 114,
+          "predicted_prefix_survival": 0.9727661368661608,
+          "observed_prefix_survival": 0.9912280701754386,
+          "observed_minus_predicted": 0.01846193330927781,
+          "brier_score": 0.00904126080555049
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 54,
+          "predicted_prefix_survival": 0.0610578683462406,
+          "observed_prefix_survival": 0.07407407407407407,
+          "observed_minus_predicted": 0.01301620572783347,
+          "brier_score": 0.06780004639772896
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 85,
+          "predicted_prefix_survival": 0.145726632400087,
+          "observed_prefix_survival": 0.2235294117647059,
+          "observed_minus_predicted": 0.07780277936461891,
+          "brier_score": 0.17610631983842223
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 71,
+          "predicted_prefix_survival": 0.24880349999869708,
+          "observed_prefix_survival": 0.2676056338028169,
+          "observed_minus_predicted": 0.018802133804119797,
+          "brier_score": 0.19439364558505043
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 45,
+          "predicted_prefix_survival": 0.33918872121408766,
+          "observed_prefix_survival": 0.4888888888888889,
+          "observed_minus_predicted": 0.1497001676748012,
+          "brier_score": 0.27248111436432076
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 27,
+          "predicted_prefix_survival": 0.4442469989870314,
+          "observed_prefix_survival": 0.4444444444444444,
+          "observed_minus_predicted": 0.00019744545741301467,
+          "brier_score": 0.26025829736065226
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 17,
+          "predicted_prefix_survival": 0.5348902280830492,
+          "observed_prefix_survival": 0.5294117647058824,
+          "observed_minus_predicted": -0.005478463377166842,
+          "brier_score": 0.24265731959543543
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 10,
+          "predicted_prefix_survival": 0.6546198574256746,
+          "observed_prefix_survival": 0.5,
+          "observed_minus_predicted": -0.15461985742567463,
+          "brier_score": 0.2886843557699927
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 6,
+          "predicted_prefix_survival": 0.7459996591505289,
+          "observed_prefix_survival": 0.6666666666666666,
+          "observed_minus_predicted": -0.07933299248386227,
+          "brier_score": 0.2475945672599022
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 14,
+          "predicted_prefix_survival": 0.8378254949949747,
+          "observed_prefix_survival": 0.7142857142857143,
+          "observed_minus_predicted": -0.12353978070926042,
+          "brier_score": 0.21683770102100003
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 14,
+          "predicted_prefix_survival": 0.9561683333711033,
+          "observed_prefix_survival": 0.9285714285714286,
+          "observed_minus_predicted": -0.027596904799674693,
+          "brier_score": 0.06307894460877495
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 140,
+          "predicted_prefix_survival": 0.04260704825917236,
+          "observed_prefix_survival": 0.07857142857142857,
+          "observed_minus_predicted": 0.03596438031225621,
+          "brier_score": 0.07306545417691654
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 56,
+          "predicted_prefix_survival": 0.1402072439506016,
+          "observed_prefix_survival": 0.16071428571428573,
+          "observed_minus_predicted": 0.02050704176368412,
+          "brier_score": 0.13139630765481994
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 25,
+          "predicted_prefix_survival": 0.24467837446451052,
+          "observed_prefix_survival": 0.28,
+          "observed_minus_predicted": 0.03532162553548951,
+          "brier_score": 0.20239763401529492
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 8,
+          "predicted_prefix_survival": 0.33880750425408984,
+          "observed_prefix_survival": 0.375,
+          "observed_minus_predicted": 0.03619249574591016,
+          "brier_score": 0.23679725846174285
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 5,
+          "predicted_prefix_survival": 0.43101956196303803,
+          "observed_prefix_survival": 0.4,
+          "observed_minus_predicted": -0.03101956196303801,
+          "brier_score": 0.23503685733097318
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 3,
+          "predicted_prefix_survival": 0.523349080769939,
+          "observed_prefix_survival": 0.6666666666666666,
+          "observed_minus_predicted": 0.1433175858967276,
+          "brier_score": 0.23856255125786982
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 4,
+          "predicted_prefix_survival": 0.6279356563238332,
+          "observed_prefix_survival": 0.75,
+          "observed_minus_predicted": 0.12206434367616681,
+          "brier_score": 0.20563605893501774
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 2,
+          "predicted_prefix_survival": 0.7632591063400553,
+          "observed_prefix_survival": 0.5,
+          "observed_minus_predicted": -0.26325910634005534,
+          "brier_score": 0.32606202872385576
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 4,
+          "predicted_prefix_survival": 0.8740726807534631,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.12592731924653688,
+          "brier_score": 0.015988200187968926
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 2,
+          "predicted_prefix_survival": 0.9387993306980242,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.06120066930197576,
+          "brier_score": 0.004592462103024596
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 126,
+          "predicted_prefix_survival": 0.023685669768813224,
+          "observed_prefix_survival": 0.03968253968253968,
+          "observed_minus_predicted": 0.015996869913726456,
+          "brier_score": 0.03818197599637262
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 14,
+          "predicted_prefix_survival": 0.13960729202305752,
+          "observed_prefix_survival": 0.07142857142857142,
+          "observed_minus_predicted": -0.0681787205944861,
+          "brier_score": 0.06634105631462572
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 4,
+          "predicted_prefix_survival": 0.23855857475190614,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.23855857475190614,
+          "brier_score": 0.057006928564987645
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 4,
+          "predicted_prefix_survival": 0.3246176827726536,
+          "observed_prefix_survival": 0.25,
+          "observed_minus_predicted": -0.07461768277265363,
+          "brier_score": 0.1719503045486402
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 1,
+          "predicted_prefix_survival": 0.43352579302623284,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.5664742069737672,
+          "brier_score": 0.3208930271665584
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 2,
+          "predicted_prefix_survival": 0.5239916391041595,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.47600836089584053,
+          "brier_score": 0.22660708013667563
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 2,
+          "predicted_prefix_survival": 0.6136965645535261,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.38630343544647394,
+          "brier_score": 0.14929674959876743
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 1,
+          "predicted_prefix_survival": 0.7972980445582722,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.20270195544172775,
+          "brier_score": 0.04108808273990018
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 2,
+          "predicted_prefix_survival": 0.8613563025061006,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.13864369749389938,
+          "brier_score": 0.019222140348056735
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 1,
+          "predicted_prefix_survival": 0.9639041167111452,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.036095883288854824,
+          "brier_score": 0.001302912790402629
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 71,
+          "predicted_prefix_survival": 0.007859078414135917,
+          "observed_prefix_survival": 0.028169014084507043,
+          "observed_minus_predicted": 0.020309935670371128,
+          "brier_score": 0.027861271067992764
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 3,
+          "predicted_prefix_survival": 0.11344549424383453,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.11344549424383453,
+          "brier_score": 0.012872245185650846
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 1,
+          "predicted_prefix_survival": 0.20737799599570791,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.20737799599570791,
+          "brier_score": 0.043005633223195845
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 1,
+          "predicted_prefix_survival": 0.5694089846874922,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.43059101531250776,
+          "brier_score": 0.1854086224678563
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 1,
+          "predicted_prefix_survival": 0.7004468189742268,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.2995531810257732,
+          "brier_score": 0.08973210826265966
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 2,
+          "predicted_prefix_survival": 0.8443972614696826,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.15560273853031736,
+          "brier_score": 0.024308466731892533
+        }
+      ],
+      "policy": {
+        "label": "predicted_counterfactual_not_actual_tps",
+        "eligible_rounds": 532,
+        "changed_choices": 86,
+        "round_gain_fraction": {
+          "samples": 532,
+          "median": 0.0,
+          "p10": 0.0,
+          "p90": 0.00803161530838168,
+          "sum": 1.1157977311071559
+        },
+        "rounds_modeling_target": 0,
+        "legacy_selected_rows": {
+          "3": 241,
+          "4": 52,
+          "5": 27,
+          "2": 187,
+          "1": 8,
+          "6": 17
+        },
+        "measured_selected_rows": {
+          "3": 194,
+          "4": 53,
+          "5": 20,
+          "2": 231,
+          "1": 20,
+          "6": 14
+        },
+        "changed_fraction": 0.16165413533834586,
+        "modeled_gain_on_replayed_states": 0.003629936987791238,
+        "legacy_scenario_matches_observed_fraction": null
+      },
+      "excluded": {}
+    },
+    {
+      "min_context": 1047040,
+      "max_context": 1048576,
+      "streams": 1,
+      "greedy": true,
+      "bucket": 1048576,
+      "observed_pending_context_min": 1047051,
+      "observed_proposed_context_max": 1048064,
+      "verify_events": 525,
+      "sweep_events": 525,
+      "component_ms": {
+        "preceding_draft_pass": {
+          "samples": 525,
+          "median": 3.558574,
+          "p10": 3.313456,
+          "p90": 3.9192674000000003,
+          "sum": 1889.925361
+        },
+        "preceding_draft_total": {
+          "samples": 525,
+          "median": 3.563167,
+          "p10": 3.3165376,
+          "p90": 3.9231906000000003,
+          "sum": 1892.115172
+        },
+        "readback": {
+          "samples": 525,
+          "median": 0.061776,
+          "p10": 0.0462298,
+          "p90": 0.0802906,
+          "sum": 33.660044
+        },
+        "sample": {
+          "samples": 525,
+          "median": 0.00024,
+          "p10": 0.000224,
+          "p90": 0.00024,
+          "sum": 0.1236
+        },
+        "send": {
+          "samples": 525,
+          "median": 0.003088,
+          "p10": 0.002768,
+          "p90": 0.004099200000000001,
+          "sum": 1.756058
+        },
+        "total": {
+          "samples": 525,
+          "median": 35.94717,
+          "p10": 24.002931,
+          "p90": 47.283464800000004,
+          "sum": 18942.580477
+        },
+        "verify": {
+          "samples": 525,
+          "median": 35.881618,
+          "p10": 23.9533794,
+          "p90": 47.164933999999995,
+          "sum": 18907.040775
+        }
+      },
+      "verified_rows_histogram": {
+        "1": 94,
+        "2": 89,
+        "3": 78,
+        "4": 78,
+        "5": 92,
+        "6": 94
+      },
+      "selected_k_histogram": {
+        "0": 94,
+        "1": 89,
+        "2": 78,
+        "3": 78,
+        "4": 92,
+        "5": 94
+      },
+      "potential_acceptance_by_verified_k": [
+        {
+          "verified_k": 0,
+          "windows": 94,
+          "potential_accepted_histogram": {
+            "0": 94
+          },
+          "mean_potential_accepted_drafts": 0,
+          "mean_potential_tokens_including_pending": 1,
+          "confidence_windows": 94,
+          "mean_predicted_accepted_drafts": 0
+        },
+        {
+          "verified_k": 1,
+          "windows": 89,
+          "potential_accepted_histogram": {
+            "0": 36,
+            "1": 53
+          },
+          "mean_potential_accepted_drafts": 0.5955056179775281,
+          "mean_potential_tokens_including_pending": 1.595505617977528,
+          "confidence_windows": 89,
+          "mean_predicted_accepted_drafts": 0.6173641907647462
+        },
+        {
+          "verified_k": 2,
+          "windows": 78,
+          "potential_accepted_histogram": {
+            "0": 30,
+            "1": 19,
+            "2": 29
+          },
+          "mean_potential_accepted_drafts": 0.9871794871794872,
+          "mean_potential_tokens_including_pending": 1.9871794871794872,
+          "confidence_windows": 78,
+          "mean_predicted_accepted_drafts": 0.8924843490154089
+        },
+        {
+          "verified_k": 3,
+          "windows": 78,
+          "potential_accepted_histogram": {
+            "2": 14,
+            "1": 29,
+            "3": 12,
+            "0": 23
+          },
+          "mean_potential_accepted_drafts": 1.1923076923076923,
+          "mean_potential_tokens_including_pending": 2.1923076923076925,
+          "confidence_windows": 78,
+          "mean_predicted_accepted_drafts": 1.0465292160480528
+        },
+        {
+          "verified_k": 4,
+          "windows": 92,
+          "potential_accepted_histogram": {
+            "4": 9,
+            "2": 18,
+            "3": 7,
+            "1": 30,
+            "0": 28
+          },
+          "mean_potential_accepted_drafts": 1.3369565217391304,
+          "mean_potential_tokens_including_pending": 2.3369565217391304,
+          "confidence_windows": 92,
+          "mean_predicted_accepted_drafts": 1.172976544513866
+        },
+        {
+          "verified_k": 5,
+          "windows": 94,
+          "potential_accepted_histogram": {
+            "3": 10,
+            "0": 36,
+            "2": 24,
+            "1": 17,
+            "5": 4,
+            "4": 3
+          },
+          "mean_potential_accepted_drafts": 1.351063829787234,
+          "mean_potential_tokens_including_pending": 2.351063829787234,
+          "confidence_windows": 94,
+          "mean_predicted_accepted_drafts": 1.1390576520402693
+        }
+      ],
+      "prefix_calibration": [
+        {
+          "depth": 1,
+          "samples": 431,
+          "predicted_prefix_survival": 0.609488666167101,
+          "observed_prefix_survival": 0.6450116009280742,
+          "observed_minus_predicted": 0.035522934760973235,
+          "brier_score": 0.16083775347724116
+        },
+        {
+          "depth": 2,
+          "samples": 342,
+          "predicted_prefix_survival": 0.315554521755257,
+          "observed_prefix_survival": 0.38011695906432746,
+          "observed_minus_predicted": 0.06456243730907046,
+          "brier_score": 0.17966111169211238
+        },
+        {
+          "depth": 3,
+          "samples": 264,
+          "predicted_prefix_survival": 0.1352337886819256,
+          "observed_prefix_survival": 0.17045454545454544,
+          "observed_minus_predicted": 0.03522075677261985,
+          "brier_score": 0.10312933924110361
+        },
+        {
+          "depth": 4,
+          "samples": 186,
+          "predicted_prefix_survival": 0.06529404059313566,
+          "observed_prefix_survival": 0.08602150537634409,
+          "observed_minus_predicted": 0.02072746478320843,
+          "brier_score": 0.05815883287528953
+        },
+        {
+          "depth": 5,
+          "samples": 94,
+          "predicted_prefix_survival": 0.02891552254684483,
+          "observed_prefix_survival": 0.0425531914893617,
+          "observed_minus_predicted": 0.013637668942516872,
+          "brier_score": 0.031308097476054585
+        }
+      ],
+      "prefix_calibration_bins": [
+        {
+          "depth": 1,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 18,
+          "predicted_prefix_survival": 0.16814490267019,
+          "observed_prefix_survival": 0.16666666666666666,
+          "observed_minus_predicted": -0.0014782360035233422,
+          "brier_score": 0.1309346428274174
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 48,
+          "predicted_prefix_survival": 0.2545497434065122,
+          "observed_prefix_survival": 0.25,
+          "observed_minus_predicted": -0.004549743406512208,
+          "brier_score": 0.18993774513352826
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 60,
+          "predicted_prefix_survival": 0.35419060217809906,
+          "observed_prefix_survival": 0.43333333333333335,
+          "observed_minus_predicted": 0.07914273115523429,
+          "brier_score": 0.24837583976664648
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 53,
+          "predicted_prefix_survival": 0.45535416018702907,
+          "observed_prefix_survival": 0.5094339622641509,
+          "observed_minus_predicted": 0.054079802077121875,
+          "brier_score": 0.2537657332768351
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 49,
+          "predicted_prefix_survival": 0.542414617181171,
+          "observed_prefix_survival": 0.5918367346938775,
+          "observed_minus_predicted": 0.04942211751270653,
+          "brier_score": 0.24440001594044625
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 38,
+          "predicted_prefix_survival": 0.6458434554812837,
+          "observed_prefix_survival": 0.6842105263157895,
+          "observed_minus_predicted": 0.038367070834505745,
+          "brier_score": 0.21527336167515448
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 23,
+          "predicted_prefix_survival": 0.7510054950882012,
+          "observed_prefix_survival": 0.8695652173913043,
+          "observed_minus_predicted": 0.11855972230310308,
+          "brier_score": 0.13066220363661118
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 41,
+          "predicted_prefix_survival": 0.8528132890280243,
+          "observed_prefix_survival": 0.8780487804878049,
+          "observed_minus_predicted": 0.025235491459780546,
+          "brier_score": 0.10812693770604856
+        },
+        {
+          "depth": 1,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 101,
+          "predicted_prefix_survival": 0.977233403747547,
+          "observed_prefix_survival": 0.9801980198019802,
+          "observed_minus_predicted": 0.002964616054433211,
+          "brier_score": 0.018818599083061802
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 63,
+          "predicted_prefix_survival": 0.06067182834591603,
+          "observed_prefix_survival": 0.12698412698412698,
+          "observed_minus_predicted": 0.06631229863821095,
+          "brier_score": 0.11346749267553605
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 87,
+          "predicted_prefix_survival": 0.14920487552462025,
+          "observed_prefix_survival": 0.21839080459770116,
+          "observed_minus_predicted": 0.06918592907308091,
+          "brier_score": 0.17288615175585595
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 57,
+          "predicted_prefix_survival": 0.23803800422856253,
+          "observed_prefix_survival": 0.40350877192982454,
+          "observed_minus_predicted": 0.165470767701262,
+          "brier_score": 0.2678973751488672
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 40,
+          "predicted_prefix_survival": 0.3444660293135407,
+          "observed_prefix_survival": 0.3,
+          "observed_minus_predicted": -0.04446602931354071,
+          "brier_score": 0.20937725107795066
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 28,
+          "predicted_prefix_survival": 0.44253644374031814,
+          "observed_prefix_survival": 0.4642857142857143,
+          "observed_minus_predicted": 0.02174927054539616,
+          "brier_score": 0.24057843930623923
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 13,
+          "predicted_prefix_survival": 0.5432324879442424,
+          "observed_prefix_survival": 0.6153846153846154,
+          "observed_minus_predicted": 0.07215212744037303,
+          "brier_score": 0.23705291012563548
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 14,
+          "predicted_prefix_survival": 0.6415451085612763,
+          "observed_prefix_survival": 0.7142857142857143,
+          "observed_minus_predicted": 0.07274060572443797,
+          "brier_score": 0.21728620024548967
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 11,
+          "predicted_prefix_survival": 0.7438730026711914,
+          "observed_prefix_survival": 0.8181818181818182,
+          "observed_minus_predicted": 0.07430881551062685,
+          "brier_score": 0.15466208401745365
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 9,
+          "predicted_prefix_survival": 0.8392446413635675,
+          "observed_prefix_survival": 0.8888888888888888,
+          "observed_minus_predicted": 0.04964424752532137,
+          "brier_score": 0.11393199156145296
+        },
+        {
+          "depth": 2,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 20,
+          "predicted_prefix_survival": 0.979960529038819,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.020039470961180972,
+          "brier_score": 0.0011375373445430335
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 164,
+          "predicted_prefix_survival": 0.04359028102655997,
+          "observed_prefix_survival": 0.04878048780487805,
+          "observed_minus_predicted": 0.005190206778318079,
+          "brier_score": 0.047109073097208444
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 48,
+          "predicted_prefix_survival": 0.14015538336637787,
+          "observed_prefix_survival": 0.25,
+          "observed_minus_predicted": 0.10984461663362213,
+          "brier_score": 0.19224699945835863
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 22,
+          "predicted_prefix_survival": 0.23686003378184897,
+          "observed_prefix_survival": 0.22727272727272727,
+          "observed_minus_predicted": -0.009587306509121707,
+          "brier_score": 0.1702052460769239
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 8,
+          "predicted_prefix_survival": 0.35934235284323585,
+          "observed_prefix_survival": 0.5,
+          "observed_minus_predicted": 0.14065764715676415,
+          "brier_score": 0.27484499821627156
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 7,
+          "predicted_prefix_survival": 0.4516383833703818,
+          "observed_prefix_survival": 0.7142857142857143,
+          "observed_minus_predicted": 0.2626473309153325,
+          "brier_score": 0.28021594585675563
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.5,
+          "probability_high": 0.6,
+          "samples": 3,
+          "predicted_prefix_survival": 0.521478490482557,
+          "observed_prefix_survival": 0.3333333333333333,
+          "observed_minus_predicted": -0.1881451571492237,
+          "brier_score": 0.265359399008809
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 6,
+          "predicted_prefix_survival": 0.6487009013345689,
+          "observed_prefix_survival": 0.6666666666666666,
+          "observed_minus_predicted": 0.017965765332097705,
+          "brier_score": 0.22868518460305587
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 3,
+          "predicted_prefix_survival": 0.7644328302378322,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.23556716976216785,
+          "brier_score": 0.05675934900069883
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.8,
+          "probability_high": 0.9,
+          "samples": 1,
+          "predicted_prefix_survival": 0.8292763653267389,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.17072363467326113,
+          "brier_score": 0.02914655943604913
+        },
+        {
+          "depth": 3,
+          "probability_low": 0.9,
+          "probability_high": 1.0,
+          "samples": 2,
+          "predicted_prefix_survival": 0.999555868525915,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.00044413147408495224,
+          "brier_score": 3.331026287522692e-07
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 159,
+          "predicted_prefix_survival": 0.023009746039888142,
+          "observed_prefix_survival": 0.031446540880503145,
+          "observed_minus_predicted": 0.008436794840615002,
+          "brier_score": 0.02873572120273184
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 11,
+          "predicted_prefix_survival": 0.15139527338004827,
+          "observed_prefix_survival": 0.2727272727272727,
+          "observed_minus_predicted": 0.12133199934722444,
+          "brier_score": 0.21133940403739673
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 3,
+          "predicted_prefix_survival": 0.2457165475493126,
+          "observed_prefix_survival": 0.3333333333333333,
+          "observed_minus_predicted": 0.08761678578402071,
+          "brier_score": 0.23066814776249267
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 5,
+          "predicted_prefix_survival": 0.35086427741088316,
+          "observed_prefix_survival": 0.4,
+          "observed_minus_predicted": 0.04913572258911686,
+          "brier_score": 0.26177756758837656
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.4,
+          "probability_high": 0.5,
+          "samples": 5,
+          "predicted_prefix_survival": 0.4565887195627301,
+          "observed_prefix_survival": 0.6,
+          "observed_minus_predicted": 0.14341128043726986,
+          "brier_score": 0.25887951162179745
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.6,
+          "probability_high": 0.7,
+          "samples": 2,
+          "predicted_prefix_survival": 0.6333195159569079,
+          "observed_prefix_survival": 0.5,
+          "observed_minus_predicted": -0.13331951595690794,
+          "brier_score": 0.2900128041198772
+        },
+        {
+          "depth": 4,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 1,
+          "predicted_prefix_survival": 0.779740263370667,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.22025973662933296,
+          "brier_score": 0.04851435158002312
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.0,
+          "probability_high": 0.1,
+          "samples": 88,
+          "predicted_prefix_survival": 0.010103107847320842,
+          "observed_prefix_survival": 0.022727272727272728,
+          "observed_minus_predicted": 0.012624164879951886,
+          "brier_score": 0.02109870593990833
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.1,
+          "probability_high": 0.2,
+          "samples": 3,
+          "predicted_prefix_survival": 0.15078270635637409,
+          "observed_prefix_survival": 0.3333333333333333,
+          "observed_minus_predicted": 0.18255062697695923,
+          "brier_score": 0.2605561648317631
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.2,
+          "probability_high": 0.3,
+          "samples": 1,
+          "predicted_prefix_survival": 0.29499823937353203,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.29499823937353203,
+          "brier_score": 0.0870239612334837
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.3,
+          "probability_high": 0.4,
+          "samples": 1,
+          "predicted_prefix_survival": 0.3681192678538668,
+          "observed_prefix_survival": 0,
+          "observed_minus_predicted": -0.3681192678538668,
+          "brier_score": 0.13551179536526692
+        },
+        {
+          "depth": 5,
+          "probability_low": 0.7,
+          "probability_high": 0.8,
+          "samples": 1,
+          "predicted_prefix_survival": 0.7135200025426589,
+          "observed_prefix_survival": 1,
+          "observed_minus_predicted": 0.2864799974573411,
+          "brier_score": 0.08207078894315815
+        }
+      ],
+      "policy": {
+        "label": "predicted_counterfactual_not_actual_tps",
+        "eligible_rounds": 525,
+        "changed_choices": 102,
+        "round_gain_fraction": {
+          "samples": 525,
+          "median": 0.0,
+          "p10": 0.0,
+          "p90": 0.01919242167394884,
+          "sum": 2.0340648140526625
+        },
+        "rounds_modeling_target": 0,
+        "legacy_selected_rows": {
+          "5": 25,
+          "3": 232,
+          "2": 197,
+          "4": 60,
+          "1": 2,
+          "6": 9
+        },
+        "measured_selected_rows": {
+          "4": 82,
+          "3": 168,
+          "5": 7,
+          "2": 255,
+          "1": 10,
+          "6": 3
+        },
+        "changed_fraction": 0.19428571428571428,
+        "modeled_gain_on_replayed_states": 0.004422354019172348,
+        "legacy_scenario_matches_observed_fraction": null
+      },
+      "excluded": {}
+    }
+  ],
+  "excluded": {
+    "request_warmup": 10,
+    "shape_warmup": 36
+  },
+  "trace_complete_by_source": {
+    "445329adb4b6b6d554ecb94484a1d02f637b4c3d5a2a57ed139eaca5b5ef5033": false
+  },
+  "settings": {
+    "skip_rounds": 3,
+    "skip_shape": 2,
+    "max_rows": 16,
+    "legacy_forward_ms": [
+      30.0,
+      35.2,
+      39.9,
+      44.9,
+      48.6,
+      52.1,
+      55.6,
+      59.1,
+      62.7,
+      66.3,
+      69.6,
+      72.9,
+      75.5,
+      78.2,
+      81.3,
+      84.4,
+      87.5,
+      90.6,
+      93.7,
+      96.8,
+      99.9,
+      103.0,
+      106.1,
+      109.2
+    ],
+    "legacy_fixed_overhead_ms": 8
+  },
+  "limitations": [
+    "CPU-wall component durations include existing synchronization; these are not isolated GPU kernels.",
+    "Policy replay is a confidence-based counterfactual on observed states, not measured TPS or a forecast.",
+    "The fixed legacy overhead is an explicit scenario; runtime learned overhead is not recorded exactly.",
+    "Only preceding full held vectors are replayed; unverified acceptance depths are never inferred.",
+    "Potential acceptance precedes stop and output-budget handling; it is not committed token throughput.",
+    "Confidence calibration uses observed selected depths and can carry selection bias.",
+    "Overhead can depend on sampling mode and draft depth; replay requires the catalog's fitting conditions.",
+    "Training replay does not replace independent holdout speed and exact-token benchmarks."
+  ]
+}

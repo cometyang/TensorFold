@@ -1,0 +1,10 @@
+{
+  "calibration_trace_sha256": "445329adb4b6b6d554ecb94484a1d02f637b4c3d5a2a57ed139eaca5b5ef5033",
+  "deployed_profile_sha256": "9ffaf78d07fb4d043715e05f51e8efad42fd5ad4eba7d8f43a60a9f82bdc270f",
+  "binary_source_commit": "bd6fa1255bb1a9f37cedb045d770b5f94207c3df",
+  "baseline_commit": "6af4fd8a083323644651f65397f21ca61b4cdd2f",
+  "compression": "gzip mtime=0; decompress to recover original trace/profile evidence",
+  "redaction": "Clock host identifiers replaced with rank0/rank1; build log home path replaced with $EXPERIMENT_ROOT.",
+  "output_token_sha256": "SHA256 of little-endian unsigned 32-bit token IDs",
+  "native_token_sha": "first 12 characters of SHA256 of comma-separated decimal token IDs"
+}

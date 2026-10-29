@@ -1,0 +1,11 @@
+{
+  "baseline_image": "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+  "binary_image": "tensorfold-dsv41:codex-allocator-binary-e7c4e3687335",
+  "calibration_image": "tensorfold-dsv41:codex-allocator-calibration-e7c4e3687335",
+  "binary_sha256": {
+    "tensorfold-native": "888a4fba51b40b188e43f8d4c117e6dbfba6cc47fe57d49f3d4f48c34626822e",
+    "tf-dsv41-lanes": "b5a44a6e00e9a832ff0a6f81dfcc4a56a03705902a26744b55d360f2756e7401"
+  },
+  "staged_on_both": true,
+  "clock_ceiling_mhz": 2200
+}

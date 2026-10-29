@@ -103,6 +103,20 @@ live process should contain the release records for the measured requests; a fin
 summary appears only at process shutdown. A missing or truncated trace is not
 evidence of an end-to-end timing win.
 
+Inspect component timing, confidence calibration and the choices implied by the
+two cost tables with the optional replay tool:
+
+```sh
+python3 tools/dsv41-zig/spec_calibration/analyze.py measurements/train-trace.jsonl \
+  --catalog measurements/context-costs.json --legacy-overhead-ms 0 \
+  --output measurements/training-analysis.json
+```
+
+Replay evaluates both policies under the measured costs and labels its gains as
+counterfactual estimates. It cannot predict tokens on an unverified draft tail or
+replace an end-to-end benchmark. The legacy overhead is a scenario input, not a
+measurement of the running baseline; compare plausible values explicitly.
+
 ## Speed and exactness
 
 Run an identical command for baseline and candidate, changing only the externally
