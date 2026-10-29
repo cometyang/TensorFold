@@ -1,12 +1,14 @@
 """Analyze verification traffic receipts without treating L2 requests as DRAM traffic."""
 import argparse
 from collections import Counter, defaultdict
+import gzip
 import hashlib
 import json
 import math
 from pathlib import Path
 import re
 import statistics
+import zlib
 
 FILL = 'lts__d_sectors_fill_sysmem.sum'
 READ = 'lts__t_sectors_aperture_sysmem_op_read.sum'
@@ -16,8 +18,25 @@ METRICS = {FILL: ('sysmem_fill_GB', 32 / 1e9), READ: ('l2_sysmem_read_request_GB
            WRITE: ('l2_sysmem_write_request_GB', 32 / 1e9), TIME: ('gpu_range_ms', 1 / 1e6)}
 
 
+def input_bytes(path):
+    raw = path.read_bytes()
+    return gzip.decompress(raw) if path.suffix.lower() == '.gz' else raw
+
+
 def read_json(path):
-    return json.loads(path.read_text(encoding='utf-8-sig'))
+    return json.loads(input_bytes(path).decode('utf-8-sig'))
+
+
+def confined_input(directory, relative):
+    root = directory.resolve()
+    path = (directory / str(relative).replace('\\', '/')).resolve()
+    if not path.is_relative_to(root):
+        raise ValueError('counter path escapes receipt directory')
+    if not path.is_file() and path.suffix.lower() != '.gz':
+        path = Path(str(path) + '.gz').resolve()
+        if not path.is_relative_to(root):
+            raise ValueError('compressed counter path escapes receipt directory')
+    return path
 
 
 def bucket(context):
@@ -90,13 +109,32 @@ def accuracy(receipt, reference):
 def speed(receipt, baselines, target):
     grouped = defaultdict(list)
     rejected = []
+    eligible = []
+    settings = defaultdict(lambda: defaultdict(list))
     for label, mode, batch, row in requests(receipt):
         if mode != 'speed' or batch.get('warmup', False):
             continue
         if not (row.get('complete') is True and not row.get('error') and finite(row.get('decode_tps'), True)):
             rejected.append({'phase': label, 'fixture': row.get('fixture'), 'rep': batch.get('rep')})
             continue
-        grouped[(row.get('fixture'), label, bool(row.get('draft')))].append(row['decode_tps'])
+        fixture = row.get('fixture')
+        values = {key: row.get(key) for key in ('tokens', 'max_tokens', 'temperature', 'seed')}
+        if isinstance(row.get('token_ids'), list):
+            values['token_ids_length'] = len(row['token_ids'])
+        for key, value in values.items():
+            if value is not None and value not in settings[fixture][key]:
+                settings[fixture][key].append(value)
+        eligible.append((label, batch, row))
+    conflicts = {fixture: {key: values for key, values in fields.items() if len(values) > 1}
+                 for fixture, fields in settings.items()}
+    conflicts = {fixture: fields for fixture, fields in conflicts.items() if fields}
+    for label, batch, row in eligible:
+        fixture = row.get('fixture')
+        if fixture in conflicts:
+            rejected.append({'phase': label, 'fixture': fixture, 'rep': batch.get('rep'),
+                             'reason': 'inconsistent fixture settings', 'fields': list(conflicts[fixture])})
+            continue
+        grouped[(fixture, label, bool(row.get('draft')))].append(row['decode_tps'])
     contexts = {row['fixture']: row.get('context') for _, _, _, row in requests(receipt)}
     fixtures = []
     summaries = defaultdict(list)
@@ -147,22 +185,32 @@ def speed(receipt, baselines, target):
             'context_aggregation': 'equal-weight geometric mean across per-fixture median TPS',
             'plain_scope': 'diagnostic controls, not statistically independent performance claims',
             'profiled_requests_excluded': True, 'rejected_requests': rejected,
+            'settings_conflicts': conflicts,
+            'settings_scope': 'available token lengths, requested lengths, temperature and seed across each fixture',
             'fixtures': fixtures, 'contexts': aggregate}
 
 
 def trace_index(phase, label, directory, issues):
     files = [x for x in phase.get('counter_files', []) if x.get('rank') == 0
-             and x.get('name') == 'spec-trace.jsonl']
+             and x.get('name', '').removesuffix('.gz') == 'spec-trace.jsonl']
     if len(files) != 1:
         if phase.get('mode') == 'profile':
             issues.append(f'{label}: trace join requires exactly one rank0 spec-trace file')
         return {}, {'available': False}
     item = files[0]
-    path = (directory / str(item['file']).replace('\\', '/')).resolve()
-    if not path.is_relative_to(directory.resolve()) or not path.is_file():
+    try:
+        path = confined_input(directory, item['file'])
+    except ValueError:
+        issues.append(f'{label}: unsafe rank0 trace path')
+        return {}, {'available': False}
+    if not path.is_file():
         issues.append(f'{label}: missing or unsafe rank0 trace path')
         return {}, {'available': False}
-    raw = path.read_bytes()
+    try:
+        raw = input_bytes(path)
+    except (OSError, EOFError, zlib.error):
+        issues.append(f'{label}: unreadable rank0 trace')
+        return {}, {'available': False}
     digest = hashlib.sha256(raw).hexdigest()
     if item.get('sha256') and digest != item['sha256']:
         issues.append(f'{label}: rank0 trace digest mismatch')
@@ -270,14 +318,19 @@ def traffic(receipt, directory, issues, join_spec_trace=False):
             if not item.get('name', Path(item.get('file', '')).name).startswith('traffic'):
                 continue
             relative = str(item['file']).replace('\\', '/')
-            path = (directory / relative).resolve()
-            if not path.is_relative_to(directory.resolve()):
-                issues.append(f'{label}: counter path escapes receipt directory')
+            try:
+                path = confined_input(directory, relative)
+            except ValueError as error:
+                issues.append(f'{label}: {error}')
                 continue
             if not path.is_file():
                 issues.append(f'{label}: missing counter file {Path(relative).name}')
                 continue
-            raw = path.read_bytes()
+            try:
+                raw = input_bytes(path)
+            except (OSError, EOFError, zlib.error):
+                issues.append(f'{label}: unreadable counter file {path.name}')
+                continue
             digest = hashlib.sha256(raw).hexdigest()
             if item.get('sha256') and digest != item['sha256']:
                 issues.append(f'{label}: counter digest mismatch {path.name}')
@@ -398,7 +451,7 @@ def analyze(receipt_path, reference_path=None, baselines=('A1', 'A2'), target=80
                'excludes': ['KV/index scans', 'activation traffic', 'extra reads and cache effects', 'drafter passes', 'communication'],
                'not': ['total resident model size', 'per-output-token measured traffic', 'a verification-round constant']}
     assert weights['fixed_weight_bytes_per_rank'] + weights['six_routed_experts_bytes_per_rank'] == 4334554816
-    return {'schema_version': 1, 'receipt_sha256': hashlib.sha256(receipt_path.read_bytes()).hexdigest(),
+    return {'schema_version': 1, 'receipt_sha256': hashlib.sha256(input_bytes(receipt_path)).hexdigest(),
             'target_tps': target, 'original_service_restored': receipt.get('restored'),
             'receipt_failure': receipt.get('failure', receipt.get('error')), 'issues': issues,
             'speed': speed(receipt, baselines, target), 'exactness': accuracy(receipt, reference),

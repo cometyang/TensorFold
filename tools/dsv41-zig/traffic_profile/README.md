@@ -197,6 +197,12 @@ The standard-library Python analyzer reads a controller `receipt.json` with
 Keep the counter files beside the receipt in their recorded subdirectories.
 It makes no network requests and requires no CUDA installation.
 
+Receipts and references may be `.json.gz`; counter and trace files may be
+`.jsonl.gz`. If a receipt names an uncompressed relative file that is absent,
+the analyzer looks for the same name with `.gz` appended. Both paths must remain
+inside the receipt directory after resolving links. Digests are checked against
+the decompressed original bytes, so compression does not change the analysis.
+
 ```bash
 python3 tools/dsv41-zig/traffic_profile/analyze.py /path/run/receipt.json \
   --reference-receipt /path/reference/receipt.json \
@@ -222,6 +228,10 @@ context aggregates use equal-weight geometric means across fixtures. Use
 `--baseline-labels BEFORE AFTER` to change the bracket names and
 `--target-tps 80` to set the throughput target. Plain controls remain diagnostic.
 Missing bracket phases do not produce an inferred performance gain.
+Available output lengths, requested lengths, temperature and seed must agree
+within each fixture across measured phases and plain controls. Conflicting
+fixtures are excluded from speed comparisons and listed in `settings_conflicts`;
+missing settings are not invented.
 
 Optional `--join-spec-trace` uses the primary rank's `spec-trace.jsonl`. Each
 `rankR_bB_roundK` range must match the trace's zero-based eligible verification
