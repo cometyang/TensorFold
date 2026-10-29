@@ -7,6 +7,7 @@
 const std = @import("std");
 const cuda = @import("cuda");
 const exact_topk = @import("topk_exact.zig");
+const prefetch_policy = @import("prefetch_policy.zig");
 
 /// launch_shape.h's tf_launch_blocks: a block a `threads` elements, at most 65535.
 fn blocks(count: usize, threads: usize) u32 {
@@ -180,12 +181,11 @@ pub const Ops = struct {
     }
 
     /// Every 128-byte line of `pf`'s ranges touched into L2 (one block of 128 threads); writes nothing.
-    pub fn l2Prefetch(o: *const Ops, s: cuda.Stream, pf: Prefetch) !void {
+    pub fn l2Prefetch(o: *const Ops, s: cuda.Stream, pf: Prefetch, rate_gbps: u16) !void {
         if (pf.n == 0) return;
-        // the served decode settings (exl3/prefetch.py): 3 us before the first wave, waves of 128 chunks of 8 KiB
-        // at 230 GB/s (TF_EXL3_L2_DELAY_NS, TF_EXL3_L2_RATE_GBPS), one block
+        // Preserve the served 3 us delay; each wave has 128 chunks of 8 KiB, paced at the configured rate.
         const delay_ns: c_longlong = 3000;
-        const wave_ns: c_longlong = @intFromFloat(128.0 * 8192.0 / 230.0);
+        const wave_ns = prefetch_policy.waveNs(rate_gbps);
         var a: cuda.Args = .{};
         a.add(pf);
         a.add(delay_ns);

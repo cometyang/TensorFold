@@ -1,0 +1,108 @@
+{
+  "scope": "Conditional optimistic estimates for sampled16-round verification windows, not model-wide speed or physical DRAM limits.",
+  "formulas": {
+    "fill_service_s": "sum measured system-memory L2 fill GB / standalone read GBps",
+    "fill_plus_draft_tps": "sum potential new tokens / (fill_service_s + rounds *0.0036)",
+    "yield": "1 + potential accepted prefix per stream, before stop/output-budget truncation; not actual committed output"
+  },
+  "assumptions": [
+    "Same observed acceptance and MoE routing mix persists.",
+    "System-memory fills can be serviced at standalone read rate.",
+    "Exactly one serial3.6ms draft pass per verification round.",
+    "All other forward compute, communication, host gaps and sampling cost zero.",
+    "Write contention/coherence overhead ignored; overlapping request-sector counters are not added.",
+    "Small early sample window can have a different acceptance mix than the whole fixture."
+  ],
+  "rows": [
+    {
+      "context": 2048,
+      "rank": 0,
+      "rounds": 16,
+      "matched": 16,
+      "potential_new_tokens": 31.0,
+      "mean_fill_GB": 6.265674658,
+      "mean_potential_yield": 1.9375,
+      "bandwidth_assumption_GBps": 236.534,
+      "optimistic_fill_service_tps": 73.14210360649083,
+      "optimistic_fill_service_plus_3p6ms_draft_tps": 64.39116709363424,
+      "required_fill_reduction_pct_for80": 22.162645226511845,
+      "required_potential_yield_for80_same_fill": 2.407162457152037,
+      "fill_bytes_per_potential_new_token": 3233896597.677419
+    },
+    {
+      "context": 2048,
+      "rank": 1,
+      "rounds": 16,
+      "matched": 16,
+      "potential_new_tokens": 31.0,
+      "mean_fill_GB": 6.265258258,
+      "mean_potential_yield": 1.9375,
+      "bandwidth_assumption_GBps": 234.608,
+      "optimistic_fill_service_tps": 72.55135882381052,
+      "optimistic_fill_service_plus_3p6ms_draft_tps": 63.932880171949265,
+      "required_fill_reduction_pct_for80": 22.79131201298358,
+      "required_potential_yield_for80_same_fill": 2.424417601445816,
+      "fill_bytes_per_potential_new_token": 3233681681.548387
+    },
+    {
+      "context": 65536,
+      "rank": 0,
+      "rounds": 16,
+      "matched": 16,
+      "potential_new_tokens": 28.0,
+      "mean_fill_GB": 6.3787304780000005,
+      "mean_potential_yield": 1.75,
+      "bandwidth_assumption_GBps": 236.534,
+      "optimistic_fill_service_tps": 64.89292836993887,
+      "optimistic_fill_service_plus_3p6ms_draft_tps": 57.25034891372992,
+      "required_fill_reduction_pct_for80": 32.23324194510669,
+      "required_potential_yield_for80_same_fill": 2.445399943517634,
+      "fill_bytes_per_potential_new_token": 3644988844.5714293
+    },
+    {
+      "context": 65536,
+      "rank": 1,
+      "rounds": 16,
+      "matched": 16,
+      "potential_new_tokens": 28.0,
+      "mean_fill_GB": 6.373418072,
+      "mean_potential_yield": 1.75,
+      "bandwidth_assumption_GBps": 234.608,
+      "optimistic_fill_service_tps": 64.41818116462642,
+      "optimistic_fill_service_plus_3p6ms_draft_tps": 56.88052218302183,
+      "required_fill_reduction_pct_for80": 32.72901366951155,
+      "required_potential_yield_for80_same_fill": 2.461299485780536,
+      "fill_bytes_per_potential_new_token": 3641953184.0
+    },
+    {
+      "context": 1047040,
+      "rank": 0,
+      "rounds": 16,
+      "matched": 16,
+      "potential_new_tokens": 50.0,
+      "mean_fill_GB": 7.764098540000001,
+      "mean_potential_yield": 3.125,
+      "bandwidth_assumption_GBps": 236.534,
+      "optimistic_fill_service_tps": 95.20342203178683,
+      "optimistic_fill_service_plus_3p6ms_draft_tps": 85.79401939194413,
+      "required_fill_reduction_pct_for80": -8.036843321671693,
+      "required_potential_yield_for80_same_fill": 2.9139560283088266,
+      "fill_bytes_per_potential_new_token": 2484511532.8
+    },
+    {
+      "context": 1047040,
+      "rank": 1,
+      "rounds": 16,
+      "matched": 16,
+      "potential_new_tokens": 50.0,
+      "mean_fill_GB": 7.764844124,
+      "mean_potential_yield": 3.125,
+      "bandwidth_assumption_GBps": 234.608,
+      "optimistic_fill_service_tps": 94.41915230905157,
+      "optimistic_fill_service_plus_3p6ms_draft_tps": 85.15659584921578,
+      "required_fill_reduction_pct_for80": -7.146854040311723,
+      "required_potential_yield_for80_same_fill": 2.93576789333697,
+      "fill_bytes_per_potential_new_token": 2484750119.68
+    }
+  ]
+}

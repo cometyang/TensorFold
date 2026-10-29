@@ -1,0 +1,125 @@
+{
+  "scope": "Descriptive selected-draft confidence on the three 512-output profiled requests. Selection-censored observations; not a held-out calibration or counterfactual speed benchmark.",
+  "contexts": [
+    {
+      "context": 2048,
+      "rounds": 263,
+      "rounds_without_confidence_excluded": 0,
+      "mean_selected_drafts": 1.7756653992395437,
+      "mean_predicted_potential_yield": 1.9437746966218066,
+      "mean_observed_potential_yield": 1.9391634980988592,
+      "conditional_depths": [
+        {
+          "depth": 1,
+          "observed_trials": 259,
+          "mean_predicted_acceptance": 0.6098032165399827,
+          "observed_acceptance": 0.61003861003861
+        },
+        {
+          "depth": 2,
+          "observed_trials": 104,
+          "mean_predicted_acceptance": 0.6071735681595535,
+          "observed_acceptance": 0.625
+        },
+        {
+          "depth": 3,
+          "observed_trials": 23,
+          "mean_predicted_acceptance": 0.7061496445014225,
+          "observed_acceptance": 0.6521739130434783
+        },
+        {
+          "depth": 4,
+          "observed_trials": 8,
+          "mean_predicted_acceptance": 0.810562953337678,
+          "observed_acceptance": 0.75
+        },
+        {
+          "depth": 5,
+          "observed_trials": 5,
+          "mean_predicted_acceptance": 0.6862819721447251,
+          "observed_acceptance": 0.6
+        }
+      ]
+    },
+    {
+      "context": 65536,
+      "rounds": 247,
+      "rounds_without_confidence_excluded": 0,
+      "mean_selected_drafts": 1.8461538461538463,
+      "mean_predicted_potential_yield": 2.050085439197476,
+      "mean_observed_potential_yield": 2.064777327935223,
+      "conditional_depths": [
+        {
+          "depth": 1,
+          "observed_trials": 241,
+          "mean_predicted_acceptance": 0.6315499316349079,
+          "observed_acceptance": 0.6224066390041494
+        },
+        {
+          "depth": 2,
+          "observed_trials": 105,
+          "mean_predicted_acceptance": 0.6707049746410239,
+          "observed_acceptance": 0.7047619047619048
+        },
+        {
+          "depth": 3,
+          "observed_trials": 33,
+          "mean_predicted_acceptance": 0.7816202004667016,
+          "observed_acceptance": 0.7878787878787878
+        },
+        {
+          "depth": 4,
+          "observed_trials": 13,
+          "mean_predicted_acceptance": 0.7902634085388454,
+          "observed_acceptance": 0.7692307692307693
+        },
+        {
+          "depth": 5,
+          "observed_trials": 4,
+          "mean_predicted_acceptance": 0.7189195807275786,
+          "observed_acceptance": 0.75
+        }
+      ]
+    },
+    {
+      "context": 1047040,
+      "rounds": 156,
+      "rounds_without_confidence_excluded": 6,
+      "mean_selected_drafts": 3.0833333333333335,
+      "mean_predicted_potential_yield": 3.1219772605514193,
+      "mean_observed_potential_yield": 3.16025641025641,
+      "conditional_depths": [
+        {
+          "depth": 1,
+          "observed_trials": 156,
+          "mean_predicted_acceptance": 0.8161444497578877,
+          "observed_acceptance": 0.8012820512820513
+        },
+        {
+          "depth": 2,
+          "observed_trials": 119,
+          "mean_predicted_acceptance": 0.7588039055022687,
+          "observed_acceptance": 0.8151260504201681
+        },
+        {
+          "depth": 3,
+          "observed_trials": 69,
+          "mean_predicted_acceptance": 0.7924880993081846,
+          "observed_acceptance": 0.8115942028985508
+        },
+        {
+          "depth": 4,
+          "observed_trials": 45,
+          "mean_predicted_acceptance": 0.8025125020392162,
+          "observed_acceptance": 0.8666666666666667
+        },
+        {
+          "depth": 5,
+          "observed_trials": 28,
+          "mean_predicted_acceptance": 0.8053669920666994,
+          "observed_acceptance": 0.7142857142857143
+        }
+      ]
+    }
+  ]
+}

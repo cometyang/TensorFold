@@ -1,0 +1,4083 @@
+{
+  "schema_version": 1,
+  "receipt_sha256": "9c40d8c3de3b176d655e7ebb1b7131c42df1f46afbb1fb856d4f525bc7122cc5",
+  "target_tps": 80,
+  "original_service_restored": true,
+  "receipt_failure": null,
+  "issues": [],
+  "speed": {
+    "baselines": [
+      "A1",
+      "A2"
+    ],
+    "bracket_method": "arithmetic mean of A1/A2 per-fixture median TPS",
+    "context_aggregation": "equal-weight geometric mean across per-fixture median TPS",
+    "plain_scope": "diagnostic controls, not statistically independent performance claims",
+    "profiled_requests_excluded": true,
+    "rejected_requests": [],
+    "settings_conflicts": {},
+    "settings_scope": "available token lengths, requested lengths, sampling and prompt identity across each fixture",
+    "fixtures": [
+      {
+        "fixture": "holdout-prose-2048-7391",
+        "context": 2048,
+        "phases": {
+          "A1": {
+            "speculative": {
+              "count": 3,
+              "median": 56.461109230586565,
+              "mean": 56.462893765827395,
+              "min": 56.45450504903737,
+              "max": 56.47306701785824
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 44.27418254711836,
+              "mean": 44.27418254711836,
+              "min": 44.27418254711836,
+              "max": 44.27418254711836
+            }
+          },
+          "A2": {
+            "speculative": {
+              "count": 3,
+              "median": 56.39952586414329,
+              "mean": 56.42291301891751,
+              "min": 56.33209412117143,
+              "max": 56.53711907143782
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 44.205376397463695,
+              "mean": 44.205376397463695,
+              "min": 44.205376397463695,
+              "max": 44.205376397463695
+            }
+          },
+          "ATTNoff": {
+            "speculative": {
+              "count": 3,
+              "median": 55.305303821988936,
+              "mean": 55.245817953277275,
+              "min": 55.09280160834063,
+              "max": 55.339348429502266
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 42.519614879860676,
+              "mean": 42.519614879860676,
+              "min": 42.519614879860676,
+              "max": 42.519614879860676
+            }
+          },
+          "OFF": {
+            "speculative": {
+              "count": 3,
+              "median": 53.46310378479893,
+              "mean": 53.420696714345404,
+              "min": 53.25512302988903,
+              "max": 53.54386332834826
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 40.79593996627605,
+              "mean": 40.79593996627605,
+              "min": 40.79593996627605,
+              "max": 40.79593996627605
+            }
+          }
+        },
+        "baseline_bracket_tps": 56.43031754736493,
+        "baseline_drift_pct": -0.10907218664756302,
+        "comparisons": [
+          {
+            "phase": "ATTNoff",
+            "candidate_tps": 55.305303821988936,
+            "baseline_tps": 56.43031754736493,
+            "speculative_gain_pct": -1.9936335187759835,
+            "plain_candidate_tps": 42.519614879860676,
+            "plain_baseline_tps": 44.239779472291026,
+            "plain_gain_pct": -3.8882756942939856,
+            "target_tps": 80,
+            "target_met": false,
+            "additional_tps_to_target": 24.694696178011064,
+            "additional_speedup_pct_to_target": 44.65158759003627,
+            "latency_reduction_pct_to_target": 30.868370222513832
+          },
+          {
+            "phase": "OFF",
+            "candidate_tps": 53.46310378479893,
+            "baseline_tps": 56.43031754736493,
+            "speculative_gain_pct": -5.258190794470474,
+            "plain_candidate_tps": 40.79593996627605,
+            "plain_baseline_tps": 44.239779472291026,
+            "plain_gain_pct": -7.784486150460978,
+            "target_tps": 80,
+            "target_met": false,
+            "additional_tps_to_target": 26.536896215201068,
+            "additional_speedup_pct_to_target": 49.63590651604903,
+            "latency_reduction_pct_to_target": 33.17112026900133
+          }
+        ]
+      },
+      {
+        "fixture": "holdout-prose-65536-7391",
+        "context": 65536,
+        "phases": {
+          "A1": {
+            "speculative": {
+              "count": 3,
+              "median": 58.2980006570803,
+              "mean": 58.31851199515794,
+              "min": 58.23720848645772,
+              "max": 58.42032684193581
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 44.06293177665856,
+              "mean": 44.06293177665856,
+              "min": 44.06293177665856,
+              "max": 44.06293177665856
+            }
+          },
+          "A2": {
+            "speculative": {
+              "count": 3,
+              "median": 58.38768895868815,
+              "mean": 58.31985364933336,
+              "min": 58.16064035777843,
+              "max": 58.4112316315335
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 44.06668520578516,
+              "mean": 44.06668520578516,
+              "min": 44.06668520578516,
+              "max": 44.06668520578516
+            }
+          },
+          "ATTNoff": {
+            "speculative": {
+              "count": 3,
+              "median": 57.338934618729844,
+              "mean": 57.32402449094091,
+              "min": 57.2127197627213,
+              "max": 57.42041909137158
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 42.54742401688167,
+              "mean": 42.54742401688167,
+              "min": 42.54742401688167,
+              "max": 42.54742401688167
+            }
+          },
+          "OFF": {
+            "speculative": {
+              "count": 3,
+              "median": 55.66154198339957,
+              "mean": 55.70370429430892,
+              "min": 55.63315468083329,
+              "max": 55.8164162186939
+            },
+            "plain_control": {
+              "count": 1,
+              "median": 41.11214629904512,
+              "mean": 41.11214629904512,
+              "min": 41.11214629904512,
+              "max": 41.11214629904512
+            }
+          }
+        },
+        "baseline_bracket_tps": 58.34284480788423,
+        "baseline_drift_pct": 0.15384455829867694,
+        "comparisons": [
+          {
+            "phase": "ATTNoff",
+            "candidate_tps": 57.338934618729844,
+            "baseline_tps": 58.34284480788423,
+            "speculative_gain_pct": -1.7207083275766477,
+            "plain_candidate_tps": 42.54742401688167,
+            "plain_baseline_tps": 44.06480849122186,
+            "plain_gain_pct": -3.44352903438232,
+            "target_tps": 80,
+            "target_met": false,
+            "additional_tps_to_target": 22.661065381270156,
+            "additional_speedup_pct_to_target": 39.52125293564119,
+            "latency_reduction_pct_to_target": 28.326331726587696
+          },
+          {
+            "phase": "OFF",
+            "candidate_tps": 55.66154198339957,
+            "baseline_tps": 58.34284480788423,
+            "speculative_gain_pct": -4.595769769735869,
+            "plain_candidate_tps": 41.11214629904512,
+            "plain_baseline_tps": 44.06480849122186,
+            "plain_gain_pct": -6.700726255884981,
+            "target_tps": 80,
+            "target_met": false,
+            "additional_tps_to_target": 24.338458016600427,
+            "additional_speedup_pct_to_target": 43.72580627367293,
+            "latency_reduction_pct_to_target": 30.423072520750537
+          }
+        ]
+      }
+    ],
+    "contexts": [
+      {
+        "context": 2048,
+        "phase": "ATTNoff",
+        "fixtures": [
+          "holdout-prose-2048-7391"
+        ],
+        "baseline_tps": 56.43031754736493,
+        "candidate_tps": 55.305303821988936,
+        "speculative_gain_pct": -1.9936335187759835,
+        "plain_gain_pct": -3.8882756942939856,
+        "plain_fixture_count": 1,
+        "target_met": false,
+        "additional_tps_to_target": 24.694696178011064,
+        "additional_speedup_pct_to_target": 44.65158759003627,
+        "latency_reduction_pct_to_target": 30.868370222513832
+      },
+      {
+        "context": 2048,
+        "phase": "OFF",
+        "fixtures": [
+          "holdout-prose-2048-7391"
+        ],
+        "baseline_tps": 56.43031754736493,
+        "candidate_tps": 53.46310378479893,
+        "speculative_gain_pct": -5.258190794470474,
+        "plain_gain_pct": -7.784486150460978,
+        "plain_fixture_count": 1,
+        "target_met": false,
+        "additional_tps_to_target": 26.536896215201068,
+        "additional_speedup_pct_to_target": 49.63590651604903,
+        "latency_reduction_pct_to_target": 33.17112026900133
+      },
+      {
+        "context": 65536,
+        "phase": "ATTNoff",
+        "fixtures": [
+          "holdout-prose-65536-7391"
+        ],
+        "baseline_tps": 58.34284480788423,
+        "candidate_tps": 57.338934618729844,
+        "speculative_gain_pct": -1.7207083275766477,
+        "plain_gain_pct": -3.44352903438232,
+        "plain_fixture_count": 1,
+        "target_met": false,
+        "additional_tps_to_target": 22.661065381270156,
+        "additional_speedup_pct_to_target": 39.52125293564119,
+        "latency_reduction_pct_to_target": 28.326331726587696
+      },
+      {
+        "context": 65536,
+        "phase": "OFF",
+        "fixtures": [
+          "holdout-prose-65536-7391"
+        ],
+        "baseline_tps": 58.34284480788423,
+        "candidate_tps": 55.66154198339957,
+        "speculative_gain_pct": -4.595769769735869,
+        "plain_gain_pct": -6.700726255884981,
+        "plain_fixture_count": 1,
+        "target_met": false,
+        "additional_tps_to_target": 24.338458016600427,
+        "additional_speedup_pct_to_target": 43.72580627367293,
+        "latency_reduction_pct_to_target": 30.423072520750537
+      }
+    ]
+  },
+  "exactness": {
+    "counts": {
+      "matched": 43
+    },
+    "all_independent_comparisons_match": true,
+    "comparisons": [
+      {
+        "phase": "P31",
+        "mode": "profile",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 512,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "P31",
+        "mode": "profile",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 512,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "P31",
+        "mode": "profile",
+        "fixture": "holdout-retrieval-1047040-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 512,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A1",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "OFF",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "ATTNoff",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-2048-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 0,
+        "warmup": true,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 1,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 2,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": true,
+        "rep": 3,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      },
+      {
+        "phase": "A2",
+        "mode": "speed",
+        "fixture": "holdout-prose-65536-7391",
+        "draft": false,
+        "rep": 0,
+        "warmup": false,
+        "tokens": 1024,
+        "status": "matched",
+        "token_ids_compared": true,
+        "controller_exact_claim": true,
+        "complete": true
+      }
+    ]
+  },
+  "traffic": {
+    "sector_bytes": 32,
+    "GB_definition": "decimal 1e9 bytes",
+    "groups": [
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 0,
+        "rows": 1,
+        "count": 1,
+        "observed_context_min": 2108,
+        "observed_context_max": 2108,
+        "sysmem_fill_GB": {
+          "count": 1,
+          "median": 4.431462752,
+          "mean": 4.431462752,
+          "min": 4.431462752,
+          "max": 4.431462752
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 1,
+          "median": 4.844052864,
+          "mean": 4.844052864,
+          "min": 4.844052864,
+          "max": 4.844052864
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 1,
+          "median": 0.101195776,
+          "mean": 0.101195776,
+          "min": 0.101195776,
+          "max": 0.101195776
+        },
+        "gpu_range_ms": {
+          "count": 1,
+          "median": 24.743807999999998,
+          "mean": 24.743807999999998,
+          "min": 24.743807999999998,
+          "max": 24.743807999999998
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 1,
+          "median": 179.093806094842,
+          "mean": 179.093806094842,
+          "min": 179.093806094842,
+          "max": 179.093806094842
+        },
+        "sysmem_fill_inferred_weighted_GBps": 179.093806094842,
+        "trace_join": {
+          "matched_count": 1,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b0_round28",
+              "sequence": 58,
+              "wire_step": 61,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 24.757256,
+              "profiled_cpu_round_wall_ms": 24.858695
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 1,
+            "median": 0,
+            "mean": 0,
+            "min": 0,
+            "max": 0
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 1,
+            "median": 1,
+            "mean": 1,
+            "min": 1,
+            "max": 1
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 1,
+            "median": 4431462752.0,
+            "mean": 4431462752.0,
+            "min": 4431462752.0,
+            "max": 4431462752.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 4431462752.0
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 0,
+        "rows": 2,
+        "count": 4,
+        "observed_context_min": 2103,
+        "observed_context_max": 2115,
+        "sysmem_fill_GB": {
+          "count": 4,
+          "median": 5.416442848,
+          "mean": 5.399169336,
+          "min": 5.3228259520000005,
+          "max": 5.440965696
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 4,
+          "median": 6.155514512,
+          "mean": 6.140604120000001,
+          "min": 6.066536064,
+          "max": 6.184851392000001
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 4,
+          "median": 0.198141008,
+          "mean": 0.19838788000000002,
+          "min": 0.197655136,
+          "max": 0.19961436800000001
+        },
+        "gpu_range_ms": {
+          "count": 4,
+          "median": 27.261407999999996,
+          "mean": 27.503951999999998,
+          "min": 26.535808,
+          "max": 28.957183999999998
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 4,
+          "median": 198.0059547941804,
+          "mean": 196.49974090300918,
+          "min": 187.89692036352707,
+          "max": 202.09013366014875
+        },
+        "sysmem_fill_inferred_weighted_GBps": 196.305219555357,
+        "trace_join": {
+          "matched_count": 4,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b0_round25",
+              "sequence": 52,
+              "wire_step": 55,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 28.966619,
+              "profiled_cpu_round_wall_ms": 29.080954
+            },
+            {
+              "range": "rank0_b0_round27",
+              "sequence": 56,
+              "wire_step": 59,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 26.546204,
+              "profiled_cpu_round_wall_ms": 26.649019
+            },
+            {
+              "range": "rank0_b0_round30",
+              "sequence": 62,
+              "wire_step": 65,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 27.844691,
+              "profiled_cpu_round_wall_ms": 27.947107
+            },
+            {
+              "range": "rank0_b0_round31",
+              "sequence": 64,
+              "wire_step": 67,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 47.12864,
+              "profiled_cpu_round_wall_ms": 47.304335
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 4,
+            "median": 1.0,
+            "mean": 0.75,
+            "min": 0,
+            "max": 1
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 4,
+            "median": 2.0,
+            "mean": 1.75,
+            "min": 1,
+            "max": 2
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 4,
+            "median": 2708434824.0,
+            "mean": 3379598680.0,
+            "min": 2661412976.0,
+            "max": 5440112096.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3085239620.571429
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 0,
+        "rows": 3,
+        "count": 6,
+        "observed_context_min": 2091,
+        "observed_context_max": 2106,
+        "sysmem_fill_GB": {
+          "count": 6,
+          "median": 6.249296496,
+          "mean": 6.236399632,
+          "min": 6.032348672,
+          "max": 6.383490272
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 6,
+          "median": 7.32205752,
+          "mean": 7.305594618666667,
+          "min": 7.100822272,
+          "max": 7.448572224
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 6,
+          "median": 0.298015248,
+          "mean": 0.2979801653333334,
+          "min": 0.29718816000000003,
+          "max": 0.29939993600000003
+        },
+        "gpu_range_ms": {
+          "count": 6,
+          "median": 31.442448,
+          "mean": 31.455999999999996,
+          "min": 30.337408,
+          "max": 32.441632
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 6,
+          "median": 198.1199328919713,
+          "mean": 198.28034079824232,
+          "min": 194.1889818286703,
+          "max": 202.697079460447
+        },
+        "sysmem_fill_inferred_weighted_GBps": 198.25787232960326,
+        "trace_join": {
+          "matched_count": 6,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b0_round18",
+              "sequence": 38,
+              "wire_step": 41,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.071677,
+              "profiled_cpu_round_wall_ms": 31.181964
+            },
+            {
+              "range": "rank0_b0_round19",
+              "sequence": 40,
+              "wire_step": 43,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.343074,
+              "profiled_cpu_round_wall_ms": 30.455313
+            },
+            {
+              "range": "rank0_b0_round20",
+              "sequence": 42,
+              "wire_step": 45,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 32.01327,
+              "profiled_cpu_round_wall_ms": 32.12335
+            },
+            {
+              "range": "rank0_b0_round21",
+              "sequence": 44,
+              "wire_step": 47,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 32.441764,
+              "profiled_cpu_round_wall_ms": 32.551859
+            },
+            {
+              "range": "rank0_b0_round22",
+              "sequence": 46,
+              "wire_step": 49,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.229084,
+              "profiled_cpu_round_wall_ms": 31.340683
+            },
+            {
+              "range": "rank0_b0_round26",
+              "sequence": 54,
+              "wire_step": 57,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.678329,
+              "profiled_cpu_round_wall_ms": 31.790568
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 6,
+            "median": 1.0,
+            "mean": 0.8333333333333334,
+            "min": 0,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 6,
+            "median": 2.0,
+            "mean": 1.8333333333333333,
+            "min": 1,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 6,
+            "median": 3124648248.0,
+            "mean": 4008898493.3333335,
+            "min": 2049768000.0,
+            "max": 6383490272.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3401672526.5454545
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 0,
+        "rows": 4,
+        "count": 4,
+        "observed_context_min": 2088,
+        "observed_context_max": 2112,
+        "sysmem_fill_GB": {
+          "count": 4,
+          "median": 7.348271968000001,
+          "mean": 7.262923280000001,
+          "min": 6.727500672000001,
+          "max": 7.627648512
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 4,
+          "median": 8.892040304000002,
+          "mean": 8.79557248,
+          "min": 8.259338912,
+          "max": 9.1388704
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 4,
+          "median": 0.397423744,
+          "mean": 0.398703264,
+          "min": 0.39708960000000004,
+          "max": 0.40287596800000003
+        },
+        "gpu_range_ms": {
+          "count": 4,
+          "median": 38.338896,
+          "mean": 39.484432,
+          "min": 33.581536,
+          "max": 47.678399999999996
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 4,
+          "median": 195.01503369911535,
+          "mean": 186.47259821262253,
+          "min": 152.12482499412732,
+          "max": 203.73550045813218
+        },
+        "sysmem_fill_inferred_weighted_GBps": 183.94397265231018,
+        "trace_join": {
+          "matched_count": 4,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b0_round16",
+              "sequence": 34,
+              "wire_step": 37,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 588.855875,
+              "profiled_cpu_round_wall_ms": 589.020194
+            },
+            {
+              "range": "rank0_b0_round23",
+              "sequence": 48,
+              "wire_step": 51,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 39.246966,
+              "profiled_cpu_round_wall_ms": 39.360629
+            },
+            {
+              "range": "rank0_b0_round24",
+              "sequence": 50,
+              "wire_step": 53,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 37.447426,
+              "profiled_cpu_round_wall_ms": 37.558961
+            },
+            {
+              "range": "rank0_b0_round29",
+              "sequence": 60,
+              "wire_step": 63,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.597996,
+              "profiled_cpu_round_wall_ms": 33.711867
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 4,
+            "median": 1.0,
+            "mean": 1.25,
+            "min": 0,
+            "max": 3
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 4,
+            "median": 2.0,
+            "mean": 2.25,
+            "min": 1,
+            "max": 4
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 4,
+            "median": 4897808880.0,
+            "mean": 4730242152.0,
+            "min": 1681875168.0,
+            "max": 7443475680.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3227965902.222223
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 0,
+        "rows": 5,
+        "count": 1,
+        "observed_context_min": 2090,
+        "observed_context_max": 2090,
+        "sysmem_fill_GB": {
+          "count": 1,
+          "median": 7.752563520000001,
+          "mean": 7.752563520000001,
+          "min": 7.752563520000001,
+          "max": 7.752563520000001
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 1,
+          "median": 9.697094752,
+          "mean": 9.697094752,
+          "min": 9.697094752,
+          "max": 9.697094752
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 1,
+          "median": 0.49977593600000003,
+          "mean": 0.49977593600000003,
+          "min": 0.49977593600000003,
+          "max": 0.49977593600000003
+        },
+        "gpu_range_ms": {
+          "count": 1,
+          "median": 48.634975999999995,
+          "mean": 48.634975999999995,
+          "min": 48.634975999999995,
+          "max": 48.634975999999995
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 1,
+          "median": 159.40305018347289,
+          "mean": 159.40305018347289,
+          "min": 159.40305018347289,
+          "max": 159.40305018347289
+        },
+        "sysmem_fill_inferred_weighted_GBps": 159.4030501834729,
+        "trace_join": {
+          "matched_count": 1,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b0_round17",
+              "sequence": 36,
+              "wire_step": 39,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 48.641478,
+              "profiled_cpu_round_wall_ms": 48.769221
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 1,
+            "median": 2,
+            "mean": 2,
+            "min": 2,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 1,
+            "median": 3,
+            "mean": 3,
+            "min": 3,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 1,
+            "median": 2584187840.0,
+            "mean": 2584187840.0,
+            "min": 2584187840.0,
+            "max": 2584187840.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2584187840.0000005
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 1,
+        "rows": 1,
+        "count": 1,
+        "observed_context_min": 2108,
+        "observed_context_max": 2108,
+        "sysmem_fill_GB": {
+          "count": 1,
+          "median": 4.43141152,
+          "mean": 4.43141152,
+          "min": 4.43141152,
+          "max": 4.43141152
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 1,
+          "median": 4.844182528,
+          "mean": 4.844182528,
+          "min": 4.844182528,
+          "max": 4.844182528
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 1,
+          "median": 0.101096032,
+          "mean": 0.101096032,
+          "min": 0.101096032,
+          "max": 0.101096032
+        },
+        "gpu_range_ms": {
+          "count": 1,
+          "median": 24.744128,
+          "mean": 24.744128,
+          "min": 24.744128,
+          "max": 24.744128
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 1,
+          "median": 179.08941951803678,
+          "mean": 179.08941951803678,
+          "min": 179.08941951803678,
+          "max": 179.08941951803678
+        },
+        "sysmem_fill_inferred_weighted_GBps": 179.08941951803678,
+        "trace_join": {
+          "matched_count": 1,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b0_round28",
+              "sequence": 58,
+              "wire_step": 61,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 24.757256,
+              "profiled_cpu_round_wall_ms": 24.858695
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 1,
+            "median": 0,
+            "mean": 0,
+            "min": 0,
+            "max": 0
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 1,
+            "median": 1,
+            "mean": 1,
+            "min": 1,
+            "max": 1
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 1,
+            "median": 4431411520.0,
+            "mean": 4431411520.0,
+            "min": 4431411520.0,
+            "max": 4431411520.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 4431411520.0
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 1,
+        "rows": 2,
+        "count": 4,
+        "observed_context_min": 2103,
+        "observed_context_max": 2115,
+        "sysmem_fill_GB": {
+          "count": 4,
+          "median": 5.414877408000001,
+          "mean": 5.3978612560000006,
+          "min": 5.321519808000001,
+          "max": 5.4401704
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 4,
+          "median": 6.158372832,
+          "mean": 6.1433138320000005,
+          "min": 6.06872624,
+          "max": 6.187783424
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 4,
+          "median": 0.19807534400000001,
+          "mean": 0.19844248,
+          "min": 0.19786857600000002,
+          "max": 0.199750656
+        },
+        "gpu_range_ms": {
+          "count": 4,
+          "median": 27.25904,
+          "mean": 27.507143999999997,
+          "min": 26.540319999999998,
+          "max": 28.970176
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 4,
+          "median": 197.92028424392953,
+          "mean": 196.4318347869607,
+          "min": 187.78520365219734,
+          "max": 202.10156700778646
+        },
+        "sysmem_fill_inferred_weighted_GBps": 196.23488559917385,
+        "trace_join": {
+          "matched_count": 4,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b0_round25",
+              "sequence": 52,
+              "wire_step": 55,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 28.966619,
+              "profiled_cpu_round_wall_ms": 29.080954
+            },
+            {
+              "range": "rank1_b0_round27",
+              "sequence": 56,
+              "wire_step": 59,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 26.546204,
+              "profiled_cpu_round_wall_ms": 26.649019
+            },
+            {
+              "range": "rank1_b0_round30",
+              "sequence": 62,
+              "wire_step": 65,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 27.844691,
+              "profiled_cpu_round_wall_ms": 27.947107
+            },
+            {
+              "range": "rank1_b0_round31",
+              "sequence": 64,
+              "wire_step": 67,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 47.12864,
+              "profiled_cpu_round_wall_ms": 47.304335
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 4,
+            "median": 1.0,
+            "mean": 0.75,
+            "min": 0,
+            "max": 1
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 4,
+            "median": 2.0,
+            "mean": 1.75,
+            "min": 1,
+            "max": 2
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 4,
+            "median": 2707861184.0,
+            "mean": 3378740688.0,
+            "min": 2660759904.0,
+            "max": 5438480480.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3084492146.2857146
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 1,
+        "rows": 3,
+        "count": 6,
+        "observed_context_min": 2091,
+        "observed_context_max": 2106,
+        "sysmem_fill_GB": {
+          "count": 6,
+          "median": 6.2483167040000005,
+          "mean": 6.234666341333334,
+          "min": 6.031179872,
+          "max": 6.3778490880000005
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 6,
+          "median": 7.323372512000001,
+          "mean": 7.311011418666667,
+          "min": 7.106379424,
+          "max": 7.456659776
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 6,
+          "median": 0.29826283200000003,
+          "mean": 0.29826842133333337,
+          "min": 0.29769859200000004,
+          "max": 0.298747712
+        },
+        "gpu_range_ms": {
+          "count": 6,
+          "median": 31.454735999999997,
+          "mean": 31.466474666666663,
+          "min": 30.345824,
+          "max": 32.443999999999996
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 6,
+          "median": 197.9940296262207,
+          "mean": 198.159746920633,
+          "min": 194.0611988538021,
+          "max": 202.61627932726427
+        },
+        "sysmem_fill_inferred_weighted_GBps": 198.13679185161132,
+        "trace_join": {
+          "matched_count": 6,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b0_round18",
+              "sequence": 38,
+              "wire_step": 41,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.071677,
+              "profiled_cpu_round_wall_ms": 31.181964
+            },
+            {
+              "range": "rank1_b0_round19",
+              "sequence": 40,
+              "wire_step": 43,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.343074,
+              "profiled_cpu_round_wall_ms": 30.455313
+            },
+            {
+              "range": "rank1_b0_round20",
+              "sequence": 42,
+              "wire_step": 45,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 32.01327,
+              "profiled_cpu_round_wall_ms": 32.12335
+            },
+            {
+              "range": "rank1_b0_round21",
+              "sequence": 44,
+              "wire_step": 47,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 32.441764,
+              "profiled_cpu_round_wall_ms": 32.551859
+            },
+            {
+              "range": "rank1_b0_round22",
+              "sequence": 46,
+              "wire_step": 49,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.229084,
+              "profiled_cpu_round_wall_ms": 31.340683
+            },
+            {
+              "range": "rank1_b0_round26",
+              "sequence": 54,
+              "wire_step": 57,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.678329,
+              "profiled_cpu_round_wall_ms": 31.790568
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 6,
+            "median": 1.0,
+            "mean": 0.8333333333333334,
+            "min": 0,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 6,
+            "median": 2.0,
+            "mean": 1.8333333333333333,
+            "min": 1,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 6,
+            "median": 3124158352.0,
+            "mean": 4007508795.5555553,
+            "min": 2049519317.3333333,
+            "max": 6377849088.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3400727095.2727275
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 1,
+        "rows": 4,
+        "count": 4,
+        "observed_context_min": 2088,
+        "observed_context_max": 2112,
+        "sysmem_fill_GB": {
+          "count": 4,
+          "median": 7.351952784000001,
+          "mean": 7.265045840000001,
+          "min": 6.728311008,
+          "max": 7.627966784000001
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 4,
+          "median": 8.979759216000001,
+          "mean": 8.84362956,
+          "min": 8.266087904,
+          "max": 9.148911904
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 4,
+          "median": 0.399778544,
+          "mean": 0.40130467200000003,
+          "min": 0.39852672,
+          "max": 0.40713488000000003
+        },
+        "gpu_range_ms": {
+          "count": 4,
+          "median": 38.313568,
+          "mean": 57.68681599999999,
+          "min": 33.60816,
+          "max": 120.511968
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 4,
+          "median": 194.93856266788458,
+          "mean": 163.53375852166414,
+          "min": 60.25846501817977,
+          "max": 203.99944373270756
+        },
+        "sysmem_fill_inferred_weighted_GBps": 125.93944931888772,
+        "trace_join": {
+          "matched_count": 4,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b0_round16",
+              "sequence": 34,
+              "wire_step": 37,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 588.855875,
+              "profiled_cpu_round_wall_ms": 589.020194
+            },
+            {
+              "range": "rank1_b0_round23",
+              "sequence": 48,
+              "wire_step": 51,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 39.246966,
+              "profiled_cpu_round_wall_ms": 39.360629
+            },
+            {
+              "range": "rank1_b0_round24",
+              "sequence": 50,
+              "wire_step": 53,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 37.447426,
+              "profiled_cpu_round_wall_ms": 37.558961
+            },
+            {
+              "range": "rank1_b0_round29",
+              "sequence": 60,
+              "wire_step": 63,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.597996,
+              "profiled_cpu_round_wall_ms": 33.711867
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 4,
+            "median": 1.0,
+            "mean": 1.25,
+            "min": 0,
+            "max": 3
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 4,
+            "median": 2.0,
+            "mean": 2.25,
+            "min": 1,
+            "max": 4
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 4,
+            "median": 4902260901.333333,
+            "mean": 4732159728.666667,
+            "min": 1682077752.0,
+            "max": 7442039360.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3228909262.222223
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 0,
+        "context": 2048,
+        "rank": 1,
+        "rows": 5,
+        "count": 1,
+        "observed_context_min": 2090,
+        "observed_context_max": 2090,
+        "sysmem_fill_GB": {
+          "count": 1,
+          "median": 7.753094176,
+          "mean": 7.753094176,
+          "min": 7.753094176,
+          "max": 7.753094176
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 1,
+          "median": 9.646874208,
+          "mean": 9.646874208,
+          "min": 9.646874208,
+          "max": 9.646874208
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 1,
+          "median": 0.49960528000000004,
+          "mean": 0.49960528000000004,
+          "min": 0.49960528000000004,
+          "max": 0.49960528000000004
+        },
+        "gpu_range_ms": {
+          "count": 1,
+          "median": 48.628512,
+          "mean": 48.628512,
+          "min": 48.628512,
+          "max": 48.628512
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 1,
+          "median": 159.43515146011458,
+          "mean": 159.43515146011458,
+          "min": 159.43515146011458,
+          "max": 159.43515146011458
+        },
+        "sysmem_fill_inferred_weighted_GBps": 159.4351514601146,
+        "trace_join": {
+          "matched_count": 1,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b0_round17",
+              "sequence": 36,
+              "wire_step": 39,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 48.641478,
+              "profiled_cpu_round_wall_ms": 48.769221
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 1,
+            "median": 2,
+            "mean": 2,
+            "min": 2,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 1,
+            "median": 3,
+            "mean": 3,
+            "min": 3,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 1,
+            "median": 2584364725.3333335,
+            "mean": 2584364725.3333335,
+            "min": 2584364725.3333335,
+            "max": 2584364725.3333335
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2584364725.3333335
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 0,
+        "rows": 2,
+        "count": 5,
+        "observed_context_min": 65575,
+        "observed_context_max": 65598,
+        "sysmem_fill_GB": {
+          "count": 5,
+          "median": 5.540232736,
+          "mean": 5.5972751232,
+          "min": 5.474110624000001,
+          "max": 5.821666176000001
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 5,
+          "median": 6.278280768,
+          "mean": 6.3374886336000005,
+          "min": 6.212298176,
+          "max": 6.553259712
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 5,
+          "median": 0.20988704000000002,
+          "mean": 0.216280416,
+          "min": 0.209776128,
+          "max": 0.241841984
+        },
+        "gpu_range_ms": {
+          "count": 5,
+          "median": 28.01632,
+          "mean": 31.219955199999998,
+          "min": 27.358463999999998,
+          "max": 39.117568
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 5,
+          "median": 200.08837572167795,
+          "mean": 182.82622685810375,
+          "min": 140.9792101594864,
+          "max": 201.15426437162338
+        },
+        "sysmem_fill_inferred_weighted_GBps": 179.28517473337058,
+        "trace_join": {
+          "matched_count": 5,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b1_round16",
+              "sequence": 565,
+              "wire_step": 601,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 399.659912,
+              "profiled_cpu_round_wall_ms": 399.800935
+            },
+            {
+              "range": "rank0_b1_round25",
+              "sequence": 583,
+              "wire_step": 619,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 27.360597,
+              "profiled_cpu_round_wall_ms": 27.463732
+            },
+            {
+              "range": "rank0_b1_round26",
+              "sequence": 585,
+              "wire_step": 621,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 28.017825,
+              "profiled_cpu_round_wall_ms": 28.11976
+            },
+            {
+              "range": "rank0_b1_round29",
+              "sequence": 591,
+              "wire_step": 627,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 27.607427,
+              "profiled_cpu_round_wall_ms": 27.710227
+            },
+            {
+              "range": "rank0_b1_round30",
+              "sequence": 593,
+              "wire_step": 629,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 34.002631,
+              "profiled_cpu_round_wall_ms": 34.134279
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 5,
+            "median": 0,
+            "mean": 0.4,
+            "min": 0,
+            "max": 1
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 5,
+            "median": 1,
+            "mean": 1.4,
+            "min": 1,
+            "max": 2
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 5,
+            "median": 5474110624.0,
+            "mean": 4463632121.6,
+            "min": 2757381920.0,
+            "max": 5635602240.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3998053659.428572
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 0,
+        "rows": 3,
+        "count": 7,
+        "observed_context_min": 65580,
+        "observed_context_max": 65597,
+        "sysmem_fill_GB": {
+          "count": 7,
+          "median": 6.254301376000001,
+          "mean": 6.179414336000001,
+          "min": 5.921489728,
+          "max": 6.3306185280000005
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 7,
+          "median": 7.318359648,
+          "mean": 7.244800288,
+          "min": 6.984730848000001,
+          "max": 7.395583136000001
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 7,
+          "median": 0.316233568,
+          "mean": 0.31626592914285717,
+          "min": 0.315143008,
+          "max": 0.31714812800000003
+        },
+        "gpu_range_ms": {
+          "count": 7,
+          "median": 30.83952,
+          "mean": 31.141376,
+          "min": 29.671104,
+          "max": 34.246656
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 7,
+          "median": 200.0012986723858,
+          "mean": 198.673113495999,
+          "min": 184.5324544387633,
+          "max": 205.2761692788993
+        },
+        "sysmem_fill_inferred_weighted_GBps": 198.4309985531789,
+        "trace_join": {
+          "matched_count": 7,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b1_round18",
+              "sequence": 569,
+              "wire_step": 605,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.430506,
+              "profiled_cpu_round_wall_ms": 31.574281
+            },
+            {
+              "range": "rank0_b1_round19",
+              "sequence": 571,
+              "wire_step": 607,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.981516,
+              "profiled_cpu_round_wall_ms": 31.176763
+            },
+            {
+              "range": "rank0_b1_round20",
+              "sequence": 573,
+              "wire_step": 609,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.657614,
+              "profiled_cpu_round_wall_ms": 30.766638
+            },
+            {
+              "range": "rank0_b1_round21",
+              "sequence": 575,
+              "wire_step": 611,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.186866,
+              "profiled_cpu_round_wall_ms": 30.297473
+            },
+            {
+              "range": "rank0_b1_round22",
+              "sequence": 577,
+              "wire_step": 613,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 29.676421,
+              "profiled_cpu_round_wall_ms": 29.786101
+            },
+            {
+              "range": "rank0_b1_round23",
+              "sequence": 579,
+              "wire_step": 615,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 34.248806,
+              "profiled_cpu_round_wall_ms": 34.361222
+            },
+            {
+              "range": "rank0_b1_round28",
+              "sequence": 589,
+              "wire_step": 625,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.841341,
+              "profiled_cpu_round_wall_ms": 30.950572
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 7,
+            "median": 0,
+            "mean": 0.42857142857142855,
+            "min": 0,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 7,
+            "median": 1,
+            "mean": 1.4285714285714286,
+            "min": 1,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 7,
+            "median": 6120146528.0,
+            "mean": 5160803033.904762,
+            "min": 2084767125.3333333,
+            "max": 6330618528.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 4325590035.200001
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 0,
+        "rows": 4,
+        "count": 2,
+        "observed_context_min": 65596,
+        "observed_context_max": 65602,
+        "sysmem_fill_GB": {
+          "count": 2,
+          "median": 7.691275648000001,
+          "mean": 7.691275648000001,
+          "min": 7.549026144000001,
+          "max": 7.833525152000001
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 2,
+          "median": 9.198327216,
+          "mean": 9.198327216,
+          "min": 9.069656768,
+          "max": 9.326997664
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 2,
+          "median": 0.420680272,
+          "mean": 0.420680272,
+          "min": 0.41915788800000003,
+          "max": 0.422202656
+        },
+        "gpu_range_ms": {
+          "count": 2,
+          "median": 41.73072,
+          "mean": 41.73072,
+          "min": 36.788736,
+          "max": 46.672703999999996
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 2,
+          "median": 186.51946423627356,
+          "mean": 186.51946423627356,
+          "min": 167.83953961613196,
+          "max": 205.19938885641517
+        },
+        "sysmem_fill_inferred_weighted_GBps": 184.30728365098906,
+        "trace_join": {
+          "matched_count": 2,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b1_round27",
+              "sequence": 587,
+              "wire_step": 623,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 36.790213,
+              "profiled_cpu_round_wall_ms": 36.903268
+            },
+            {
+              "range": "rank0_b1_round31",
+              "sequence": 595,
+              "wire_step": 631,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 66.360235,
+              "profiled_cpu_round_wall_ms": 66.72252
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 2,
+            "median": 1.5,
+            "mean": 1.5,
+            "min": 1,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 2,
+            "median": 2.5,
+            "mean": 2.5,
+            "min": 2,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 2,
+            "median": 3192844061.333333,
+            "mean": 3192844061.333333,
+            "min": 2611175050.6666665,
+            "max": 3774513072.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3076510259.2000003
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 0,
+        "rows": 5,
+        "count": 2,
+        "observed_context_min": 65580,
+        "observed_context_max": 65591,
+        "sysmem_fill_GB": {
+          "count": 2,
+          "median": 7.717430192,
+          "mean": 7.717430192,
+          "min": 6.8827442560000005,
+          "max": 8.552116128
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 2,
+          "median": 9.60684912,
+          "mean": 9.60684912,
+          "min": 8.769716832,
+          "max": 10.443981408
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 2,
+          "median": 0.52932936,
+          "mean": 0.52932936,
+          "min": 0.527952736,
+          "max": 0.530705984
+        },
+        "gpu_range_ms": {
+          "count": 2,
+          "median": 39.715568000000005,
+          "mean": 39.715568000000005,
+          "min": 37.966304,
+          "max": 41.464832
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 2,
+          "median": 193.76773474830645,
+          "mean": 193.76773474830645,
+          "min": 181.2856014638665,
+          "max": 206.2498680327464
+        },
+        "sysmem_fill_inferred_weighted_GBps": 194.31750773399486,
+        "trace_join": {
+          "matched_count": 2,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b1_round17",
+              "sequence": 567,
+              "wire_step": 603,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 37.973213,
+              "profiled_cpu_round_wall_ms": 38.097547
+            },
+            {
+              "range": "rank0_b1_round24",
+              "sequence": 581,
+              "wire_step": 617,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 41.467605,
+              "profiled_cpu_round_wall_ms": 41.589828
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 2,
+            "median": 2.0,
+            "mean": 2,
+            "min": 1,
+            "max": 3
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 2,
+            "median": 3.0,
+            "mean": 3,
+            "min": 2,
+            "max": 4
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 2,
+            "median": 2789700580.0,
+            "mean": 2789700580.0,
+            "min": 2138029032.0,
+            "max": 3441372128.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2572476730.6666665
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 1,
+        "rows": 2,
+        "count": 5,
+        "observed_context_min": 65575,
+        "observed_context_max": 65598,
+        "sysmem_fill_GB": {
+          "count": 5,
+          "median": 5.53310784,
+          "mean": 5.588825760000001,
+          "min": 5.470675392,
+          "max": 5.810549408
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 5,
+          "median": 6.2820548480000005,
+          "mean": 6.337916019200001,
+          "min": 6.2123275200000005,
+          "max": 6.570196512000001
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 5,
+          "median": 0.21072726400000003,
+          "mean": 0.211055296,
+          "min": 0.209966976,
+          "max": 0.21347168000000002
+        },
+        "gpu_range_ms": {
+          "count": 5,
+          "median": 27.983456,
+          "mean": 31.5451776,
+          "min": 27.344896,
+          "max": 40.942304
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 5,
+          "median": 200.0620295648592,
+          "mean": 181.5553273736235,
+          "min": 134.3075219215802,
+          "max": 201.22377907860988
+        },
+        "sysmem_fill_inferred_weighted_GBps": 177.16894261517808,
+        "trace_join": {
+          "matched_count": 5,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b1_round16",
+              "sequence": 565,
+              "wire_step": 601,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 399.659912,
+              "profiled_cpu_round_wall_ms": 399.800935
+            },
+            {
+              "range": "rank1_b1_round25",
+              "sequence": 583,
+              "wire_step": 619,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 27.360597,
+              "profiled_cpu_round_wall_ms": 27.463732
+            },
+            {
+              "range": "rank1_b1_round26",
+              "sequence": 585,
+              "wire_step": 621,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 28.017825,
+              "profiled_cpu_round_wall_ms": 28.11976
+            },
+            {
+              "range": "rank1_b1_round29",
+              "sequence": 591,
+              "wire_step": 627,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 27.607427,
+              "profiled_cpu_round_wall_ms": 27.710227
+            },
+            {
+              "range": "rank1_b1_round30",
+              "sequence": 593,
+              "wire_step": 629,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 34.002631,
+              "profiled_cpu_round_wall_ms": 34.134279
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 5,
+            "median": 0,
+            "mean": 0.4,
+            "min": 0,
+            "max": 1
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 5,
+            "median": 1,
+            "mean": 1.4,
+            "min": 1,
+            "max": 2
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 5,
+            "median": 5470675392.0,
+            "mean": 4457884880.0,
+            "min": 2749429696.0,
+            "max": 5630936768.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3992018400.0
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 1,
+        "rows": 3,
+        "count": 7,
+        "observed_context_min": 65580,
+        "observed_context_max": 65597,
+        "sysmem_fill_GB": {
+          "count": 7,
+          "median": 6.250687936,
+          "mean": 6.176116438857143,
+          "min": 5.918192736,
+          "max": 6.3277568
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 7,
+          "median": 7.326291712000001,
+          "mean": 7.249202404571429,
+          "min": 6.992786592000001,
+          "max": 7.396131232
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 7,
+          "median": 0.315866368,
+          "mean": 0.31608809142857147,
+          "min": 0.31517046400000004,
+          "max": 0.317572864
+        },
+        "gpu_range_ms": {
+          "count": 7,
+          "median": 30.848831999999998,
+          "mean": 31.125449142857143,
+          "min": 29.673855999999997,
+          "max": 34.225536
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 7,
+          "median": 199.8646429336109,
+          "mean": 198.666666987901,
+          "min": 184.52717783587084,
+          "max": 205.12143863339784
+        },
+        "sysmem_fill_inferred_weighted_GBps": 198.42658046508788,
+        "trace_join": {
+          "matched_count": 7,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b1_round18",
+              "sequence": 569,
+              "wire_step": 605,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 31.430506,
+              "profiled_cpu_round_wall_ms": 31.574281
+            },
+            {
+              "range": "rank1_b1_round19",
+              "sequence": 571,
+              "wire_step": 607,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.981516,
+              "profiled_cpu_round_wall_ms": 31.176763
+            },
+            {
+              "range": "rank1_b1_round20",
+              "sequence": 573,
+              "wire_step": 609,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.657614,
+              "profiled_cpu_round_wall_ms": 30.766638
+            },
+            {
+              "range": "rank1_b1_round21",
+              "sequence": 575,
+              "wire_step": 611,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.186866,
+              "profiled_cpu_round_wall_ms": 30.297473
+            },
+            {
+              "range": "rank1_b1_round22",
+              "sequence": 577,
+              "wire_step": 613,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 29.676421,
+              "profiled_cpu_round_wall_ms": 29.786101
+            },
+            {
+              "range": "rank1_b1_round23",
+              "sequence": 579,
+              "wire_step": 615,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 34.248806,
+              "profiled_cpu_round_wall_ms": 34.361222
+            },
+            {
+              "range": "rank1_b1_round28",
+              "sequence": 589,
+              "wire_step": 625,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 30.841341,
+              "profiled_cpu_round_wall_ms": 30.950572
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 7,
+            "median": 0,
+            "mean": 0.42857142857142855,
+            "min": 0,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 7,
+            "median": 1,
+            "mean": 1.4285714285714286,
+            "min": 1,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 7,
+            "median": 6115795264.0,
+            "mean": 5158084773.333333,
+            "min": 2083562645.3333333,
+            "max": 6327756800.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 4323281507.2
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 1,
+        "rows": 4,
+        "count": 2,
+        "observed_context_min": 65596,
+        "observed_context_max": 65602,
+        "sysmem_fill_GB": {
+          "count": 2,
+          "median": 7.682895152,
+          "mean": 7.682895152,
+          "min": 7.5450360960000005,
+          "max": 7.820754208
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 2,
+          "median": 9.2333468,
+          "mean": 9.2333468,
+          "min": 9.082395008,
+          "max": 9.384298592
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 2,
+          "median": 0.42177294400000004,
+          "mean": 0.42177294400000004,
+          "min": 0.42170153600000004,
+          "max": 0.42184435200000003
+        },
+        "gpu_range_ms": {
+          "count": 2,
+          "median": 41.714175999999995,
+          "mean": 41.714175999999995,
+          "min": 36.796096,
+          "max": 46.632256
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 2,
+          "median": 186.3805817814375,
+          "mean": 186.3805817814375,
+          "min": 167.7112556596018,
+          "max": 205.0499079032732
+        },
+        "sysmem_fill_inferred_weighted_GBps": 184.17947778711968,
+        "trace_join": {
+          "matched_count": 2,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b1_round27",
+              "sequence": 587,
+              "wire_step": 623,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 36.790213,
+              "profiled_cpu_round_wall_ms": 36.903268
+            },
+            {
+              "range": "rank1_b1_round31",
+              "sequence": 595,
+              "wire_step": 631,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 66.360235,
+              "profiled_cpu_round_wall_ms": 66.72252
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 2,
+            "median": 1.5,
+            "mean": 1.5,
+            "min": 1,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 2,
+            "median": 2.5,
+            "mean": 2.5,
+            "min": 2,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 2,
+            "median": 3189718058.666667,
+            "mean": 3189718058.666667,
+            "min": 2606918069.3333335,
+            "max": 3772518048.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3073158060.8
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 1,
+        "context": 65536,
+        "rank": 1,
+        "rows": 5,
+        "count": 2,
+        "observed_context_min": 65580,
+        "observed_context_max": 65591,
+        "sysmem_fill_GB": {
+          "count": 2,
+          "median": 7.715977488,
+          "mean": 7.715977488,
+          "min": 6.881925376000001,
+          "max": 8.5500296
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 2,
+          "median": 9.622288304000001,
+          "mean": 9.622288304000001,
+          "min": 8.789957568,
+          "max": 10.45461904
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 2,
+          "median": 0.529466576,
+          "mean": 0.529466576,
+          "min": 0.527866688,
+          "max": 0.531066464
+        },
+        "gpu_range_ms": {
+          "count": 2,
+          "median": 39.712976,
+          "mean": 39.712976,
+          "min": 37.936064,
+          "max": 41.489888
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 2,
+          "median": 193.74177320433688,
+          "mean": 193.74177320433688,
+          "min": 181.40852398393255,
+          "max": 206.07502242474118
+        },
+        "sysmem_fill_inferred_weighted_GBps": 194.29361043100877,
+        "trace_join": {
+          "matched_count": 2,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b1_round17",
+              "sequence": 567,
+              "wire_step": 603,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 37.973213,
+              "profiled_cpu_round_wall_ms": 38.097547
+            },
+            {
+              "range": "rank1_b1_round24",
+              "sequence": 581,
+              "wire_step": 617,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 41.467605,
+              "profiled_cpu_round_wall_ms": 41.589828
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 2,
+            "median": 2.0,
+            "mean": 2,
+            "min": 1,
+            "max": 3
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 2,
+            "median": 3.0,
+            "mean": 3,
+            "min": 2,
+            "max": 4
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 2,
+            "median": 2789235044.0,
+            "mean": 2789235044.0,
+            "min": 2137507400.0,
+            "max": 3440962688.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2571992496.0
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 0,
+        "rows": 3,
+        "count": 7,
+        "observed_context_min": 1047105,
+        "observed_context_max": 1047154,
+        "sysmem_fill_GB": {
+          "count": 7,
+          "median": 6.691865440000001,
+          "mean": 6.684020251428572,
+          "min": 6.524503232000001,
+          "max": 6.897881312
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 7,
+          "median": 7.77821472,
+          "mean": 7.772620969142857,
+          "min": 7.6147109760000005,
+          "max": 7.984592512000001
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 7,
+          "median": 0.393735616,
+          "mean": 0.39375742171428574,
+          "min": 0.39347904,
+          "max": 0.39446032000000003
+        },
+        "gpu_range_ms": {
+          "count": 7,
+          "median": 33.607935999999995,
+          "mean": 34.80141714285714,
+          "min": 32.873216,
+          "max": 41.827776
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 7,
+          "median": 199.50466991032246,
+          "mean": 193.27257024052204,
+          "min": 157.00457801055452,
+          "max": 200.63410992873108
+        },
+        "sysmem_fill_inferred_weighted_GBps": 192.0617262219864,
+        "trace_join": {
+          "matched_count": 7,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b2_round16",
+              "sequence": 1062,
+              "wire_step": 1581,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 397.509565,
+              "profiled_cpu_round_wall_ms": 397.635518
+            },
+            {
+              "range": "rank0_b2_round18",
+              "sequence": 1066,
+              "wire_step": 1585,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.355867,
+              "profiled_cpu_round_wall_ms": 33.465803
+            },
+            {
+              "range": "rank0_b2_round23",
+              "sequence": 1076,
+              "wire_step": 1595,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.544459,
+              "profiled_cpu_round_wall_ms": 33.65614
+            },
+            {
+              "range": "rank0_b2_round24",
+              "sequence": 1078,
+              "wire_step": 1597,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 32.875641,
+              "profiled_cpu_round_wall_ms": 32.988905
+            },
+            {
+              "range": "rank0_b2_round25",
+              "sequence": 1080,
+              "wire_step": 1599,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 34.021853,
+              "profiled_cpu_round_wall_ms": 34.131293
+            },
+            {
+              "range": "rank0_b2_round26",
+              "sequence": 1082,
+              "wire_step": 1601,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.612667,
+              "profiled_cpu_round_wall_ms": 33.730332
+            },
+            {
+              "range": "rank0_b2_round31",
+              "sequence": 1092,
+              "wire_step": 1611,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 56.064137,
+              "profiled_cpu_round_wall_ms": 56.233161
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 7,
+            "median": 1,
+            "mean": 1.1428571428571428,
+            "min": 0,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 7,
+            "median": 2,
+            "mean": 2.142857142857143,
+            "min": 1,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 7,
+            "median": 3262251616.0,
+            "mean": 3840110627.8095236,
+            "min": 2185911338.6666665,
+            "max": 6897881312.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3119209450.6666665
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 0,
+        "rows": 4,
+        "count": 3,
+        "observed_context_min": 1047124,
+        "observed_context_max": 1047147,
+        "sysmem_fill_GB": {
+          "count": 3,
+          "median": 7.960305888000001,
+          "mean": 7.924251477333334,
+          "min": 7.808614368000001,
+          "max": 8.003834176
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 3,
+          "median": 9.53009248,
+          "mean": 9.49455264,
+          "min": 9.383895296,
+          "max": 9.569670144
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 3,
+          "median": 0.5260885120000001,
+          "mean": 0.5266996266666667,
+          "min": 0.5260283840000001,
+          "max": 0.5279819840000001
+        },
+        "gpu_range_ms": {
+          "count": 3,
+          "median": 39.594048,
+          "mean": 40.518464,
+          "min": 39.365696,
+          "max": 42.595648
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 3,
+          "median": 198.36088679849584,
+          "mean": 195.79634234724927,
+          "min": 186.88073222879484,
+          "max": 202.1474080144571
+        },
+        "sysmem_fill_inferred_weighted_GBps": 195.5713690759189,
+        "trace_join": {
+          "matched_count": 3,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b2_round22",
+              "sequence": 1074,
+              "wire_step": 1593,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 42.598596,
+              "profiled_cpu_round_wall_ms": 42.709924
+            },
+            {
+              "range": "rank0_b2_round28",
+              "sequence": 1086,
+              "wire_step": 1605,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 39.371435,
+              "profiled_cpu_round_wall_ms": 39.484811
+            },
+            {
+              "range": "rank0_b2_round29",
+              "sequence": 1088,
+              "wire_step": 1607,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 39.59854,
+              "profiled_cpu_round_wall_ms": 39.710524
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 3,
+            "median": 3,
+            "mean": 2.3333333333333335,
+            "min": 1,
+            "max": 3
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 3,
+            "median": 4,
+            "mean": 3.3333333333333335,
+            "min": 2,
+            "max": 4
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 3,
+            "median": 1990076472.0,
+            "mean": 2648049050.6666665,
+            "min": 1952153592.0,
+            "max": 4001917088.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2377275443.2
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 0,
+        "rows": 5,
+        "count": 4,
+        "observed_context_min": 1047110,
+        "observed_context_max": 1047120,
+        "sysmem_fill_GB": {
+          "count": 4,
+          "median": 8.533937184,
+          "mean": 8.549779904000001,
+          "min": 8.249846080000001,
+          "max": 8.881399168
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 4,
+          "median": 10.725230736,
+          "mean": 10.741858464,
+          "min": 10.441397120000001,
+          "max": 11.075575264000001
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 4,
+          "median": 0.6610323680000001,
+          "mean": 0.661020488,
+          "min": 0.659074624,
+          "max": 0.662942592
+        },
+        "gpu_range_ms": {
+          "count": 4,
+          "median": 46.056528,
+          "mean": 46.949928,
+          "min": 44.381727999999995,
+          "max": 51.304928
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 4,
+          "median": 181.62184511114864,
+          "mean": 182.49692883783973,
+          "min": 173.11006007064273,
+          "max": 193.63396505841888
+        },
+        "sysmem_fill_inferred_weighted_GBps": 182.10421758261273,
+        "trace_join": {
+          "matched_count": 4,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b2_round17",
+              "sequence": 1064,
+              "wire_step": 1583,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 44.387625,
+              "profiled_cpu_round_wall_ms": 44.514697
+            },
+            {
+              "range": "rank0_b2_round19",
+              "sequence": 1068,
+              "wire_step": 1587,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 44.905274,
+              "profiled_cpu_round_wall_ms": 45.030171
+            },
+            {
+              "range": "rank0_b2_round20",
+              "sequence": 1070,
+              "wire_step": 1589,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 51.309612,
+              "profiled_cpu_round_wall_ms": 51.458716
+            },
+            {
+              "range": "rank0_b2_round21",
+              "sequence": 1072,
+              "wire_step": 1591,
+              "streams": 1,
+              "potential_accepted_drafts": 4,
+              "estimated_potential_emitted_tokens": 5,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 47.228897,
+              "profiled_cpu_round_wall_ms": 47.355681
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 4,
+            "median": 2.5,
+            "mean": 2.25,
+            "min": 0,
+            "max": 4
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 4,
+            "median": 3.5,
+            "mean": 3.25,
+            "min": 1,
+            "max": 5
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 4,
+            "median": 2480275821.333333,
+            "mean": 3879167902.6666665,
+            "min": 1674720800.0,
+            "max": 8881399168.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2630701508.923077
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 0,
+        "rows": 6,
+        "count": 2,
+        "observed_context_min": 1047139,
+        "observed_context_max": 1047151,
+        "sysmem_fill_GB": {
+          "count": 2,
+          "median": 9.732780416,
+          "mean": 9.732780416,
+          "min": 9.506195296000001,
+          "max": 9.959365536
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 2,
+          "median": 12.424478704000002,
+          "mean": 12.424478704000002,
+          "min": 12.202894432,
+          "max": 12.646062976000001
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 2,
+          "median": 0.7910450880000001,
+          "mean": 0.7910450880000001,
+          "min": 0.790744384,
+          "max": 0.7913457920000001
+        },
+        "gpu_range_ms": {
+          "count": 2,
+          "median": 50.051872,
+          "mean": 50.051872,
+          "min": 49.298496,
+          "max": 50.805248
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 2,
+          "median": 194.42978401104045,
+          "mean": 194.42978401104045,
+          "min": 192.8293166590721,
+          "max": 196.0302513630088
+        },
+        "sysmem_fill_inferred_weighted_GBps": 194.4538740928611,
+        "trace_join": {
+          "matched_count": 2,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank0_b2_round27",
+              "sequence": 1084,
+              "wire_step": 1603,
+              "streams": 1,
+              "potential_accepted_drafts": 5,
+              "estimated_potential_emitted_tokens": 6,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 49.30327,
+              "profiled_cpu_round_wall_ms": 49.428567
+            },
+            {
+              "range": "rank0_b2_round30",
+              "sequence": 1090,
+              "wire_step": 1609,
+              "streams": 1,
+              "potential_accepted_drafts": 5,
+              "estimated_potential_emitted_tokens": 6,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 50.810315,
+              "profiled_cpu_round_wall_ms": 50.937531
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 2,
+            "median": 5.0,
+            "mean": 5,
+            "min": 5,
+            "max": 5
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 2,
+            "median": 6.0,
+            "mean": 6,
+            "min": 6,
+            "max": 6
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 2,
+            "median": 1622130069.3333335,
+            "mean": 1622130069.3333335,
+            "min": 1584365882.6666667,
+            "max": 1659894256.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 1622130069.3333333
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 1,
+        "rows": 3,
+        "count": 7,
+        "observed_context_min": 1047105,
+        "observed_context_max": 1047154,
+        "sysmem_fill_GB": {
+          "count": 7,
+          "median": 6.691614368000001,
+          "mean": 6.684496598857143,
+          "min": 6.525857376,
+          "max": 6.899014688
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 7,
+          "median": 7.785521536,
+          "mean": 7.784850857142858,
+          "min": 7.617122912,
+          "max": 7.987684544
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 7,
+          "median": 0.393969632,
+          "mean": 0.39407359542857145,
+          "min": 0.393617152,
+          "max": 0.39504896
+        },
+        "gpu_range_ms": {
+          "count": 7,
+          "median": 33.613952,
+          "mean": 36.023474285714286,
+          "min": 32.86512,
+          "max": 50.408992
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 7,
+          "median": 199.67091096240958,
+          "mean": 189.4902033255803,
+          "min": 130.29526605094583,
+          "max": 200.63200030103764
+        },
+        "sysmem_fill_inferred_weighted_GBps": 185.55946452694025,
+        "trace_join": {
+          "matched_count": 7,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b2_round16",
+              "sequence": 1062,
+              "wire_step": 1581,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 397.509565,
+              "profiled_cpu_round_wall_ms": 397.635518
+            },
+            {
+              "range": "rank1_b2_round18",
+              "sequence": 1066,
+              "wire_step": 1585,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.355867,
+              "profiled_cpu_round_wall_ms": 33.465803
+            },
+            {
+              "range": "rank1_b2_round23",
+              "sequence": 1076,
+              "wire_step": 1595,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.544459,
+              "profiled_cpu_round_wall_ms": 33.65614
+            },
+            {
+              "range": "rank1_b2_round24",
+              "sequence": 1078,
+              "wire_step": 1597,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 32.875641,
+              "profiled_cpu_round_wall_ms": 32.988905
+            },
+            {
+              "range": "rank1_b2_round25",
+              "sequence": 1080,
+              "wire_step": 1599,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 34.021853,
+              "profiled_cpu_round_wall_ms": 34.131293
+            },
+            {
+              "range": "rank1_b2_round26",
+              "sequence": 1082,
+              "wire_step": 1601,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 33.612667,
+              "profiled_cpu_round_wall_ms": 33.730332
+            },
+            {
+              "range": "rank1_b2_round31",
+              "sequence": 1092,
+              "wire_step": 1611,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 56.064137,
+              "profiled_cpu_round_wall_ms": 56.233161
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 7,
+            "median": 1,
+            "mean": 1.1428571428571428,
+            "min": 0,
+            "max": 2
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 7,
+            "median": 2,
+            "mean": 2.142857142857143,
+            "min": 1,
+            "max": 3
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 7,
+            "median": 3262928688.0,
+            "mean": 3840379997.714286,
+            "min": 2185833738.6666665,
+            "max": 6899014688.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 3119431746.1333337
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 1,
+        "rows": 4,
+        "count": 3,
+        "observed_context_min": 1047124,
+        "observed_context_max": 1047147,
+        "sysmem_fill_GB": {
+          "count": 3,
+          "median": 7.949436864000001,
+          "mean": 7.921038624,
+          "min": 7.809276416,
+          "max": 8.004402592
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 3,
+          "median": 9.541155040000001,
+          "mean": 9.500858986666668,
+          "min": 9.381483648000001,
+          "max": 9.579938272000001
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 3,
+          "median": 0.52705904,
+          "mean": 0.5275514133333333,
+          "min": 0.5260655360000001,
+          "max": 0.529529664
+        },
+        "gpu_range_ms": {
+          "count": 3,
+          "median": 39.605984,
+          "mean": 40.523264,
+          "min": 39.391776,
+          "max": 42.572032
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 3,
+          "median": 198.24636533270294,
+          "mean": 195.69209862048768,
+          "min": 186.72909162522475,
+          "max": 202.1008389035354
+        },
+        "sysmem_fill_inferred_weighted_GBps": 195.46891938418383,
+        "trace_join": {
+          "matched_count": 3,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b2_round22",
+              "sequence": 1074,
+              "wire_step": 1593,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 42.598596,
+              "profiled_cpu_round_wall_ms": 42.709924
+            },
+            {
+              "range": "rank1_b2_round28",
+              "sequence": 1086,
+              "wire_step": 1605,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 39.371435,
+              "profiled_cpu_round_wall_ms": 39.484811
+            },
+            {
+              "range": "rank1_b2_round29",
+              "sequence": 1088,
+              "wire_step": 1607,
+              "streams": 1,
+              "potential_accepted_drafts": 1,
+              "estimated_potential_emitted_tokens": 2,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 39.59854,
+              "profiled_cpu_round_wall_ms": 39.710524
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 3,
+            "median": 3,
+            "mean": 2.3333333333333335,
+            "min": 1,
+            "max": 3
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 3,
+            "median": 4,
+            "mean": 3.3333333333333335,
+            "min": 2,
+            "max": 4
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 3,
+            "median": 1987359216.0,
+            "mean": 2647293205.3333335,
+            "min": 1952319104.0,
+            "max": 4002201296.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2376311587.2
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 1,
+        "rows": 5,
+        "count": 4,
+        "observed_context_min": 1047110,
+        "observed_context_max": 1047120,
+        "sysmem_fill_GB": {
+          "count": 4,
+          "median": 8.536877248,
+          "mean": 8.553531880000001,
+          "min": 8.260225120000001,
+          "max": 8.880147904000001
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 4,
+          "median": 10.728566704,
+          "mean": 10.750053176,
+          "min": 10.464860064,
+          "max": 11.078219232
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 4,
+          "median": 0.6622641120000001,
+          "mean": 0.6667180800000001,
+          "min": 0.659449728,
+          "max": 0.682894368
+        },
+        "gpu_range_ms": {
+          "count": 4,
+          "median": 46.048576,
+          "mean": 46.94704,
+          "min": 44.326912,
+          "max": 51.364095999999996
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 4,
+          "median": 181.92899934695305,
+          "mean": 182.60368962915192,
+          "min": 172.88628819633075,
+          "max": 193.6704716263708
+        },
+        "sysmem_fill_inferred_weighted_GBps": 182.19533925887555,
+        "trace_join": {
+          "matched_count": 4,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b2_round17",
+              "sequence": 1064,
+              "wire_step": 1583,
+              "streams": 1,
+              "potential_accepted_drafts": 3,
+              "estimated_potential_emitted_tokens": 4,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 44.387625,
+              "profiled_cpu_round_wall_ms": 44.514697
+            },
+            {
+              "range": "rank1_b2_round19",
+              "sequence": 1068,
+              "wire_step": 1587,
+              "streams": 1,
+              "potential_accepted_drafts": 2,
+              "estimated_potential_emitted_tokens": 3,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 44.905274,
+              "profiled_cpu_round_wall_ms": 45.030171
+            },
+            {
+              "range": "rank1_b2_round20",
+              "sequence": 1070,
+              "wire_step": 1589,
+              "streams": 1,
+              "potential_accepted_drafts": 0,
+              "estimated_potential_emitted_tokens": 1,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 51.309612,
+              "profiled_cpu_round_wall_ms": 51.458716
+            },
+            {
+              "range": "rank1_b2_round21",
+              "sequence": 1072,
+              "wire_step": 1591,
+              "streams": 1,
+              "potential_accepted_drafts": 4,
+              "estimated_potential_emitted_tokens": 5,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 47.228897,
+              "profiled_cpu_round_wall_ms": 47.355681
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 4,
+            "median": 2.5,
+            "mean": 2.25,
+            "min": 0,
+            "max": 4
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 4,
+            "median": 3.5,
+            "mean": 3.25,
+            "min": 1,
+            "max": 5
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 4,
+            "median": 2481783388.0,
+            "mean": 3879839820.4,
+            "min": 1675644601.6,
+            "max": 8880147904.0
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 2631855963.0769234
+        }
+      },
+      {
+        "phase": "P31",
+        "bucket": 2,
+        "context": 1047040,
+        "rank": 1,
+        "rows": 6,
+        "count": 2,
+        "observed_context_min": 1047139,
+        "observed_context_max": 1047151,
+        "sysmem_fill_GB": {
+          "count": 2,
+          "median": 9.7343932,
+          "mean": 9.7343932,
+          "min": 9.50793232,
+          "max": 9.96085408
+        },
+        "l2_sysmem_read_request_GB": {
+          "count": 2,
+          "median": 12.433497488,
+          "mean": 12.433497488,
+          "min": 12.213481184,
+          "max": 12.653513792
+        },
+        "l2_sysmem_write_request_GB": {
+          "count": 2,
+          "median": 0.7907889760000001,
+          "mean": 0.7907889760000001,
+          "min": 0.7901638080000001,
+          "max": 0.7914141440000001
+        },
+        "gpu_range_ms": {
+          "count": 2,
+          "median": 50.028272,
+          "mean": 50.028272,
+          "min": 49.255232,
+          "max": 50.801311999999996
+        },
+        "sysmem_fill_inferred_GBps": {
+          "count": 2,
+          "median": 194.5543487118902,
+          "mean": 194.5543487118902,
+          "min": 193.03395667692723,
+          "max": 196.07474074685317
+        },
+        "sysmem_fill_inferred_weighted_GBps": 194.57784190507317,
+        "trace_join": {
+          "matched_count": 2,
+          "unmatched_count": 0,
+          "rounds": [
+            {
+              "range": "rank1_b2_round27",
+              "sequence": 1084,
+              "wire_step": 1603,
+              "streams": 1,
+              "potential_accepted_drafts": 5,
+              "estimated_potential_emitted_tokens": 6,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 49.30327,
+              "profiled_cpu_round_wall_ms": 49.428567
+            },
+            {
+              "range": "rank1_b2_round30",
+              "sequence": 1090,
+              "wire_step": 1609,
+              "streams": 1,
+              "potential_accepted_drafts": 5,
+              "estimated_potential_emitted_tokens": 6,
+              "contains_first_round": false,
+              "contains_bucket_change": false,
+              "profiled_cpu_verify_wall_ms": 50.810315,
+              "profiled_cpu_round_wall_ms": 50.937531
+            }
+          ],
+          "potential_accepted_drafts": {
+            "count": 2,
+            "median": 5.0,
+            "mean": 5,
+            "min": 5,
+            "max": 5
+          },
+          "estimated_potential_emitted_tokens": {
+            "count": 2,
+            "median": 6.0,
+            "mean": 6,
+            "min": 6,
+            "max": 6
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token": {
+            "count": 2,
+            "median": 1622398866.6666667,
+            "mean": 1622398866.6666667,
+            "min": 1584655386.6666667,
+            "max": 1660142346.6666667
+          },
+          "sysmem_fill_bytes_per_potential_emitted_token_weighted": 1622398866.6666667
+        }
+      }
+    ],
+    "configurations": [
+      {
+        "phase": "P31",
+        "type": "configuration",
+        "rank": 0,
+        "chip": "GB20B",
+        "passes": 1,
+        "run": "",
+        "bucket_label": "",
+        "mode": "UserRange/UserReplay; no replay"
+      },
+      {
+        "phase": "P31",
+        "type": "configuration",
+        "rank": 1,
+        "chip": "GB20B",
+        "passes": 1,
+        "run": "",
+        "bucket_label": "",
+        "mode": "UserRange/UserReplay; no replay"
+      }
+    ],
+    "metric_metadata": {
+      "lts__d_sectors_fill_sysmem.sum": {
+        "name": "lts__d_sectors_fill_sysmem.sum",
+        "description": "# of sectors filled from system memory",
+        "unit": "l2_sector",
+        "hw_unit": "lts",
+        "scope": 0,
+        "type": 0
+      },
+      "lts__t_sectors_aperture_sysmem_op_read.sum": {
+        "name": "lts__t_sectors_aperture_sysmem_op_read.sum",
+        "description": "# of LTS sectors accessing system memory (sysmem) for reads",
+        "unit": "l2_sector",
+        "hw_unit": "lts",
+        "scope": 0,
+        "type": 0
+      },
+      "lts__t_sectors_aperture_sysmem_op_write.sum": {
+        "name": "lts__t_sectors_aperture_sysmem_op_write.sum",
+        "description": "# of LTS sectors accessing system memory (sysmem) for writes",
+        "unit": "l2_sector",
+        "hw_unit": "lts",
+        "scope": 0,
+        "type": 0
+      },
+      "gpu__time_duration.sum": {
+        "name": "gpu__time_duration.sum",
+        "description": "equals to gpu__time_duration_measured_user if collectable, otherwise equals to gpu__time_duration_measured_wallclock",
+        "unit": "nanosecond",
+        "hw_unit": "gpu",
+        "scope": 0,
+        "type": 0
+      }
+    },
+    "sources": [
+      {
+        "phase": "P31",
+        "file": "P31-counters/rank0-traffic-0.jsonl",
+        "sha256": "bf358a41ef88d18977a15b35f36bda932082da022bec1619920acc4a3bf391e9",
+        "rank": 0
+      },
+      {
+        "phase": "P31",
+        "file": "P31-counters/rank1-traffic-1.jsonl",
+        "sha256": "dc6bed4f0f845316b79b4bce336e96615e6bc01e1b66398b7e6742cd0a4e3353",
+        "rank": 1
+      }
+    ],
+    "trace_join_enabled": true,
+    "trace_sources": [
+      {
+        "phase": "P31",
+        "available": true,
+        "sha256": "cce42d6bdd106cee3b2874a65499a8419a32e9c40b75ceea84551270ee317253",
+        "eligible_verify_counts_by_bucket": {
+          "0": 265,
+          "1": 248,
+          "2": 163
+        },
+        "context_formula": "max(window.proposed_context_end) - 1, matching maximum input position",
+        "indexing": "zero-based eligible verification index per three collector context buckets"
+      },
+      {
+        "phase": "A1",
+        "available": false
+      },
+      {
+        "phase": "OFF",
+        "available": false
+      },
+      {
+        "phase": "ATTNoff",
+        "available": false
+      },
+      {
+        "phase": "A2",
+        "available": false
+      }
+    ],
+    "yield_semantics": "Potential new emissions are 1 + accepted prefix per window, before stop/output budgets; the pending input was already emitted and is not counted again. First prefill output is outside this range. This is not observed committed output count.",
+    "bytes_per_yield_scope": "Target forward + DSpark tap absorption only; excludes full MTP draft passes, argmax/readback and prefill. Profiled CPU wall times are diagnostics, not GPU time or unprofiled speed. Ratios are per Spark and must not be summed into its bandwidth.",
+    "semantics": {
+      "sysmem_fill_GB": "L2 sectors filled from system memory, counted at 32 bytes per sector",
+      "l2_sysmem_read_request_GB": "L2 sysmem-aperture read request sectors; can include L2 hits",
+      "l2_sysmem_write_request_GB": "L2 sysmem-aperture write request sectors; not DRAM writeback bytes",
+      "gpu_range_ms": "GPU duration metric for the instrumented verification range",
+      "sysmem_fill_inferred_GBps": "system-memory L2 fills divided by GPU range duration; not DRAM-total bandwidth"
+    },
+    "limitations": [
+      "The three byte counters overlap in scope and must not be added together.",
+      "L2 request-sector counts are not total physical DRAM reads or writes.",
+      "Ranges are instrumented; use separate unprofiled requests for speed claims.",
+      "Do not add both ranks and divide by one rank bandwidth when forming a roofline.",
+      "Grouping by row width does not control the union of selected MoE experts."
+    ]
+  },
+  "weight_model": {
+    "active_weight_bytes_per_rank_one_token": 4334554816,
+    "fixed_weight_bytes_per_rank": 2799353536,
+    "six_routed_experts_bytes_per_rank": 1535201280,
+    "decimal_GB_per_rank": 4.334554816,
+    "layers": 40,
+    "selected_routed_experts_per_token_per_layer": 6,
+    "available_routed_experts_per_layer": 384,
+    "meaning": "Analytical once-through active weight bytes for one plain token, not measured total traffic.",
+    "tensor_parallelism": "Each Spark holds half of every expert intermediate; all six selected experts run on both ranks.",
+    "verification_model": "fixed bytes + sum_over_layers(unique selected expert IDs * that layer expert-slice bytes)",
+    "excludes": [
+      "KV/index scans",
+      "activation traffic",
+      "extra reads and cache effects",
+      "drafter passes",
+      "communication"
+    ],
+    "not": [
+      "total resident model size",
+      "per-output-token measured traffic",
+      "a verification-round constant"
+    ]
+  }
+}

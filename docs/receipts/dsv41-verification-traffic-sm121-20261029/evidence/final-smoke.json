@@ -1,0 +1,612 @@
+{
+  "source_commit": "9be95dd3b75b4cf5495bc814284b42d211431a13",
+  "build_directory": "$EXPERIMENT_ROOT/traffic-final-build/20261029T063526Z-9be95dd3b75b",
+  "build": {
+    "source_commit": "9be95dd3b75b4cf5495bc814284b42d211431a13",
+    "validation_sha256": "6144ff5a8dd61de59a729e4c7177ee83a14d857f9b73b86909116404f3999182",
+    "source_manifest_sha256": "86c9bd0c809a7cef09dc0be449cf07e8ce7feafd3c34b988ae95d2dac4fa54b4",
+    "artifacts": {
+      "libtf_traffic.so": "0c4b64614d93ed6d1997a745fdd618713e701485868fce8e83dfbc624f220af6",
+      "traffic_probe": "c42b476d1424ddc6f9f5adabb3048bacfa4b892292fbdfa5803756cb024cc59a"
+    },
+    "build_image": "sha256:9a4259c1361ab153f983ab9d8ac76fc92451e301c0a62430098149c26b3328f5"
+  },
+  "started_utc": "2026-10-29T06:40:07.341263+00:00",
+  "preflight": {
+    "primary": {
+      "receipt": "$EXPERIMENT_ROOT/traffic/run-20261029T004106/receipt.json",
+      "receipt_sha256": "24af792154823c5b10bb0d25ef246679249c6a28f3d19dbdfc5da4e20bf8891e",
+      "requests": {
+        "R115": 5,
+        "B350": 35,
+        "A2": 35
+      },
+      "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+      "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0",
+      "health": {
+        "status": "ok",
+        "model": "DeepSeek-V4.1-Flash-1017",
+        "model_ids": [
+          "DeepSeek-V4.1-Flash-1017",
+          "DeepSeek-V4.1-Flash-1017-EXL3",
+          "DeepSeek-v4.1-Flash-EXL3",
+          "deepseek-v4-flash-0731"
+        ],
+        "max_batch_size": 2,
+        "warming": false,
+        "memory": {
+          "active": 112698042660,
+          "cache": 0,
+          "peak": 112698042660
+        },
+        "live": {
+          "connections": 0,
+          "waiting": 0,
+          "decode_tokens_per_second": 0.0,
+          "prefill_tokens_per_second": 0.0
+        }
+      },
+      "requests_running": 0.0,
+      "requests_waiting": 0.0
+    },
+    "worker": {
+      "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+      "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0"
+    },
+    "observed_utc": "2026-10-29T06:40:07.341041+00:00",
+    "gpu_access": false
+  },
+  "clock_ceiling_mhz": 2200,
+  "steps": [
+    {
+      "label": "cap-rank0",
+      "rank": 0,
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--name",
+        "tf-final-cap-20261029t064007z-0",
+        "--network",
+        "none",
+        "--gpus",
+        "all",
+        "--cap-add",
+        "SYS_ADMIN",
+        "--memory=4g",
+        "--memory-swap=4g",
+        "--cpuset-cpus=0-1",
+        "--entrypoint",
+        "nvidia-smi",
+        "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+        "-lgc",
+        "0,2200"
+      ],
+      "started_utc": "2026-10-29T06:40:07.341402+00:00",
+      "exit_code": 0,
+      "stdout": "GPU clocks set to \"(gpuClkMin 0, gpuClkMax 2200)\" for GPU 0000000F:01:00.0\nAll done.\n",
+      "stderr": "",
+      "ended_utc": "2026-10-29T06:40:08.050235+00:00"
+    },
+    {
+      "label": "cap-rank1",
+      "rank": 1,
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--name",
+        "tf-final-cap-20261029t064007z-1",
+        "--network",
+        "none",
+        "--gpus",
+        "all",
+        "--cap-add",
+        "SYS_ADMIN",
+        "--memory=4g",
+        "--memory-swap=4g",
+        "--cpuset-cpus=0-1",
+        "--entrypoint",
+        "nvidia-smi",
+        "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+        "-lgc",
+        "0,2200"
+      ],
+      "started_utc": "2026-10-29T06:40:08.399589+00:00",
+      "exit_code": 0,
+      "stdout": "GPU clocks set to \"(gpuClkMin 0, gpuClkMax 2200)\" for GPU 0000000F:01:00.0\nAll done.\n",
+      "stderr": "",
+      "ended_utc": "2026-10-29T06:40:08.762588+00:00"
+    },
+    {
+      "label": "normal",
+      "rank": 1,
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--name",
+        "tf-final-smoke-20261029t064007z-normal",
+        "--network",
+        "none",
+        "--gpus",
+        "all",
+        "--cap-add",
+        "SYS_ADMIN",
+        "--memory=4g",
+        "--memory-swap=4g",
+        "--cpuset-cpus=0-1",
+        "-v",
+        "$EXPERIMENT_ROOT/traffic-final-build/20261029T063526Z-9be95dd3b75b/cupti:/cupti:ro",
+        "-v",
+        "$EXPERIMENT_ROOT/traffic-final-smoke/20261029T064007Z-9be95dd3b75b:/out",
+        "-e",
+        "TF_TRAFFIC_ENABLE=1",
+        "-e",
+        "TF_TRAFFIC_METRICS=lts__d_sectors_fill_sysmem.sum,lts__t_sectors_aperture_sysmem_op_read.sum,lts__t_sectors_aperture_sysmem_op_write.sum,gpu__time_duration.sum",
+        "-e",
+        "TF_TRAFFIC_SKIP=1",
+        "-e",
+        "TF_TRAFFIC_RANGES=4",
+        "-e",
+        "TF_TRAFFIC_MIN_CONTEXT=0",
+        "-e",
+        "TF_TRAFFIC_MAX_CONTEXT=4096",
+        "-e",
+        "TF_TRAFFIC_MAX_ROWS=2",
+        "-e",
+        "TF_TRAFFIC_OUTPUT=/out/normal-%r.jsonl",
+        "-e",
+        "TF_TRAFFIC_RUN=final-9be95dd3b75b-normal",
+        "--entrypoint",
+        "/cupti/traffic_probe",
+        "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+        "--smoke64MiB"
+      ],
+      "started_utc": "2026-10-29T06:40:09.941501+00:00",
+      "exit_code": 0,
+      "stdout": "{\"type\":\"smoke\",\"selected\":4,\"buffer_bytes\":67108864,\"value\":7,\"expected\":7}\n",
+      "stderr": "",
+      "ended_utc": "2026-10-29T06:40:11.390896+00:00"
+    },
+    {
+      "label": "abort",
+      "rank": 1,
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--name",
+        "tf-final-smoke-20261029t064007z-abort",
+        "--network",
+        "none",
+        "--gpus",
+        "all",
+        "--cap-add",
+        "SYS_ADMIN",
+        "--memory=4g",
+        "--memory-swap=4g",
+        "--cpuset-cpus=0-1",
+        "-v",
+        "$EXPERIMENT_ROOT/traffic-final-build/20261029T063526Z-9be95dd3b75b/cupti:/cupti:ro",
+        "-v",
+        "$EXPERIMENT_ROOT/traffic-final-smoke/20261029T064007Z-9be95dd3b75b:/out",
+        "-e",
+        "TF_TRAFFIC_ENABLE=1",
+        "-e",
+        "TF_TRAFFIC_METRICS=lts__d_sectors_fill_sysmem.sum,lts__t_sectors_aperture_sysmem_op_read.sum,lts__t_sectors_aperture_sysmem_op_write.sum,gpu__time_duration.sum",
+        "-e",
+        "TF_TRAFFIC_SKIP=0",
+        "-e",
+        "TF_TRAFFIC_RANGES=4",
+        "-e",
+        "TF_TRAFFIC_MIN_CONTEXT=0",
+        "-e",
+        "TF_TRAFFIC_MAX_CONTEXT=4096",
+        "-e",
+        "TF_TRAFFIC_MAX_ROWS=2",
+        "-e",
+        "TF_TRAFFIC_OUTPUT=/out/abort-%r.jsonl",
+        "-e",
+        "TF_TRAFFIC_RUN=final-9be95dd3b75b-abort",
+        "--entrypoint",
+        "/cupti/traffic_probe",
+        "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+        "--abort64MiB"
+      ],
+      "started_utc": "2026-10-29T06:40:13.025494+00:00",
+      "exit_code": 0,
+      "stdout": "{\"type\":\"abort64MiB\",\"selected\":2,\"buffer_bytes\":67108864,\"value\":3,\"expected\":3,\"disabled\":true}\n",
+      "stderr": "TensorFold traffic profiling disabled: Verification failed before completion; current window discarded\n",
+      "ended_utc": "2026-10-29T06:40:14.403168+00:00"
+    }
+  ],
+  "complete": true,
+  "clocks_before": [
+    {
+      "rank": 0,
+      "graphics_mhz": 2177.0,
+      "sm_mhz": 2177.0,
+      "utilization_percent": 0.0,
+      "utc": "2026-10-29T06:40:09.144090+00:00"
+    },
+    {
+      "rank": 1,
+      "graphics_mhz": 2177.0,
+      "sm_mhz": 2177.0,
+      "utilization_percent": 0.0,
+      "utc": "2026-10-29T06:40:09.167095+00:00"
+    }
+  ],
+  "normal": {
+    "health_before": {
+      "primary": {
+        "receipt": "$EXPERIMENT_ROOT/traffic/run-20261029T004106/receipt.json",
+        "receipt_sha256": "24af792154823c5b10bb0d25ef246679249c6a28f3d19dbdfc5da4e20bf8891e",
+        "requests": {
+          "R115": 5,
+          "B350": 35,
+          "A2": 35
+        },
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0",
+        "health": {
+          "status": "ok",
+          "model": "DeepSeek-V4.1-Flash-1017",
+          "model_ids": [
+            "DeepSeek-V4.1-Flash-1017",
+            "DeepSeek-V4.1-Flash-1017-EXL3",
+            "DeepSeek-v4.1-Flash-EXL3",
+            "deepseek-v4-flash-0731"
+          ],
+          "max_batch_size": 2,
+          "warming": false,
+          "memory": {
+            "active": 112698042660,
+            "cache": 0,
+            "peak": 112698042660
+          },
+          "live": {
+            "connections": 0,
+            "waiting": 0,
+            "decode_tokens_per_second": 0.0,
+            "prefill_tokens_per_second": 0.0
+          }
+        },
+        "requests_running": 0.0,
+        "requests_waiting": 0.0
+      },
+      "worker": {
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0"
+      },
+      "observed_utc": "2026-10-29T06:40:09.578879+00:00",
+      "gpu_access": false
+    },
+    "idle_clock_samples": [
+      [
+        {
+          "rank": 0,
+          "graphics_mhz": 2177.0,
+          "sm_mhz": 2177.0,
+          "utilization_percent": 0.0,
+          "utc": "2026-10-29T06:40:09.916249+00:00"
+        },
+        {
+          "rank": 1,
+          "graphics_mhz": 2177.0,
+          "sm_mhz": 2177.0,
+          "utilization_percent": 0.0,
+          "utc": "2026-10-29T06:40:09.941176+00:00"
+        }
+      ]
+    ],
+    "validation": {
+      "probe": {
+        "type": "smoke",
+        "selected": 4,
+        "buffer_bytes": 67108864,
+        "value": 7,
+        "expected": 7
+      },
+      "ranges": 4,
+      "windows": 1,
+      "errors": [],
+      "fill_bytes": [
+        67186496,
+        67132928,
+        67110432,
+        67110176
+      ],
+      "fill_over_buffer_ratios": [
+        1.0011568069458008,
+        1.0003585815429688,
+        1.000023365020752,
+        1.0000195503234863
+      ]
+    },
+    "clocks_after": [
+      {
+        "rank": 0,
+        "graphics_mhz": 2177.0,
+        "sm_mhz": 2177.0,
+        "utilization_percent": 0.0,
+        "utc": "2026-10-29T06:40:11.737726+00:00"
+      },
+      {
+        "rank": 1,
+        "graphics_mhz": 2177.0,
+        "sm_mhz": 2177.0,
+        "utilization_percent": 0.0,
+        "utc": "2026-10-29T06:40:11.760357+00:00"
+      }
+    ],
+    "health_after": {
+      "primary": {
+        "receipt": "$EXPERIMENT_ROOT/traffic/run-20261029T004106/receipt.json",
+        "receipt_sha256": "24af792154823c5b10bb0d25ef246679249c6a28f3d19dbdfc5da4e20bf8891e",
+        "requests": {
+          "R115": 5,
+          "B350": 35,
+          "A2": 35
+        },
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0",
+        "health": {
+          "status": "ok",
+          "model": "DeepSeek-V4.1-Flash-1017",
+          "model_ids": [
+            "DeepSeek-V4.1-Flash-1017",
+            "DeepSeek-V4.1-Flash-1017-EXL3",
+            "DeepSeek-v4.1-Flash-EXL3",
+            "deepseek-v4-flash-0731"
+          ],
+          "max_batch_size": 2,
+          "warming": false,
+          "memory": {
+            "active": 112698042660,
+            "cache": 0,
+            "peak": 112698042660
+          },
+          "live": {
+            "connections": 0,
+            "waiting": 0,
+            "decode_tokens_per_second": 0.0,
+            "prefill_tokens_per_second": 0.0
+          }
+        },
+        "requests_running": 0.0,
+        "requests_waiting": 0.0
+      },
+      "worker": {
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0"
+      },
+      "observed_utc": "2026-10-29T06:40:12.195028+00:00",
+      "gpu_access": false
+    }
+  },
+  "abort": {
+    "health_before": {
+      "primary": {
+        "receipt": "$EXPERIMENT_ROOT/traffic/run-20261029T004106/receipt.json",
+        "receipt_sha256": "24af792154823c5b10bb0d25ef246679249c6a28f3d19dbdfc5da4e20bf8891e",
+        "requests": {
+          "R115": 5,
+          "B350": 35,
+          "A2": 35
+        },
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0",
+        "health": {
+          "status": "ok",
+          "model": "DeepSeek-V4.1-Flash-1017",
+          "model_ids": [
+            "DeepSeek-V4.1-Flash-1017",
+            "DeepSeek-V4.1-Flash-1017-EXL3",
+            "DeepSeek-v4.1-Flash-EXL3",
+            "deepseek-v4-flash-0731"
+          ],
+          "max_batch_size": 2,
+          "warming": false,
+          "memory": {
+            "active": 112698042660,
+            "cache": 0,
+            "peak": 112698042660
+          },
+          "live": {
+            "connections": 0,
+            "waiting": 0,
+            "decode_tokens_per_second": 0.0,
+            "prefill_tokens_per_second": 0.0
+          }
+        },
+        "requests_running": 0.0,
+        "requests_waiting": 0.0
+      },
+      "worker": {
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0"
+      },
+      "observed_utc": "2026-10-29T06:40:12.654066+00:00",
+      "gpu_access": false
+    },
+    "idle_clock_samples": [
+      [
+        {
+          "rank": 0,
+          "graphics_mhz": 2177.0,
+          "sm_mhz": 2177.0,
+          "utilization_percent": 0.0,
+          "utc": "2026-10-29T06:40:13.002908+00:00"
+        },
+        {
+          "rank": 1,
+          "graphics_mhz": 2177.0,
+          "sm_mhz": 2177.0,
+          "utilization_percent": 0.0,
+          "utc": "2026-10-29T06:40:13.024834+00:00"
+        }
+      ]
+    ],
+    "validation": {
+      "probe": {
+        "type": "abort64MiB",
+        "selected": 2,
+        "buffer_bytes": 67108864,
+        "value": 3,
+        "expected": 3,
+        "disabled": true
+      },
+      "ranges": 0,
+      "windows": 0,
+      "errors": [
+        {
+          "type": "error",
+          "message": "Verification failed before completion; current window discarded"
+        }
+      ]
+    },
+    "clocks_after": [
+      {
+        "rank": 0,
+        "graphics_mhz": 2177.0,
+        "sm_mhz": 2177.0,
+        "utilization_percent": 0.0,
+        "utc": "2026-10-29T06:40:14.757968+00:00"
+      },
+      {
+        "rank": 1,
+        "graphics_mhz": 2177.0,
+        "sm_mhz": 2177.0,
+        "utilization_percent": 2.0,
+        "utc": "2026-10-29T06:40:14.781600+00:00"
+      }
+    ],
+    "health_after": {
+      "primary": {
+        "receipt": "$EXPERIMENT_ROOT/traffic/run-20261029T004106/receipt.json",
+        "receipt_sha256": "24af792154823c5b10bb0d25ef246679249c6a28f3d19dbdfc5da4e20bf8891e",
+        "requests": {
+          "R115": 5,
+          "B350": 35,
+          "A2": 35
+        },
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0",
+        "health": {
+          "status": "ok",
+          "model": "DeepSeek-V4.1-Flash-1017",
+          "model_ids": [
+            "DeepSeek-V4.1-Flash-1017",
+            "DeepSeek-V4.1-Flash-1017-EXL3",
+            "DeepSeek-v4.1-Flash-EXL3",
+            "deepseek-v4-flash-0731"
+          ],
+          "max_batch_size": 2,
+          "warming": false,
+          "memory": {
+            "active": 112698042660,
+            "cache": 0,
+            "peak": 112698042660
+          },
+          "live": {
+            "connections": 0,
+            "waiting": 0,
+            "decode_tokens_per_second": 0.0,
+            "prefill_tokens_per_second": 0.0
+          }
+        },
+        "requests_running": 0.0,
+        "requests_waiting": 0.0
+      },
+      "worker": {
+        "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+        "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0"
+      },
+      "observed_utc": "2026-10-29T06:40:15.257769+00:00",
+      "gpu_access": false
+    }
+  },
+  "clocks_after": [
+    {
+      "rank": 0,
+      "graphics_mhz": 2177.0,
+      "sm_mhz": 2177.0,
+      "utilization_percent": 0.0,
+      "utc": "2026-10-29T06:40:15.601950+00:00"
+    },
+    {
+      "rank": 1,
+      "graphics_mhz": 2177.0,
+      "sm_mhz": 2177.0,
+      "utilization_percent": 0.0,
+      "utc": "2026-10-29T06:40:15.624674+00:00"
+    }
+  ],
+  "postflight": {
+    "primary": {
+      "receipt": "$EXPERIMENT_ROOT/traffic/run-20261029T004106/receipt.json",
+      "receipt_sha256": "24af792154823c5b10bb0d25ef246679249c6a28f3d19dbdfc5da4e20bf8891e",
+      "requests": {
+        "R115": 5,
+        "B350": 35,
+        "A2": 35
+      },
+      "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+      "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0",
+      "health": {
+        "status": "ok",
+        "model": "DeepSeek-V4.1-Flash-1017",
+        "model_ids": [
+          "DeepSeek-V4.1-Flash-1017",
+          "DeepSeek-V4.1-Flash-1017-EXL3",
+          "DeepSeek-v4.1-Flash-EXL3",
+          "deepseek-v4-flash-0731"
+        ],
+        "max_batch_size": 2,
+        "warming": false,
+        "memory": {
+          "active": 112698042660,
+          "cache": 0,
+          "peak": 112698042660
+        },
+        "live": {
+          "connections": 0,
+          "waiting": 0,
+          "decode_tokens_per_second": 0.0,
+          "prefill_tokens_per_second": 0.0
+        }
+      },
+      "requests_running": 0.0,
+      "requests_waiting": 0.0
+    },
+    "worker": {
+      "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+      "image_id": "sha256:114cf0907ec06a58616f012d538349f387cf32e5e37faf9ffc89f90aa473a6c0"
+    },
+    "observed_utc": "2026-10-29T06:40:16.072864+00:00",
+    "gpu_access": false
+  },
+  "ended_utc": "2026-10-29T06:40:16.072892+00:00",
+  "artifact_sha256": {
+    "normal-0.jsonl": "c50d8e3089097a81a9f05ce4ce13b9790beb81793e8854c1d913c3bc5592dd17",
+    "normal.stdout": "c3a8c50edabdbbfd697949bcb5922e470ceef320ea85dda396096a2fe17d252b",
+    "abort-0.jsonl": "3cd77fd707e84f02d15f7b378417300ea0d84927a763b35c2280f6bf027e0138",
+    "cap-rank0.stdout": "f5e54c93b8c56817288875df535391e074bfd6acda7f9aad7dc8a74f254eba43",
+    "cap-rank1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "normal.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cap-rank0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "abort.stdout": "203070698df15de4194db32ac33c06f2906e9b793ff993f6e8cbb389065fedc7",
+    "abort.stderr": "6e51c714acbc4c8c6889d77688185741d849bf2dc182508ea6229cf36be6eb5d",
+    "cap-rank1.stdout": "f5e54c93b8c56817288875df535391e074bfd6acda7f9aad7dc8a74f254eba43"
+  }
+}
