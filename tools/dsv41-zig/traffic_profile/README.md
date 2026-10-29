@@ -192,6 +192,26 @@ L2 read/write requests had comparable size. The small excess is a reminder that
 counter scope and background activity matter. `--smoke` uses a 1 MiB buffer that
 can remain in L2 and therefore is unsuitable for checking external-read volume.
 
+To validate cleanup of an active window, run the separate abort probe while the
+served API is idle and both GPUs remain capped at 2200 MHz:
+
+```bash
+TF_TRAFFIC_ENABLE=1 TF_TRAFFIC_SKIP=0 TF_TRAFFIC_RANGES=4 \
+TF_TRAFFIC_OUTPUT=/path/abort-%r.jsonl \
+TF_TRAFFIC_METRICS="$TF_TRAFFIC_METRICS" ./traffic_probe --abort64MiB
+```
+
+This mode requires those enable, skip and range settings before CUDA startup.
+It executes a warmup, completes one selected range, then aborts a second selected
+range after its graph has synchronized. Both ranges remain inside one un-emitted
+window. Subsequent begin and end calls must return `-1`; the probe's final JSON
+must report `selected: 2`, `value: 3`, `expected: 3`, and `disabled: true`.
+Use a fresh output path and separately verify that the collector file contains
+an `error` record and no `traffic_round` or `window_complete` records. This checks
+that the entire buffered window was discarded. The probe fails if either range
+was not selected, including when context or row filters exclude it. It allocates
+64 MiB and performs three graph launches total; it is not a throughput benchmark.
+
 Do not run Nsight Compute, Nsight Systems, or another CUPTI profiler alongside
 this collector. Retain both-rank counter files, clock records, actual row counts,
 and accepted-token counts. Use separate unprofiled runs for throughput and output

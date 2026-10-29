@@ -24,9 +24,18 @@ int main(int argc,char **argv) {
     }
     if(argc>=3 && !std::strcmp(argv[1],"--chip"))
         return tf_traffic_query_chip(argv[2],argc>3?argv[3]:"dram,sysmem,c2c,lts__d_sectors");
-    bool large=argc>1 && !std::strcmp(argv[1],"--smoke64MiB");
+    bool abort_large=argc>1 && !std::strcmp(argv[1],"--abort64MiB");
+    bool large=abort_large || (argc>1 && !std::strcmp(argv[1],"--smoke64MiB"));
     if(argc<2 || (std::strcmp(argv[1],"--query") && std::strcmp(argv[1],"--smoke") && !large)) {
-        std::fprintf(stderr,"usage: traffic_probe --query [filters] | --chip NAME [filters] | --smoke | --smoke64MiB | --abort-host\n"); return 2;
+        std::fprintf(stderr,"usage: traffic_probe --query [filters] | --chip NAME [filters] | --smoke | --smoke64MiB | --abort64MiB | --abort-host\n"); return 2;
+    }
+    if(abort_large) {
+        const char *enable=std::getenv("TF_TRAFFIC_ENABLE"), *skip=std::getenv("TF_TRAFFIC_SKIP");
+        const char *ranges=std::getenv("TF_TRAFFIC_RANGES");
+        if(!enable || std::strcmp(enable,"1") || !skip || std::strcmp(skip,"0") || !ranges || std::strcmp(ranges,"4")) {
+            std::fprintf(stderr,"--abort64MiB requires TF_TRAFFIC_ENABLE=1 TF_TRAFFIC_SKIP=0 TF_TRAFFIC_RANGES=4\n");
+            return 2;
+        }
     }
     check(cuInit(0)); CUdevice device;check(cuDeviceGet(&device,0));
     CUcontext context;check(cuDevicePrimaryCtxRetain(&context,device));check(cuCtxSetCurrent(context));
@@ -54,15 +63,27 @@ int main(int argc,char **argv) {
     check(cuLaunchKernel(kernel,bytes/(256*4),1,1,256,1,1,0,stream,args,nullptr));
     check(cuStreamEndCapture(stream,&graph));check(cuGraphInstantiateWithFlags(&executable,graph,0));
     check(cuGraphLaunch(executable,stream));check(cuStreamSynchronize(stream));
-    int selected=0, iterations=large?6:12;
+    int selected=0, iterations=abort_large?2:large?6:12; bool disabled=false;
     for(int i=0;i<iterations;++i) {
         int begin=tf_traffic_begin(2048+i,2,0); if(begin<0)return 3; selected+=begin;
+        if(abort_large && begin!=1) {
+            tf_traffic_abort(); std::fprintf(stderr,"Abort probe range was not selected\n"); return 3;
+        }
         check(cuGraphLaunch(executable,stream));check(cuStreamSynchronize(stream));
-        if(tf_traffic_end()<0)return 3;
+        if(abort_large && i==1) {
+            tf_traffic_abort();
+            int next_begin=tf_traffic_begin(2050,2,0), next_end=tf_traffic_end();
+            disabled=next_begin==-1 && next_end==-1;
+        } else {
+            int end=tf_traffic_end(); if(end<0 || (abort_large && end!=1))return 3;
+        }
     }
     tf_traffic_finish();unsigned value=0;check(cuMemcpyDtoH(&value,buffer,sizeof(value)));
-    std::printf("{\"type\":\"smoke\",\"selected\":%d,\"buffer_bytes\":%zu,\"value\":%u,\"expected\":%d}\n",selected,bytes,value,iterations+1);
+    if(abort_large)
+        std::printf("{\"type\":\"abort64MiB\",\"selected\":%d,\"buffer_bytes\":%zu,\"value\":%u,\"expected\":3,\"disabled\":%s}\n",selected,bytes,value,disabled?"true":"false");
+    else
+        std::printf("{\"type\":\"smoke\",\"selected\":%d,\"buffer_bytes\":%zu,\"value\":%u,\"expected\":%d}\n",selected,bytes,value,iterations+1);
     check(cuGraphExecDestroy(executable));check(cuGraphDestroy(graph));check(cuStreamDestroy(stream));
     check(cuMemFree(buffer));check(cuModuleUnload(module));check(cuDevicePrimaryCtxRelease(device));
-    return value==unsigned(iterations+1)?0:4;
+    return value==unsigned(iterations+1) && (!abort_large || (selected==2 && disabled))?0:4;
 }
