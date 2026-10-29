@@ -363,8 +363,9 @@ pub const Round = struct {
     pub fn usePrefetch(rd: *Round, e: *const Engine) !void {
         if (rd.pf != null) return;
         rd.pf_policy = try prefetch_policy.environment();
-        if (rd.pf_policy.mask != prefetch_policy.all_stages or rd.pf_policy.percent != 100)
-            std.log.info("decode L2 prefetch: mask={d}, budget_percent={d}", .{ rd.pf_policy.mask, rd.pf_policy.percent });
+        if (rd.pf_policy.mask != prefetch_policy.all_stages or rd.pf_policy.percent != 100 or
+            rd.pf_policy.rate_gbps != prefetch_policy.default_rate_gbps)
+            std.log.info("decode L2 prefetch: mask={d}, budget_percent={d}, rate_gbps={d}", .{ rd.pf_policy.mask, rd.pf_policy.percent, rd.pf_policy.rate_gbps });
         var s = try cuda.Stream.init(e.d, true);
         errdefer s.deinit();
         rd.pf_fork = try cuda.Event.init(e.d, false);
@@ -399,7 +400,7 @@ pub const Round = struct {
         if (a.n == 0) return;
         try rd.pf_fork.?.record(e.s);
         try s.wait(rd.pf_fork.?);
-        try e.ops.l2Prefetch(s, a);
+        try e.ops.l2Prefetch(s, a, rd.pf_policy.rate_gbps);
         try rd.pf_join.?.record(s);
         rd.pf_out = true;
     }
@@ -425,9 +426,9 @@ pub const Round = struct {
     fn mark(rd: *Round, e: *const Engine, p: PhaseTimer.Phase) !void {
         if (rd.clk != 0 and rd.clk_marks and (rd.clk_ratio == null or rd.clk_ratio.? == rd.cur_ratio)) {
             const now = cuda.launch.count;
-            rd.launches[@intFromEnum(p)] += now -% rd.launch_mark;
+            rd.launches[@backingInt(p)] += now -% rd.launch_mark;
             rd.launch_mark = now;
-            try rd.clock(e, @intFromEnum(p));
+            try rd.clock(e, @backingInt(p));
         }
         if (rd.timer) |t| try t.mark(e.s, p);
     }

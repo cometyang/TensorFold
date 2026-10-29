@@ -566,6 +566,7 @@ pub const Model = struct {
 
     pub fn fillBegin(m: *Model, slot: usize, base: usize) !void {
         if (slot >= m.streams) return error.BadSlot;
+        m.traffic_collector.finish();
         m.spans.clearRetainingCapacity();
         m.ch.spans = &.{};
         m.view = try m.caches.view(&m.eng, slot, base);
@@ -579,6 +580,7 @@ pub const Model = struct {
     /// drafting, its DSpark taps absorbed into the slot's drafter rings. True when it reached the head.
     pub fn fillChunk(m: *Model, seq: []const i32, start: usize, n: usize, replay: usize) !bool {
         if (n == 0 or n > chunk_rows or seq.len != start + n) return error.BadChunk;
+        m.traffic_collector.finish();
         const e = &m.eng;
         const c = e.c;
         const ch = &m.ch;

@@ -39,8 +39,12 @@ pub const Collector = struct {
         if (c.end_fn) |f| _ = f();
     }
 
-    pub fn close(c: *Collector) void {
+    pub fn finish(c: *Collector) void {
         if (c.finish_fn) |f| f();
+    }
+
+    pub fn close(c: *Collector) void {
+        c.finish();
         if (c.lib) |*lib| lib.close();
         c.* = .{};
     }

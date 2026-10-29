@@ -6,6 +6,25 @@ metric configuration and never replays model or communication work. It preserves
 kernel concurrency inside each range. This is measurement instrumentation;
 measure tokens/second separately with the library disabled.
 
+## Prefetch experiments
+
+The following optional controls are parsed once before CUDA graph capture.
+They preserve the existing defaults and do not change model arithmetic.
+They take effect only when decode L2 prefetch is enabled.
+
+| Setting | Default | Meaning |
+| --- | --- | --- |
+| `TF_DS_L2_PREFETCH_MASK` | `31` | Stage bits: attention output 1, MoE 2, next layer 4, Engram 8, head 16 |
+| `TF_DS_L2_PREFETCH_BUDGET_PERCENT` | `100` | Percentage of each existing byte budget, rounded down to 128-byte lines |
+| `TF_DS_L2_PREFETCH_RATE_GBPS` | `230` | Requested issue pacing, integer 1–1000 GB/s; not measured memory bandwidth |
+
+For example, mask `30` omits attention-output prefetch, and mask `0` omits all
+prefetch launches. A rate of `115` retains the byte budgets but doubles the
+interval between 1 MiB waves. The existing 3 microsecond startup delay stays
+unchanged. Invalid settings fail before capture. Compare throughput with
+profiling disabled, and retain a return-to-baseline control before selecting a
+setting; fewer prefetch bytes do not necessarily make inference faster.
+
 ## Build on DGX Spark
 
 The tested toolchain is CUDA 13.3, GNU C++17, and the CUDA SBSA libraries. No nvcc
@@ -16,8 +35,8 @@ driver API.
 bash tools/dsv41-zig/traffic_profile/build.sh /tmp/tf-traffic
 ```
 
-`CUDA_HOME`, `CUDA_TARGET_DIR`, and `CXX` override the defaults. The build uses
-the following commands, also used for the validated worker build:
+`CUDA_HOME`, `CUDA_TARGET_DIR`, and `CXX` override the defaults. The following
+explicit commands were used for the validated worker build:
 
 ```bash
 g++ -std=c++17 -O2 -fPIC -shared traffic_profile.cpp \
@@ -38,6 +57,11 @@ g++ -std=c++17 -O2 traffic_probe.cpp traffic_profile.cpp \
 The stub directory is used only at link time. Runtime library search must resolve
 the real NVIDIA driver. CUPTI also needs the compatible NVIDIA profiling
 libraries supplied with that CUDA installation.
+
+The build script honors an existing `CUDA_HOME`. If it names `/usr/local/cuda`,
+that alias is embedded in RUNPATH; the explicit commands above embed the versioned
+path. This can change the binary hash even when both paths select CUDA 13.3 and
+the C++ sources are identical. Record the compiler arguments and artifact hashes.
 
 ## Discover counters before collecting
 
@@ -117,9 +141,14 @@ The host calls `tf_traffic_begin(context_tokens, rows, rank)` before verificatio
 and `tf_traffic_end()` after its existing completion boundary. Calls must be made
 on the same host thread with the same current CUDA context, outside graph capture.
 After the configured number of ranges the library stops, decodes, and disables
-the session. `tf_traffic_finish()` closes a partial window at a request boundary;
-call it while the context is still alive. This avoids leaving a partial session
-enabled during a later prefill. It does not reset per-bucket counters.
+the session. TensorFold also calls `Collector.finish()` from `Model.fillBegin`
+and `Model.fillChunk`, after input validation and before prefill work, and during
+model teardown. Both ranks execute these existing fill commands, including when
+a fill chunk follows interleaved decode. These hooks close a partial window before
+the next prefill without adding a wire protocol message. They do not reset the
+per-bucket counters. Request release itself does not flush the collector; a final
+partial window is flushed by the next fill or model teardown while the CUDA
+context remains alive.
 
 On the tested deployment, querying hardware availability without `SYS_ADMIN`
 returned `CUPTI_ERROR_INSUFFICIENT_PRIVILEGES`. Add `--cap-add SYS_ADMIN` only to
@@ -160,3 +189,51 @@ Do not run Nsight Compute, Nsight Systems, or another CUPTI profiler alongside
 this collector. Retain both-rank counter files, clock records, actual row counts,
 and accepted-token counts. Use separate unprofiled runs for throughput and output
 accuracy comparisons; profiling durations alone are not speed benchmarks.
+
+## Analyze collected receipts
+
+The standard-library Python analyzer reads a controller `receipt.json` with
+`phases`, each containing request batches and relative `counter_files` entries.
+Keep the counter files beside the receipt in their recorded subdirectories.
+It makes no network requests and requires no CUDA installation.
+
+```bash
+python3 tools/dsv41-zig/traffic_profile/analyze.py /path/run/receipt.json \
+  --reference-receipt /path/reference/receipt.json \
+  --join-spec-trace --output /path/run/analysis.json
+python3 -m unittest discover -s tools/dsv41-zig/traffic_profile -p 'test_*.py'
+```
+
+`--reference-receipt` supplies frozen plain-output token arrays for exact prefix
+comparisons. Without it, the analyzer uses plain outputs in the current receipt
+and identifies self comparisons separately. Controller exactness claims are
+reported separately from independently compared token arrays. Missing references
+remain unknown.
+
+The report groups counter samples by phase, requested context, rank and actual
+verification row count. It reports sample counts, means and medians for system
+memory fills, L2 read/write requests and GPU range duration. Inferred fill
+bandwidth divides fills by range duration; it is not total physical DRAM
+bandwidth. The counters overlap and are never added together.
+
+Unprofiled speed comparisons exclude warmups and all profiling requests. The
+baseline is the arithmetic mean of A1 and A2 per-fixture median throughput;
+context aggregates use equal-weight geometric means across fixtures. Use
+`--baseline-labels BEFORE AFTER` to change the bracket names and
+`--target-tps 80` to set the throughput target. Plain controls remain diagnostic.
+Missing bracket phases do not produce an inferred performance gain.
+
+Optional `--join-spec-trace` uses the primary rank's `spec-trace.jsonl`. Each
+`rankR_bB_roundK` range must match the trace's zero-based eligible verification
+index in the same context bucket, with identical row count and maximum input
+position. Eligibility follows the recorded context and row filters. Failed
+joins remain unmatched and are listed in `issues`.
+
+Joined potential yield is one new target token plus the accepted draft prefix
+per window, before stop tokens and output-budget truncation. The pending input
+was already emitted and is not counted again. Fill bytes per potential emitted
+token cover target forward plus DSpark tap absorption; they exclude full draft
+passes, argmax/readback and prefill. This denominator is not an observed committed
+output count. Joined CPU wall times remain profiling diagnostics, not GPU time
+or unprofiled throughput. Inspect `issues`, unmatched counts and sample sizes
+before drawing conclusions from the report.
