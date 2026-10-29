@@ -4,8 +4,10 @@ const Allocator = std.mem.Allocator;
 const Table = @import("table.zig").Table;
 const alloc = @import("allocate.zig");
 const Constants = @import("depth.zig").Constants;
+const calibrated_mod = @import("context_costs.zig");
 
 pub const Cost = alloc.Cost;
+pub const ContextCostProfile = calibrated_mod.Profile;
 
 /// The class default acceptance by depth (Python DraftDepth.depth_prior).
 pub const default_prior = [_]f64{ 0.85, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 };
@@ -28,6 +30,7 @@ pub const Model = struct {
     batch_rows: u32 = 0, // a shared forward's rows at most (0: 32)
     max_streams: u32 = 0, // a shared forward's streams at most (0: 32)
     shared_costs: []const Cost = &.{}, // shared forwards' ms by total rows (timed at load)
+    context_costs: []const ContextCostProfile = &.{}, // measured forward costs by context and stream count
     draft_probabilities: bool = false, // the head gives each drafted node's chance of landing
     draft_streams: bool = false, // the head drafts every stream of a shared round in one batch
     head_trees: bool = false, // the head drafts trees of lanes (DraftRequest.lanes) and holds them
@@ -59,6 +62,7 @@ pub const Config = struct {
     depth_prior: []f64,
     family_costs: Table,
     shared_costs: Table,
+    context_costs: calibrated_mod.Catalog = .{},
     lane_costs: Table, // window ms by rows to 64 (lanes/plan_lanes.zig)
     mtp_step_ms: f64,
     enter_match: i64 = 8, // matching tokens a copy needs (rejects coincidental indentation)
@@ -95,6 +99,12 @@ pub const Config = struct {
         }
         const depth_prior = try gpa.dupe(f64, prior);
         errdefer gpa.free(depth_prior);
+        const batch_streams = if (streams) (if (m.max_streams != 0) m.max_streams else 32) else 1;
+        var shared_costs = try alloc.extendCosts(gpa, timed.items, batch_rows);
+        errdefer shared_costs.deinit(gpa);
+        var lane_costs = try alloc.extendCosts(gpa, m.lane_costs, 64);
+        errdefer lane_costs.deinit(gpa);
+        const calibrated = try calibrated_mod.Catalog.init(gpa, m.context_costs, batch_rows, batch_streams);
         return .{
             .family_width = width,
             .max_copy = max_copy,
@@ -107,14 +117,15 @@ pub const Config = struct {
             .most_drafts = @min(m.drafts, @min(width - 1, max_draft)),
             .family_streams = streams,
             .batch_rows = batch_rows,
-            .batch_streams = if (streams) (if (m.max_streams != 0) m.max_streams else 32) else 1,
+            .batch_streams = batch_streams,
             .node_probabilities = m.draft_probabilities,
             .draft_streams = m.draft_streams,
             .head_trees = m.head_trees,
             .depth_prior = depth_prior,
             .family_costs = family_costs,
-            .shared_costs = try alloc.extendCosts(gpa, timed.items, batch_rows),
-            .lane_costs = try alloc.extendCosts(gpa, m.lane_costs, 64),
+            .shared_costs = shared_costs,
+            .context_costs = calibrated,
+            .lane_costs = lane_costs,
             .mtp_step_ms = m.mtp_step_ms,
         };
     }
@@ -123,6 +134,7 @@ pub const Config = struct {
         gpa.free(c.depth_prior);
         c.family_costs.deinit(gpa);
         c.shared_costs.deinit(gpa);
+        c.context_costs.deinit(gpa);
         c.lane_costs.deinit(gpa);
     }
 };

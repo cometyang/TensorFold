@@ -21,6 +21,7 @@ const draft = @import("draft.zig");
 const sampling = @import("sampling.zig");
 const link = @import("link.zig");
 const cuda = @import("cuda");
+const spec_trace = @import("spec_trace.zig");
 
 const be = lanes.backend;
 const Model = model.Model;
@@ -270,6 +271,9 @@ const Lane = struct {
     held: [draft.max_block]u32 = undefined,
     confs: [draft.max_block]f32 = undefined,
     nheld: usize = 0,
+    trace_id: u64 = 0,
+    trace_rounds: u64 = 0,
+    trace_bucket: usize = 0,
 };
 
 extern "c" fn exp(x: f64) f64;
@@ -302,6 +306,21 @@ const held_wait_ns: u64 = 10 * std.time.ns_per_s;
 /// First tokens a handle names (each prompt's draw, read back right after its prefill).
 const ring = 1024;
 
+fn sweepK(sequence: u64) usize {
+    return @intCast((sequence / 16) % window_rows);
+}
+
+test "calibration sweep holds each K for sixteen shared verify rounds then repeats" {
+    for (0..window_rows * 16 * 2) |sequence| {
+        try std.testing.expectEqual((sequence / 16) % window_rows, sweepK(sequence));
+    }
+    try std.testing.expectEqual(@as(usize, 0), sweepK(0));
+    try std.testing.expectEqual(@as(usize, 0), sweepK(15));
+    try std.testing.expectEqual(@as(usize, 1), sweepK(16));
+    try std.testing.expectEqual(@as(usize, 5), sweepK(95));
+    try std.testing.expectEqual(@as(usize, 0), sweepK(96));
+}
+
 pub const Lanes = struct {
     gpa: std.mem.Allocator,
     m: *Model,
@@ -316,6 +335,10 @@ pub const Lanes = struct {
     seqs: [max_streams]std.ArrayList(i32) = @splat(.empty),
     built: Built = .{},
     prof: ?Profile = null,
+    trace: spec_trace.Trace = .{},
+    spec_sweep: bool = false,
+    spec_verify_sequence: u64 = 0,
+    context_costs: []const lanes.config.ContextCostProfile = &.{},
     fix_k: ?usize = null, // a measurement (tf-dsv41-lanes --fix-k): K drafts a stream, chances 1 to K and 0 past it
     drawn: [ring]u32 = undefined,
     next: u64 = 0,
@@ -333,6 +356,7 @@ pub const Lanes = struct {
 
     /// Tells rank 1 to stop, then frees the host state (the model is the caller's).
     pub fn deinit(self: *Lanes) void {
+        self.trace.deinit();
         for (self.snaps.items) |sn| {
             sn.buf.free();
             self.gpa.destroy(sn);
@@ -342,6 +366,17 @@ pub const Lanes = struct {
         self.streams.deinit(self.gpa);
         for (&self.seqs) |*q| q.deinit(self.gpa);
         self.wire.deinit(self.gpa);
+    }
+
+    /// Opt-in buffered CPU-wall timings; the usual CUDA graph execution and synchronization stay unchanged.
+    pub fn enableSpecTrace(self: *Lanes, path: []const u8) !void {
+        if (self.trace.output != null) return error.TraceAlreadyEnabled;
+        self.trace = try spec_trace.Trace.init(self.gpa, self.m.io, path);
+    }
+
+    /// The caller retains these profiles until facts have been copied into the lane core's config.
+    pub fn setContextCosts(self: *Lanes, profiles: []const lanes.config.ContextCostProfile) void {
+        self.context_costs = profiles;
     }
 
     pub fn backend(self: *Lanes) be.Backend {
@@ -376,6 +411,7 @@ pub const Lanes = struct {
             .batch_rows = @intCast(self.m.eng.round_rows),
             .max_streams = @intCast(self.m.streams),
             .shared_costs = self.sc[0..self.m.eng.round_rows],
+            .context_costs = self.context_costs,
             .draft_probabilities = drafting,
             .draft_streams = drafting,
         };
@@ -472,7 +508,12 @@ pub const Lanes = struct {
         };
         // the rows this stream writes are no other kept state's
         self.staleOver(if (kept != null and !moved) base + kept.?.at else base, base + size, kept);
-        try self.streams.put(gpa, s, .{ .slot = slot, .base = base, .end = base + size });
+        try self.streams.put(gpa, s, .{
+            .slot = slot,
+            .base = base,
+            .end = base + size,
+            .trace_id = self.trace.newRequest(),
+        });
         self.used[slot] = true;
         errdefer {
             _ = self.streams.remove(s);
@@ -637,6 +678,7 @@ pub const Lanes = struct {
             wins[k] = .{ .slot = l.slot, .base = l.base, .end = l.end, .start = start, .absorb = m.drafting() and w.stream.drafts, .ids = ids[k][0..rows] };
         }
         const t0 = m.now();
+        const wire_step = self.step;
         if (try self.begin(.verify)) {
             try self.wire.int(gpa, u32, @intCast(windows.len));
             for (wins[0..windows.len]) |w| {
@@ -682,6 +724,53 @@ pub const Lanes = struct {
             @memcpy(o.drafts[w.held..][0..w.tokens.len], w.tokens);
             l.nheld = 0;
         }
+        if (self.trace.enabled()) self.traceVerify(windows, out, .{ t0, t1, t2, t3, m.now() }, greedy, wire_step);
+        if (self.spec_sweep) self.spec_verify_sequence += 1;
+    }
+
+    fn traceVerify(self: *Lanes, windows: []const be.Window, out: []const be.Verified, times: [5]u64, greedy: bool, wire_step: u64) void {
+        var e: spec_trace.Event = .{
+            .event = .verify,
+            .wire_step = wire_step,
+            .bucket = self.m.rd.bucket,
+            .streams = windows.len,
+            .rows = self.built.r,
+            .greedy = greedy,
+            .graphs_enabled = self.m.graphs != null,
+            .start_ns = times[0],
+            .send_ns = times[1] - times[0],
+            .verify_ns = times[2] - times[1],
+            .readback_ns = times[3] - times[2],
+            .sample_ns = times[4] - times[3],
+            .total_ns = times[4] - times[0],
+            .calibration_k = if (self.spec_sweep) sweepK(self.spec_verify_sequence) else null,
+        };
+        for (windows, out, 0..) |w, o, i| {
+            const l = self.streams.getPtr(w.stream).?;
+            const context: usize = @intCast(w.stream.cache_len);
+            e.max_context = @max(e.max_context, context);
+            e.max_context_end = @max(e.max_context_end, context + w.rows());
+            e.windows[i] = .{
+                .trace_id = l.trace_id,
+                .slot = l.slot,
+                .context = context,
+                .proposed_context_end = context + w.rows(),
+                .rows = w.rows(),
+                .held_drafts = w.held,
+                .host_drafts = w.tokens.len,
+                .selected_drafts = w.rows() - 1,
+                .drafts_enabled = w.stream.drafts,
+                .round_index = l.trace_rounds,
+                .first_round = l.trace_rounds == 0,
+                .bucket_changed = l.trace_bucket != e.bucket,
+                .potential_accepted_drafts = spec_trace.potentialPrefix(o.drafts[0 .. w.rows() - 1], o.sampled),
+                .confidence_count = w.held,
+            };
+            @memcpy(e.windows[i].confidence_logits[0..w.held], l.confs[0..w.held]);
+            l.trace_rounds += 1;
+            l.trace_bucket = e.bucket;
+        }
+        self.trace.record(e);
     }
 
     /// The caches are positional: the next window starts at the stream's new length and writes over the rows past it.
@@ -724,6 +813,8 @@ pub const Lanes = struct {
             n += 1;
         }
         if (n == 0) return;
+        const trace_start = if (self.trace.enabled()) m.now() else 0;
+        const wire_step = self.step;
         if (try self.begin(.pass)) {
             try self.wire.int(gpa, u32, @intCast(n));
             try self.wire.int(gpa, u32, @intCast(steps));
@@ -736,6 +827,7 @@ pub const Lanes = struct {
         }
         const t0 = m.now();
         try m.pass(tokens[0..n], q0[0..n], slots[0..n], steps);
+        const pass_end = if (self.trace.enabled()) m.now() else 0;
         if (self.prof) |*p| {
             p.pass += m.now() - t0;
             p.passes += 1;
@@ -749,6 +841,40 @@ pub const Lanes = struct {
             }
             l.nheld = k;
         }
+        if (self.trace.enabled()) {
+            var e: spec_trace.Event = .{
+                .event = .draft,
+                .wire_step = wire_step,
+                .streams = n,
+                .rows = n * steps,
+                .steps = steps,
+                .graphs_enabled = m.pgraphs != null,
+                .start_ns = trace_start,
+                .send_ns = t0 - trace_start,
+                .pass_ns = pass_end - t0,
+                .total_ns = m.now() - trace_start,
+            };
+            for (asked[0..n], depths[0..n], 0..) |l, k, i| {
+                const context: usize = @intCast(q0[i]);
+                e.max_context = @max(e.max_context, context);
+                e.max_context_end = @max(e.max_context_end, context + k);
+                e.windows[i] = .{
+                    .trace_id = l.trace_id,
+                    .slot = l.slot,
+                    .context = context,
+                    .proposed_context_end = context + k,
+                    .rows = k,
+                    .held_drafts = k,
+                    .selected_drafts = k,
+                    .drafts_enabled = true,
+                    .round_index = l.trace_rounds,
+                    .first_round = l.trace_rounds == 0,
+                    .confidence_count = k,
+                };
+                @memcpy(e.windows[i].confidence_logits[0..k], l.confs[0..k]);
+            }
+            self.trace.record(e);
+        }
     }
 
     /// The chance that each held draft lands with every earlier one, as the round loop's allocation reads it: the
@@ -758,7 +884,8 @@ pub const Lanes = struct {
         const self = of(ptr);
         const l = self.streams.getPtr(s) orelse return false;
         if (out.len > l.nheld) return false;
-        if (self.fix_k) |k| {
+        const fixed_k = if (self.spec_sweep) @as(?usize, sweepK(self.spec_verify_sequence)) else self.fix_k;
+        if (fixed_k) |k| {
             for (out, 0..) |*o, j| o.* = if (j < k) 1.0 else 0.0;
             return true;
         }
@@ -880,6 +1007,18 @@ pub const Lanes = struct {
         const self = of(ptr);
         const kv = self.streams.fetchRemove(s) orelse return;
         self.used[kv.value.slot] = false;
+        if (self.trace.enabled()) {
+            var e: spec_trace.Event = .{ .event = .release, .streams = 1 };
+            e.windows[0] = .{
+                .trace_id = kv.value.trace_id,
+                .slot = kv.value.slot,
+                .context = @intCast(s.cache_len),
+                .round_index = kv.value.trace_rounds,
+                .drafts_enabled = s.drafts,
+            };
+            self.trace.record(e);
+            self.trace.flush();
+        }
     }
 };
 

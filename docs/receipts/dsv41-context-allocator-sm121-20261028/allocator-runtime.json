@@ -1,0 +1,11 @@
+{
+  "gpu": "NVIDIA GB10, 580.173.02, [N/A]",
+  "runtime": {
+    "machine": "aarch64",
+    "kernel": "6.17.0-1029-nvidia",
+    "python": "3.12.3",
+    "torch": "2.13.0a0+9186a08b2c.nv26.7.59513937",
+    "triton": "3.7.1+gitf797708c.nv26.7"
+  },
+  "zig": "0.17.0"
+}

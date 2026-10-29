@@ -1,0 +1,6 @@
+zig/src/core/lanes/config.zig
+zig/src/core/lanes/windows.zig
+zig/src/families/dsv41/spec_trace.zig
+zig/src/families/dsv41/native.zig
+zig/src/families/dsv41/lanes.zig
+zig/src/families/dsv41/dsv41.zig

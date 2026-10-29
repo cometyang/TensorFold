@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-10-29T01:15:51.657523+00:00",
+  "rank0": {
+    "service_active": "active",
+    "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+    "sm_mhz": 2177.0,
+    "health": {
+      "status": "ok",
+      "model": "DeepSeek-V4.1-Flash-1017",
+      "warming": false
+    }
+  },
+  "rank1": {
+    "image": "tensorfold-dsv41:exl3-tp2-625d420e24a4-ca20261022",
+    "sm_mhz": 2177.0
+  },
+  "passed": true
+}

@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "family": "dsv41",
+  "profiles": [
+    {
+      "min_context": 2048,
+      "max_context": 4096,
+      "streams": 1,
+      "forward_ms": [
+        22.3777575,
+        27.193114,
+        31.236981999999998,
+        35.119608,
+        39.211712000000006,
+        42.444386
+      ],
+      "overhead_ms": 3.6179794999999997
+    },
+    {
+      "min_context": 65536,
+      "max_context": 67584,
+      "streams": 1,
+      "forward_ms": [
+        22.490431,
+        27.21973,
+        31.4353965,
+        35.2852605,
+        39.346969,
+        42.697102
+      ],
+      "overhead_ms": 3.6215645
+    },
+    {
+      "min_context": 1047040,
+      "max_context": 1048576,
+      "streams": 1,
+      "forward_ms": [
+        23.9033085,
+        28.939685,
+        33.616869,
+        37.585691,
+        42.759089,
+        47.059077
+      ],
+      "overhead_ms": 3.636255
+    }
+  ],
+  "provenance": {
+    "method": "median measured verify_ns / 1e6; no interpolation or extrapolation",
+    "skip_rounds": 3,
+    "skip_shape_occurrences_per_trace": 2,
+    "min_samples_per_row": 5,
+    "max_drafts": 5,
+    "overhead": "median(next verify.start_ns - verify.start_ns - verify.verify_ns) / 1e6",
+    "overhead_filter": "adjacent retained rounds, same request set, source and context range",
+    "unused_rows_below_streams": "filled with first measurable row cost; never selectable",
+    "excluded": {
+      "request_warmup": 10,
+      "shape_warmup": 36
+    },
+    "coverage": [
+      {
+        "min_context": 2048,
+        "max_context": 4096,
+        "streams": 1,
+        "complete": true,
+        "missing_rows": [],
+        "rows": {
+          "1": {
+            "samples": 90,
+            "median_ms": 22.3777575,
+            "mad_ms": 0.14769500000000058,
+            "min_ms": 22.155503,
+            "max_ms": 27.908784,
+            "buckets": [
+              4096
+            ]
+          },
+          "2": {
+            "samples": 95,
+            "median_ms": 27.193114,
+            "mad_ms": 0.5074220000000018,
+            "min_ms": 25.571443,
+            "max_ms": 34.191601,
+            "buckets": [
+              4096
+            ]
+          },
+          "3": {
+            "samples": 94,
+            "median_ms": 31.236981999999998,
+            "mad_ms": 0.8837769999999967,
+            "min_ms": 28.266017,
+            "max_ms": 38.322638,
+            "buckets": [
+              4096
+            ]
+          },
+          "4": {
+            "samples": 94,
+            "median_ms": 35.119608,
+            "mad_ms": 0.9149114999999988,
+            "min_ms": 32.310237,
+            "max_ms": 40.894952,
+            "buckets": [
+              4096
+            ]
+          },
+          "5": {
+            "samples": 94,
+            "median_ms": 39.211712000000006,
+            "mad_ms": 1.3654040000000016,
+            "min_ms": 34.296013,
+            "max_ms": 46.324849,
+            "buckets": [
+              4096
+            ]
+          },
+          "6": {
+            "samples": 89,
+            "median_ms": 42.444386,
+            "mad_ms": 1.800767999999998,
+            "min_ms": 37.600997,
+            "max_ms": 53.340888,
+            "buckets": [
+              4096
+            ]
+          }
+        },
+        "overhead_samples": 550,
+        "overhead_median_ms": 3.6179794999999997,
+        "overhead_mad_ms": 0.1431034999999996
+      },
+      {
+        "min_context": 65536,
+        "max_context": 67584,
+        "streams": 1,
+        "complete": true,
+        "missing_rows": [],
+        "rows": {
+          "1": {
+            "samples": 94,
+            "median_ms": 22.490431,
+            "mad_ms": 0.16448850000000093,
+            "min_ms": 22.112731,
+            "max_ms": 28.133806,
+            "buckets": [
+              131072
+            ]
+          },
+          "2": {
+            "samples": 95,
+            "median_ms": 27.21973,
+            "mad_ms": 0.6892569999999978,
+            "min_ms": 25.329299,
+            "max_ms": 32.985736,
+            "buckets": [
+              131072
+            ]
+          },
+          "3": {
+            "samples": 94,
+            "median_ms": 31.4353965,
+            "mad_ms": 1.1256614999999996,
+            "min_ms": 29.01047,
+            "max_ms": 39.157497,
+            "buckets": [
+              131072
+            ]
+          },
+          "4": {
+            "samples": 92,
+            "median_ms": 35.2852605,
+            "mad_ms": 1.2828245000000003,
+            "min_ms": 32.453966,
+            "max_ms": 43.327054,
+            "buckets": [
+              131072
+            ]
+          },
+          "5": {
+            "samples": 78,
+            "median_ms": 39.346969,
+            "mad_ms": 1.504548500000002,
+            "min_ms": 34.309868,
+            "max_ms": 45.847397,
+            "buckets": [
+              131072
+            ]
+          },
+          "6": {
+            "samples": 79,
+            "median_ms": 42.697102,
+            "mad_ms": 1.2013159999999985,
+            "min_ms": 38.545041,
+            "max_ms": 49.790109,
+            "buckets": [
+              131072
+            ]
+          }
+        },
+        "overhead_samples": 526,
+        "overhead_median_ms": 3.6215645,
+        "overhead_mad_ms": 0.1334629999999999
+      },
+      {
+        "min_context": 1047040,
+        "max_context": 1048576,
+        "streams": 1,
+        "complete": true,
+        "missing_rows": [],
+        "rows": {
+          "1": {
+            "samples": 94,
+            "median_ms": 23.9033085,
+            "mad_ms": 0.10879250000000162,
+            "min_ms": 23.439727,
+            "max_ms": 29.432113,
+            "buckets": [
+              1048576
+            ]
+          },
+          "2": {
+            "samples": 89,
+            "median_ms": 28.939685,
+            "mad_ms": 0.5348919999999993,
+            "min_ms": 27.470107,
+            "max_ms": 33.751565,
+            "buckets": [
+              1048576
+            ]
+          },
+          "3": {
+            "samples": 78,
+            "median_ms": 33.616869,
+            "mad_ms": 0.9059069999999991,
+            "min_ms": 30.883259,
+            "max_ms": 39.209058,
+            "buckets": [
+              1048576
+            ]
+          },
+          "4": {
+            "samples": 78,
+            "median_ms": 37.585691,
+            "mad_ms": 1.0426265000000043,
+            "min_ms": 33.822988,
+            "max_ms": 47.559483,
+            "buckets": [
+              1048576
+            ]
+          },
+          "5": {
+            "samples": 92,
+            "median_ms": 42.759089,
+            "mad_ms": 1.2591380000000036,
+            "min_ms": 37.529898,
+            "max_ms": 51.470952,
+            "buckets": [
+              1048576
+            ]
+          },
+          "6": {
+            "samples": 94,
+            "median_ms": 47.059077,
+            "mad_ms": 1.5735284999999983,
+            "min_ms": 41.196938,
+            "max_ms": 56.775325,
+            "buckets": [
+              1048576
+            ]
+          }
+        },
+        "overhead_samples": 519,
+        "overhead_median_ms": 3.636255,
+        "overhead_mad_ms": 0.14102300000000012
+      }
+    ],
+    "sources": [
+      {
+        "name": "calibration-trace.jsonl",
+        "sha256": "445329adb4b6b6d554ecb94484a1d02f637b4c3d5a2a57ed139eaca5b5ef5033"
+      }
+    ],
+    "hardware": "2 x NVIDIA GB10, TP2",
+    "clock_ceiling_mhz": 2200,
+    "checkpoint": "Mia-AiLab/DeepSeek-V4.1-Flash-1017-EXL3-EAQ-v1-2.9-bpw",
+    "checkpoint_revision": "45ee5d0fd106c94a3d77f721e09cbb2f50e5a16b",
+    "baseline_image": "tensorfold-dsv41:codex-fp4-prefill-9469ec3965f9",
+    "binary_image": "tensorfold-dsv41:codex-allocator-binary-e7c4e3687335",
+    "heldout_used": false
+  }
+}

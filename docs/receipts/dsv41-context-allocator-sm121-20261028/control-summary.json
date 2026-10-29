@@ -1,0 +1,34 @@
+{
+  "fixture": "holdout-prose-65536-7391",
+  "phases": {
+    "C0": {
+      "speculative_median_tps": 58.33649250217918,
+      "speculative_samples_tps": [
+        58.456087610274665,
+        58.33649250217918,
+        58.0837604600966
+      ],
+      "plain_single_request_tps": 44.11839582263199,
+      "exact_A1_plain": true
+    },
+    "C1": {
+      "speculative_median_tps": 58.39099016918453,
+      "speculative_samples_tps": [
+        58.065177523255656,
+        58.430009493133575,
+        58.39099016918453
+      ],
+      "plain_single_request_tps": 44.08407262363869,
+      "exact_A1_plain": true
+    }
+  },
+  "comparison": {
+    "speculative_catalog_on_change_pct": 0.0934195126717885,
+    "plain_catalog_on_change_pct": -0.07779793066657881,
+    "scope": "same binary, sequential C0/C1; no time-bracketed counterfactual or confidence interval"
+  },
+  "exactness_passed": true,
+  "restored": true,
+  "elapsed_seconds": 395.07784229610115,
+  "main_receipt_sha256": "3167ae9ed8e9f849097fc398104150e261595b82b3394bb44267f96ad8e7468a"
+}

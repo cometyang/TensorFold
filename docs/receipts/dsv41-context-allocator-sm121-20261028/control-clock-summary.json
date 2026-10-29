@@ -1,0 +1,31 @@
+{
+  "ceiling_mhz": 2200,
+  "cap_acknowledged_both": true,
+  "paired_samples": 74,
+  "first_utc": "2026-10-29T01:08:02.065213+00:00",
+  "last_utc": "2026-10-29T01:14:36.920585+00:00",
+  "max_sampling_gap_s": 5.637362,
+  "ranks": {
+    "rank0": {
+      "samples": 74,
+      "valid_clock_samples": 74,
+      "max_graphics_mhz": 2190.0,
+      "max_sm_mhz": 2190.0,
+      "violations": 0,
+      "active_sample_median_sm_mhz": 2184.0,
+      "max_temperature_c": 72.0,
+      "max_power_w": 55.87
+    },
+    "rank1": {
+      "samples": 74,
+      "valid_clock_samples": 74,
+      "max_graphics_mhz": 2184.0,
+      "max_sm_mhz": 2184.0,
+      "violations": 0,
+      "active_sample_median_sm_mhz": 2171.0,
+      "max_temperature_c": 71.0,
+      "max_power_w": 61.36
+    }
+  },
+  "passed": true
+}
