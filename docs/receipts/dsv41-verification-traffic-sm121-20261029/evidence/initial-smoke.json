@@ -1,0 +1,289 @@
+{
+  "started": 1793246970.7231367,
+  "steps": [
+    {
+      "args": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=rank0",
+        "rank0",
+        "curl",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8888/health"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"model\": \"DeepSeek-V4.1-Flash-1017\", \"model_ids\": [\"DeepSeek-V4.1-Flash-1017\", \"DeepSeek-V4.1-Flash-1017-EXL3\", \"DeepSeek-v4.1-Flash-EXL3\", \"deepseek-v4-flash-0731\"], \"max_batch_size\": 2, \"warming\": false, \"memory\": {\"active\": 112698042660, \"cache\": 0, \"peak\": 112698042660}, \"live\": {\"connections\": 0, \"waiting\": 0, \"decode_tokens_per_second\": 0.0, \"prefill_tokens_per_second\": 0.0}}",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "docker",
+        "run",
+        "--rm",
+        "--gpus",
+        "all",
+        "--privileged",
+        "--memory",
+        "256m",
+        "--cpuset-cpus",
+        "0-1",
+        "--entrypoint",
+        "nvidia-smi",
+        "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+        "-lgc",
+        "0,2200"
+      ],
+      "exit": 0,
+      "stdout": "GPU clocks set to \"(gpuClkMin 0, gpuClkMax 2200)\" for GPU 0000000F:01:00.0\nAll done.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=rank0",
+        "rank0",
+        "docker",
+        "run",
+        "--rm",
+        "--gpus",
+        "all",
+        "--privileged",
+        "--memory",
+        "256m",
+        "--cpuset-cpus",
+        "0-1",
+        "--entrypoint",
+        "nvidia-smi",
+        "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+        "-lgc",
+        "0,2200"
+      ],
+      "exit": 0,
+      "stdout": "GPU clocks set to \"(gpuClkMin 0, gpuClkMax 2200)\" for GPU 0000000F:01:00.0\nAll done.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "nvidia-smi",
+        "--query-gpu=clocks.sm,clocks.mem,utilization.gpu",
+        "--format=csv,noheader"
+      ],
+      "exit": 0,
+      "stdout": "2177 MHz, [N/A], 0 %\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=rank0",
+        "rank0",
+        "nvidia-smi",
+        "--query-gpu=clocks.sm,clocks.mem,utilization.gpu",
+        "--format=csv,noheader"
+      ],
+      "exit": 0,
+      "stdout": "2177 MHz, [N/A], 0 %\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=rank0",
+        "rank0",
+        "curl",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8888/health"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"model\": \"DeepSeek-V4.1-Flash-1017\", \"model_ids\": [\"DeepSeek-V4.1-Flash-1017\", \"DeepSeek-V4.1-Flash-1017-EXL3\", \"DeepSeek-v4.1-Flash-EXL3\", \"deepseek-v4-flash-0731\"], \"max_batch_size\": 2, \"warming\": false, \"memory\": {\"active\": 112698042660, \"cache\": 0, \"peak\": 112698042660}, \"live\": {\"connections\": 0, \"waiting\": 0, \"decode_tokens_per_second\": 0.0, \"prefill_tokens_per_second\": 0.0}}",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "docker",
+        "run",
+        "--rm",
+        "--name",
+        "codex-traffic-smoke",
+        "--network",
+        "none",
+        "--memory",
+        "4g",
+        "--cpuset-cpus",
+        "0-1",
+        "--gpus",
+        "all",
+        "--cap-add",
+        "SYS_ADMIN",
+        "-v",
+        "$EXPERIMENT_ROOT/traffic-profiler:/work",
+        "-e",
+        "TF_TRAFFIC_ENABLE=1",
+        "-e",
+        "TF_TRAFFIC_METRICS=lts__d_sectors_fill_sysmem.sum,lts__t_sectors_aperture_sysmem_op_read.sum,lts__t_sectors_aperture_sysmem_op_write.sum,gpu__time_duration.sum",
+        "-e",
+        "TF_TRAFFIC_RANGES=4",
+        "-e",
+        "TF_TRAFFIC_SKIP=1",
+        "-e",
+        "TF_TRAFFIC_OUTPUT=/work/smoke64-%r.jsonl",
+        "--entrypoint",
+        "/work/traffic_probe",
+        "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+        "--smoke64MiB"
+      ],
+      "exit": 0,
+      "stdout": "{\"type\":\"smoke\",\"selected\":4,\"buffer_bytes\":67108864,\"value\":7,\"expected\":7}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=rank0",
+        "rank0",
+        "curl",
+        "-fsS",
+        "--max-time",
+        "10",
+        "http://127.0.0.1:8888/health"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\": \"ok\", \"model\": \"DeepSeek-V4.1-Flash-1017\", \"model_ids\": [\"DeepSeek-V4.1-Flash-1017\", \"DeepSeek-V4.1-Flash-1017-EXL3\", \"DeepSeek-v4.1-Flash-EXL3\", \"deepseek-v4-flash-0731\"], \"max_batch_size\": 2, \"warming\": false, \"memory\": {\"active\": 112698042660, \"cache\": 0, \"peak\": 112698042660}, \"live\": {\"connections\": 0, \"waiting\": 0, \"decode_tokens_per_second\": 0.0, \"prefill_tokens_per_second\": 0.0}}",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "nvidia-smi",
+        "--query-gpu=clocks.sm,clocks.mem,utilization.gpu",
+        "--format=csv,noheader"
+      ],
+      "exit": 0,
+      "stdout": "2177 MHz, [N/A], 0 %\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=rank0",
+        "rank0",
+        "nvidia-smi",
+        "--query-gpu=clocks.sm,clocks.mem,utilization.gpu",
+        "--format=csv,noheader"
+      ],
+      "exit": 0,
+      "stdout": "2177 MHz, [N/A], 0 %\n",
+      "stderr": ""
+    }
+  ],
+  "before_health": {
+    "status": "ok",
+    "model": "DeepSeek-V4.1-Flash-1017",
+    "model_ids": [
+      "DeepSeek-V4.1-Flash-1017",
+      "DeepSeek-V4.1-Flash-1017-EXL3",
+      "DeepSeek-v4.1-Flash-EXL3",
+      "deepseek-v4-flash-0731"
+    ],
+    "max_batch_size": 2,
+    "warming": false,
+    "memory": {
+      "active": 112698042660,
+      "cache": 0,
+      "peak": 112698042660
+    },
+    "live": {
+      "connections": 0,
+      "waiting": 0,
+      "decode_tokens_per_second": 0.0,
+      "prefill_tokens_per_second": 0.0
+    }
+  },
+  "before_clocks": [
+    "2177 MHz, [N/A], 0 %\n",
+    "2177 MHz, [N/A], 0 %\n"
+  ],
+  "before_smoke_health": {
+    "status": "ok",
+    "model": "DeepSeek-V4.1-Flash-1017",
+    "model_ids": [
+      "DeepSeek-V4.1-Flash-1017",
+      "DeepSeek-V4.1-Flash-1017-EXL3",
+      "DeepSeek-v4.1-Flash-EXL3",
+      "deepseek-v4-flash-0731"
+    ],
+    "max_batch_size": 2,
+    "warming": false,
+    "memory": {
+      "active": 112698042660,
+      "cache": 0,
+      "peak": 112698042660
+    },
+    "live": {
+      "connections": 0,
+      "waiting": 0,
+      "decode_tokens_per_second": 0.0,
+      "prefill_tokens_per_second": 0.0
+    }
+  },
+  "after_health": {
+    "status": "ok",
+    "model": "DeepSeek-V4.1-Flash-1017",
+    "model_ids": [
+      "DeepSeek-V4.1-Flash-1017",
+      "DeepSeek-V4.1-Flash-1017-EXL3",
+      "DeepSeek-v4.1-Flash-EXL3",
+      "deepseek-v4-flash-0731"
+    ],
+    "max_batch_size": 2,
+    "warming": false,
+    "memory": {
+      "active": 112698042660,
+      "cache": 0,
+      "peak": 112698042660
+    },
+    "live": {
+      "connections": 0,
+      "waiting": 0,
+      "decode_tokens_per_second": 0.0,
+      "prefill_tokens_per_second": 0.0
+    }
+  },
+  "after_clocks": [
+    "2177 MHz, [N/A], 0 %\n",
+    "2177 MHz, [N/A], 0 %\n"
+  ],
+  "completed": 1793246975.2237904
+}

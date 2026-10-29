@@ -1,0 +1,54 @@
+{
+  "purpose": "Explain the profiler library hashes without rebuilding or changing the frozen benchmark images.",
+  "source_sha256": {
+    "traffic_profile.cpp": "309fc6a94b92af5a1efd4dd3edcf91fbb1c04e2568814333bd05b7eed71c2f60",
+    "traffic_profile.h": "e297c0ab661fd973bc1a7475ee7eaedb90558264ea1d93e942ad519b20f46947",
+    "traffic_probe.cpp": "f3697a6abbca7913d8b938415102d0cbe0927758511d6150e95e14c8a48c8663"
+  },
+  "same_cpp_source": true,
+  "build_image": "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+  "original": {
+    "library_sha256": "9e279311b0c43240d31376e39d80d608afa73f3d132436f88308484b5e9a3053",
+    "compiler_argv": [
+      "/usr/bin/g++", "-std=c++17", "-O2", "-fPIC", "-shared", "/work/traffic_profile.cpp",
+      "-I/usr/local/cuda-13.3/targets/sbsa-linux/include",
+      "-L/usr/local/cuda-13.3/targets/sbsa-linux/lib",
+      "-L/usr/local/cuda-13.3/targets/sbsa-linux/lib/stubs",
+      "-Wl,-rpath,/usr/local/cuda-13.3/targets/sbsa-linux/lib",
+      "-lcuda", "-lcupti", "-pthread", "-o", "/work/libtf_traffic.so"
+    ],
+    "docker_argv": [
+      "docker", "run", "--rm", "--network", "none", "--memory", "1g", "--cpuset-cpus", "0-1",
+      "-v", "$EXPERIMENT_ROOT/traffic-profiler:/work",
+      "--entrypoint", "/usr/bin/g++", "tensorfold-dsv41:codex-exact-topk-875d92127d51",
+      "-std=c++17", "-O2", "-fPIC", "-shared", "/work/traffic_profile.cpp",
+      "-I/usr/local/cuda-13.3/targets/sbsa-linux/include",
+      "-L/usr/local/cuda-13.3/targets/sbsa-linux/lib",
+      "-L/usr/local/cuda-13.3/targets/sbsa-linux/lib/stubs",
+      "-Wl,-rpath,/usr/local/cuda-13.3/targets/sbsa-linux/lib",
+      "-lcuda", "-lcupti", "-pthread", "-o", "/work/libtf_traffic.so"
+    ],
+    "verified_elf_runpath": "/usr/local/cuda-13.3/targets/sbsa-linux/lib",
+    "frozen_benchmark_image": "tensorfold-dsv41:codex-traffic-ef533ed0fd7d"
+  },
+  "later_build_script": {
+    "library_sha256": "a9051cc7f3777eea0950492726778e4d8d889ffe2826f4c01ba73afd6802622f",
+    "script_sha256": "8a4199db018689fb07d6bfe3001e2ac4c6d285818e03071e41e35c0dc58d066d",
+    "script_argv": ["/bin/bash", "/work/build.sh", "/work"],
+    "inherited_CUDA_HOME": "/usr/local/cuda",
+    "CUDA_TARGET_DIR": "unset",
+    "CXX": "unset; script resolves g++ through PATH",
+    "compiler_argv": [
+      "g++", "-std=c++17", "-O2",
+      "-I/usr/local/cuda/targets/sbsa-linux/include",
+      "-L/usr/local/cuda/targets/sbsa-linux/lib",
+      "-L/usr/local/cuda/targets/sbsa-linux/lib/stubs",
+      "-Wl,-rpath,/usr/local/cuda/targets/sbsa-linux/lib",
+      "-fPIC", "-shared", "/work/traffic_profile.cpp",
+      "-lcuda", "-lcupti", "-pthread", "-o", "/work/libtf_traffic.so"
+    ],
+    "verified_elf_runpath": "/usr/local/cuda/targets/sbsa-linux/lib",
+    "verified_cuda_alias_target": "/usr/local/cuda-13.3"
+  },
+  "conclusion": "The source files are identical. The build script honors the image's CUDA_HOME alias, whereas the original command used the explicit versioned CUDA path. This changes the embedded ELF RUNPATH and binary hash; both paths resolve to CUDA 13.3. The command also orders include/library flags differently. No rebuild, GPU work, or benchmark-image replacement was performed for this provenance check."
+}

@@ -1,0 +1,83 @@
+{
+  "scope": "Historical capped standalone bandwidth and analytical weight model used as assumptions, not measurements of the present verification rounds",
+  "source_analysis_sha256": "69415ca4b23635d3e5dccb6ea9769071440b48682074329c3b4b7337f50587cf",
+  "assessment_date": "2026-10-28",
+  "candidate_commit": "a97b69afc9ea44e4655a7025a009e2ee26479249",
+  "hardware": {
+    "rank0": {
+      "device": {
+        "kind": "device",
+        "name": "NVIDIA GB10",
+        "sm": 48,
+        "cc": "12.1",
+        "l2_bytes": 25165824,
+        "max_threads_sm": 1536,
+        "regs_sm": 65536,
+        "shared_sm": 102400
+      },
+      "dram_GBps": {
+        "read": 236.534,
+        "copy": 216.002,
+        "triad": 217.752
+      },
+      "L2_read_GBps": 1363.824,
+      "TFLOPs": {
+        "fp32_fma": 25.363,
+        "bf16_dense_fp32_accum": 106.393,
+        "fp4_dense_fp32_accum": 425.4
+      }
+    },
+    "rank1": {
+      "device": {
+        "kind": "device",
+        "name": "NVIDIA GB10",
+        "sm": 48,
+        "cc": "12.1",
+        "l2_bytes": 25165824,
+        "max_threads_sm": 1536,
+        "regs_sm": 65536,
+        "shared_sm": 102400
+      },
+      "dram_GBps": {
+        "read": 234.608,
+        "copy": 216.81,
+        "triad": 217.71
+      },
+      "L2_read_GBps": 1363.735,
+      "TFLOPs": {
+        "fp32_fma": 25.362,
+        "bf16_dense_fp32_accum": 106.382,
+        "fp4_dense_fp32_accum": 425.285
+      }
+    }
+  },
+  "weight_model": {
+    "raw_active_bytes_per_rank": 4337340096.0,
+    "loader_adjustments": {
+      "one precomputed Engram q*k product replaces two weights": -163840,
+      "FP16 index weight projection replaces FP32 source": -2621440
+    },
+    "fixed_categories": {
+      "embedding selected row": 10240,
+      "normalization and other": 829440,
+      "output head": 248357120,
+      "hyperconnections": 157295040,
+      "attention": 1746797568,
+      "shared experts and routing": 559933440,
+      "Engram": 88915968
+    },
+    "active_routed_bytes": 1535201280.0,
+    "active_bytes_per_rank": 4334554816.0,
+    "EXL3_GEMM_FLOPs_per_rank": {
+      "EXL3 matrix multiply": 16438263808.0
+    },
+    "practical_weight_only_tps": 54.12505088965519,
+    "nominal_weight_only_tps": 62.98224652559106
+  },
+  "clocks": {
+    "paired_samples": 81,
+    "device_samples": 162,
+    "maximum_observed_MHz": 2190.0,
+    "errors": []
+  }
+}

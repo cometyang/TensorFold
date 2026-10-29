@@ -1,0 +1,499 @@
+{
+  "schema_version": 1,
+  "scope": "Screen plus interrupted pacing and isolated continuation; raw failure retained.",
+  "clock_ceiling_mhz": 2200,
+  "clock_summaries": {
+    "screen": {
+      "samples": 325,
+      "sample_errors": 0,
+      "observed_max_mhz": {
+        "rank0": 2190.0,
+        "rank1": 2190.0
+      },
+      "violations": [],
+      "requested_ceiling_mhz": 2200
+    },
+    "pacing-interrupted": {
+      "samples": 481,
+      "sample_errors": 0,
+      "observed_max_mhz": {
+        "rank0": 2190.0,
+        "rank1": 2190.0
+      },
+      "violations": [],
+      "requested_ceiling_mhz": 2200
+    },
+    "continuation": {
+      "samples": 595,
+      "sample_errors": 0,
+      "observed_max_mhz": {
+        "rank0": 2190.0,
+        "rank1": 2190.0
+      },
+      "violations": [],
+      "requested_ceiling_mhz": 2200
+    }
+  },
+  "screen_exact_outputs": 43,
+  "screen_counter_ranges": 96,
+  "pacing_exact_outputs": 141,
+  "pacing_attributed_outputs": 140,
+  "invalid_timing_requests": [
+    {
+      "phase": "B115",
+      "fixture": "holdout-retrieval-1047040-7391",
+      "rep": 0,
+      "warmup": true,
+      "reason": "invalid request metrics",
+      "metric_errors": [
+        "unattributed_generation"
+      ],
+      "source_input": 0,
+      "source_phase": "B115",
+      "source_batch": 30
+    }
+  ],
+  "pacing_inputs": [
+    {
+      "input_index": 0,
+      "receipt_basename": "receipt.json.gz",
+      "decompressed_sha256": "b536f03d6f8dc4b926381f4cd1d0e2d26b77bca7637a4a1abec9aada7b40e1e4",
+      "started_utc": "2026-10-29T04:49:03.726809+00:00",
+      "ended_utc": "2026-10-29T05:32:25.103901+00:00",
+      "restored": true,
+      "failure": {
+        "type": "RuntimeError",
+        "message": "incomplete or unattributed request"
+      },
+      "exactness_passed": null,
+      "phases": [
+        {
+          "source_input": 0,
+          "source_phase": "A1",
+          "analysis_phase": "A1",
+          "complete": true,
+          "started_utc": "2026-10-29T04:49:14.994915+00:00",
+          "ended_utc": "2026-10-29T05:10:30.591593+00:00",
+          "request_batches": 35
+        },
+        {
+          "source_input": 0,
+          "source_phase": "B115",
+          "analysis_phase": "B115",
+          "complete": null,
+          "started_utc": "2026-10-29T05:10:37.358669+00:00",
+          "ended_utc": null,
+          "request_batches": 31
+        }
+      ],
+      "planned_phases": [
+        "A1",
+        "B115",
+        "B60",
+        "A2"
+      ],
+      "unstarted_phases": [
+        "B60",
+        "A2"
+      ]
+    },
+    {
+      "input_index": 1,
+      "receipt_basename": "receipt.json.gz",
+      "decompressed_sha256": "1194262f20bba462fda87f76552579d7582f3c6429d649aa65b58b4c4a812651",
+      "started_utc": "2026-10-29T05:41:06.411000+00:00",
+      "ended_utc": "2026-10-29T06:34:40.121685+00:00",
+      "restored": true,
+      "failure": null,
+      "exactness_passed": true,
+      "phases": [
+        {
+          "source_input": 1,
+          "source_phase": "R115",
+          "analysis_phase": "B115",
+          "complete": true,
+          "started_utc": "2026-10-29T05:41:15.799456+00:00",
+          "ended_utc": "2026-10-29T05:51:47.664211+00:00",
+          "request_batches": 5
+        },
+        {
+          "source_input": 1,
+          "source_phase": "B350",
+          "analysis_phase": "B350",
+          "complete": true,
+          "started_utc": "2026-10-29T05:51:54.447087+00:00",
+          "ended_utc": "2026-10-29T06:12:52.610739+00:00",
+          "request_batches": 35
+        },
+        {
+          "source_input": 1,
+          "source_phase": "A2",
+          "analysis_phase": "A2",
+          "complete": true,
+          "started_utc": "2026-10-29T06:12:57.207571+00:00",
+          "ended_utc": "2026-10-29T06:33:58.872530+00:00",
+          "request_batches": 35
+        }
+      ],
+      "planned_phases": [
+        "R115",
+        "B350",
+        "A2"
+      ],
+      "unstarted_phases": []
+    }
+  ],
+  "pacing_composition": {
+    "phase_aliases": {
+      "R115": "B115"
+    },
+    "phase_lineage": [
+      {
+        "source_input": 0,
+        "source_phase": "A1",
+        "analysis_phase": "A1",
+        "complete": true,
+        "started_utc": "2026-10-29T04:49:14.994915+00:00",
+        "ended_utc": "2026-10-29T05:10:30.591593+00:00",
+        "request_batches": 35
+      },
+      {
+        "source_input": 0,
+        "source_phase": "B115",
+        "analysis_phase": "B115",
+        "complete": null,
+        "started_utc": "2026-10-29T05:10:37.358669+00:00",
+        "ended_utc": null,
+        "request_batches": 31
+      },
+      {
+        "source_input": 1,
+        "source_phase": "R115",
+        "analysis_phase": "B115",
+        "complete": true,
+        "started_utc": "2026-10-29T05:41:15.799456+00:00",
+        "ended_utc": "2026-10-29T05:51:47.664211+00:00",
+        "request_batches": 5
+      },
+      {
+        "source_input": 1,
+        "source_phase": "B350",
+        "analysis_phase": "B350",
+        "complete": true,
+        "started_utc": "2026-10-29T05:51:54.447087+00:00",
+        "ended_utc": "2026-10-29T06:12:52.610739+00:00",
+        "request_batches": 35
+      },
+      {
+        "source_input": 1,
+        "source_phase": "A2",
+        "analysis_phase": "A2",
+        "complete": true,
+        "started_utc": "2026-10-29T06:12:57.207571+00:00",
+        "ended_utc": "2026-10-29T06:33:58.872530+00:00",
+        "request_batches": 35
+      }
+    ],
+    "baseline_spans_inputs": true,
+    "any_input_failed": true,
+    "all_inputs_ended": true,
+    "receipt_sha256_scope": "primary input; all decompressed input hashes are listed in inputs",
+    "restoration_scope": "original_service_restored describes the latest supplied input only",
+    "limitations": [
+      "This is composed request evidence, not a single completed experiment; raw input outcomes are retained.",
+      "Explicit phase aliases identify intended equivalent settings; they do not prove identical runtime conditions.",
+      "The baseline bracket spans input runs and may span service restoration/relaunch; drift is not isolated."
+    ]
+  },
+  "pacing_fixtures": [
+    {
+      "fixture": "holdout-code-2048-7391",
+      "context": 2048,
+      "baseline_tps": 82.33347693770705,
+      "baseline_drift_pct": 1.2784421300076065,
+      "A1_tps": 81.81052681690282,
+      "A2_tps": 82.85642705851127,
+      "B115_tps": 77.75797966755114,
+      "B115_gain_pct": -5.557274440890792,
+      "B350_tps": 83.09460765686427,
+      "B350_gain_pct": 0.9244486537755447,
+      "B350_vs_A2_pct": 0.28746182620789096
+    },
+    {
+      "fixture": "holdout-code-65536-7391",
+      "context": 65536,
+      "baseline_tps": 72.55531852239436,
+      "baseline_drift_pct": 1.7735367585450357,
+      "A1_tps": 71.9175761975354,
+      "A2_tps": 73.19306084725332,
+      "B115_tps": 68.59652020371658,
+      "B115_gain_pct": -5.456248279656972,
+      "B350_tps": 73.11664111907417,
+      "B350_gain_pct": 0.773647760234919,
+      "B350_vs_A2_pct": -0.10440843338773709
+    },
+    {
+      "fixture": "holdout-prose-2048-7391",
+      "context": 2048,
+      "baseline_tps": 56.95642025973274,
+      "baseline_drift_pct": 1.1545241414598673,
+      "A1_tps": 56.62951952269164,
+      "A2_tps": 57.283320996773845,
+      "B115_tps": 53.460663383717474,
+      "B115_gain_pct": -6.137599343627831,
+      "B350_tps": 57.3817786822602,
+      "B350_gain_pct": 0.7468138281650161,
+      "B350_vs_A2_pct": 0.17187845217965236
+    },
+    {
+      "fixture": "holdout-prose-65536-7391",
+      "context": 65536,
+      "baseline_tps": 58.930339123885446,
+      "baseline_drift_pct": 1.7755624118359181,
+      "A1_tps": 58.41177040419308,
+      "A2_tps": 59.44890784357782,
+      "B115_tps": 55.25155260888876,
+      "B115_gain_pct": -6.242601976654183,
+      "B350_tps": 59.37150257763147,
+      "B350_gain_pct": 0.748618555916658,
+      "B350_vs_A2_pct": -0.13020468963033105
+    },
+    {
+      "fixture": "holdout-retrieval-1047040-7391",
+      "context": 1047040,
+      "baseline_tps": 71.39751021944136,
+      "baseline_drift_pct": 1.5554924944369386,
+      "A1_tps": 70.84650419180412,
+      "A2_tps": 71.94851624707859,
+      "B115_tps": 68.65167515943472,
+      "B115_gain_pct": -3.8458414748179237,
+      "B350_tps": 71.89552270978226,
+      "B350_gain_pct": 0.6975208082330209,
+      "B350_vs_A2_pct": -0.07365480215650866
+    },
+    {
+      "fixture": "holdout-retrieval-2048-7391",
+      "context": 2048,
+      "baseline_tps": 67.40661391746146,
+      "baseline_drift_pct": 1.7494102053063898,
+      "A1_tps": 66.82211744645639,
+      "A2_tps": 67.99111038846652,
+      "B115_tps": 63.39890425407697,
+      "B115_gain_pct": -5.94557333541762,
+      "B350_tps": 67.86837502928127,
+      "B350_gain_pct": 0.6850382847968461,
+      "B350_vs_A2_pct": -0.18051677415474865
+    },
+    {
+      "fixture": "holdout-retrieval-65536-7391",
+      "context": 65536,
+      "baseline_tps": 68.43544581816906,
+      "baseline_drift_pct": 1.4435154507886017,
+      "A1_tps": 67.94504719104488,
+      "A2_tps": 68.92584444529322,
+      "B115_tps": 64.58874854336698,
+      "B115_gain_pct": -5.620913590630572,
+      "B350_tps": 69.10438934435889,
+      "B350_gain_pct": 0.9774810672925183,
+      "B350_vs_A2_pct": 0.2590391173333817
+    }
+  ],
+  "pacing_contexts": [
+    {
+      "context": 2048,
+      "phase": "B115",
+      "fixtures": [
+        "holdout-code-2048-7391",
+        "holdout-prose-2048-7391",
+        "holdout-retrieval-2048-7391"
+      ],
+      "baseline_tps": 68.11988160222397,
+      "candidate_tps": 64.11412031152099,
+      "speculative_gain_pct": -5.880458386721854,
+      "plain_gain_pct": -8.478924528378705,
+      "plain_fixture_count": 3,
+      "target_met": false,
+      "additional_tps_to_target": 15.885879688479008,
+      "additional_speedup_pct_to_target": 24.77750550314326,
+      "latency_reduction_pct_to_target": 19.857349610598764
+    },
+    {
+      "context": 2048,
+      "phase": "B350",
+      "fixtures": [
+        "holdout-code-2048-7391",
+        "holdout-prose-2048-7391",
+        "holdout-retrieval-2048-7391"
+      ],
+      "baseline_tps": 68.11988160222397,
+      "candidate_tps": 68.65488324137218,
+      "speculative_gain_pct": 0.785382514714672,
+      "plain_gain_pct": 0.7586440326912358,
+      "plain_fixture_count": 3,
+      "target_met": false,
+      "additional_tps_to_target": 11.345116758627825,
+      "additional_speedup_pct_to_target": 16.524850415579962,
+      "latency_reduction_pct_to_target": 14.18139594828478
+    },
+    {
+      "context": 65536,
+      "phase": "B115",
+      "fixtures": [
+        "holdout-code-65536-7391",
+        "holdout-prose-65536-7391",
+        "holdout-retrieval-65536-7391"
+      ],
+      "baseline_tps": 66.38904652392503,
+      "candidate_tps": 62.555833326329356,
+      "speculative_gain_pct": -5.773863910237475,
+      "plain_gain_pct": -8.47868942629092,
+      "plain_fixture_count": 3,
+      "target_met": false,
+      "additional_tps_to_target": 17.444166673670644,
+      "additional_speedup_pct_to_target": 27.88575540616849,
+      "latency_reduction_pct_to_target": 21.8052083420883
+    },
+    {
+      "context": 65536,
+      "phase": "B350",
+      "fixtures": [
+        "holdout-code-65536-7391",
+        "holdout-prose-65536-7391",
+        "holdout-retrieval-65536-7391"
+      ],
+      "baseline_tps": 66.38904652392503,
+      "candidate_tps": 66.94219810542702,
+      "speculative_gain_pct": 0.8331970565395252,
+      "plain_gain_pct": 0.8108740311630447,
+      "plain_fixture_count": 3,
+      "target_met": false,
+      "additional_tps_to_target": 13.057801894572975,
+      "additional_speedup_pct_to_target": 19.506084747931784,
+      "latency_reduction_pct_to_target": 16.322252368216216
+    },
+    {
+      "context": 1047040,
+      "phase": "B115",
+      "fixtures": [
+        "holdout-retrieval-1047040-7391"
+      ],
+      "baseline_tps": 71.39751021944136,
+      "candidate_tps": 68.65167515943472,
+      "speculative_gain_pct": -3.8458414748179237,
+      "plain_gain_pct": -7.146930688271935,
+      "plain_fixture_count": 1,
+      "target_met": false,
+      "additional_tps_to_target": 11.348324840565283,
+      "additional_speedup_pct_to_target": 16.53029560343613,
+      "latency_reduction_pct_to_target": 14.185406050706606
+    },
+    {
+      "context": 1047040,
+      "phase": "B350",
+      "fixtures": [
+        "holdout-retrieval-1047040-7391"
+      ],
+      "baseline_tps": 71.39751021944136,
+      "candidate_tps": 71.89552270978226,
+      "speculative_gain_pct": 0.6975208082330209,
+      "plain_gain_pct": 0.47248921545899325,
+      "plain_fixture_count": 1,
+      "target_met": false,
+      "additional_tps_to_target": 8.104477290217744,
+      "additional_speedup_pct_to_target": 11.272575794368667,
+      "latency_reduction_pct_to_target": 10.13059661277218
+    }
+  ],
+  "traffic": [
+    {
+      "context": 2048,
+      "rank": 0,
+      "ranges": 16,
+      "mean_sysmem_fill_GB": 6.265674658,
+      "mean_potential_yield": 1.9375
+    },
+    {
+      "context": 2048,
+      "rank": 1,
+      "ranges": 16,
+      "mean_sysmem_fill_GB": 6.265258258,
+      "mean_potential_yield": 1.9375
+    },
+    {
+      "context": 65536,
+      "rank": 0,
+      "ranges": 16,
+      "mean_sysmem_fill_GB": 6.3787304780000005,
+      "mean_potential_yield": 1.75
+    },
+    {
+      "context": 65536,
+      "rank": 1,
+      "ranges": 16,
+      "mean_sysmem_fill_GB": 6.373418072,
+      "mean_potential_yield": 1.75
+    },
+    {
+      "context": 1047040,
+      "rank": 0,
+      "ranges": 16,
+      "mean_sysmem_fill_GB": 7.764098540000001,
+      "mean_potential_yield": 3.125
+    },
+    {
+      "context": 1047040,
+      "rank": 1,
+      "ranges": 16,
+      "mean_sysmem_fill_GB": 7.764844124,
+      "mean_potential_yield": 3.125
+    }
+  ],
+  "validation": {
+    "source_commit": "9be95dd3b75b4cf5495bc814284b42d211431a13",
+    "CPU_complete": true,
+    "smoke_complete": true,
+    "lean_findings": 1489,
+    "lean_scope": "Nonzero inherited findings, not a clean lean pass; logs are retained.",
+    "warnings_scope": "Successful jobs may contain inherited warnings or fault-injection diagnostics.",
+    "host_tests_passed": 248,
+    "analyzer_tests_passed": 16,
+    "standalone_policy_tests_passed": 4,
+    "native_build_passed": true,
+    "normal_and_abort_GPU_probes_passed": true
+  },
+  "optimization_decision": {
+    "default_prefetch_issue_rate_gbps": 230,
+    "candidate_rate_350_promoted": false,
+    "candidate_vs_isolated_A2_geomean_pct": 0.0326296358912348,
+    "context_comparisons": [
+      {
+        "context": 2048,
+        "A2_tps": 68.59126955049202,
+        "B350_tps": 68.65488324137218,
+        "B350_vs_A2_pct": 0.09274313086351516
+      },
+      {
+        "context": 65536,
+        "A2_tps": 66.93685372447288,
+        "B350_tps": 66.94219810542702,
+        "B350_vs_A2_pct": 0.007984212966061222
+      },
+      {
+        "context": 1047040,
+        "A2_tps": 71.94851624707857,
+        "B350_tps": 71.89552270978226,
+        "B350_vs_A2_pct": -0.07365480215648645
+      }
+    ],
+    "reason": "No material gain over the isolated concluding baseline; cross-run bracket gain is comparable to baseline drift.",
+    "target_80_tps_across_workloads_achieved": false,
+    "target_20_percent_decode_gain_achieved": false,
+    "limitation": "Three repetitions per fixture; sequential phases and cross-run baselines, not randomized trials."
+  },
+  "accuracy_total_output_arrays": 184,
+  "accuracy_total_compared_tokens": 186880,
+  "figure_visual_QA": {
+    "memory-traffic.png": "reviewed",
+    "prefetch-pacing.png": "reviewed"
+  }
+}

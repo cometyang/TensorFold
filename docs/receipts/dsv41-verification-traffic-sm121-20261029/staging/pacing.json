@@ -1,0 +1,29 @@
+{
+  "name": "traffic-image-4294298a7c64",
+  "images": {
+    "baseline": "tensorfold-dsv41:codex-traffic-4294298a7c64",
+    "off": "tensorfold-dsv41:codex-traffic-off-4294298a7c64",
+    "attention-off": "tensorfold-dsv41:codex-traffic-attention-off-4294298a7c64",
+    "half": "tensorfold-dsv41:codex-traffic-half-4294298a7c64",
+    "rate60": "tensorfold-dsv41:codex-traffic-rate60-4294298a7c64",
+    "rate115": "tensorfold-dsv41:codex-traffic-rate115-4294298a7c64",
+    "rate350": "tensorfold-dsv41:codex-traffic-rate350-4294298a7c64",
+    "profile": "tensorfold-dsv41:codex-traffic-profile-4294298a7c64",
+    "profile-off": "tensorfold-dsv41:codex-traffic-profile-off-4294298a7c64",
+    "profile-attention-off": "tensorfold-dsv41:codex-traffic-profile-attention-off-4294298a7c64"
+  },
+  "hashes": {
+    "tensorfold-native": "e8088b059f26b1d6540fb32c6e8fa54050e58756591e8eff87b674abf4819a2e",
+    "tf-dsv41-lanes": "b39781259a7360a82cb232a4b8499515a4dccf8d660f1792fa2ca0038a384ad1",
+    "libtf_traffic.so": "9e279311b0c43240d31376e39d80d608afa73f3d132436f88308484b5e9a3053"
+  },
+  "build": [
+    "docker",
+    "build",
+    "--pull=false",
+    "--network=none",
+    "--memory=512m",
+    "--memory-swap=512m",
+    "--cpuset-cpus=0-1"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "samples": 325,
+  "sample_errors": 0,
+  "observed_max_mhz": {
+    "rank0": 2190.0,
+    "rank1": 2190.0
+  },
+  "violations": [],
+  "requested_ceiling_mhz": 2200,
+  "source": "$EXPERIMENT_ROOT/traffic-clocks-20261029T041500Z-20261029T041502Z.jsonl"
+}

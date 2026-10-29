@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/cometyang/TensorFold",
+  "branch": "codex/spark-verification-traffic",
+  "base_commit": "24ef48592ce485cc763a15be9741d188966f53c8",
+  "clock_ceiling_mhz": 2200,
+  "model": "Mia-AiLab/DeepSeek-V4.1-Flash-1017-EXL3-EAQ-v1-2.9-bpw",
+  "checkpoint_revision": "45ee5d0fd106c94a3d77f721e09cbb2f50e5a16b",
+  "model_weights": "EXL3 2.9 bits/weight; native FP4 sparse indexer",
+  "topology": "Two DGX Sparks, TP2, dual RDMA rails",
+  "pool_tokens": 1048576,
+  "request_concurrency": 1,
+  "configured_slots": 2,
+  "hardware": {
+    "compute_capability": "12.1",
+    "SM_count_per_rank": 48,
+    "L2_bytes_per_rank": 25165824,
+    "CUPTI_chip_name": "GB20B",
+    "driver": "580.173.02",
+    "CUDA_toolkit": "13.3.73",
+    "compatibility_driver": "610.43.02",
+    "Zig": "0.17.0",
+    "OS_kernel": "6.17.0-1029-nvidia",
+    "architecture": "aarch64"
+  },
+  "source_states": {
+    "screen": {
+      "measured_commit": "b8b6a94f9746a3cfcda2d7e5d66778bdb135bcbd",
+      "scope": "Hardware counters at all three contexts; unprofiled prefetch ablation at 2K and 64K prose",
+      "raw_receipt_sha256": "f6298cc40ac2afedd539603ac9d06f11fbfb7317ab2edacc4e877b873210ac0b",
+      "restored": true,
+      "failure": null,
+      "receipt": "runs/screen/receipt.json.gz"
+    },
+    "continuation": {
+      "measured_commit": "82c578ac76a2c5c163c29c075e66cabd8788943c",
+      "scope": "Same frozen binaries; loopback-only R115 near-1M retry, B350 and A2 across seven fixtures. Source outcomes retained independently.",
+      "raw_receipt_sha256": "24af792154823c5b10bb0d25ef246679249c6a28f3d19dbdfc5da4e20bf8891e",
+      "restored": true,
+      "failure": null,
+      "receipt": "runs/continuation/receipt.json.gz"
+    },
+    "pacing-interrupted": {
+      "measured_commit": "82c578ac76a2c5c163c29c075e66cabd8788943c",
+      "scope": "Interrupted unprofiled A1/B115 run. B115 near-1M warmup rejected for overlapping external inference. B60/A2 were not started; raw failure and restoration retained.",
+      "raw_receipt_sha256": "5db0b177c44d95ac54d38757668e696e5ed472338640b2d75142265816fe6692",
+      "restored": true,
+      "failure": {
+        "type": "RuntimeError",
+        "message": "incomplete or unattributed request"
+      },
+      "receipt": "runs/pacing-interrupted/receipt.json.gz"
+    }
+  },
+  "frozen_collector_sha256": "9e279311b0c43240d31376e39d80d608afa73f3d132436f88308484b5e9a3053",
+  "frozen_aot_catalog_sha256": "9469ec3965f96c573bda72307d44e4a6d9825285048aac39f5d26aaadc7ca083",
+  "precision_scope": "No GPU arithmetic kernels or checkpoint weights changed in these experiments",
+  "timing_scope": "Profiled range durations are diagnostic only; throughput comparisons have CUPTI and CPU trace disabled",
+  "accuracy_scope": "Frozen greedy outputs, temperature 0, seed 1234, ignore EOS; not a broad task-accuracy evaluation",
+  "counter_scope": "Target verification plus DSpark tap absorption; excludes full drafter pass, argmax/readback and prefill",
+  "counter_limit": "Measured system-memory fills into L2, not total physical DRAM reads plus writes",
+  "public_identity_policy": "Private host addresses, usernames, home/workspace paths and GPU UUIDs replaced with role labels; token arrays and numeric observations preserved",
+  "post_benchmark_source": {
+    "commit": "9be95dd3b75b4cf5495bc814284b42d211431a13",
+    "changes": "Collector abort handling and active-window probe; partial-window/gzip/settings validation; explicit continuation composition and invalid-metric rejection",
+    "benchmark_scope": "These later failure-handling and analysis changes were not used for the speed/counter matrices. Their validation is recorded separately."
+  },
+  "validation": {
+    "source_commit": "9be95dd3b75b4cf5495bc814284b42d211431a13",
+    "CPU_complete": true,
+    "smoke_complete": true,
+    "CPU_validation_sha256": "6144ff5a8dd61de59a729e4c7177ee83a14d857f9b73b86909116404f3999182",
+    "source_manifest_sha256": "86c9bd0c809a7cef09dc0be449cf07e8ce7feafd3c34b988ae95d2dac4fa54b4",
+    "smoke_receipt_sha256": "0976c7debc06468446a88d2a1c4667dcd70041e8497dee52d295a486e5bfff45",
+    "CPU_receipt": "evidence/final-cpu-validation.json",
+    "smoke_receipt": "evidence/final-smoke.json",
+    "source_manifest": "evidence/final-source-manifest.json",
+    "lean_findings": 1489
+  },
+  "historical_reference": {
+    "receipt": "../dsv41-context-allocator-sm121-20261028/receipt.json.gz",
+    "published_file_sha256": "4011cfaad5264f1b8f66c1706b7c655f9012bcf19a4668d59c474246b904591c"
+  }
+}
