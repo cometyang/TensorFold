@@ -27,6 +27,7 @@ const exl3_experts2d = @import("exl3_experts2d.zig");
 const engram = @import("engram.zig");
 const exact = @import("exact.zig");
 const ops_mod = @import("ops.zig");
+const prefetch_policy = @import("prefetch_policy.zig");
 
 const Engine = prompt.Engine;
 const Chunk = prompt.Chunk;
@@ -187,6 +188,7 @@ pub const Round = struct {
     pf_fork: ?cuda.Event = null,
     pf_join: ?cuda.Event = null,
     pf_out: bool = false,
+    pf_policy: prefetch_policy.Policy = .{},
     timer: ?*PhaseTimer = null, // eager rounds' GPU time by phase (a profile)
     // a profile's GPU clocks a round (Model.useClock): at the forward's start, then before and after each stretch
     // a profile's kernel launches by the phase they end in (eager rounds: in a graph only its capture launches)
@@ -330,6 +332,7 @@ pub const Round = struct {
         rd.pf_fork = null;
         rd.pf_join = null;
         rd.pf_out = false;
+        rd.pf_policy = .{};
         rd.timer = null;
         return rd;
     }
@@ -359,6 +362,9 @@ pub const Round = struct {
     /// after wo_b: the router; after the experts: the next layer's input linears). It writes nothing.
     pub fn usePrefetch(rd: *Round, e: *const Engine) !void {
         if (rd.pf != null) return;
+        rd.pf_policy = try prefetch_policy.environment();
+        if (rd.pf_policy.mask != prefetch_policy.all_stages or rd.pf_policy.percent != 100)
+            std.log.info("decode L2 prefetch: mask={d}, budget_percent={d}", .{ rd.pf_policy.mask, rd.pf_policy.percent });
         var s = try cuda.Stream.init(e.d, true);
         errdefer s.deinit();
         rd.pf_fork = try cuda.Event.init(e.d, false);
@@ -378,10 +384,10 @@ pub const Round = struct {
     /// These ranges touched into L2 behind the work queued so far, on the prefetch stream.
     /// One paced L2 prefetch launch on its stream: `ranges` in order, the last one cut where the launch reaches `budget`
     /// bytes (the served launches move at most 16 MiB, 8 MiB behind wo_b).
-    fn prefetch(rd: *Round, e: *const Engine, ranges: []const [2]u64, budget: u64) !void {
+    fn prefetch(rd: *Round, e: *const Engine, stage: prefetch_policy.Stage, ranges: []const [2]u64, budget: u64) !void {
         const s = rd.pf orelse return;
         var a: ops_mod.Prefetch = .{};
-        var left = budget;
+        var left = rd.pf_policy.budget(stage, budget);
         for (ranges) |r| {
             if (r[1] == 0 or a.n == 16 or left == 0) continue;
             const take = @min(r[1], left);
@@ -577,7 +583,7 @@ fn attention(e: *const Engine, rd: *Round, ch: *const Chunk, cs: *const Caches, 
         var r: [5][2]u64 = @splat(.{ 0, 0 });
         for (lay.wo_a[0..lay.groups], 0..) |wo, j| r[j] = linearBytes(wo);
         r[4] = linearBytes(lay.wo_b);
-        try rd.prefetch(e, &r, prefetch_budget);
+        try rd.prefetch(e, .attention, &r, prefetch_budget);
     }
     try rd.mark(e, .a_q);
     // _kv_idx: the compressor's caches (a kv source) and the indexer's selection
@@ -725,7 +731,7 @@ fn attention(e: *const Engine, rd: *Round, ch: *const Chunk, cs: *const Caches, 
     var cb_call = [_]exl3_linear.Call{.{ .layer = lay.wo_b, .x = 0, .ldx = 0, .x_dtype = .bf16, .xh = rd.xb, .y = rd.pa, .ldy = @intCast(lay.wo_b.n), .y_dtype = .f32, .counters = 0 }};
     try prompt.groupedRotated(e, ch, R, &cb_call);
     // the prefetch behind wo_b: the ffn mix's weights, the router, the shared expert's gate
-    try rd.prefetch(e, &.{ .{ lay.hc_ffn[0], hcFnBytes(c) }, .{ lay.gate_w, @as(u64, c.experts) * c.hidden * 2 }, lay.experts.shared_gate, lay.experts.shared_up, lay.experts.shared_down }, prefetch_budget / 2);
+    try rd.prefetch(e, .moe, &.{ .{ lay.hc_ffn[0], hcFnBytes(c) }, .{ lay.gate_w, @as(u64, c.experts) * c.hidden * 2 }, lay.experts.shared_gate, lay.experts.shared_up, lay.experts.shared_down }, prefetch_budget / 2);
 }
 
 /// Model.moe of a decode window (shared_side off: SHARED_OVERLAP unset in the served lane): the gate's chunk sums
@@ -751,11 +757,11 @@ fn moe(e: *const Engine, rd: *Round, ch: *const Chunk, li: usize) !void {
     if (li + 1 < e.w.layers.len) {
         const nx = e.w.layers[li + 1];
         if (nx.engram_wkv) |ew| {
-            try rd.prefetch(e, &.{linearBytes(ew)}, prefetch_budget / 4);
+            try rd.prefetch(e, .engram, &.{linearBytes(ew)}, prefetch_budget / 4);
         } else {
-            try rd.prefetch(e, &.{ .{ nx.hc_attn[0], hcFnBytes(c) }, linearBytes(nx.wq_a), linearBytes(nx.wkv), if (nx.comp_wkv) |x| linearBytes(x) else .{ 0, 0 }, if (nx.comp_wgate) |x| linearBytes(x) else .{ 0, 0 }, linearBytes(nx.wq_b) }, prefetch_budget);
+            try rd.prefetch(e, .next, &.{ .{ nx.hc_attn[0], hcFnBytes(c) }, linearBytes(nx.wq_a), linearBytes(nx.wkv), if (nx.comp_wkv) |x| linearBytes(x) else .{ 0, 0 }, if (nx.comp_wgate) |x| linearBytes(x) else .{ 0, 0 }, linearBytes(nx.wq_b) }, prefetch_budget);
         }
-    } else try rd.prefetch(e, &.{linearBytes(e.w.head)}, prefetch_budget);
+    } else try rd.prefetch(e, .head, &.{linearBytes(e.w.head)}, prefetch_budget);
 }
 
 /// An EXL3 linear's words: their first byte and length (k * n values of k2 / 2 bits).

@@ -28,6 +28,7 @@ const link = @import("link.zig");
 const ring2d = @import("ring2d.zig");
 const rdma = @import("rdma.zig");
 const pool_mod = @import("pool.zig");
+const traffic = @import("traffic.zig");
 
 /// The served prompt chunk (TF_DS_PREFILL_CHUNK): a prompt runs in chunks that start at its multiples.
 pub const chunk_rows = 2048;
@@ -128,6 +129,7 @@ pub const Model = struct {
     img_buf: ?cuda.DeviceBuffer = null,
     // profiling (lanes' --profile): the last round's forward and absorb, synchronized apart (ns)
     prof: bool = false,
+    traffic_collector: traffic.Collector = .{},
     timer: ?*round.PhaseTimer = null, // a profile's GPU time by phase (eager rounds)
     ptimer: ?*round.PhaseTimer = null, // the same for prompt chunks (fills), a chunk a 'round'
     t_enqueue: u64 = 0, // the host's time to issue the forward (the GPU idle before it)
@@ -170,6 +172,8 @@ pub const Model = struct {
         m.pool_cap = o.pool;
         m.fill_slot = 0;
         m.prof = false;
+        m.traffic_collector = traffic.Collector.open();
+        errdefer m.traffic_collector.close();
         m.timer = null;
         m.ptimer = null;
         m.t_enqueue = 0;
@@ -363,6 +367,7 @@ pub const Model = struct {
     }
 
     pub fn close(m: *Model) void {
+        m.traffic_collector.close();
         m.joinAhead();
         m.stream.synchronize() catch {};
         if (m.img_buf) |*b| b.free();
@@ -694,6 +699,8 @@ pub const Model = struct {
     /// overwrites them). absorb[i]: window i's stream drafts.
     pub fn verify(m: *Model, rows: round.Rows, absorb: []const bool) !void {
         m.joinAhead(); // a prompt chunk's Engram read-ahead shares the host buffers a round's Engram reads use
+        const measuring = m.traffic_collector.begin(rows.pos, rows.ids.len, m.rank);
+        defer if (measuring) m.traffic_collector.end();
         const e = &m.eng;
         if (m.prof) try m.stream.synchronize(); // (the GPU idle, so the issue time shows whether the host keeps it fed)
         const t0 = m.now();
