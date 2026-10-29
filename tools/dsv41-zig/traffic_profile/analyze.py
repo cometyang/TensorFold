@@ -66,6 +66,20 @@ def requests(receipt):
                 yield label, phase.get('mode', batch.get('mode', 'speed')), batch, row
 
 
+def lineage(batch):
+    return {key: batch[key] for key in ('source_input', 'source_phase', 'source_batch') if key in batch}
+
+
+def metrics_valid(batch, row):
+    return all(not isinstance(owner.get('metrics'), dict) or owner['metrics'].get('valid') is not False
+               for owner in (batch, row))
+
+
+def speed_eligible(batch, row):
+    return (metrics_valid(batch, row) and row.get('complete') is True and not row.get('error')
+            and finite(row.get('decode_tps'), True))
+
+
 def plain_references(receipt, preferred='A1'):
     candidates = list(requests(receipt))
     candidates.sort(key=lambda item: item[0] != preferred)
@@ -99,7 +113,7 @@ def accuracy(receipt, reference):
         details.append({'phase': label, 'mode': mode, 'fixture': fixture, 'draft': row.get('draft'),
                         'rep': batch.get('rep'), 'warmup': batch.get('warmup', False), 'tokens': row.get('tokens'),
                         'status': status, 'token_ids_compared': match is not None,
-                        'controller_exact_claim': claim, 'complete': valid_output})
+                        'controller_exact_claim': claim, 'complete': valid_output, **lineage(batch)})
     counts = dict(Counter(item['status'] for item in details))
     return {'counts': counts, 'all_independent_comparisons_match': (
         counts.get('matched', 0) > 0 and counts.get('failed', 0) == 0 and counts.get('unknown', 0) == 0),
@@ -112,13 +126,23 @@ def speed(receipt, baselines, target):
     eligible = []
     settings = defaultdict(lambda: defaultdict(list))
     for label, mode, batch, row in requests(receipt):
-        if mode != 'speed' or batch.get('warmup', False):
+        if mode != 'speed':
             continue
-        if not (row.get('complete') is True and not row.get('error') and finite(row.get('decode_tps'), True)):
-            rejected.append({'phase': label, 'fixture': row.get('fixture'), 'rep': batch.get('rep')})
+        if not metrics_valid(batch, row):
+            rejected.append({'phase': label, 'fixture': row.get('fixture'), 'rep': batch.get('rep'),
+                             'warmup': batch.get('warmup', False), 'reason': 'invalid request metrics',
+                             'metric_errors': [owner['metrics'].get('error') for owner in (batch, row)
+                                               if isinstance(owner.get('metrics'), dict)
+                                               and owner['metrics'].get('valid') is False], **lineage(batch)})
+            continue
+        if batch.get('warmup', False):
+            continue
+        if not speed_eligible(batch, row):
+            rejected.append({'phase': label, 'fixture': row.get('fixture'), 'rep': batch.get('rep'), **lineage(batch)})
             continue
         fixture = row.get('fixture')
-        values = {key: row.get(key) for key in ('tokens', 'max_tokens', 'temperature', 'seed')}
+        values = {key: row.get(key) for key in (
+            'tokens', 'max_tokens', 'temperature', 'seed', 'context', 'prompt_sha256', 'ignore_eos')}
         if isinstance(row.get('token_ids'), list):
             values['token_ids_length'] = len(row['token_ids'])
         for key, value in values.items():
@@ -132,7 +156,7 @@ def speed(receipt, baselines, target):
         fixture = row.get('fixture')
         if fixture in conflicts:
             rejected.append({'phase': label, 'fixture': fixture, 'rep': batch.get('rep'),
-                             'reason': 'inconsistent fixture settings', 'fields': list(conflicts[fixture])})
+                             'reason': 'inconsistent fixture settings', 'fields': list(conflicts[fixture]), **lineage(batch)})
             continue
         grouped[(fixture, label, bool(row.get('draft')))].append(row['decode_tps'])
     contexts = {row['fixture']: row.get('context') for _, _, _, row in requests(receipt)}
@@ -186,7 +210,7 @@ def speed(receipt, baselines, target):
             'plain_scope': 'diagnostic controls, not statistically independent performance claims',
             'profiled_requests_excluded': True, 'rejected_requests': rejected,
             'settings_conflicts': conflicts,
-            'settings_scope': 'available token lengths, requested lengths, temperature and seed across each fixture',
+            'settings_scope': 'available token lengths, requested lengths, sampling and prompt identity across each fixture',
             'fixtures': fixtures, 'contexts': aggregate}
 
 
@@ -474,7 +498,7 @@ def traffic(receipt, directory, issues, join_spec_trace=False):
                             'Grouping by row width does not control the union of selected MoE experts.']}
 
 
-def analyze(receipt_path, reference_path=None, baselines=('A1', 'A2'), target=80, join_spec_trace=False):
+def analyze_one(receipt_path, reference_path=None, baselines=('A1', 'A2'), target=80, join_spec_trace=False):
     receipt = read_json(receipt_path)
     reference = read_json(reference_path) if reference_path else None
     issues = []
@@ -496,6 +520,21 @@ def analyze(receipt_path, reference_path=None, baselines=('A1', 'A2'), target=80
             'traffic': counters, 'weight_model': weights}
 
 
+def analyze(receipt_path, reference_path=None, baselines=('A1', 'A2'), target=80, join_spec_trace=False,
+            continuation_paths=(), phase_aliases=()):
+    if not continuation_paths and not phase_aliases:
+        return analyze_one(receipt_path, reference_path, baselines, target, join_spec_trace)
+    from continuation import compose
+    paths = [receipt_path, *continuation_paths]
+    receipts = [read_json(path) for path in paths]
+    analyses = [analyze_one(path, reference_path, baselines, target, join_spec_trace) for path in paths]
+    receipt, result = compose(paths, receipts, analyses, phase_aliases, baselines, speed_eligible)
+    result['speed'] = speed(receipt, baselines, target)
+    result['speed']['limitations'] = result['composition']['limitations']
+    result['exactness'] = accuracy(receipt, read_json(reference_path) if reference_path else None)
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('receipt', type=Path)
@@ -504,16 +543,22 @@ def main():
     parser.add_argument('--target-tps', type=float, default=80)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--join-spec-trace', action='store_true')
+    parser.add_argument('--continuation-receipt', type=Path, action='append', default=[])
+    parser.add_argument('--phase-alias', action='append', default=[], metavar='SOURCE=TARGET')
     args = parser.parse_args()
     if not finite(args.target_tps, True):
         parser.error('--target-tps must be finite and positive')
-    result = analyze(args.receipt.resolve(), args.reference_receipt, args.baseline_labels, args.target_tps,
-                     args.join_spec_trace)
+    try:
+        result = analyze(args.receipt.resolve(), args.reference_receipt, args.baseline_labels, args.target_tps,
+                         args.join_spec_trace, args.continuation_receipt, args.phase_alias)
+    except ValueError as error:
+        parser.error(str(error))
     output = args.output or args.receipt.with_name('traffic-analysis.json')
     output.write_text(json.dumps(result, indent=2, allow_nan=False) + '\n', encoding='utf-8')
     print(json.dumps({'output': str(output), 'traffic_groups': len(result['traffic']['groups']),
                       'speed_contexts': result['speed']['contexts'], 'exactness': result['exactness']['counts'],
-                      'issues': result['issues']}, indent=2))
+                      'issues': result['issues'], 'latest_input_restored': result['original_service_restored'],
+                      'receipt_failure': result['receipt_failure'], 'inputs': result.get('inputs')}, indent=2))
 
 
 if __name__ == '__main__':

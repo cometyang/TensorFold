@@ -279,3 +279,32 @@ passes, argmax/readback and prefill. This denominator is not an observed committ
 output count. Joined CPU wall times remain profiling diagnostics, not GPU time
 or unprofiled throughput. Inspect `issues`, unmatched counts and sample sizes
 before drawing conclusions from the report.
+
+For an interrupted experiment followed by separate continuation runs, retain
+every original receipt and supply each additional input explicitly:
+
+```bash
+python3 tools/dsv41-zig/traffic_profile/analyze.py /path/initial/receipt.json.gz \
+  --continuation-receipt /path/resumed/receipt.json.gz \
+  --phase-alias R115=B115 --reference-receipt /path/reference/receipt.json.gz \
+  --output /path/combined-analysis.json
+```
+
+`--continuation-receipt` and `--phase-alias SOURCE=TARGET` may be repeated.
+Duplicate phase names require an explicit alias; overlapping valid measurements
+for the same phase, fixture, draft mode and repetition are rejected. Missing
+settings are not treated as proof of equivalence. Counter files remain relative
+to their own input receipt and their groups retain source attribution.
+
+The combined report records each input's basename, decompressed SHA-256,
+failure, restoration and phase outcomes, plus phase/request lineage. Earlier
+failures remain visible even when the latest input restored successfully.
+It is composed evidence, not a replacement receipt claiming one successful run.
+A baseline bracket spanning input runs carries an explicit restoration/relaunch
+limitation. Available request settings must still agree within each fixture.
+
+Any batch or row with `metrics.valid=false` is excluded from speed results,
+including warmups, with its metric error and source recorded in
+`rejected_requests`. Token arrays from those requests remain eligible for
+independent exactness comparison: correct output does not validate contaminated
+timing or attribution.
